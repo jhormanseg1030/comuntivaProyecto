@@ -5,6 +5,7 @@ function InicioCli() {
         <>
         <Menu></Menu>
         <h1>Contenido del cliente</h1>
+        <h2>Nuevo ocntenido</h2>
         </>
     );
 }
