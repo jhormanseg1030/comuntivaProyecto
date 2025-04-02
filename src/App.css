@@ -1,0 +1,18 @@
+*{
+  margin: auto;
+  padding: auto;
+}
+#container{
+  background-color: aqua;
+  text-align: center;
+  width: 90%;
+  height: 500px;
+}
+header{
+  background-color: green;
+}
+nav{
+  background-color: chartreuse;
+  height: 50px;
+  
+}
