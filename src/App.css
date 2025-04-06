@@ -1,18 +1,16 @@
 *{
   margin: auto;
-  padding: auto;
 }
-#container{
-  background-color: aqua;
-  text-align: center;
-  width: 90%;
-  height: 500px;
+.d-flex{
+    background-color: rgba(96, 238, 96, 0.445);
 }
-header{
-  background-color: green;
+.container-fluid{
+  background-color: rgb(21, 231, 108);
+  font-size: 15px;
 }
-nav{
-  background-color: chartreuse;
-  height: 50px;
-  
+.nav-brand{
+  width: 60px;
+}
+.nav-link{
+  margin-left: 20px;
 }
