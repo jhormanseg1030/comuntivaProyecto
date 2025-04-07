@@ -10,7 +10,7 @@ function HomeCli() {
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container fluid>
-       <img src={logo} alt="Logo" class="nav-brand"/>
+       <img src={logo} alt="Logo" className="nav-brand"/>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
