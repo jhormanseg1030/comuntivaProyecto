@@ -1,0 +1,11 @@
+.contenedor_botones
+{
+    width: 2%;
+    display:flex;
+    gap: 30px;
+
+}
+.d-flex
+{
+    margin-right: 20px;
+}
