@@ -1,0 +1,35 @@
+*{
+    margin: auto;
+}
+.d-flex{
+      background-color: rgba(96, 238, 96, 0.445);
+}
+.container-fluid{
+    background-color: rgb(21, 231, 108);
+    font-size: 15px;
+}
+.nav-brand{
+    width: 60px;
+}
+.nav-link{
+    margin-left: 20px;
+}
+
+.carousel-custom-width{
+    width: 90%;
+    margin: auto;
+}
+.carousel-img-full{
+    height: 80vh;
+    object-fit: cover;
+    border-radius: 10px;
+}
+@media (max-width: 768px) {
+    .carousel-img-full{
+        height: 60vh;
+    }
+}
+
+.titulo{
+    text-align: center;
+}
