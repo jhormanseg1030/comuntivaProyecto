@@ -1,7 +1,7 @@
 .contenedor_botones
 {
     width: 2%;
-    display:flex;
+    display: flex;
     gap: 30px;
 
 }
@@ -9,3 +9,18 @@
 {
     margin-right: 20px;
 }
+.layers{
+    margin-top: 1rem;
+    height: 75px;
+    text-align: center;
+}
+.gr1{
+    height: 75px;
+    text-align: left;
+}
+.img{
+    display: flex;
+    text-align: center;
+}
+
+
