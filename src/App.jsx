@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 import { Route, Routes } from 'react-router-dom';
-import InicioSe from './components/iniciosesion/inicioSe';
+import InicioSe from './components/iniciosesion/InicioSe';
 import HomeCli from './components/Clientes/HomeCli';
 import HomeTienda from "./components/Tienda/HomeTienda";
 
