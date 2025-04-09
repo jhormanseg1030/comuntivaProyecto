@@ -42,7 +42,7 @@ function HomeCli() {
         </Container>
       </Navbar>
       <div className='titulo'>
-        <h2>Bienvenidos a conuctiva</h2>
+        <h2>Bienvenidos a comuctiva</h2>
       </div>
 
       <Carousel className='carousel-custom-width'>
