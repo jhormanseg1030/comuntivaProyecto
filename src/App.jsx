@@ -1,9 +1,10 @@
 import { useState } from 'react'
 import './App.css'
 import { Route, Routes } from 'react-router-dom';
-import InicioSe from './components/iniciosesion/InicioSe';
+import InicioSe from './components/InicioSesion/InicioSe';
 import HomeCli from './components/Clientes/HomeCli';
 import HomeTienda from "./components/Tienda/HomeTienda";
+import SegPrinci from './components/SegPrincipal/SegPrinci';
 
 
 function App() {
@@ -13,8 +14,9 @@ function App() {
         <Route path='/login' element={<InicioSe></InicioSe>}></Route>
         <Route path='/' element={<HomeCli></HomeCli>}></Route>
         <Route path='/Tienda' element={<HomeTienda></HomeTienda>}></Route>
+        <Route path='/Segunda' element={<SegPrinci></SegPrinci>}></Route>
       </Routes>
     );
-    
+
 }
 export default App;
