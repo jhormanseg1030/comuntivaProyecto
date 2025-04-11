@@ -5,14 +5,17 @@ import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import logo from '../Imagenes/WhatsApp Image 2025-04-02 at 4.19.24 PM.jpeg';
 import Carousel from 'react-bootstrap/Carousel';
 import Anderson from'../Imagenes/Anderson.jpeg' 
-import alucard from '../Imagenes/alucard.jpg';
+import Verduras from '../Imagenes/verd.png';
 import solo_Leveling from '../Imagenes/solo_Leveling.jpg'
 import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
 import './SegPrinci.css';
+import logo from '../imagenes/logo.jpg';
+import hojas from '../imagenes/hojas.jpeg';
+import papa from '../imagenes/papa.jpeg';
+
 function SegPrinci() {
   return (
     <>
@@ -68,7 +71,7 @@ function SegPrinci() {
       <Carousel className='carousel-custom-width'>
         <Carousel.Item>
           <img className='d-block w-100 carousel-img-full'
-          src={alucard}
+          src={Verduras}
           alt='First slider'
           />
           <Carousel.Caption>
@@ -98,9 +101,9 @@ function SegPrinci() {
         </Carousel.Item>
       </Carousel>
 
-      <CardGroup>
-      <Card>
-        <Card.Img variant="top" src="holder.js/100px160" />
+      <CardGroup className='cardGroup'>
+      <Card className='cardP'>
+        <Card.Img variant="top" src={hojas} className='ImgP'/>
         <Card.Body>
           <Card.Title>Card title</Card.Title>
           <Card.Text>
@@ -112,21 +115,23 @@ function SegPrinci() {
           <small className="text-muted">Last updated 3 mins ago</small>
         </Card.Footer>
       </Card>
-      <Card>
-        <Card.Img variant="top" src={alucard} />
+
+      <Card className='cardM'>
+        <Card.Img variant="top" src={Verduras} />
         <Card.Body>
           <Card.Title>Card title</Card.Title>
           <Card.Text>
             This card has supporting text below as a natural lead-in to
-            additional content.
+            additional content.hbjgtfvhbjhgjygvnbvgfgdfhjbnchfvjh    hgfyghhgfyujgjhgvhfv
           </Card.Text>
         </Card.Body>
         <Card.Footer>
           <small className="text-muted">Last updated 3 mins ago</small>
         </Card.Footer>
       </Card>
+
       <Card>
-        <Card.Img variant="top" src="holder.js/100px160" />
+        <Card.Img variant="top" src={papa}/>
         <Card.Body>
           <Card.Title>Card title</Card.Title>
           <Card.Text>
@@ -140,6 +145,7 @@ function SegPrinci() {
         </Card.Footer>
       </Card>
     </CardGroup>
+
     <div className='botonr'>
     <button type="button" className="btn btn-info">REGISTRA TU EMPRESA</button>
     </div>
