@@ -18,10 +18,10 @@ function SegPrinci() {
     <>
       <Navbar expand="lg" className="bg-body-tertiary">
         <Container fluid>
-          <img src={logo} alt="Logo" className="nav-brand" style={{ width: '50px', marginRight: '10px' }} />
+          <img src={logo} alt="Logo" className="nav-brand" />
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
-            <Nav className="me-auto my-2 my-lg-0" style={{ maxHeight: '100px' }} navbarScroll>
+            <Nav className="me-auto my-2 my-lg-0" navbarScroll>
               <Nav.Link href="#action1">Inicio</Nav.Link>
               <Nav.Link href="#action2">Quienes Somos</Nav.Link>
               <Nav.Link href="#action3">Tiendas</Nav.Link>
@@ -140,7 +140,9 @@ function SegPrinci() {
         </Card.Footer>
       </Card>
     </CardGroup>
+    <div className='botonr'>
     <button type="button" className="btn btn-info">REGISTRA TU EMPRESA</button>
+    </div>
     </>
   );
 }
