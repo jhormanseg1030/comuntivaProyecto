@@ -7,7 +7,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import logo from '../Imagenes/WhatsApp Image 2025-04-02 at 4.19.24 PM.jpeg';
 import Carousel from 'react-bootstrap/Carousel';
-import Frutas from '../imagenes/Frutas.jpg'
+import Frutas1 from '../imagenes/Frutas1.jpg'
 import Frutas2 from '../imagenes/Frutas2.jpg'
 import Frutas3 from '../imagenes/Frutas3.jpeg'
 import Mercados1 from '../imagenes/Mercados1.jpg'
@@ -56,7 +56,7 @@ function HomeCli() {
       <Carousel className='carousel-custom-width'>
         <Carousel.Item>
           <img className='d-block w-100 carousel-img-full'
-          src={Frutas}
+          src={Frutas1}
           alt='First slider'
           />
           <Carousel.Caption>
