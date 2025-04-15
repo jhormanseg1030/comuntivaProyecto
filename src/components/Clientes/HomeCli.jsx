@@ -7,9 +7,17 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import logo from '../Imagenes/WhatsApp Image 2025-04-02 at 4.19.24 PM.jpeg';
 import Carousel from 'react-bootstrap/Carousel';
-import Anderson from'../Imagenes/Anderson.jpeg' 
-import alucard from '../Imagenes/alucard.jpg';
-import solo_Leveling from '../Imagenes/solo_Leveling.jpg'
+import Frutas from '../imagenes/Frutas.jpg'
+import Frutas2 from '../imagenes/Frutas2.jpg'
+import Frutas3 from '../imagenes/Frutas3.jpeg'
+import Mercados1 from '../imagenes/Mercados1.jpg'
+import Mercados2 from '../imagenes/Mercados2.jpg'
+import Mercados3 from '../imagenes/Mercados3.jpg'
+import Mercados4 from '../imagenes/Mercados4.jpg'
+import Mercados5 from '../imagenes/Mercados5.jpg'
+import Mercados6 from '../imagenes/Mercados6.jpg'
+import Mercados7 from '../imagenes/Mercados7.jpg'
+import Mercados8 from '../imagenes/Mercados8.jpg'
 import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
 import './HomeCliente.css';
@@ -48,7 +56,7 @@ function HomeCli() {
       <Carousel className='carousel-custom-width'>
         <Carousel.Item>
           <img className='d-block w-100 carousel-img-full'
-          src={alucard}
+          src={Frutas}
           alt='First slider'
           />
           <Carousel.Caption>
@@ -58,7 +66,7 @@ function HomeCli() {
         </Carousel.Item>
         <Carousel.Item>
           <img className='d-block w-100 carousel-img-full'
-          src={Anderson}
+          src={Frutas2}
           alt='Second slider'
           />
           <Carousel.Caption>
@@ -68,7 +76,7 @@ function HomeCli() {
         </Carousel.Item>
         <Carousel.Item>
         <img className='d-block w-100 carousel-img-full'
-          src={solo_Leveling}
+          src={Frutas3}
           alt='Third slider'
           />
           <Carousel.Caption>
@@ -77,23 +85,20 @@ function HomeCli() {
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
-
-      <CardGroup>
+      
+      <CardGroup className='confi'>
       <Card>
-        <Card.Img variant="top" src="holder.js/100px160" />
+        <Card.Img className='configuracion' variant="top" src={Mercados1}/>
         <Card.Body>
-          <Card.Title>Card title</Card.Title>
+          <Card.Title>Tienda de don juan</Card.Title>
           <Card.Text>
-            This is a wider card with supporting text below as a natural lead-in
-            to additional content. This content is a little bit longer.
+            bienvenido a mi tienda, donde encontraras los mejores productos del mercado, con buenos precios, y calidad en su maximo explendor, ven y mira mi tienda
           </Card.Text>
         </Card.Body>
-        <Card.Footer>
-          <small className="text-muted">Last updated 3 mins ago</small>
-        </Card.Footer>
       </Card>
+
       <Card>
-        <Card.Img variant="top" src={alucard} />
+        <Card.Img variant="top" src={Mercados2}  />
         <Card.Body>
           <Card.Title>Card title</Card.Title>
           <Card.Text>
@@ -101,12 +106,10 @@ function HomeCli() {
             additional content.
           </Card.Text>
         </Card.Body>
-        <Card.Footer>
-          <small className="text-muted">Last updated 3 mins ago</small>
-        </Card.Footer>
       </Card>
+
       <Card>
-        <Card.Img variant="top" src="holder.js/100px160" />
+        <Card.Img variant= "top" src={Mercados3}/>
         <Card.Body>
           <Card.Title>Card title</Card.Title>
           <Card.Text>
@@ -115,13 +118,76 @@ function HomeCli() {
             first to show that equal height action.
           </Card.Text>
         </Card.Body>
-        <Card.Footer>
-          <small className="text-muted">Last updated 3 mins ago</small>
-        </Card.Footer>
+      </Card>
+
+      <Card>
+        <Card.Img variant= "top" src={Mercados4} />
+        <Card.Body>
+          <Card.Title>Card title</Card.Title>
+          <Card.Text>
+            This is a wider card with supporting text below as a natural lead-in
+            to additional content. This card has even longer content than the
+            first to show that equal height action.
+          </Card.Text>
+        </Card.Body>
       </Card>
     </CardGroup>
 
 
+    <CardGroup className='confi'>  
+    <Card>
+        <Card.Img variant= "top" src={Mercados5} />
+        <Card.Body>
+          <Card.Title>Card title</Card.Title>
+          <Card.Text>
+            This is a wider card with supporting text below as a natural lead-in
+            to additional content. This card has even longer content than the
+            first to show that equal height action.
+          </Card.Text>
+        </Card.Body>
+      </Card>
+
+      <Card>
+        <Card.Img variant= "top" src={Mercados6} />
+        <Card.Body>
+          <Card.Title>Card title</Card.Title>
+          <Card.Text>
+            This is a wider card with supporting text below as a natural lead-in
+            to additional content. This card has even longer content than the
+            first to show that equal height action.
+          </Card.Text>
+        </Card.Body>
+      </Card>
+
+      <Card>
+        <Card.Img variant= "top" src={Mercados7} />
+        <Card.Body>
+          <Card.Title>Card title</Card.Title>
+          <Card.Text>
+            This is a wider card with supporting text below as a natural lead-in
+            to additional content. This card has even longer content than the
+            first to show that equal height action.
+          </Card.Text>
+        </Card.Body>
+      </Card>
+
+      <Card>
+        <Card.Img variant= "top" src={Mercados8} />
+        <Card.Body>
+          <Card.Title>Card title</Card.Title>
+          <Card.Text>
+            This is a wider card with supporting text below as a natural lead-in
+            to additional content. This card has even longer content than the
+            first to show that equal height action.
+          </Card.Text>
+        </Card.Body>
+      </Card>
+    </CardGroup>
+
+    <div className='boton'>
+    <button type='button' className='btn btn-info'> Registra tu empresa</button>
+    </div>
+    
     </>
   );
 }

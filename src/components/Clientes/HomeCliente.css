@@ -1,11 +1,9 @@
-*{
-    margin: auto;
-}
+/*ENCABEZADO*/
 .d-flex{
       background-color: rgba(96, 238, 96, 0.445);
 }
 .container-fluid{
-    background-color: rgb(21, 231, 108);
+    background: linear-gradient(90deg, rgba(5, 143, 28, 0.74) 10%, rgba(28, 221, 3, 0.842) 50%, rgba(0, 248, 41, 0.979) 70%, rgba(8, 236, 168, 0.74) 100% ); 
     font-size: 15px;
 }
 .nav-brand{
@@ -15,8 +13,11 @@
     margin-left: 20px;
 }
 
+/*-----------------------------------------------------------------------------------*/
+
+/*CARRUCEL*/
 .carousel-custom-width{
-    width: 90%;
+    width: 100%;
     margin: auto;
 }
 .carousel-img-full{
@@ -29,7 +30,27 @@
         height: 60vh;
     }
 }
+/*-----------------------------------------------------------------------------------*/
 
+/* card */
 .titulo{
+    text-align: center;
+}
+
+.confi{
+    width: 95%;
+    margin: auto;
+    margin-top: 30px;
+    gap: 10px;
+}
+.btn btn-info{
+    display: flex;
+    width: 50px;
+    left: 30px;
+    right: 40%;
+    justify-content: center;
+}
+.boton{
+    margin-top: 10px;
     text-align: center;
 }
