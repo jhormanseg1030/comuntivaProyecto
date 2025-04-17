@@ -4,7 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 import InicioSe from './components/iniciosesion/InicioSe';
 import HomeCli from './components/Clientes/HomeCli';
 import HomeTienda from "./components/Tienda/HomeTienda";
-import InicioVendedor from './components/InicioVen/InicioVendedor';
+import InicioVendedor from "./components/InicioVen/InicioVendedor";
 
 
 function App() {
@@ -14,7 +14,7 @@ function App() {
         <Route path='/login' element={<InicioSe></InicioSe>}></Route>
         <Route path='/' element={<HomeCli></HomeCli>}></Route>
         <Route path='/Tienda' element={<HomeTienda></HomeTienda>}></Route>
-        <Route path='/Inicio' element={<InicioVendedor/>}/>
+        <Route path='/Inicio' element={<InicioVendedor></InicioVendedor>}/>
       </Routes>
     );
     
