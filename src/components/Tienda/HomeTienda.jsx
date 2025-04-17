@@ -8,7 +8,7 @@ import logo from '../imagenes/logo.jpg';
 import Carousel from 'react-bootstrap/Carousel';
 import Frutas from '../Imagenes/Frutas.jpg';
 import Zanahoria from '../Imagenes/zanahoria.jpg';
-import solo_Leveling from '../Imagenes/solo_Leveling.jpg';
+import Frutas3 from '../imagenes/Frutas3.jpeg'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
@@ -74,7 +74,7 @@ function HomeTienda() {
             </Carousel.Item>
             <Carousel.Item>
             <img className='d-block w-100 carousel-img-full'
-              src={solo_Leveling}
+              src={Frutas3}
               alt='Third slider'
               />
             </Carousel.Item>

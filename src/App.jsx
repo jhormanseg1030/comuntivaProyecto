@@ -16,6 +16,9 @@ function App() {
         <Route path='/login' element={<InicioSe></InicioSe>}></Route>
         <Route path='/' element={<HomeCli></HomeCli>}></Route>
         <Route path='/Tienda' element={<HomeTienda></HomeTienda>}></Route>
+        <Route path='/Inicio' element={<InicioVendedor></InicioVendedor>}/>
+        <Route path='/Segunda' element={<SegPrinci></SegPrinci>}></Route>
+        <Route path='/ConfTienda' element={<ConfTienda></ConfTienda>}></Route>
       </Routes>
     );
 

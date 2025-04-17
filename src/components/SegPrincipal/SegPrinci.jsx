@@ -6,9 +6,9 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Carousel from 'react-bootstrap/Carousel';
-import Anderson from'../Imagenes/Anderson.jpeg' 
+import Frutas2 from'../Imagenes/Frutas2.jpg' 
 import Verduras from '../Imagenes/verd.png';
-import solo_Leveling from '../Imagenes/solo_Leveling.jpg'
+import Frutas1 from '../Imagenes/Frutas1.jpg'
 import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
 import './SegPrinci.css';
@@ -81,7 +81,7 @@ function SegPrinci() {
         </Carousel.Item>
         <Carousel.Item>
           <img className='d-block w-100 carousel-img-full'
-          src={Anderson}
+          src={Frutas2}
           alt='Second slider'
           />
           <Carousel.Caption>
@@ -91,7 +91,7 @@ function SegPrinci() {
         </Carousel.Item>
         <Carousel.Item>
         <img className='d-block w-100 carousel-img-full'
-          src={solo_Leveling}
+          src={Frutas1}
           alt='Third slider'
           />
           <Carousel.Caption>
