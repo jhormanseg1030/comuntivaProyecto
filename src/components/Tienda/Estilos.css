@@ -1,7 +1,7 @@
 .contenedor_botones
 {
     width: 2%;
-    display:flex;
+    display: flex;
     gap: 30px;
 
 }
@@ -9,3 +9,39 @@
 {
     margin-right: 20px;
 }
+.layers{
+    margin-top: 1rem;
+    height: 75px;
+    text-align: center;
+}
+.gr1{
+    height: 75px;
+    text-align: left;
+}
+.img{
+    display: flex;
+    text-align: center;
+}
+.carrusel{
+    background-color: rgb(104, 252, 104);
+    display: flex;
+    /* padding-right: 5rem; */
+    position: relative;
+}
+.nav-brand{
+    border-radius: 40px;
+}
+.conteItemsCarrusel{
+    height: 280px;
+    overflow: hidden;
+}
+.flechas{
+    background-color: blueviolet;
+    position: absolute;
+    width: 100%;
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 280px;
+}
+
