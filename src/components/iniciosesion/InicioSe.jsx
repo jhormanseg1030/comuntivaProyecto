@@ -18,7 +18,7 @@ const InicioSe = () => {
                     <Link to="/Registro">¿Olvido su contraseña?</Link>
                 </div>
 
-                <button type="submit" className="submit-button1 ">Enviar</button>
+                <Link to="/Segunda"><button type="submit" className="submit-button1 ">Enviar</button></Link>
             </form>
         </div>
   );
