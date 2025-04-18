@@ -6,6 +6,8 @@ import HomeTienda from "./components/Tienda/HomeTienda";
 import SegPrinci from './components/SegPrincipal/SegPrinci';
 import InicioSe from './components/iniciosesion/InicioSe';
 import RegistrarUsu from './components/Registrar/RegistrarUsu';
+import ConfTienda from './components/Tienda/ConfTienda';
+import InicioVendedor from './components/Vendedor/InicioVendedor';
 
 
 function App() {
@@ -17,6 +19,8 @@ function App() {
         <Route path='/Tienda' element={<HomeTienda></HomeTienda>}></Route>
         <Route path='/Segunda' element={<SegPrinci></SegPrinci>}></Route>
         <Route path='/Registro' element={<RegistrarUsu></RegistrarUsu>}></Route>
+        <Route path='/ConfTienda' element={<ConfTienda></ConfTienda>}></Route>
+        <Route path='/Vende' element={<InicioVendedor></InicioVendedor>}></Route>
       </Routes>
     );
 

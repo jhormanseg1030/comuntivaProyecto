@@ -5,23 +5,26 @@ import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import logo from '../Imagenes/WhatsApp Image 2025-04-02 at 4.19.24 PM.jpeg';
 import Carousel from 'react-bootstrap/Carousel';
-import Anderson from'../Imagenes/Anderson.jpeg' 
-import alucard from '../Imagenes/alucard.jpg';
-import solo_Leveling from '../Imagenes/solo_Leveling.jpg'
+import Frutas2 from'../Imagenes/Frutas2.jpeg' 
+import Verduras from '../Imagenes/verd.png';
+import Frutas1 from '../Imagenes/Frutas1.jpg'
 import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
 import './SegPrinci.css';
+import logo from '../imagenes/logo.jpg';
+import hojas from '../imagenes/hojas.jpeg';
+import papa from '../imagenes/papa.jpeg';
+
 function SegPrinci() {
   return (
     <>
       <Navbar expand="lg" className="bg-body-tertiary">
         <Container fluid>
-          <img src={logo} alt="Logo" className="nav-brand" style={{ width: '50px', marginRight: '10px' }} />
+          <img src={logo} alt="Logo" className="nav-brand" />
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
-            <Nav className="me-auto my-2 my-lg-0" style={{ maxHeight: '100px' }} navbarScroll>
+            <Nav className="me-auto my-2 my-lg-0" navbarScroll>
               <Nav.Link href="#action1">Inicio</Nav.Link>
               <Nav.Link href="#action2">Quienes Somos</Nav.Link>
               <Nav.Link href="#action3">Tiendas</Nav.Link>
@@ -41,15 +44,22 @@ function SegPrinci() {
           </Navbar.Collapse>
   <div className='contenedor_botones'>
      <div>
-  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" className="bi bi-cart-plus-fill" viewBox="0 0 16 16" >
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="30" fill="currentColor" className="bi bi-cart-plus-fill" viewBox="0 0 16 16" >
   <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0m7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0M9 5.5V7h1.5a.5.5 0 0 1 0 1H9v1.5a.5.5 0 0 1-1 0V8H6.5a.5.5 0 0 1 0-1H8V5.5a.5.5 0 0 1 1 0"/>
 </svg>
 </div>
 <div>
-<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" className="bi bi-person-circle" viewBox="0 0 16 16">
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="30" fill="currentColor" className="bi bi-person-circle" viewBox="0 0 16 16">
   <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
   <path fillRule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
 </svg>
+<div className="dropdown-menu">
+  <a className="dropdown-item" href="#">Action</a>
+  <a className="dropdown-item" href="#">Another action</a>
+  <a className="dropdown-item" href="#">Something else here</a>
+  <div className="dropdown-divider"></div>
+  <a className="dropdown-item" href="#">Separated link</a>
+</div>
 </div>
 </div>
         </Container>
@@ -61,7 +71,7 @@ function SegPrinci() {
       <Carousel className='carousel-custom-width'>
         <Carousel.Item>
           <img className='d-block w-100 carousel-img-full'
-          src={alucard}
+          src={Verduras}
           alt='First slider'
           />
           <Carousel.Caption>
@@ -71,7 +81,7 @@ function SegPrinci() {
         </Carousel.Item>
         <Carousel.Item>
           <img className='d-block w-100 carousel-img-full'
-          src={Anderson}
+          src={Frutas2}
           alt='Second slider'
           />
           <Carousel.Caption>
@@ -81,7 +91,7 @@ function SegPrinci() {
         </Carousel.Item>
         <Carousel.Item>
         <img className='d-block w-100 carousel-img-full'
-          src={solo_Leveling}
+          src={Frutas1}
           alt='Third slider'
           />
           <Carousel.Caption>
@@ -91,9 +101,9 @@ function SegPrinci() {
         </Carousel.Item>
       </Carousel>
 
-      <CardGroup>
-      <Card>
-        <Card.Img variant="top" src="holder.js/100px160" />
+      <CardGroup className='cardGroup'>
+      <Card className='cardP'>
+        <Card.Img variant="top" src={hojas} className='ImgP'/>
         <Card.Body>
           <Card.Title>Card title</Card.Title>
           <Card.Text>
@@ -105,21 +115,23 @@ function SegPrinci() {
           <small className="text-muted">Last updated 3 mins ago</small>
         </Card.Footer>
       </Card>
-      <Card>
-        <Card.Img variant="top" src={alucard} />
+
+      <Card className='cardM'>
+        <Card.Img variant="top" src={Verduras} />
         <Card.Body>
           <Card.Title>Card title</Card.Title>
           <Card.Text>
             This card has supporting text below as a natural lead-in to
-            additional content.
+            additional content.hbjgtfvhbjhgjygvnbvgfgdfhjbnchfvjh    hgfyghhgfyujgjhgvhfv
           </Card.Text>
         </Card.Body>
         <Card.Footer>
           <small className="text-muted">Last updated 3 mins ago</small>
         </Card.Footer>
       </Card>
+
       <Card>
-        <Card.Img variant="top" src="holder.js/100px160" />
+        <Card.Img variant="top" src={papa}/>
         <Card.Body>
           <Card.Title>Card title</Card.Title>
           <Card.Text>
@@ -133,6 +145,10 @@ function SegPrinci() {
         </Card.Footer>
       </Card>
     </CardGroup>
+
+    <div className='botonr'>
+    <button type="button" className="btn btn-info">REGISTRA TU EMPRESA</button>
+    </div>
     </>
   );
 }

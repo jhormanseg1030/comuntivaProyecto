@@ -22,5 +22,26 @@
     display: flex;
     text-align: center;
 }
-
+.carrusel{
+    background-color: rgb(104, 252, 104);
+    display: flex;
+    /* padding-right: 5rem; */
+    position: relative;
+}
+.nav-brand{
+    border-radius: 40px;
+}
+.conteItemsCarrusel{
+    height: 280px;
+    overflow: hidden;
+}
+.flechas{
+    background-color: blueviolet;
+    position: absolute;
+    width: 100%;
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 280px;
+}
 
