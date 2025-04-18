@@ -1,34 +1,38 @@
-.nav-Link{
-    margin-left: 20px;
+
+.Container3{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 .form1{
-    margin: 15% 15%;
-    background-color: rgb(239, 247, 242);
-    border-radius: 10px;
-    border: 1px solid black;
+    background-color: rgba(228, 228, 228, 0.836);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
 }
-.form-control{
-    color: rgb(21, 231, 108);
+.form-group1{
+    margin-bottom: 15px;
 }
-.btn-primary{
-    align-items: center;
+label{
+    display: block;
 }
-body{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0;
-    font-family: var(--bs-body-font-family);
-    font-size: var(--bs-body-font-size);
-    font-weight: var(--bs-body-font-weight);
-    line-height: var(--bs-body-line-height);
-    color: var(--bs-body-color);
-    text-align: var(--bs-body-text-align);
-    background-color: var(--bs-body-bg);
-    -webkit-text-size-adjust: 79%;
-    -webkit-tap-highlight-color: transparent;
+input{
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
-element.style {
-    background-position: 20px;
-
+.submit-button1{
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 5px;
+}
+.submit-button1:hover{
+    background-color: #0056b3;
 }
