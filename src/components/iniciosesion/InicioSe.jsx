@@ -15,7 +15,10 @@ const InicioSe = () => {
                 <div className="form-group1">
                     <label htmlFor="password">Contraseña</label><br />
                     <input type="password" id="password" required />
-                    <Link to="/Registro">¿Olvido su contraseña?</Link>
+                    <Link>¿Olvido su contraseña?</Link>
+                </div>
+                <div>
+                <Link to="/Registro"> No tienes cuenta? </Link>
                 </div>
 
                 <Link to="/Segunda"><button type="submit" className="submit-button1 ">Enviar</button></Link>

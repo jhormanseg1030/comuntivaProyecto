@@ -21,7 +21,7 @@ const InicioVendedor = () => {
                 <div>
                     <Link> olvido su contraseña</Link>
                 </div>
-                < Link to="/Tienda"><button type="submit" className="submit-button ">Enviar</button></Link>
+                < Link to="/ConfTienda"><button type="submit" className="submit-button ">Enviar</button></Link>
             </form>
         </div>
     );
