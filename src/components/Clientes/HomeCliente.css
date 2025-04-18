@@ -69,6 +69,13 @@
     border-radius: 5px;
     transition: 0.3s;
 }
+.link1{
+    text-decoration: none;
+    color: black;
+}
+.link1:hover{
+    text-decoration: underline;
+}
 .link:hover{
     background-color: #0056b3;
 }
