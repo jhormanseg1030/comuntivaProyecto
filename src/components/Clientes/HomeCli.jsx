@@ -174,7 +174,7 @@ function HomeCli() {
     </CardGroup>
 
     <div className='Container'>
-      <Link className='link' to="/Inicio"> Registra tu tienda</Link>
+      <Link className='link' to="/Vende"> Registra tu tienda</Link>
     </div>
 
         <footer className="footer">
