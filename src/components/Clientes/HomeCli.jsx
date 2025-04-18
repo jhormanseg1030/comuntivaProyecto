@@ -21,15 +21,16 @@ import Mercados8 from '../imagenes/Mercados8.jpg'
 import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
 import './HomeCliente.css';
+import { Link } from 'react-router-dom';
 function HomeCli() {
   return (
     <>
       <Navbar expand="lg" className="bg-body-tertiary">
         <Container fluid>
-          <img src={logo} alt="Logo" className="nav-brand" style={{ width: '50px', marginRight: '10px' }} />
+          <img src={logo} alt="Logo" className="nav-brand"/>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
-            <Nav className="me-auto my-2 my-lg-0" style={{ maxHeight: '100px' }} navbarScroll>
+            <Nav className="me-auto my-2 my-lg-0" navbarScroll>
               <Nav.Link href="#action1">Inicio</Nav.Link>
               <Nav.Link href="#action2">Quienes Somos</Nav.Link>
               <Nav.Link href="#action3">Tiendas</Nav.Link>
@@ -49,6 +50,7 @@ function HomeCli() {
           </Navbar.Collapse>
         </Container>
       </Navbar>
+      
       <div className='titulo'>
         <h2>Bienvenidos a comuctiva</h2>
       </div>
@@ -100,10 +102,9 @@ function HomeCli() {
       <Card>
         <Card.Img variant="top" src={Mercados2}  />
         <Card.Body>
-          <Card.Title>Card title</Card.Title>
+          <Card.Title>Finca La Bendición</Card.Title>
           <Card.Text>
-            This card has supporting text below as a natural lead-in to
-            additional content.
+          Desde las montañas de Antioquia, traemos plátanos, yucas y aguacates cosechados al ritmo del sol. ¡Sabor campesino en cada bocado!
           </Card.Text>
         </Card.Body>
       </Card>
@@ -111,11 +112,9 @@ function HomeCli() {
       <Card>
         <Card.Img variant= "top" src={Mercados3}/>
         <Card.Body>
-          <Card.Title>Card title</Card.Title>
+          <Card.Title>Cosechas del Valle</Card.Title>
           <Card.Text>
-            This is a wider card with supporting text below as a natural lead-in
-            to additional content. This card has even longer content than the
-            first to show that equal height action.
+          Tomates, cebollas y pimientos rojos como el atardecer. Cultivados sin químicos, regados con agua pura de la cordillera.
           </Card.Text>
         </Card.Body>
       </Card>
@@ -123,11 +122,9 @@ function HomeCli() {
       <Card>
         <Card.Img variant= "top" src={Mercados4} />
         <Card.Body>
-          <Card.Title>Card title</Card.Title>
+          <Card.Title>Verduras Doña Rosa</Card.Title>
           <Card.Text>
-            This is a wider card with supporting text below as a natural lead-in
-            to additional content. This card has even longer content than the
-            first to show that equal height action.
+          Mangos jugosos, piñas dulces y papayas gigantes. Nuestra tierra fértil nos regala lo mejor. ¡Prueba la diferencia!
           </Card.Text>
         </Card.Body>
       </Card>
@@ -138,11 +135,9 @@ function HomeCli() {
     <Card>
         <Card.Img variant= "top" src={Mercados5} />
         <Card.Body>
-          <Card.Title>Card title</Card.Title>
+          <Card.Title>Frutas Frescas El Campesino</Card.Title>
           <Card.Text>
-            This is a wider card with supporting text below as a natural lead-in
-            to additional content. This card has even longer content than the
-            first to show that equal height action.
+          Lechugas crujientes, zanahorias dulces y espinacas tiernas. Doña Rosa las cosecha a mano, como lo hizo por 40 años.
           </Card.Text>
         </Card.Body>
       </Card>
@@ -150,11 +145,9 @@ function HomeCli() {
       <Card>
         <Card.Img variant= "top" src={Mercados6} />
         <Card.Body>
-          <Card.Title>Card title</Card.Title>
+          <Card.Title>Huerta Orgánica Los Andes</Card.Title>
           <Card.Text>
-            This is a wider card with supporting text below as a natural lead-in
-            to additional content. This card has even longer content than the
-            first to show that equal height action.
+          Todo 100% orgánico: brócoli, coliflor y remolacha. Sin pesticidas, solo abono natural. ¡Salud que se ve y se siente!
           </Card.Text>
         </Card.Body>
       </Card>
@@ -162,11 +155,9 @@ function HomeCli() {
       <Card>
         <Card.Img variant= "top" src={Mercados7} />
         <Card.Body>
-          <Card.Title>Card title</Card.Title>
+          <Card.Title>Productos Don Lucho</Card.Title>
           <Card.Text>
-            This is a wider card with supporting text below as a natural lead-in
-            to additional content. This card has even longer content than the
-            first to show that equal height action.
+          Plátano, ñame y guayabas de mi parcela familiar. Trabajada con mis propias manos. ¡Calidad de la buena!
           </Card.Text>
         </Card.Body>
       </Card>
@@ -174,23 +165,31 @@ function HomeCli() {
       <Card>
         <Card.Img variant= "top" src={Mercados8} />
         <Card.Body>
-          <Card.Title>Card title</Card.Title>
+          <Card.Title>Frutas de Altura</Card.Title>
           <Card.Text>
-            This is a wider card with supporting text below as a natural lead-in
-            to additional content. This card has even longer content than the
-            first to show that equal height action.
+          Fresas, moras y uvas cultivadas en clima frío. Dulces como el esfuerzo de los campesinos que las siembran.
           </Card.Text>
         </Card.Body>
       </Card>
     </CardGroup>
 
-    <div className='boton'>
-    <button type='button' className='btn btn-info'> Registra tu empresa</button>
+    <div className='Container'>
+      <Link className='link' to="/Inicio"> Registra tu tienda</Link>
     </div>
-    
+
+        <footer className="footer">
+            <div className="footer-content">
+                <img src={logo} alt="Logotipo" className="footer-logo" />
+                <p>© 2025 Comuctiva. Todos los derechos reservados.</p>
+                <div className="footer-links">
+                    <a href="#!" className="footer-link">Política de Privacidad</a>
+                    <span>|</span>
+                    <a href="#!" className="footer-link">Términos de Servicio</a>
+                </div>
+            </div>
+        </footer>
     </>
   );
 }
 
 export default HomeCli;
-
