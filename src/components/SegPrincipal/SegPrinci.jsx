@@ -6,7 +6,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Carousel from 'react-bootstrap/Carousel';
-import Frutas2 from'../Imagenes/Frutas2.jpeg' 
+import Frutas2 from'../Imagenes/Frutas2.jpg' 
 import Verduras from '../Imagenes/verd.png';
 import Frutas1 from '../Imagenes/Frutas1.jpg'
 import Card from 'react-bootstrap/Card';
