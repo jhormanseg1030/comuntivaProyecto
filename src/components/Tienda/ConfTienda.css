@@ -8,7 +8,6 @@
     background-color: #f4f4f4; /* Color de fondo del menú */
     padding: 20px;
   }
-  
   .logo {
     display: flex;
     flex-direction: column;
@@ -42,10 +41,11 @@
   
   .contenido {
     flex: 1; 
-    padding: 20px;
-    background-color: #fff; 
+    /* text-align: center; */
+    background-color: #fff;
     display: flex;
     flex-direction: column;
+    margin-right: 250px;
   }
   
   .contenido-dinamico {
@@ -54,12 +54,15 @@
   }
   
   .ayuda {
-    position: absolute; 
-    top: 200px; 
-    right: 20px; 
+    position: fixed;
+    top: 300px; 
+    right:20px; 
     background-color: #f9f9f9; 
     padding: 10px;
     border: 1px solid #ccc; 
-    width: 200px; 
+    width:200px; 
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+    text-align: center;
+    height: fit-content;
+
   }
