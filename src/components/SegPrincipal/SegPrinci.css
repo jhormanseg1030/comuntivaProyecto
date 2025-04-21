@@ -1,20 +1,27 @@
-*{
-    margin: auto;
+/*ENCABEZADO*/
+.bg-body-tertiary{
+    background: linear-gradient(90deg, rgba(5, 143, 28, 0.74) 10%, rgba(28, 221, 3, 0.842) 50%, rgba(0, 248, 41, 0.979) 70%, rgba(8, 236, 168, 0.74) 100% ); 
+    margin-top: 5px ;
+  
 }
 .d-flex{
-      background-color: rgba(96, 238, 96, 0.445);
+ color: white;
 }
 .container-fluid{
-    background-color: rgb(21, 231, 108);
     font-size: 15px;
+    background-color: #17f360;
+    border: 1px solid black;
 }
 .nav-brand{
     width: 60px;
 }
-.nav-link{
-    margin-left: 30px;
+.me-auto.my-2.my-lg-0.navbar-nav.navbar-nav-scroll{
+    max-height: 100px;
 }
 
+/*-----------------------------------------------------------------------------------*/
+
+/*CARRUCEL*/
 .carousel-custom-width{
     width: 100%;
     margin: auto;
@@ -29,55 +36,93 @@
         height: 60vh;
     }
 }
+/*-----------------------------------------------------------------------------------*/
 
+/* card */
 .titulo{
     text-align: center;
 }
-.contenedor_botones
-{
-    width: 8%;
-    display:flex;
+
+.confi{
+    width: 95%;
+    margin: auto;
+    margin-top: 30px;
+    gap: 10px;
+}
+.btn btn-info{
+    display: flex;
+    width: 50px;
+    left: 30px;
+    right: 40%;
+    justify-content: center;
+}
+/*Enrutamientos*/
+.Container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+.link{
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+.link1{
+    text-decoration: none;
+    color: black;
+}
+.link1:hover{
+    text-decoration: underline;
+}
+.link:hover{
+    background-color: #0056b3;
+}
+/*footer*/
+.footer {
+    background-color: #333; 
+    color: white; 
+    text-align: center; 
+    padding: 20px; 
+    position: relative;
+    bottom: 0; 
+    width: 100%; 
+    margin-top: 10px;
+}
+
+.footer-content {
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+}
+
+.footer-logo {
+    width: 100px; 
+    margin-bottom: 10px; 
+}
+
+.footer-links {
+    margin-top: 10px; 
+}
+
+.footer-link {
+    color: #4db6ac; 
+    text-decoration: none; 
+}
+
+.footer-link:hover {
+    text-decoration: underline; 
+}
+.contenedor_botones{
+    width: 90px;
+    display: flex;
     gap: 30px;
     justify-content: center;
-
+    
 }
-.d-flex
-{
+.d-flex{
     margin-right: 20px;
-}
-.btn btn-info
-{
-    display: flex;
-    width: 50PX;
-    left: 30PX;
-    right: 40%;
-}
-.nav-brand{
-    width: 50px;
-    margin-right: 10px;
-}
-.me-auto my-2 my-lg-0{
-    max-height: 100px ;
-
-}
-
-/* div {
-    padding: 5px;
-} */
-.botonr{
-    margin-top: auto;
-    text-align: center;
-}
-.cardGroup
-{
-    margin-top: 1rem;
-}
-.cardM{
-    margin-top: 0px;
-}
-.cardP{
-    margin-top: 0px;
-}
-.ImgP{
-    height: 134px;
-}
+}    
