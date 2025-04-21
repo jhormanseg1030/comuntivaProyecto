@@ -91,7 +91,7 @@ function HomeCli() {
       
       <CardGroup className='confi'>
       <Card>
-        <Card.Img className='configuracion' variant="top" src={Mercados1}/>
+        <Link to='/Tienda'><Card.Img variant="top" src={Mercados1} /></Link>
         <Card.Body>
           <Card.Title>Tienda de don juan</Card.Title>
           <Card.Text>
@@ -101,7 +101,7 @@ function HomeCli() {
       </Card>
 
       <Card>
-        <Card.Img variant="top" src={Mercados2}  />
+        <Link to='/FincaBendicion'><Card.Img variant="top" src={Mercados2}  /></Link>
         <Card.Body>
           <Card.Title>Finca La Bendición</Card.Title>
           <Card.Text>
@@ -111,7 +111,7 @@ function HomeCli() {
       </Card>
 
       <Card>
-        <Card.Img variant= "top" src={Mercados3}/>
+        <Link to='/CosechasValle'><Card.Img variant= "top" src={Mercados3}/></Link>
         <Card.Body>
           <Card.Title>Cosechas del Valle</Card.Title>
           <Card.Text>
@@ -121,7 +121,7 @@ function HomeCli() {
       </Card>
 
       <Card>
-        <Card.Img variant= "top" src={Mercados4} />
+        <Link to='/VerdurasDonaRosa'><Card.Img variant= "top" src={Mercados4} /></Link>
         <Card.Body>
           <Card.Title>Verduras Doña Rosa</Card.Title>
           <Card.Text>
@@ -134,7 +134,7 @@ function HomeCli() {
 
     <CardGroup className='confi'>  
     <Card>
-        <Card.Img variant= "top" src={Mercados5} />
+        <Link to='/FrutasElCampesino'><Card.Img variant= "top" src={Mercados5} /></Link>
         <Card.Body>
           <Card.Title>Frutas Frescas El Campesino</Card.Title>
           <Card.Text>
@@ -144,7 +144,7 @@ function HomeCli() {
       </Card>
 
       <Card>
-        <Card.Img variant= "top" src={Mercados6} />
+        <Link to='/HuertaOrganica'><Card.Img variant= "top" src={Mercados6} /></Link>
         <Card.Body>
           <Card.Title>Huerta Orgánica Los Andes</Card.Title>
           <Card.Text>
@@ -154,7 +154,7 @@ function HomeCli() {
       </Card>
 
       <Card>
-        <Card.Img variant= "top" src={Mercados7} />
+        <Link to='/ProductosDonLucho'><Card.Img variant= "top" src={Mercados7} /></Link>
         <Card.Body>
           <Card.Title>Productos Don Lucho</Card.Title>
           <Card.Text>
@@ -164,7 +164,7 @@ function HomeCli() {
       </Card>
 
       <Card>
-        <Card.Img variant= "top" src={Mercados8} />
+        <Link to='/FrutasAltura'><Card.Img variant= "top" src={Mercados8} /></Link>
         <Card.Body>
           <Card.Title>Frutas de Altura</Card.Title>
           <Card.Text>
