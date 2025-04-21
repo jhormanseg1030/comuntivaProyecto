@@ -5,23 +5,29 @@ import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import logo from '../Imagenes/WhatsApp Image 2025-04-02 at 4.19.24 PM.jpeg';
 import Carousel from 'react-bootstrap/Carousel';
-import Frutas2 from'../Imagenes/Frutas2.jpg' 
-import Verduras from '../Imagenes/verd.png';
-import Frutas1 from '../Imagenes/Frutas1.jpg'
+import Frutas1 from '../imagenes/Frutas1.jpg'
+import Frutas2 from '../imagenes/Frutas2.jpg'
+import Frutas3 from '../imagenes/Frutas3.jpeg'
+import Mercados1 from '../imagenes/Mercados1.jpg'
+import Mercados2 from '../imagenes/Mercados2.jpg'
+import Mercados3 from '../imagenes/Mercados3.jpg'
+import Mercados4 from '../imagenes/Mercados4.jpg'
+import Mercados5 from '../imagenes/Mercados5.jpg'
+import Mercados6 from '../imagenes/Mercados6.jpg'
+import Mercados7 from '../imagenes/Mercados7.jpg'
+import Mercados8 from '../imagenes/Mercados8.jpg'
 import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
 import './SegPrinci.css';
-import logo from '../imagenes/logo.jpg';
-import hojas from '../imagenes/hojas.jpeg';
-import papa from '../imagenes/papa.jpeg';
-
-function SegPrinci() {
+import { Link } from 'react-router-dom';
+function Segprinci() {
   return (
     <>
       <Navbar expand="lg" className="bg-body-tertiary">
         <Container fluid>
-          <img src={logo} alt="Logo" className="nav-brand" />
+          <img src={logo} alt="Logo" className="nav-brand"/>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav className="me-auto my-2 my-lg-0" navbarScroll>
@@ -42,7 +48,7 @@ function SegPrinci() {
               <Button variant="outline-success">Buscar</Button>
             </Form>
           </Navbar.Collapse>
-  <div className='contenedor_botones'>
+          <div className='contenedor_botones'>
      <div>
   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="30" fill="currentColor" className="bi bi-cart-plus-fill" viewBox="0 0 16 16" >
   <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0m7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0M9 5.5V7h1.5a.5.5 0 0 1 0 1H9v1.5a.5.5 0 0 1-1 0V8H6.5a.5.5 0 0 1 0-1H8V5.5a.5.5 0 0 1 1 0"/>
@@ -64,6 +70,7 @@ function SegPrinci() {
 </div>
         </Container>
       </Navbar>
+      
       <div className='titulo'>
         <h2>Bienvenidos a comuctiva</h2>
       </div>
@@ -71,7 +78,7 @@ function SegPrinci() {
       <Carousel className='carousel-custom-width'>
         <Carousel.Item>
           <img className='d-block w-100 carousel-img-full'
-          src={Verduras}
+          src={Frutas1}
           alt='First slider'
           />
           <Carousel.Caption>
@@ -91,7 +98,7 @@ function SegPrinci() {
         </Carousel.Item>
         <Carousel.Item>
         <img className='d-block w-100 carousel-img-full'
-          src={Frutas1}
+          src={Frutas3}
           alt='Third slider'
           />
           <Carousel.Caption>
@@ -100,56 +107,109 @@ function SegPrinci() {
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
-
-      <CardGroup className='cardGroup'>
-      <Card className='cardP'>
-        <Card.Img variant="top" src={hojas} className='ImgP'/>
+      
+      <CardGroup className='confi'>
+      <Card>
+        <Card.Img className='configuracion' variant="top" src={Mercados1}/>
         <Card.Body>
-          <Card.Title>Card title</Card.Title>
+          <Card.Title>Tienda de don juan</Card.Title>
           <Card.Text>
-            This is a wider card with supporting text below as a natural lead-in
-            to additional content. This content is a little bit longer.
+            bienvenido a mi tienda, donde encontraras los mejores productos del mercado, con buenos precios, y calidad en su maximo explendor, ven y mira mi tienda
           </Card.Text>
         </Card.Body>
-        <Card.Footer>
-          <small className="text-muted">Last updated 3 mins ago</small>
-        </Card.Footer>
-      </Card>
-
-      <Card className='cardM'>
-        <Card.Img variant="top" src={Verduras} />
-        <Card.Body>
-          <Card.Title>Card title</Card.Title>
-          <Card.Text>
-            This card has supporting text below as a natural lead-in to
-            additional content.hbjgtfvhbjhgjygvnbvgfgdfhjbnchfvjh    hgfyghhgfyujgjhgvhfv
-          </Card.Text>
-        </Card.Body>
-        <Card.Footer>
-          <small className="text-muted">Last updated 3 mins ago</small>
-        </Card.Footer>
       </Card>
 
       <Card>
-        <Card.Img variant="top" src={papa}/>
+        <Card.Img variant="top" src={Mercados2}  />
         <Card.Body>
-          <Card.Title>Card title</Card.Title>
+          <Card.Title>Finca La Bendición</Card.Title>
           <Card.Text>
-            This is a wider card with supporting text below as a natural lead-in
-            to additional content. This card has even longer content than the
-            first to show that equal height action.
+          Desde las montañas de Antioquia, traemos plátanos, yucas y aguacates cosechados al ritmo del sol. ¡Sabor campesino en cada bocado!
           </Card.Text>
         </Card.Body>
-        <Card.Footer>
-          <small className="text-muted">Last updated 3 mins ago</small>
-        </Card.Footer>
+      </Card>
+
+      <Card>
+        <Card.Img variant= "top" src={Mercados3}/>
+        <Card.Body>
+          <Card.Title>Cosechas del Valle</Card.Title>
+          <Card.Text>
+          Tomates, cebollas y pimientos rojos como el atardecer. Cultivados sin químicos, regados con agua pura de la cordillera.
+          </Card.Text>
+        </Card.Body>
+      </Card>
+
+      <Card>
+        <Card.Img variant= "top" src={Mercados4} />
+        <Card.Body>
+          <Card.Title>Verduras Doña Rosa</Card.Title>
+          <Card.Text>
+          Mangos jugosos, piñas dulces y papayas gigantes. Nuestra tierra fértil nos regala lo mejor. ¡Prueba la diferencia!
+          </Card.Text>
+        </Card.Body>
       </Card>
     </CardGroup>
 
-    <div className='botonr'>
-    <button type="button" className="btn btn-info">REGISTRA TU EMPRESA</button>
+
+    <CardGroup className='confi'>  
+    <Card>
+        <Card.Img variant= "top" src={Mercados5} />
+        <Card.Body>
+          <Card.Title>Frutas Frescas El Campesino</Card.Title>
+          <Card.Text>
+          Lechugas crujientes, zanahorias dulces y espinacas tiernas. Doña Rosa las cosecha a mano, como lo hizo por 40 años.
+          </Card.Text>
+        </Card.Body>
+      </Card>
+
+      <Card>
+        <Card.Img variant= "top" src={Mercados6} />
+        <Card.Body>
+          <Card.Title>Huerta Orgánica Los Andes</Card.Title>
+          <Card.Text>
+          Todo 100% orgánico: brócoli, coliflor y remolacha. Sin pesticidas, solo abono natural. ¡Salud que se ve y se siente!
+          </Card.Text>
+        </Card.Body>
+      </Card>
+
+      <Card>
+        <Card.Img variant= "top" src={Mercados7} />
+        <Card.Body>
+          <Card.Title>Productos Don Lucho</Card.Title>
+          <Card.Text>
+          Plátano, ñame y guayabas de mi parcela familiar. Trabajada con mis propias manos. ¡Calidad de la buena!
+          </Card.Text>
+        </Card.Body>
+      </Card>
+
+      <Card>
+        <Card.Img variant= "top" src={Mercados8} />
+        <Card.Body>
+          <Card.Title>Frutas de Altura</Card.Title>
+          <Card.Text>
+          Fresas, moras y uvas cultivadas en clima frío. Dulces como el esfuerzo de los campesinos que las siembran.
+          </Card.Text>
+        </Card.Body>
+      </Card>
+    </CardGroup>
+
+    <div className='Container'>
+      <Link className='link' to="/Vende"> Registra tu tienda</Link>
     </div>
+
+        <footer className="footer">
+            <div className="footer-content">
+                <img src={logo} alt="Logotipo" className="footer-logo" />
+                <p>© 2025 Comuctiva. Todos los derechos reservados.</p>
+                <div className="footer-links">
+                    <a href="#!" className="footer-link">Política de Privacidad</a>
+                    <span>|</span>
+                    <a href="#!" className="footer-link">Términos de Servicio</a>
+                </div>
+            </div>
+        </footer>
     </>
   );
 }
-export default SegPrinci;
+
+export default Segprinci;

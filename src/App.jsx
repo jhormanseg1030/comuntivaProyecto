@@ -8,6 +8,7 @@ import InicioSe from './components/iniciosesion/InicioSe';
 import RegistrarUsu from './components/Registrar/RegistrarUsu';
 import ConfTienda from './components/Tienda/ConfTienda';
 import InicioVendedor from './components/Vendedor/InicioVendedor';
+import PagCompra from './components/Compra/PagCompra';
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Route path='/Registro' element={<RegistrarUsu></RegistrarUsu>}></Route>
         <Route path='/ConfTienda' element={<ConfTienda></ConfTienda>}></Route>
         <Route path='/Vende' element={<InicioVendedor></InicioVendedor>}></Route>
+        <Route path='/Compra' element={<PagCompra></PagCompra>}></Route>
       </Routes>
     );
 
