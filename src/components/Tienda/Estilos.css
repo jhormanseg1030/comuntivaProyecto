@@ -4,6 +4,7 @@
     display: flex;
     gap: 30px;
 
+
 }
 .d-flex
 {
@@ -18,24 +19,52 @@
     height: 75px;
     text-align: left;
 }
-.img{
+.img4{
+    width: 95%;
     display: flex;
     text-align: center;
+    padding-right: 10px;
+    gap: 5px;
+    margin-bottom: 30px;
 }
+.img1{
+    height: 270px;
+    width: 88%;
+}
+
+
 .carrusel{
-    background-color: rgb(104, 252, 104);
     display: flex;
+    gap: 10px;
+    text-align: center;
     /* padding-right: 5rem; */
-    position: relative;
+    /* position: relative; */
 }
 .nav-brand{
     border-radius: 40px;
 }
 .conteItemsCarrusel{
-    height: 280px;
-    overflow: hidden;
+    background-color: rgb(104, 252, 104);
+    /* height: 280px; */
+    /* overflow: hidden; */
 }
-.flechas{
+.carrusel2{
+    display: flex;
+    gap: 10px;
+    text-align: center;
+    margin-top: 2rem;
+    /* padding-right: 5rem; */
+    /* position: relative; */
+}
+.pd{
+    text-align: center;
+}
+hr {
+    border: 1px solid black;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+/* .flechas{
     background-color: blueviolet;
     position: absolute;
     width: 100%;
@@ -43,5 +72,4 @@
     align-items: center;
     justify-content: space-between;
     height: 280px;
-}
-
+} */

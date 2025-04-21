@@ -14,6 +14,11 @@ import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
 import Card from 'react-bootstrap/Card';
 import Productos from '../imagenes/verd.png'
+import Camp from '../imagenes/camp.jpg'
+import Queso from'../imagenes/queso.webp'
+import Camp2 from'../imagenes/camp2.webp'
+import papa from '../imagenes/papa.jpeg'
+
 
 function HomeTienda() {
     return(
@@ -41,12 +46,15 @@ function HomeTienda() {
   <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
 </svg></Button>
           </Form>
+
+
           <div className='contenedor_botones'>
             <div>
           <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" className="bi bi-cart-plus-fill" viewBox="0 0 16 16" >
   <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0m7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0M9 5.5V7h1.5a.5.5 0 0 1 0 1H9v1.5a.5.5 0 0 1-1 0V8H6.5a.5.5 0 0 1 0-1H8V5.5a.5.5 0 0 1 1 0"/>
 </svg>
 </div>
+
 
 <div>
 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" className="bi bi-person-circle" viewBox="0 0 16 16">
@@ -58,6 +66,7 @@ function HomeTienda() {
         </Navbar.Collapse>
       </Container>
     </Navbar>
+
 
         <Carousel className='carousel-custom-width'>
             <Carousel.Item>
@@ -80,6 +89,7 @@ function HomeTienda() {
             </Carousel.Item>
           </Carousel>
 
+
           <Container className='layers'>
           <Row>
         <Col className='gr1'>
@@ -90,6 +100,7 @@ function HomeTienda() {
         <h6>Informacion</h6>
         </Col>
 
+
         <Col className='gr2'>
         <h5><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" className="bi bi-check-circle" viewBox="0 0 16 16">
   <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
@@ -97,6 +108,7 @@ function HomeTienda() {
 </svg>Calidad de Productos</h5>
         <h6>Informacion</h6>
         </Col>
+
 
         <Col className='gr3'>
         <h5><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" className="bi bi-info-square" viewBox="0 0 16 16">
@@ -107,17 +119,20 @@ function HomeTienda() {
         </Col>
       </Row>
     </Container>
-    <div className='img'>
-    <Col xs={2} md={1}>
-          <Image src="holder.js/171x180" rounded/>
+
+
+    <div className='img4'>
+    <Col xs={6} md={4}>
+          <Image className='img1' src={Queso} rounded/>
         </Col>
         <Col xs={6} md={4}>
-          <Image src="holder.js/171x180" rounded/>
+          <Image className='img1' src={Camp} rounded/>
         </Col>
         <Col xs={6} md={4}>
-          <Image src="holder.js/171x180" rounded/>
+          <Image className='img1' src={Camp2} rounded/>
         </Col>
       </div>
+
 
       <div className='conteItemsCarrusel'>
       <div className='carrusel'>
@@ -129,9 +144,25 @@ function HomeTienda() {
           <Card.Text>
             Descripcion del producto.
           </Card.Text>
+          <Button variant="link">Ver más</Button>
         </Card.Body>
       </Card>
     </div>
+
+
+    <div className="d-flex justify-content-around">
+      <Card style={{ width: '18rem' }}>
+        <Card.Img variant="top" src={papa}/>
+        <Card.Body>
+          <Card.Title>Nombre producto</Card.Title>
+          <Card.Text>
+            Descripcion del producto.
+          </Card.Text>
+          <Button variant="link">Ver más</Button>
+        </Card.Body>
+      </Card>
+    </div>
+
 
     <div className="d-flex justify-content-around">
       <Card style={{ width: '18rem' }}>
@@ -141,9 +172,11 @@ function HomeTienda() {
           <Card.Text>
             Descripcion del producto.
           </Card.Text>
+          <Button variant="link">Ver más</Button>
         </Card.Body>
       </Card>
     </div>
+
 
     <div className="d-flex justify-content-around">
       <Card style={{ width: '18rem' }}>
@@ -153,18 +186,20 @@ function HomeTienda() {
           <Card.Text>
             Descripcion del producto.
           </Card.Text>
+          <Button variant="link">Ver más</Button>
         </Card.Body>
       </Card>
     </div>
-
-    <div className='flechas'>
+    {/* <div className='flechas'>
       <i>i</i>
       <i>D</i>
+    </div> */}
     </div>
-    </div>
+    <hr />
+    <h4 className='pd'>Productos Destacados</h4>
 
-    
-    <div className='carrusel'>
+
+      <div className='carrusel2'>
       <div className="d-flex justify-content-around">
       <Card style={{ width: '18rem' }}>
         <Card.Img variant="top" src={Zanahoria}/>
@@ -173,9 +208,25 @@ function HomeTienda() {
           <Card.Text>
             Descripcion del producto.
           </Card.Text>
+          <Button variant="link">Ver más</Button>
         </Card.Body>
       </Card>
     </div>
+
+
+    <div className="d-flex justify-content-around">
+      <Card style={{ width: '18rem' }}>
+        <Card.Img variant="top" src={papa}/>
+        <Card.Body>
+          <Card.Title>Nombre producto</Card.Title>
+          <Card.Text>
+            Descripcion del producto.
+          </Card.Text>
+          <Button variant="link">Ver más</Button>
+        </Card.Body>
+      </Card>
+    </div>
+
 
     <div className="d-flex justify-content-around">
       <Card style={{ width: '18rem' }}>
@@ -185,9 +236,11 @@ function HomeTienda() {
           <Card.Text>
             Descripcion del producto.
           </Card.Text>
+          <Button variant="link">Ver más</Button>
         </Card.Body>
       </Card>
     </div>
+
 
     <div className="d-flex justify-content-around">
       <Card style={{ width: '18rem' }}>
@@ -197,20 +250,15 @@ function HomeTienda() {
           <Card.Text>
             Descripcion del producto.
           </Card.Text>
+          <Button variant="link">Ver más</Button>
         </Card.Body>
       </Card>
     </div>
-
-    <div className='flechas'>
-      <i>i</i>
-      <i>D</i>
     </div>
     </div>
-
-    </div>
-
     </>
     );
 }
+
 
 export default HomeTienda;
