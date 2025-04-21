@@ -2,8 +2,8 @@
 {
     width: 2%;
     display: flex;
-    gap: 30px;
-
+    gap: 10px;
+    margin-right: 10px;
 
 }
 .d-flex
@@ -22,17 +22,21 @@
 .img4{
     width: 95%;
     display: flex;
-    text-align: center;
-    padding-right: 10px;
+    flex-direction: row;
+    margin-right: 15px;
     gap: 5px;
     margin-bottom: 30px;
 }
+
 .img1{
     height: 270px;
     width: 88%;
 }
-
-
+@media screem and (max-width: 700px){
+    .img4{
+        display: inline-block;
+    }
+}
 .carrusel{
     display: flex;
     gap: 10px;
@@ -64,6 +68,10 @@ hr {
     margin-top: 20px;
     margin-bottom: 20px;
   }
+.footer-logo{
+    border-radius: 80px;
+    align-items: center;
+}
 /* .flechas{
     background-color: blueviolet;
     position: absolute;
@@ -73,3 +81,5 @@ hr {
     justify-content: space-between;
     height: 280px;
 } */
+
+

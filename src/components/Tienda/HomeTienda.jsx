@@ -6,7 +6,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import logo from '../imagenes/logo.jpg';
 import Carousel from 'react-bootstrap/Carousel';
-import Frutas from '../Imagenes/Frutas.jpg';
+import Frutas from '../Imagenes/Fruits.jpeg';
 import Zanahoria from '../Imagenes/zanahoria.jpg';
 import Frutas3 from '../Imagenes/Frutas3.jpeg';
 import Row from 'react-bootstrap/Row';
@@ -33,7 +33,9 @@ function HomeTienda() {
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
-            <Nav.Link href="#action5">Nombre de Tienda</Nav.Link>
+            <Nav.Link href="#action5">
+              <h4 className=''>Tienda De Don Juan</h4>
+              </Nav.Link>
           </Nav>
           <Form className="d-flex">
             <Form.Control
@@ -71,7 +73,7 @@ function HomeTienda() {
         <Carousel className='carousel-custom-width'>
             <Carousel.Item>
               <img className='d-block w-100 carousel-img-full'
-              src={Frutas}
+              src={Frutas3}
               alt='First slider'
               />
             </Carousel.Item>
@@ -83,7 +85,7 @@ function HomeTienda() {
             </Carousel.Item>
             <Carousel.Item>
             <img className='d-block w-100 carousel-img-full'
-              src={Frutas3}
+              src={Frutas}
               alt='Third slider'
               />
             </Carousel.Item>
@@ -122,7 +124,9 @@ function HomeTienda() {
 
 
     <div className='img4'>
-    <Col xs={6} md={4}>
+      {/* <div className='image-gallery'>
+        <div className='gallery-item'> */}
+          <Col xs={6} md={4}>
           <Image className='img1' src={Queso} rounded/>
         </Col>
         <Col xs={6} md={4}>
@@ -131,10 +135,14 @@ function HomeTienda() {
         <Col xs={6} md={4}>
           <Image className='img1' src={Camp2} rounded/>
         </Col>
-      </div>
+        </div>
+        {/* </div>
+      </div> */}
 
 
       <div className='conteItemsCarrusel'>
+        <hr />
+      <h4 className='pd'>Recién Llegados</h4>
       <div className='carrusel'>
       <div className="d-flex justify-content-around">
       <Card style={{ width: '18rem' }}>
@@ -152,7 +160,7 @@ function HomeTienda() {
 
     <div className="d-flex justify-content-around">
       <Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src={papa}/>
+        <Card.Img variant="top" src={Zanahoria}/>
         <Card.Body>
           <Card.Title>Nombre producto</Card.Title>
           <Card.Text>
@@ -216,20 +224,6 @@ function HomeTienda() {
 
     <div className="d-flex justify-content-around">
       <Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src={papa}/>
-        <Card.Body>
-          <Card.Title>Nombre producto</Card.Title>
-          <Card.Text>
-            Descripcion del producto.
-          </Card.Text>
-          <Button variant="link">Ver más</Button>
-        </Card.Body>
-      </Card>
-    </div>
-
-
-    <div className="d-flex justify-content-around">
-      <Card style={{ width: '18rem' }}>
         <Card.Img variant="top" src={Zanahoria}/>
         <Card.Body>
           <Card.Title>Nombre producto</Card.Title>
@@ -254,8 +248,38 @@ function HomeTienda() {
         </Card.Body>
       </Card>
     </div>
+
+
+    <div className="d-flex justify-content-around">
+      <Card style={{ width: '18rem' }}>
+        <Card.Img variant="top" src={Zanahoria}/>
+        <Card.Body>
+          <Card.Title>Nombre producto</Card.Title>
+          <Card.Text>
+            Descripcion del producto.
+          </Card.Text>
+          <Button variant="link">Ver más</Button>
+        </Card.Body>
+      </Card>
     </div>
     </div>
+    </div>
+
+    <footer className="footer">
+                <div className="footer-content">
+                    <img src={logo} alt="Logotipo" className="footer-logo" />
+                    <p>© 2025 Comuctiva. Todos los derechos reservados.</p>
+                    <div className="footer-links">
+                        <a href="#!" className="footer-link">Política de Privacidad</a>
+                        <span>|</span>
+                        <a href="#!" className="footer-link">Términos de Servicio</a>
+                    </div>
+                </div>
+            </footer>
+
+
+
+            <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     </>
     );
 }
