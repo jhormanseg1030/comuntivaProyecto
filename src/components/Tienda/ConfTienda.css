@@ -41,11 +41,19 @@
   
   .contenido {
     flex: 1; 
-    /* text-align: center; */
+    text-align: center;
     background-color: #fff;
     display: flex;
     flex-direction: column;
     margin-right: 250px;
+  }
+  #divIni{
+    margin-top: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+  .btn btn-success{
+    background-color:#aae679; 
   }
   
   .contenido-dinamico {
@@ -66,3 +74,4 @@
     height: fit-content;
 
   }
+  
