@@ -91,7 +91,7 @@ function HomeCli() {
       
       <CardGroup className='confi'>
       <Card>
-        <Link to='/Tienda'><Card.Img variant="top" src={Mercados1} /></Link>
+        <Link to='/TiendaDonJuan'><Card.Img variant="top" src={Mercados1} /></Link>
         <Card.Body>
           <Card.Title>Tienda de don juan</Card.Title>
           <Card.Text>

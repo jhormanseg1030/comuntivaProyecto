@@ -110,7 +110,7 @@ function Segprinci() {
       
       <CardGroup className='confi'>
       <Card>
-        <Card.Img className='configuracion' variant="top" src={Mercados1}/>
+      <Link to='/TiendaDonJuan'><Card.Img variant="top" src={Mercados1} /></Link>
         <Card.Body>
           <Card.Title>Tienda de don juan</Card.Title>
           <Card.Text>
@@ -120,7 +120,7 @@ function Segprinci() {
       </Card>
 
       <Card>
-        <Card.Img variant="top" src={Mercados2}  />
+      <Link to='/FincaBendicion'><Card.Img variant="top" src={Mercados2}  /></Link>
         <Card.Body>
           <Card.Title>Finca La Bendición</Card.Title>
           <Card.Text>
@@ -130,7 +130,7 @@ function Segprinci() {
       </Card>
 
       <Card>
-        <Card.Img variant= "top" src={Mercados3}/>
+      <Link to='/CosechasValle'><Card.Img variant= "top" src={Mercados3}/></Link>
         <Card.Body>
           <Card.Title>Cosechas del Valle</Card.Title>
           <Card.Text>
@@ -140,7 +140,7 @@ function Segprinci() {
       </Card>
 
       <Card>
-        <Card.Img variant= "top" src={Mercados4} />
+      <Link to='/VerdurasDonaRosa'><Card.Img variant= "top" src={Mercados4} /></Link>
         <Card.Body>
           <Card.Title>Verduras Doña Rosa</Card.Title>
           <Card.Text>

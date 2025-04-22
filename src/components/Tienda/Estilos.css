@@ -78,23 +78,31 @@ hr {
     background: white;
     text-align: center;
     border-radius: 8px;
-    height: 230px;
+    height: 270px;
   }
   
-  .imagen-producto {
+  /* .imagen-producto {
     width: 100%;
     height: 150px;
     background: #eee;
     margin-bottom: 10px;
     border: 1px solid #ccc;
-  }
-  
+  } */
   .nuevo{
     background: rgb(36, 91, 255);
     position: absolute;
     margin-top: 10px;
     margin-left: 10px;
     color: white;
+    padding: 2px 4px;
+    border-radius: 4px;
+  }
+  .popular{
+    background: rgb(56, 223, 23);
+    position: absolute;
+    margin-top: 10px;
+    margin-left: 10px;
+    color: black;
     padding: 2px 4px;
     border-radius: 4px;
   }
@@ -108,4 +116,46 @@ hr {
     padding: 2px 4px;
     border-radius: 4px;
   }
+  .agotado {
+    background: white;
+    position: absolute;
+    margin-top: 160px;
+    margin-left: 10px;
+    color: black;
+    padding: 2px 4px;
+    border-radius: 4px;
+  }
 
+  .ImagProd{
+    width: 100%;
+    height: 200px;
+  }
+
+  .descrip{
+    font-weight: 500px;
+  }
+
+  .oferta{
+    font-weight: bold;
+    color: red;
+  }
+
+  .Precio{
+    text-decoration: line-through;
+    color: rgb(27, 27, 27);
+    font-size: 14px;
+    margin-left: 5px;
+  }
+
+  .text{
+    margin-top: 2rem;
+    text-align: center;
+  }
+
+  .pre{
+    color:rgb(27, 27, 27);
+  }
+
+  .title{
+
+  }
