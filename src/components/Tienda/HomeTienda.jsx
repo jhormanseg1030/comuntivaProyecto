@@ -4,7 +4,7 @@ import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import logo from '../imagenes/logo.jpg';
+import logo from '../imagenes/DonJuan.jpg';
 import Carousel from 'react-bootstrap/Carousel';
 import Frutas from '../Imagenes/Fruits.jpeg';
 import Zanahoria from '../Imagenes/zanahoria.jpg';
@@ -34,9 +34,9 @@ function HomeTienda() {
             navbarScroll
           >
             <Nav.Link href="#action5">
-              <h4 className=''>Tienda De Don Juan</h4>
+              <h4>Don Juan</h4>
               </Nav.Link>
-          </Nav>
+              </Nav>
           <Form className="d-flex">
             <Form.Control
               type="search"
@@ -98,7 +98,7 @@ function HomeTienda() {
         <h5><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" className="bi bi-credit-card" viewBox="0 0 16 16">
   <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v1h14V4a1 1 0 0 0-1-1zm13 4H1v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1z"/>
   <path d="M2 10a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z"/>
-</svg>Pagos seguros</h5>
+</svg>Sobre Nosotr</h5>
         <h6>Informacion</h6>
         </Col>
 
@@ -121,26 +121,39 @@ function HomeTienda() {
         </Col>
       </Row>
     </Container>
+    <hr />
 
-
-    <div className='img4'>
-      {/* <div className='image-gallery'>
-        <div className='gallery-item'> */}
-          <Col xs={6} md={4}>
-          <Image className='img1' src={Queso} rounded/>
+    <Container className='img4'>
+      <Row>
+          <Col xs={12} md={4}>
+          <Image className='imag1' src={papa} rounded/>
         </Col>
-        <Col xs={6} md={4}>
-          <Image className='img1' src={Camp} rounded/>
+        <Col xs={12} md={4}>
+          <Image className='imag1' src={Camp} rounded />
         </Col>
-        <Col xs={6} md={4}>
-          <Image className='img1' src={Camp2} rounded/>
+        <Col xs={12} md={4}>
+          <Image className='imag1' src={Camp2} rounded/>
         </Col>
-        </div>
-        {/* </div>
-      </div> */}
+        </Row>
+        </Container>
 
 
-      <div className='conteItemsCarrusel'>
+        <Container className="mt-5">
+          <Row>
+            <Col xs={10} md={4}>
+            <div className="producto-card">
+              <div className="nuevo">Nuevo</div>
+              <div className="desct">-20% OFF</div>
+              <Image className="ImagProd" src={Zanahoria}/>
+        <p className="descripcion">Descripcion del Producto</p>
+        <p><span className="precio-oferta">$ 37.000</span> <span className="precio-original">$ 50.000</span></p>
+      </div>
+    </Col>
+    </Row>
+    </Container>
+
+
+      {/* <div className='conteItemsCarrusel'>
         <hr />
       <h4 className='pd'>Recién Llegados</h4>
       <div className='carrusel'>
@@ -198,10 +211,6 @@ function HomeTienda() {
         </Card.Body>
       </Card>
     </div>
-    {/* <div className='flechas'>
-      <i>i</i>
-      <i>D</i>
-    </div> */}
     </div>
     <hr />
     <h4 className='pd'>Productos Destacados</h4>
@@ -263,7 +272,7 @@ function HomeTienda() {
       </Card>
     </div>
     </div>
-    </div>
+    </div> */}
 
     <footer className="footer">
                 <div className="footer-content">
