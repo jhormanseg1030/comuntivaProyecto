@@ -20,23 +20,22 @@
     text-align: left;
 }
 .img4{
-    width: 95%;
-    display: flex;
-    flex-direction: row;
-    margin-right: 15px;
-    gap: 5px;
-    margin-bottom: 30px;
+    justify-content: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
 }
+.imag1 {
+    width: 100%;
+    height: 290px;
+    object-fit: cover;    /* Recorta sin deformar la img*/
+    transition: transform 0.3s ease;
+    border-radius: 10px;
+  }
 
-.img1{
-    height: 270px;
-    width: 88%;
-}
-@media screem and (max-width: 700px){
-    .img4{
-        display: inline-block;
-    }
-}
+  .imag1:hover {
+    transform: scale(1.05);
+  }
+
 .carrusel{
     display: flex;
     gap: 10px;
@@ -72,14 +71,41 @@ hr {
     border-radius: 80px;
     align-items: center;
 }
-/* .flechas{
-    background-color: blueviolet;
-    position: absolute;
-    width: 100%;
-    display:flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 280px;
-} */
 
+
+.producto-card {
+    position: relative;
+    background: white;
+    text-align: center;
+    border-radius: 8px;
+    height: 230px;
+  }
+  
+  .imagen-producto {
+    width: 100%;
+    height: 150px;
+    background: #eee;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  .nuevo{
+    background: rgb(36, 91, 255);
+    position: absolute;
+    margin-top: 10px;
+    margin-left: 10px;
+    color: white;
+    padding: 2px 4px;
+    border-radius: 4px;
+  }
+  
+  .desct {
+    background: red;
+    position: absolute;
+    margin-top: 40px;
+    margin-left: 10px;
+    color: white;
+    padding: 2px 4px;
+    border-radius: 4px;
+  }
 
