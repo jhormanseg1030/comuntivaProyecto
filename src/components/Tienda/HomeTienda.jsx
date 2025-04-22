@@ -18,6 +18,9 @@ import Camp from '../imagenes/camp.jpg'
 import Queso from'../imagenes/queso.webp'
 import Camp2 from'../imagenes/camp2.webp'
 import papa from '../imagenes/papa.jpeg'
+import Bultopapa from '../imagenes/bulto-papa.jpg'
+import Pinea from '../imagenes/Pinea.jpg'
+import Banano from '../imagenes/banano.jpg'
 
 
 function HomeTienda() {
@@ -95,10 +98,9 @@ function HomeTienda() {
           <Container className='layers'>
           <Row>
         <Col className='gr1'>
-        <h5><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" className="bi bi-credit-card" viewBox="0 0 16 16">
-  <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v1h14V4a1 1 0 0 0-1-1zm13 4H1v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1z"/>
-  <path d="M2 10a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z"/>
-</svg>Sobre Nosotr</h5>
+        <h5><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
+  <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/>
+</svg>Historia</h5>
         <h6>Informacion</h6>
         </Col>
 
@@ -136,145 +138,77 @@ function HomeTienda() {
         </Col>
         </Row>
         </Container>
+        <hr />
+        <h4 className='text'>Recién Llegados</h4>
 
-
-        <Container className="mt-5">
+          <Container className="mt-5">
           <Row>
-            <Col xs={10} md={4}>
+            <Col xs={12} md={4}>
             <div className="producto-card">
               <div className="nuevo">Nuevo</div>
               <div className="desct">-20% OFF</div>
               <Image className="ImagProd" src={Zanahoria}/>
-        <p className="descripcion">Descripcion del Producto</p>
-        <p><span className="precio-oferta">$ 37.000</span> <span className="precio-original">$ 50.000</span></p>
+        <p className="descrip">Descripcion del Producto</p>
+        <p><span className="oferta">$ 37.000</span> <span className="Precio">$ 50.000</span></p>
       </div>
-    </Col>
-    </Row>
-    </Container>
+      </Col>
 
+      <Col xs={12} md={4}>
+            <div className="producto-card">
+              <div className="nuevo">Nuevo</div>
+              <Image className="ImagProd" src={Zanahoria}/>
+        <p className="descrip">Descripcion del Producto</p>
+        <p><span className="pre">$ 37.000</span></p>
+      </div>
+      </Col>
 
-      {/* <div className='conteItemsCarrusel'>
-        <hr />
-      <h4 className='pd'>Recién Llegados</h4>
-      <div className='carrusel'>
-      <div className="d-flex justify-content-around">
-      <Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src={Zanahoria}/>
-        <Card.Body>
-          <Card.Title>Nombre producto</Card.Title>
-          <Card.Text>
-            Descripcion del producto.
-          </Card.Text>
-          <Button variant="link">Ver más</Button>
-        </Card.Body>
-      </Card>
-    </div>
+      <Col xs={12} md={4}>
+            <div className="producto-card">
+              <div className="nuevo">Nuevo</div>
+              <Image className="ImagProd" src={Zanahoria}/>
+        <p className="descrip">Descripcion del Producto</p>
+        <p><span className="pre">$ 37.000</span></p>
+      </div>
+      </Col>
+      </Row>
+      </Container>
 
+      <hr/>
+      <h4 className='text'>Productos Destacados</h4>
+      <Container className="mt-5">
+          <Row>
+            <Col xs={12} md={4}>
+            <div className="producto-card">
+              <div className="popular">Popular</div>
+              <div className="agotado">Agotado</div>
+              <Image className="ImagProd" src={Bultopapa}/>
+        <p className="descrip">Papa Pastusa</p>
+        <p><span className="pre">$ 30.000</span></p>
+      </div>
+      </Col>
 
-    <div className="d-flex justify-content-around">
-      <Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src={Zanahoria}/>
-        <Card.Body>
-          <Card.Title>Nombre producto</Card.Title>
-          <Card.Text>
-            Descripcion del producto.
-          </Card.Text>
-          <Button variant="link">Ver más</Button>
-        </Card.Body>
-      </Card>
-    </div>
+      <Col xs={12} md={4}>
+            <div className="producto-card">
+              <div className="popular">Popular</div>
+              <div className="desct">-30% OFF</div>
+              <Image className="ImagProd" src={Pinea}/>
+              <p className="descrip">Piña 1und</p>
+        <p><span className="oferta">$ 5.220</span> <span className="Precio">$ 3.654</span></p>
+      </div>
+      </Col>
 
-
-    <div className="d-flex justify-content-around">
-      <Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src={Zanahoria}/>
-        <Card.Body>
-          <Card.Title>Nombre producto</Card.Title>
-          <Card.Text>
-            Descripcion del producto.
-          </Card.Text>
-          <Button variant="link">Ver más</Button>
-        </Card.Body>
-      </Card>
-    </div>
-
-
-    <div className="d-flex justify-content-around">
-      <Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src={Zanahoria}/>
-        <Card.Body>
-          <Card.Title>Nombre producto</Card.Title>
-          <Card.Text>
-            Descripcion del producto.
-          </Card.Text>
-          <Button variant="link">Ver más</Button>
-        </Card.Body>
-      </Card>
-    </div>
-    </div>
-    <hr />
-    <h4 className='pd'>Productos Destacados</h4>
-
-
-      <div className='carrusel2'>
-      <div className="d-flex justify-content-around">
-      <Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src={Zanahoria}/>
-        <Card.Body>
-          <Card.Title>Nombre producto</Card.Title>
-          <Card.Text>
-            Descripcion del producto.
-          </Card.Text>
-          <Button variant="link">Ver más</Button>
-        </Card.Body>
-      </Card>
-    </div>
-
-
-    <div className="d-flex justify-content-around">
-      <Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src={Zanahoria}/>
-        <Card.Body>
-          <Card.Title>Nombre producto</Card.Title>
-          <Card.Text>
-            Descripcion del producto.
-          </Card.Text>
-          <Button variant="link">Ver más</Button>
-        </Card.Body>
-      </Card>
-    </div>
-
-
-    <div className="d-flex justify-content-around">
-      <Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src={Zanahoria}/>
-        <Card.Body>
-          <Card.Title>Nombre producto</Card.Title>
-          <Card.Text>
-            Descripcion del producto.
-          </Card.Text>
-          <Button variant="link">Ver más</Button>
-        </Card.Body>
-      </Card>
-    </div>
-
-
-    <div className="d-flex justify-content-around">
-      <Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src={Zanahoria}/>
-        <Card.Body>
-          <Card.Title>Nombre producto</Card.Title>
-          <Card.Text>
-            Descripcion del producto.
-          </Card.Text>
-          <Button variant="link">Ver más</Button>
-        </Card.Body>
-      </Card>
-    </div>
-    </div>
-    </div> */}
-
-    <footer className="footer">
+      <Col xs={12} md={4}>
+            <div className="producto-card">
+              <div className="popular">Popular</div>
+              <Image className="ImagProd" src={Banano}/>
+        <p className="descrip">Banano Criollo 1und</p>
+        <p><span className="pre">$ 700</span></p>
+      </div>
+      </Col>
+      </Row>
+      </Container>
+      
+      <footer className="footer">
                 <div className="footer-content">
                     <img src={logo} alt="Logotipo" className="footer-logo" />
                     <p>© 2025 Comuctiva. Todos los derechos reservados.</p>

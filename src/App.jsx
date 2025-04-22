@@ -16,8 +16,8 @@ function App() {
     return(
       <Routes>
         <Route path='/Login' element={<InicioSe></InicioSe>}></Route>
-        <Route path='/' element={<HomeCli></HomeCli>}></Route>
-        <Route path='/Tienda' element={<HomeTienda></HomeTienda>}></Route>
+        <Route path='/Comuctiva' element={<HomeCli></HomeCli>}></Route>
+        <Route path='/TiendaDonJuan' element={<HomeTienda></HomeTienda>}></Route>
         <Route path='/Segunda' element={<SegPrinci></SegPrinci>}></Route>
         <Route path='/Registro' element={<RegistrarUsu></RegistrarUsu>}></Route>
         <Route path='/ConfTienda' element={<ConfTienda></ConfTienda>}></Route>
