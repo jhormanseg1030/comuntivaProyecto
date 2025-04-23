@@ -10,6 +10,7 @@ import ConfTienda from './components/Tienda/ConfTienda';
 import InicioVendedor from './components/Vendedor/InicioVendedor';
 import PagCompra from './components/Compra/PagCompra';
 import ProductosTienda from './components/Productos/ProductosTi';
+import Pago from './components/FinalDePago/Pago';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -24,6 +25,7 @@ function App() {
         <Route path='/Vende' element={<InicioVendedor></InicioVendedor>}></Route>
         <Route path='/Compra' element={<PagCompra></PagCompra>}></Route>
         <Route path='/Productos' element={<ProductosTienda></ProductosTienda>}></Route>
+        <Route path='/Pago' element={<Pago></Pago>}></Route>
       </Routes>
     );
 }

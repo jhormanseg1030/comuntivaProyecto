@@ -5,7 +5,7 @@ import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import logo from '../Imagenes/WhatsApp Image 2025-04-02 at 4.19.24 PM.jpeg';
+import logo from '../Imagenes/logo.jpg';
 import Carousel from 'react-bootstrap/Carousel';
 import Frutas1 from '../imagenes/Frutas1.jpg'
 import Frutas2 from '../imagenes/Frutas2.jpg'
@@ -62,30 +62,18 @@ function HomeCli() {
           src={Frutas1}
           alt='First slider'
           />
-          <Carousel.Caption>
-            <h3>First slider label</h3>
-            <p>nulla vitae elit libero, a pharetra augue mollis</p>
-          </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
           <img className='d-block w-100 carousel-img-full'
           src={Frutas2}
           alt='Second slider'
           />
-          <Carousel.Caption>
-            <h3>Second slider</h3>
-            <p>alexander anderson, conocido como polvo de angel, un asesino serial de vaticano</p>
-          </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
         <img className='d-block w-100 carousel-img-full'
           src={Frutas3}
           alt='Third slider'
           />
-          <Carousel.Caption>
-            <h3>Third slider</h3>
-            <p>Solo Leveling, anime del protagonista sung jinwoo, tambien conocido monarca de las sombras</p>
-          </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
       
@@ -175,7 +163,7 @@ function HomeCli() {
     </CardGroup>
 
     <div className='Container'>
-      <Link className='link' to="/Vende"> Registra tu tienda</Link>
+      <Link className='link'> Registra tu tienda</Link>
     </div>
 
         <footer className="footer">
