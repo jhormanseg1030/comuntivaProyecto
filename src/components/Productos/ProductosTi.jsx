@@ -8,7 +8,11 @@ import logo from '../imagenes/DonJuan.jpg';
 import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
 import Row from 'react-bootstrap/Row';
-import queso from '../imagenes/queso.webp'
+import Pinea from '../imagenes/Pinea.jpg'
+import ImgP from '../imagenes/ImgP.jfif';
+import ImgP2 from '../imagenes/ImgP2.jpg';
+import ImgP3 from '../imagenes/ImgP3.webp';
+import { Link } from 'react-router-dom';
 
 function ProductosTi() {
     return(
@@ -18,7 +22,7 @@ function ProductosTi() {
             <img src={logo} alt="Logo" className="nav-brand"/>
             <Navbar.Toggle aria-controls="navbarScroll" />
             <Navbar.Collapse id="navbarScroll">
-                <Nav className="me-auto my-2 my-lg-0" style={{ maxHeight: '100px' }} navbarScroll>
+                <Nav className="me-auto my-2 my-lg-0"  navbarScroll>
                     <Nav.Link href="#action5">
                         <h4>Don Juan</h4>
                     </Nav.Link>
@@ -52,14 +56,14 @@ function ProductosTi() {
       <Container className='Img-Prod'>
       <Row className='w-100'>
         <Col xs={2} className="Mini-Imag">
-          <Image className='Imagen mb-3' src={queso} rounded />
-          <Image className='Imagen mb-3' src={queso} rounded />
-          <Image className='Imagen mb-3' src={queso} rounded />
-          <Image className='Imagen mb-3' src={queso} rounded />
+          <Image className='Imagen mb-3' src={ImgP} rounded />
+          <Image className='Imagen mb-3' src={ImgP2} rounded />
+          <Image className='Imagen mb-3' src={ImgP3} rounded />
+          <Image className='Imagen mb-3' src={Pinea} rounded />
         </Col>
 
         <Col xs={10} md={6} className="text-center">
-          <Image className='Img-Big' src={queso} rounded />
+          <Image className='Img-Big' src={Pinea} rounded />
           <div className='botones'>
             <Button variant="success" className='Pri-boton'>Añadir al carro</Button>
             <Button variant="dark" className='Seg-boton'>Comprar ahora</Button>
@@ -67,35 +71,65 @@ function ProductosTi() {
         </Col>
 
         <Col xs={4} className='descrip'>
-        <h4>Nombre del Articulo</h4>
-        <Button variant="link">Volver a Tienda</Button>
-        <h5>4.0<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+        <h4>Piña 1und</h4>
+        {/* <Button variant="link">Volver a Tienda </Button> */}
+        <Link to='/TiendaDonJuan'>Volver a Tienda</Link>
+        <h5>4.0<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-star-fill" viewBox="0 0 16 16">
   <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
 </svg>
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-star-fill" viewBox="0 0 16 16">
   <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
 </svg>
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-star-fill" viewBox="0 0 16 16">
   <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
 </svg>
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-star-fill" viewBox="0 0 16 16">
   <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
 </svg>
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-star" viewBox="0 0 16 16">
   <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.56.56 0 0 0-.163-.505L1.71 6.745l4.052-.576a.53.53 0 0 0 .393-.288L8 2.223l1.847 3.658a.53.53 0 0 0 .393.288l4.052.575-2.906 2.77a.56.56 0 0 0-.163.506l.694 3.957-3.686-1.894a.5.5 0 0 0-.461 0z"/>
 </svg>
 </h5>
 <div className="desct-pro"><h5>-30% OFF</h5></div>
 <div><span className="ofer">$ 5.220</span> <span className="Prec">$ 3.654</span></div>
+<h4>Pago de envío/Gratis</h4>
+<hr />
+<h5>Deliciosa piña proveniente del Valle del Cauca, 100% Colombiana. Perfecta para tus jugos, ensaladas y postres.</h5>
+<hr />
+<h5>Información del Producto</h5>
         </Col>
       </Row>
     </Container>
-   
+    <hr />
+    
+    <h5 className='Detalles'>Detalles del Producto</h5>
+    <div className='Det'>
+    <div className='Ref'>
+      <h5 className='title'>Referencia</h5>
+      <h6>SIN REF</h6>
+    </div>
 
-    {/* <div className='descrip'>
-      <h4>nombre del articulo</h4>
-    </div> 
-    </div> */}
+    <div className='Ref'>
+      <h5 className='title'>Tipo de producto</h5>
+      <h6>Fruta nacional</h6>
+    </div>
+
+    <div className='Ref'>
+      <h5 className='title'>Número de piezas</h5>
+      <h6>1</h6>
+    </div>
+    </div>
+    <footer className="footer">
+                    <div className="footer-content">
+                        <img src={logo} alt="Logotipo" className="footer-logo" />
+                        <p>© 2025 Don Juan. Todos los derechos reservados.</p>
+                        <div className="footer-links">
+                            <a href="#!" className="footer-link">Política de Privacidad</a>
+                            <span>|</span>
+                            <a href="#!" className="footer-link">Términos de Servicio</a>
+                        </div>
+                    </div>
+                </footer>
     </>
     )
 }

@@ -20,6 +20,7 @@ import Mercados7 from '../imagenes/Mercados7.jpg'
 import Mercados8 from '../imagenes/Mercados8.jpg'
 import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
+import Dropdown from 'react-bootstrap/Dropdown';
 import './SegPrinci.css';
 import { Link } from 'react-router-dom';
 function Segprinci() {
@@ -47,18 +48,24 @@ function Segprinci() {
               <Form.Control type="search" placeholder="Buscar" className="me-2" aria-label="Search" />
               <Button variant="outline-success">Buscar</Button>
             </Form>
-          </Navbar.Collapse>
           <div className='contenedor_botones'>
      <div>
-  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="30" fill="currentColor" className="bi bi-cart-plus-fill" viewBox="0 0 16 16" >
+  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="33" fill="currentColor" className="bi bi-cart-plus-fill" viewBox="0 0 16 16" >
   <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0m7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0M9 5.5V7h1.5a.5.5 0 0 1 0 1H9v1.5a.5.5 0 0 1-1 0V8H6.5a.5.5 0 0 1 0-1H8V5.5a.5.5 0 0 1 1 0"/>
 </svg>
 </div>
 <div>
-<svg xmlns="http://www.w3.org/2000/svg" width="20" height="30" fill="currentColor" className="bi bi-person-circle" viewBox="0 0 16 16">
-  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
-  <path fillRule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+<Dropdown>
+      <Dropdown.Toggle variant="success" id="dropdown-basic"> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="30" fill="currentColor" className="bi bi-person-circle" viewBox="0 0 16 16">
+  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/><path fillRule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
 </svg>
+      </Dropdown.Toggle>
+
+      <Dropdown.Menu>
+        <Dropdown.Item href="#/action-1">Perfil</Dropdown.Item>
+        <Dropdown.Item href="#/action-2">Configuracion</Dropdown.Item>
+      </Dropdown.Menu>
+    </Dropdown>
 <div className="dropdown-menu">
   <a className="dropdown-item" href="#">Action</a>
   <a className="dropdown-item" href="#">Another action</a>
@@ -68,6 +75,7 @@ function Segprinci() {
 </div>
 </div>
 </div>
+</Navbar.Collapse>
         </Container>
       </Navbar>
       

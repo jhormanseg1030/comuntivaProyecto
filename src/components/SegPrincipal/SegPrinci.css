@@ -18,7 +18,6 @@
 .me-auto.my-2.my-lg-0.navbar-nav.navbar-nav-scroll{
     max-height: 100px;
 }
-
 /*-----------------------------------------------------------------------------------*/
 
 /*CARRUCEL*/
@@ -119,10 +118,11 @@
 .contenedor_botones{
     width: 90px;
     display: flex;
-    gap: 30px;
+    gap: 26px;
     justify-content: center;
     
 }
 .d-flex{
     margin-right: 20px;
-}    
+}
+

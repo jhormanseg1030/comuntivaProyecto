@@ -79,9 +79,9 @@ function HomeCli() {
       
       <CardGroup className='confi'>
       <Card>
-        <Link to='/TiendaDonJuan'><Card.Img variant="top" src={Mercados1} /></Link>
+        <Link to='/TiendaDonJuan'><Card.Img  src={Mercados1} /></Link>
         <Card.Body>
-          <Card.Title>Tienda de don juan</Card.Title>
+          <Card.Title>Don Juan</Card.Title>
           <Card.Text>
             bienvenido a mi tienda, donde encontraras los mejores productos del mercado, con buenos precios, y calidad en su maximo explendor, ven y mira mi tienda
           </Card.Text>
@@ -89,7 +89,7 @@ function HomeCli() {
       </Card>
 
       <Card>
-        <Link to='/FincaBendicion'><Card.Img variant="top" src={Mercados2}  /></Link>
+        <Link to='/FincaBendicion'><Card.Img src={Mercados2}  /></Link>
         <Card.Body>
           <Card.Title>Finca La Bendición</Card.Title>
           <Card.Text>

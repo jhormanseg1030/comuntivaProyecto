@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './App.css'
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes} from 'react-router-dom';
 import HomeCli from './components/Clientes/HomeCli';
 import HomeTienda from "./components/Tienda/HomeTienda";
 import SegPrinci from './components/SegPrincipal/SegPrinci';
