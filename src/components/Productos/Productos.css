@@ -1,0 +1,68 @@
+.Img-Prod {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.Mini-Imag {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Imagen{
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.Imagen:hover {
+  transform: scale(1.05);
+}
+
+.Img-Big {
+  width: 100%;
+  max-width: 400px;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.botones{
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.Pri-boton{
+  width: 35%;
+  height: 50px;
+  margin-right: 1rem;
+}
+
+.Seg-boton{
+  width: 35%;
+  height: 50px;
+}
+
+.desct-pro{
+  background: red;
+  color: white;
+  padding: 2px 4px;
+  padding-top: 8px;
+  padding-right: 50px;
+  border: solid 1px black;
+}
+.ofer{
+  color: red;
+  font-weight: bold;
+  font-size: 27px;
+}
+.Prec{
+  text-decoration: line-through;
+  color: rgb(27, 27, 27);
+  font-size: 14px;
+  margin-left: 5px;
+  font-size: medium;
+}
