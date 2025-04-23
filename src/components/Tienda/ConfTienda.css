@@ -46,16 +46,7 @@
     display: flex;
     flex-direction: column;
     margin-right: 250px;
-  }
-  #divIni{
-    margin-top: 20px;
-    margin-right: 10px;
-    margin-left: 10px;
-  }
-  .btn btn-success{
-    background-color:#aae679; 
-  }
-  
+  } 
   .contenido-dinamico {
     flex: 1; 
     margin-bottom: 20px;
@@ -72,6 +63,13 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
     text-align: center;
     height: fit-content;
-
   }
+.ayuda button {
+  background-color: #aae679;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  margin-top: 10px;
+  cursor: pointer;
+}
   

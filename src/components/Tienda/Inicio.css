@@ -1,0 +1,28 @@
+/* Estilos para la sección de Inicio */
+.inicio-container {
+  padding: 20px;
+  text-align: left;
+}
+
+.form-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.form-floating,
+.input-group {
+  margin: 10px 0;
+  width: 100%;
+}
+.form-floating,
+.input-group,
+.btn {
+  margin-top: 10px;
+}
+
+.btn-success {
+  background-color: #468512;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+}
