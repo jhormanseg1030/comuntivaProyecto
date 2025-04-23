@@ -80,14 +80,6 @@ hr {
     border-radius: 8px;
     height: 270px;
   }
-  
-  /* .imagen-producto {
-    width: 100%;
-    height: 150px;
-    background: #eee;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-  } */
   .nuevo{
     background: rgb(36, 91, 255);
     position: absolute;
@@ -156,6 +148,30 @@ hr {
     color:rgb(27, 27, 27);
   }
 
-  .title{
-
+  .carruselPuntos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  
+  .puntos {
+    display: flex;
+    gap: 9rem;
+  }
+  
+  .punto {
+    width: 12px;
+    height: 12px;
+    background-color: black;
+    border-radius: 50%;
+  }
+  
+  .flechas {
+    font-size: 1.8rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: black;
   }

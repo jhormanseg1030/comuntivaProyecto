@@ -15,12 +15,13 @@ import Image from 'react-bootstrap/Image';
 import Card from 'react-bootstrap/Card';
 import Productos from '../imagenes/verd.png'
 import Camp from '../imagenes/camp.jpg'
-import Queso from'../imagenes/queso.webp'
+// import Queso from'../imagenes/queso.webp'
 import Camp2 from'../imagenes/camp2.webp'
 import papa from '../imagenes/papa.jpeg'
 import Bultopapa from '../imagenes/bulto-papa.jpg'
 import Pinea from '../imagenes/Pinea.jpg'
 import Banano from '../imagenes/banano.jpg'
+import { Link } from 'react-router-dom';
 
 
 function HomeTienda() {
@@ -141,7 +142,7 @@ function HomeTienda() {
         <hr />
         <h4 className='text'>Recién Llegados</h4>
 
-          <Container className="mt-5">
+          <Container>
           <Row>
             <Col xs={12} md={4}>
             <div className="producto-card">
@@ -172,10 +173,27 @@ function HomeTienda() {
       </Col>
       </Row>
       </Container>
+      
+      <div className="carruselPuntos">
+  <button className="flechas">&#8249;</button>
+
+  <div className="puntos">
+    <span className="punto"></span>
+    <span className="punto"></span>
+    <span className="punto"></span>
+    <span className="punto"></span>
+    <span className="punto"></span>
+    <span className="punto"></span>
+    <span className="punto"></span>
+    <span className="punto"></span>
+  </div>
+
+  <button className="flechas">&#8250;</button>
+</div>
 
       <hr/>
       <h4 className='text'>Productos Destacados</h4>
-      <Container className="mt-5">
+      <Container>
           <Row>
             <Col xs={12} md={4}>
             <div className="producto-card">
@@ -191,7 +209,7 @@ function HomeTienda() {
             <div className="producto-card">
               <div className="popular">Popular</div>
               <div className="desct">-30% OFF</div>
-              <Image className="ImagProd" src={Pinea}/>
+              <Link to='/Productos'><Image className="ImagProd" src={Pinea}/></Link>
               <p className="descrip">Piña 1und</p>
         <p><span className="oferta">$ 5.220</span> <span className="Precio">$ 3.654</span></p>
       </div>
@@ -207,6 +225,24 @@ function HomeTienda() {
       </Col>
       </Row>
       </Container>
+
+      <div className="carruselPuntos">
+  <button className="flechas">&#8249;</button>
+
+  <div className="puntos">
+    <span className="punto"></span>
+    <span className="punto"></span>
+    <span className="punto"></span>
+    <span className="punto"></span>
+    <span className="punto"></span>
+    <span className="punto"></span>
+    <span className="punto"></span>
+    <span className="punto"></span>
+  </div>
+
+  <button className="flechas">&#8250;</button>
+</div>
+
       
       <footer className="footer">
                 <div className="footer-content">
@@ -219,10 +255,6 @@ function HomeTienda() {
                     </div>
                 </div>
             </footer>
-
-
-
-            <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     </>
     );
 }
