@@ -1,3 +1,6 @@
+.me-auto.my-2.my-lg-0{
+  max-height: 100px;
+}
 .Img-Prod {
   display: flex;
   justify-content: center;
@@ -65,4 +68,21 @@
   font-size: 14px;
   margin-left: 5px;
   font-size: medium;
+}
+.Detalles{
+  text-align: center;
+}
+.Ref{
+  width: 20%;
+  padding-left: 2rem;
+  border-radius: 10px;
+  background: rgb(19, 153, 108);
+}
+.Det{
+  display: flex;
+  gap: 5rem;
+  padding-bottom: 15px;
+}
+.title{
+  font-weight: bold;
 }
