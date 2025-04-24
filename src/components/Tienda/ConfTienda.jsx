@@ -6,6 +6,7 @@ import './Producto.css';
 import './Inicio.css';
 import './ProCompra.css';
 import './Pedidos.css';
+import { Link } from 'react-router-dom';
 
 const ConfTienda = () => {
   const [contenido, setContenido] = useState('Inicio');
@@ -19,7 +20,7 @@ const ConfTienda = () => {
       <nav className="menu">
         <div className="logo">
         <img src={logo} alt="Logo" className="nav-brand"/>
-        <button>Ver tienda</button>
+        <Link to ="/TiendaDonJuan"><button>Ver tienda</button></Link>
         </div>
         <ul className="menu-principal">
           <li onClick={() => manejarSeleccion('Inicio')} className={contenido === 'Inicio' ? 'active' : ''}>Inicio</li>
