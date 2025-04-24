@@ -58,10 +58,7 @@ function HomeCli() {
 
       <Carousel className='carousel-custom-width'>
         <Carousel.Item>
-          <img className='d-block w-100 carousel-img-full'
-          src={Frutas1}
-          alt='First slider'
-          />
+          <img className='d-block w-100 carousel-img-full' src={Frutas1} alt='First slider'/>
         </Carousel.Item>
         <Carousel.Item>
           <img className='d-block w-100 carousel-img-full'
@@ -79,7 +76,7 @@ function HomeCli() {
       
       <CardGroup className='confi'>
       <Card>
-        <Link to='/TiendaDonJuan'><Card.Img  src={Mercados1} /></Link>
+        <Link to='/TiendaDonJuan'><Card.Img variant= "top" src={Mercados1} /></Link>
         <Card.Body>
           <Card.Title>Don Juan</Card.Title>
           <Card.Text>
@@ -89,7 +86,7 @@ function HomeCli() {
       </Card>
 
       <Card>
-        <Link to='/FincaBendicion'><Card.Img src={Mercados2}  /></Link>
+        <Link to='/FincaBendicion'><Card.Img variant= "top" src={Mercados2}  /></Link>
         <Card.Body>
           <Card.Title>Finca La Bendición</Card.Title>
           <Card.Text>
