@@ -19,6 +19,9 @@ import papa from '../imagenes/papa.jpeg'
 import Bultopapa from '../imagenes/bulto-papa.jpg'
 import Pinea from '../imagenes/Pinea.jpg'
 import Banano from '../imagenes/banano.jpg'
+import Arandanos from '../imagenes/Arandanos.jpeg'
+import Papaya from '../imagenes/Papaya.jpg'
+import Accordion from 'react-bootstrap/Accordion';
 import { Link } from 'react-router-dom';
 
 
@@ -43,9 +46,9 @@ function HomeTienda() {
           </Form>
 
 
-          <div className='contenedor_botones'>
+          <div className='contenedor_bot'>
             <div>
-          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" className="bi bi-cart-plus-fill" viewBox="0 0 16 16" >
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" className="cart" viewBox="0 0 16 16" >
   <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0m7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0M9 5.5V7h1.5a.5.5 0 0 1 0 1H9v1.5a.5.5 0 0 1-1 0V8H6.5a.5.5 0 0 1 0-1H8V5.5a.5.5 0 0 1 1 0"/>
 </svg>
 </div>
@@ -91,7 +94,8 @@ function HomeTienda() {
         <h5><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" className="bi bi-people-fill" viewBox="0 0 16 16">
   <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/>
 </svg>Historia</h5>
-        <h6>Informacion</h6>
+        <h6>Don Juan, campesino del Valle del Cauca, cultiva con amor y tradición productos del campo.
+        Más de 30 años llevando lo mejor de su tierra a tu mesa.</h6>
         </Col>
 
 
@@ -100,7 +104,8 @@ function HomeTienda() {
   <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
   <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
 </svg>Calidad de Productos</h5>
-        <h6>Informacion</h6>
+        <h6>Productos frescos, 100% naturales y sin químicos, cosechados con técnicas sostenibles.
+        Del campo directo a tu hogar, con sabor y calidad.</h6>
         </Col>
 
 
@@ -109,7 +114,8 @@ function HomeTienda() {
   <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
   <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
 </svg>Contactanos</h5>
-        <h6>Informacion</h6>
+        <h6>+57 311 456 7890 | tienda.donjuan@campo.co
+        Buga, Valle del Cauca | IG: @productos_donjuan</h6>
         </Col>
       </Row>
     </Container>
@@ -136,10 +142,10 @@ function HomeTienda() {
             <Col xs={12} md={4}>
             <div className="producto-card">
               <div className="nuevo">Nuevo</div>
-              <div className="desct">-20% OFF</div>
-              <Image className="ImagProd" src={Zanahoria}/>
-        <p className="descrip">Descripcion del Producto</p>
-        <p><span className="oferta">$ 37.000</span> <span className="Precio">$ 50.000</span></p>
+              <div className="desct">-40% OFF</div>
+              <Image className="ImagProd" src={Arandanos}/>
+        <p className="descrip">Arandanos</p>
+        <p><span className="oferta">$ 6.000</span> <span className="Precio">$ 10.000</span></p>
       </div>
       </Col>
 
@@ -147,17 +153,17 @@ function HomeTienda() {
             <div className="producto-card">
               <div className="nuevo">Nuevo</div>
               <Image className="ImagProd" src={Zanahoria}/>
-        <p className="descrip">Descripcion del Producto</p>
-        <p><span className="pre">$ 37.000</span></p>
+        <p className="descrip">Zanahoria 1000 gr</p>
+        <p><span className="pre">$ 2.400</span></p>
       </div>
       </Col>
 
       <Col xs={12} md={4}>
             <div className="producto-card">
               <div className="nuevo">Nuevo</div>
-              <Image className="ImagProd" src={Zanahoria}/>
-        <p className="descrip">Descripcion del Producto</p>
-        <p><span className="pre">$ 37.000</span></p>
+              <Image className="ImagProd" src={Papaya}/>
+        <p className="descrip">Papaya 1 und</p>
+        <p><span className="pre">$ 7.300</span></p>
       </div>
       </Col>
       </Row>
@@ -200,7 +206,7 @@ function HomeTienda() {
               <div className="desct">-30% OFF</div>
               <Link to='/Productos'><Image className="ImagProd" src={Pinea}/></Link>
               <p className="descrip">Piña 1und</p>
-        <p><span className="oferta">$ 5.220</span> <span className="Precio">$ 3.654</span></p>
+        <p><span className="oferta">$ 3.654</span> <span className="Precio">$ 5.220</span></p>
       </div>
       </Col>
 
@@ -244,7 +250,7 @@ function HomeTienda() {
                     </div>
                 </div>
             </footer>
-            
+
     </>
     );
 }

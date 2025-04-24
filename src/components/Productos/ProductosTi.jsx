@@ -33,9 +33,9 @@ function ProductosTi() {
   <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
 </svg></Button>
                 </Form>
-                <div className='contenedor_botones'>
+                <div className='contenedor_bot'>
                     <div>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" className="bi bi-cart-plus-fill" viewBox="0 0 16 16" >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" className="cart" viewBox="0 0 16 16" >
   <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0m7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0M9 5.5V7h1.5a.5.5 0 0 1 0 1H9v1.5a.5.5 0 0 1-1 0V8H6.5a.5.5 0 0 1 0-1H8V5.5a.5.5 0 0 1 1 0"/>
 </svg>
 </div>
@@ -96,7 +96,10 @@ function ProductosTi() {
 <hr />
 <h5>Deliciosa piña proveniente del Valle del Cauca, 100% Colombiana. Perfecta para tus jugos, ensaladas y postres.</h5>
 <hr />
-<h5>Información del Producto</h5>
+<h5>Esta fruta es cosechada a mano en su punto exacto de maduración, lo que garantiza su sabor intenso, su textura firme y su frescura natural.
+
+La piña de Don Juan es 100% orgánica, libre de químicos y fertilizantes artificiales. Se cultiva de forma sostenible, respetando los ciclos naturales de la tierra y cuidando el medio ambiente.
+Ideal para jugos, ensaladas, postres o para disfrutar sola.</h5>
         </Col>
       </Row>
     </Container>
