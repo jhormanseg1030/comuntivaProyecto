@@ -91,7 +91,7 @@ function ProductosTi() {
 </svg>
 </h5>
 <div className="desct-pro"><h5>-30% OFF</h5></div>
-<div><span className="ofer">$ 5.220</span> <span className="Prec">$ 3.654</span></div>
+<div><span className="ofer">$ 3.654</span> <span className="Prec">$ 5.220</span></div>
 <h4>Pago de envío/Gratis</h4>
 <hr />
 <h5>Deliciosa piña proveniente del Valle del Cauca, 100% Colombiana. Perfecta para tus jugos, ensaladas y postres.</h5>
