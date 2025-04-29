@@ -1,27 +1,27 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import CardGroup from 'react-bootstrap/CardGroup';
+import Carousel from 'react-bootstrap/Carousel';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import logo from '../Imagenes/logo.jpg';
-import Carousel from 'react-bootstrap/Carousel';
-import Frutas1 from '../imagenes/Frutas1.jpg'
-import Frutas2 from '../imagenes/Frutas2.jpg'
-import Frutas3 from '../imagenes/Frutas3.jpeg'
-import Mercados1 from '../imagenes/Mercados1.jpg'
-import Mercados2 from '../imagenes/Mercados2.jpg'
-import Mercados3 from '../imagenes/Mercados3.jpg'
-import Mercados4 from '../imagenes/Mercados4.jpg'
-import Mercados5 from '../imagenes/Mercados5.jpg'
-import Mercados6 from '../imagenes/Mercados6.jpg'
-import Mercados7 from '../imagenes/Mercados7.jpg'
-import Mercados8 from '../imagenes/Mercados8.jpg'
-import Card from 'react-bootstrap/Card';
-import CardGroup from 'react-bootstrap/CardGroup';
-import './HomeCliente.css';
 import { Link } from 'react-router-dom';
+import Frutas1 from '../imagenes/Frutas1.jpg';
+import Frutas2 from '../imagenes/Frutas2.jpg';
+import Frutas3 from '../imagenes/Frutas3.jpeg';
+import logo from '../Imagenes/logo.jpg';
+import Mercados1 from '../imagenes/Mercados1.jpg';
+import Mercados2 from '../imagenes/Mercados2.jpg';
+import Mercados3 from '../imagenes/Mercados3.jpg';
+import Mercados4 from '../imagenes/Mercados4.jpg';
+import Mercados5 from '../imagenes/Mercados5.jpg';
+import Mercados6 from '../imagenes/Mercados6.jpg';
+import Mercados7 from '../imagenes/Mercados7.jpg';
+import Mercados8 from '../imagenes/Mercados8.jpg';
+import './HomeCliente.css';
 function HomeCli() {
   return (
     <>
@@ -31,7 +31,7 @@ function HomeCli() {
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav className="me-auto my-2 my-lg-0" navbarScroll>
-              <Nav.Link href="#action1">Inicio</Nav.Link>
+              <Nav.Link className='h' href="#action1">Inicio</Nav.Link>
               <Nav.Link href="#action2">Quienes Somos</Nav.Link>
               <Nav.Link href="#action3">Tiendas</Nav.Link>
               <Nav.Link href="#action4">Características</Nav.Link>

@@ -1,6 +1,6 @@
 /*ENCABEZADO*/
 .bg-body-tertiary{
-    background: linear-gradient(90deg, rgba(5, 143, 28, 0.74) 10%, rgba(28, 221, 3, 0.842) 50%, rgba(0, 248, 41, 0.979) 70%, rgba(8, 236, 168, 0.74) 100% ); 
+    background: linear-gradient(90deg, black 5%, #0b745a 50%, #51d18c 75%, #ffffa7 100% ); 
 
 }
 
@@ -9,17 +9,19 @@
 }
 .container-fluid{
     font-size: 15px;
-    background-color: #17f360;
-    border: 1px solid black;
     
 }
 .nav-brand{
     width: 60px;
 }
 .me-auto.my-2.my-lg-0.navbar-nav.navbar-nav-scroll{
-    max-height: 100px;
-}
+    max-height: 200px;
+    margin-left: 20px;
 
+}
+a.nav-link{
+    color: rgb(255, 255, 255);
+}
 /*-----------------------------------------------------------------------------------*/
 
 /*CARRUCEL*/
@@ -119,4 +121,5 @@
 }
 .btn.btn-outline-success{
     margin-top: 0px;
+    color: white;
 }

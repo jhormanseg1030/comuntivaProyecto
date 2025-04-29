@@ -1,16 +1,9 @@
 /*ENCABEZADO*/
-.bg-body-tertiary{
-    background: linear-gradient(90deg, rgba(5, 143, 28, 0.74) 10%, rgba(28, 221, 3, 0.842) 50%, rgba(0, 248, 41, 0.979) 70%, rgba(8, 236, 168, 0.74) 100% ); 
-    margin-top: 5px ;
-  
-}
 .d-flex{
     color: white;
 }
 .container-fluid{
     font-size: 15px;
-    background-color: #17f360;
-    border: 1px solid black;
 }
 .nav-brand{
     width: 60px;

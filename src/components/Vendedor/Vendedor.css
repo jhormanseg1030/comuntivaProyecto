@@ -1,7 +1,6 @@
 #root{
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
-    background: linear-gradient(90deg, rgba(5, 143, 28, 0.74) 10%, rgba(28, 221, 3, 0.842) 50%, rgba(0, 248, 41, 0.979) 70%, rgba(8, 236, 168, 0.74) 100% ); 
 }
 .container2{
     display: flex;

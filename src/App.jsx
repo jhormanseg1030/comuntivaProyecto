@@ -1,19 +1,19 @@
-import { useState } from 'react'
-import './App.css'
-import { Route, Routes} from 'react-router-dom';
+import { useState } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import './App.css';
 import HomeCli from './components/Clientes/HomeCli';
-import HomeTienda from "./components/Tienda/HomeTienda";
-import SegPrinci from './components/SegPrincipal/SegPrinci';
-import InicioSe from './components/iniciosesion/InicioSe';
-import RegistrarUsu from './components/Registrar/RegistrarUsu';
-import ConfTienda from './components/Tienda/ConfTienda';
-import InicioVendedor from './components/Vendedor/InicioVendedor';
 import PagCompra from './components/Compra/PagCompra';
-import ProductosTienda from './components/Productos/ProductosTi';
 import Pago from './components/FinalDePago/Pago';
+import InicioSe from './components/iniciosesion/InicioSe';
+import ProductosTienda from './components/Productos/ProductosTi';
+import RegistrarUsu from './components/Registrar/RegistrarUsu';
+import SegPrinci from './components/SegPrincipal/SegPrinci';
+import ConfTienda from './components/Tienda/ConfTienda';
+import HomeTienda from "./components/Tienda/HomeTienda";
+import InicioVendedor from './components/Vendedor/InicioVendedor';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [Count, SetCount] = useState(0)
     return(
       <Routes>
         <Route path='/Login' element={<InicioSe></InicioSe>}></Route>
