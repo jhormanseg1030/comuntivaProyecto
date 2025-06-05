@@ -1,38 +1,131 @@
+.main-wrapper {
+display: flex;
+height: 100vh;
+width: 100%;
+}
 
-.Container3{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+
+.image-section {
+flex: 1;
+overflow: hidden;
 }
-.form1{
-    background-color: rgba(228, 228, 228, 0.836);
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    width: 400px;
+
+.image-section img {
+width: 100%;
+height: 100%;
+object-fit: cover;
 }
-.form-group1{
-    margin-bottom: 15px;
+
+
+.form-section {
+flex: 1;
+display: flex;
+justify-content: center;
+align-items: center;
+background-color: #f8f9fa;
 }
-label{
-    display: block;
+
+.form-container {
+width: 80%;
+max-width: 400px;
 }
-input{
-    width: 100%;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+
+
+.login-form {
+background-color: white;
+padding: 2rem;
+border-radius: 8px;
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
-.submit-button1{
-    background-color: #00ff95;
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    margin-top: 5px;
+
+.login-form h2 {
+margin-bottom: 1.5rem;
+color: #333;
+text-align: center;
 }
-.submit-button1:hover{
-    background-color: #0056b3;
+
+.form-group {
+margin-bottom: 1.2rem;
+}
+
+.form-group label {
+display: block;
+margin-bottom: 0.5rem;
+color: #555;
+}
+
+.form-group input {
+width: 100%;
+padding: 0.8rem;
+border: 1px solid #ddd;
+border-radius: 4px;
+font-size: 1rem;
+}
+
+
+.forgot-password {
+display: block;
+margin-top: 0.5rem;
+font-size: 0.9rem;
+color: #0066cc;
+text-decoration: none;
+}
+
+.form-footer {
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-top: 1.5rem;
+}
+
+.register-link {
+color: #0066cc;
+text-decoration: none;
+font-size: 0.9rem;
+}
+
+.submit-btn {
+background-color: #00ff95;
+color: white;
+border: none;
+padding: 0.8rem 1.5rem;
+border-radius: 4px;cursor: pointer;
+font-size: 1rem;
+transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+background-color: #00e187;
+}
+
+.form-container-expanded {
+width: 100%;
+max-width: 500px; 
+margin-left: 30px; 
+}
+
+
+.form-group-expanded {
+margin-bottom: 1.8rem;
+}
+
+.expanded-input {
+padding: 1rem; 
+font-size: 1.1rem; 
+}
+
+
+.form-footer-expanded {
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-top: 2rem; 
+}
+
+
+.submit-btn-expanded {
+padding: 1rem 2rem;
+font-size: 1.1rem;
+background-color: #00ff95; 
+
 }
