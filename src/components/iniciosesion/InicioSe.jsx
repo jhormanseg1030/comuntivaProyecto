@@ -1,7 +1,7 @@
 import React from 'react';
 import './estilos.css'
 import { Link } from 'react-router-dom';
-import imagen3 from '../imagenes/imagen3.jpg'
+import imagen1 from '../imagenes/imagen1.jpg'
 
 
 const InicioSe = () => {
@@ -9,7 +9,7 @@ const InicioSe = () => {
     <div className="main-wrapper">
       
       <div className="image-section">
-        <img src={imagen3} alt="Imagen decorativa" />
+        <img src={imagen1} alt="Imagen decorativa" />
       </div>
       
      
@@ -31,7 +31,7 @@ const InicioSe = () => {
             
             <div className="form-footer-expanded">
               <Link to="/registro" className="register-link">¿No tienes cuenta?</Link>
-              <button type="submit" className="submit-btn-expanded">Enviar</button>
+              <Link to= "/Segunda"><button type="submit" className="submit-btn-expanded">Enviar</button></Link>
             </div>
           </form>
         </div>
