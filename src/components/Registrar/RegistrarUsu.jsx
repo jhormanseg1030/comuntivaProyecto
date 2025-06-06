@@ -1,107 +1,72 @@
 import React from 'react';
 import './Registrar.css'
 import { Link } from 'react-router-dom';
+import imagen1 from '../imagenes/imagen1.jpg'
 
 const RegistrarUsu = () => {
     return (
-        <div className="form-container">
-      <form className="registration-form">
-      <h2>Registro de Usuario</h2>
-        <div className="form-group">
-          <label htmlFor="name" className="form-label">
-            Nombre:
-          </label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            className="form-input"
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="lastName" className="form-label">
-            Apellido:
-          </label>
-          <input
-            type="text"
-            id="lastName"
-            name="lastName"
-            className="form-input"
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="documentType" className="form-label">
-            Tipo de Documento:
-          </label>
-          <select
-            id="documentType"
-            name="documentType"
-            className="form-select"
-            required
-          >
-            <option value="">Selecciona un tipo de documento</option>
-            <option value="cc">Cédula de Ciudadanía</option>
-            <option value="ti">Tarjeta de Identidad</option>
-            <option value="other">Otro</option>
-          </select>
-        </div>
-        <div className="form-group">
-          <label htmlFor="documentNumber" className="form-label">
-            Número de Documento:
-          </label>
-          <input
-            type="text"
-            id="documentNumber"
-            name="documentNumber"
-            className="form-input"
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="email" className="form-label">
-            Correo Electronico:
-          </label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            className="form-input"
-            required
-          />
-        </div>    
+        <div className="main-wrapper"> {/* Usamos la misma clase contenedora */}
+            {/* Sección de imagen (igual que en login) */}
+            <div className="image-section">
+                <img src={imagen1} alt="Imagen decorativa de registro" /> {/* Usa tu imagen */}
+            </div>
 
-        <div className="form-group">
-          <label htmlFor="birthDate" className="form-label">
-            Fecha de Nacimiento:
-          </label>
-          <input
-            type="date"
-            id="birthDate"
-            name="birthDate"
-            className="form-input"
-            required
-          />
+            {/* Sección de formulario (estructura similar a login) */}
+            <div className="form-section">
+                <div className="form-container-expanded">
+                    <form className="registration-form"> {/* Cambiado a registration-form */}
+                        <h2>Registro de Usuario</h2>
+                        
+                        <div className="form-group-expanded">
+                            <label htmlFor="name">Nombre:</label>
+                            <input type="text" id="name" className="expanded-input" required />
+                        </div>
+                        
+                        <div className="form-group-expanded">
+                            <label htmlFor="lastName">Apellido:</label>
+                            <input type="text" id="lastName" className="expanded-input" required />
+                        </div>
+                        
+                        <div className="form-group-expanded">
+                            <label htmlFor="documentType">Tipo de Documento:</label>
+                            <select id="documentType" className="expanded-input" required>
+                                <option value="">Selecciona un tipo</option>
+                                <option value="cc">Cédula</option>
+                                <option value="ti">Cedula Extranjeria</option>
+                                <option value="ti">Passaporte</option>
+                            </select>
+                        </div>
+                        
+                        
+                        <div className="form-group-expanded">
+                            <label htmlFor="documentNumber">Número de Documento:</label>
+                            <input type="text" id="documentNumber" className="expanded-input" required />
+                        </div>
+                        
+                        <div className="form-group-expanded">
+                            <label htmlFor="email">Correo Electrónico:</label>
+                            <input type="email" id="email" className="expanded-input" required />
+                        </div>
+                        
+                        <div className="form-group-expanded">
+                            <label htmlFor="birthDate">Fecha de Nacimiento:</label>
+                            <input type="date" id="birthDate" className="expanded-input" required />
+                        </div>
+                        
+                        <div className="form-group-expanded">
+                            <label htmlFor="password">Contraseña:</label>
+                            <input type="password" id="password" className="expanded-input" required />
+                        </div>
+                        
+                        <div className="form-footer-expanded">
+                            <Link to="/login" className="register-link">¿Ya tienes cuenta?</Link>
+                            <Link to= "/Login"><button type="submit" className="submit-btn-expanded">Registrarse</button></Link>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-        <div className="form-group">
-          <label htmlFor="password" className="form-label">
-            Contraseña:
-          </label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            className="form-input"
-            required
-          />
-        </div>
-        <Link to="/login"><button type="submit" className="submit-button">
-          Registrarse
-        </button></Link>
-      </form>
-    </div>
     );
-}
+};
 
 export default RegistrarUsu;
