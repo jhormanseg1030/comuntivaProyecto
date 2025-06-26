@@ -9,9 +9,9 @@ const Pago = () => {
         <div>
     <Navbar expand="lg" className="bg-body-tertiary">
         <Container fluid>
-          <img src={logo} alt="Logo" className="nav-brand"/>
+        <img src={logo} alt="Logo" className="nav-brand"/>
         </Container>
-      </Navbar>
+    </Navbar>
         <div className='Pag'>
             <h2>Direccion de entrega</h2>
             <p>Calle 49 sur # 88 c 50
