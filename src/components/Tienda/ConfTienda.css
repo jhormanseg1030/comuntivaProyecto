@@ -1,0 +1,75 @@
+/* src/components/ConfTienda.css */
+.conf-tienda {
+    display: flex;
+  }
+  
+  .menu {
+    width: auto; 
+    background-color: #f3d1d1; /* Color de fondo del menú */
+    padding: 20px;
+  }
+  .logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .menu-principal {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .menu-principal li {
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s; 
+  }
+  
+  .menu-principal li:hover {
+    background-color: #ddf3cb; 
+  }
+  
+  .menu-principal li.active {
+    background-color:#aae679; 
+  }
+  
+  h2 {
+    margin-top: 20px; 
+    margin-bottom: 10px;
+  }
+  
+  .contenido {
+    flex: 1; 
+    text-align: center;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    margin-right: 250px;
+  } 
+  .contenido-dinamico {
+    flex: 1; 
+    margin-bottom: 20px;
+  }
+  
+  .ayuda {
+    position: fixed;
+    top: 300px; 
+    right:20px; 
+    background-color: #f9f9f9; 
+    padding: 10px;
+    border: 1px solid #ccc; 
+    width:200px; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+    text-align: center;
+    height: fit-content;
+  }
+.ayuda button {
+  background-color: #aae679;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+  
