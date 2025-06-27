@@ -6,3 +6,29 @@
     border: 1px solid black;
     margin-top: 5px;
 }
+.Pag2{
+    margin: 10px;
+    padding: 10px;
+    background-color: #ffff;
+    width: 55%;
+    border: 1px solid black;
+    margin-top: 5px;
+}
+.Pag3{
+    margin: 10px;
+    padding: 10px;
+    background-color: #ffff;
+    width: 55%;
+    border: 1px solid black;
+    margin-top: 5px;
+
+}
+.Cami{
+    display: flex;
+    align-items:start;
+}
+
+.text{
+    justify-content: right;
+
+}
