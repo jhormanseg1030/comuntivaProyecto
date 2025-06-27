@@ -1,18 +1,18 @@
-import './Productos.css'
 import Button from 'react-bootstrap/Button';
+import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
+import Image from 'react-bootstrap/Image';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import logo from '../imagenes/DonJuan.jpg';
-import Col from 'react-bootstrap/Col';
-import Image from 'react-bootstrap/Image';
 import Row from 'react-bootstrap/Row';
-import Pinea from '../imagenes/Pinea.jpg'
+import { Link } from 'react-router-dom';
+import logo from '../imagenes/DonJuan.jpg';
 import ImgP from '../imagenes/ImgP.jfif';
 import ImgP2 from '../imagenes/ImgP2.jpg';
 import ImgP3 from '../imagenes/ImgP3.webp';
-import { Link } from 'react-router-dom';
+import Pinea from '../imagenes/Pinea.jpg';
+import './Productos.css';
 
 function ProductosTi() {
     return(
@@ -66,7 +66,7 @@ function ProductosTi() {
           <Image className='Img-Big' src={Pinea} rounded />
           <div className='botones'>
             <Button variant="success" className='Pri-boton'>Añadir al carro</Button>
-            <Button variant="dark" className='Seg-boton'>Comprar ahora</Button>
+            <Link to= "/Pago"><Button variant="dark" className='Seg-boton'>Comprar ahora</Button></Link>
           </div>
         </Col>
 
