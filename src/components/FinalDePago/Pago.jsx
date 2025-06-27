@@ -1,9 +1,8 @@
-import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
-import logo from '../Imagenes/logo.jpg';
 import { Link } from 'react-router-dom';
-import './Pago.css'
+import logo from '../Imagenes/logo.jpg';
+import './Pago.css';
 const Pago = () => {
     return (
         <div>
@@ -21,7 +20,7 @@ const Pago = () => {
         </div>
         <div className='Pag2'>
             <h2>Metodo de pago</h2>
-            <h5>Agregar tipo de pago</h5>
+            <h5>Agregar</h5>
         </div>
     </div>
     );
