@@ -20,23 +20,39 @@
 .form-section {
   margin-bottom: 30px;
   padding-bottom: 20px;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #a0f898;
+  display: flex;
+  flex-direction: column;
 }
 
 .form-section h3 {
   margin-bottom: 15px;
   color: #333;
+  margin-top: 10px;
+ 
 }
 
 .form-row {
-  display: flex;
   gap: 20px;
   margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
-
-.form-group {
-  flex: 1;
-}
+.form-group1{
+  width: 50%;
+  height: 100px;
+  margin-left: 10px; 
+  margin-right: 10px;
+ }
+ 
+  .form-group2{
+  width: 200px;
+  height: 100px;
+  margin-left: 10px; 
+  margin-right: 10px;
+  align-items:start;
+ }
 
 .form-group label {
   display: block;
@@ -46,8 +62,7 @@
 
 .form-group input[type="text"],
 .form-group input[type="number"],
-.form-group select,
-.form-group textarea {
+.form-group select {
   width: 100%;
   padding: 10px;
   border: 1px solid #ddd;
@@ -55,9 +70,14 @@
   font-size: 14px;
 }
 
-.form-group textarea {
-  min-height: 80px;
+.form-group2 textarea {
+  height: 100px;
+  width: 300px;
   resize: vertical;
+  border: 1px solid #99ec88;
+  border-radius: 4px;
+  font-size: 14px;
+  
 }
 
 .price-tier-container {
@@ -97,13 +117,16 @@
 
 .small-select {
   width: 60px;
-  margin-left: 5px;
+   margin-right: 10px;
 }
-
+.ejem{
+  margin-left: 10px;
+}
 .checkbox-group {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 8px;
+  
 }
 
 .checkbox-group label {

@@ -209,20 +209,13 @@ const ConfTienda = () => {
     <div className="form-section">
       <h3>Información Básica</h3>
       <div className="form-row">
-        <div className="form-group">
+        <div className="form-group1">
           <label>Nombre del Producto*</label>
           <input type="text" placeholder="Ej: Arroz Orgánico" required />
         </div>
-        <div className="form-group">
+        <div className="form-group1">
           <label>Código de Barras/Referencia</label>
           <input type="text" placeholder="Código único" />
-        </div>
-      </div>
-
-      <div className="form-row">
-        <div className="form-group">
-          <label>Descripción</label>
-          <textarea placeholder="Descripción detallada del producto"></textarea>
         </div>
       </div>
 
@@ -247,6 +240,13 @@ const ConfTienda = () => {
             <option value="procesado">Procesado</option>
             <option value="organico">Orgánico</option>
           </select>
+        </div>
+      </div>
+
+      <div className="form-row">
+        <div className="form-group2">
+          <label>Descripción</label>
+          <textarea placeholder="Descripción detallada del producto"></textarea>
         </div>
       </div>
     </div>
@@ -302,12 +302,7 @@ const ConfTienda = () => {
       <div className="form-row">
         <div className="form-group">
           <label>Peso (opcional)</label>
-          <input type="number" placeholder="Ej: 1.5" />
-          <select className="small-select">
-            <option value="kg">kg</option>
-            <option value="g">g</option>
-            <option value="lb">lb</option>
-          </select>
+          <input className="ejem" type="number" placeholder="Ej: 1.5" />
         </div>
         <div className="form-group">
           <label>Dimensiones (opcional)</label>
@@ -321,6 +316,11 @@ const ConfTienda = () => {
               <option value="cm">cm</option>
               <option value="m">m</option>
             </select>
+            <select className="small-select">
+            <option value="kg">kg</option>
+            <option value="g">gr</option>
+            <option value="lb">lib</option>
+          </select>
           </div>
         </div>
       </div>
@@ -381,8 +381,8 @@ const ConfTienda = () => {
     <div className="method-card">
     <div className="payment-method">
   <div className="method-label">
-    <input type="checkbox" id="med.pag" />
-    <span>Pago en Efectivo</span>
+    <input type="checkbox" id="med" />
+   <label  htmlFor="med">Pago en efectivo</label>
   </div>
 
         
