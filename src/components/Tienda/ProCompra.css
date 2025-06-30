@@ -18,21 +18,24 @@
     border-bottom: 1px solid #eee;
     padding-bottom: 10px;
   }
-  
+
   .payment-method {
-    display: grid;
+    display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 10px;
     
   }
   
   .method-label{
+   display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
     font-weight: 600;
-    margin-bottom: 0;
-    cursor: pointer;
+   }
+   .method-label #med{
+    width: 50px;}
 
-  }
-  
 
   .method-card {
     border: 1px solid #ddd;
@@ -62,12 +65,24 @@
   
   .method-details {
     padding-left: 28px;
-    
+   
   }
   
   .method-details p {
     margin-top: 0;
     color: #666;
+  }
+  .method-options{
+      display: grid;
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+  .form-group{
+    display: grid;
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
   }
   
   .bank-accounts {
@@ -100,7 +115,10 @@
   .option-details {
     margin-top: 10px;
     padding-left: 28px;
-
+  }
+  .form-row{
+    flex-direction: row;
+    justify-content: center;
   }
   .form-actions {
     display: flex;
