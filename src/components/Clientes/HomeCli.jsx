@@ -1,4 +1,4 @@
-import React from 'react';
+
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
@@ -33,7 +33,7 @@ function HomeCli() {
             <Nav className="me-auto my-2 my-lg-0" navbarScroll>
               <Nav.Link className='h' href="#action1">Inicio</Nav.Link>
               <Nav.Link href="#action2">Quienes Somos</Nav.Link>
-              <Nav.Link href="#action3">Tiendas</Nav.Link>
+              <Link to = "/Login"><Nav.Link href="#action3">Tiendas</Nav.Link></Link>
               <Nav.Link href="#action4">Características</Nav.Link>
               <Nav.Link href="#action5">Ayuda</Nav.Link>
               <NavDropdown title="Categoría" id="navbarScrollingDropdown">
