@@ -380,12 +380,11 @@ const ConfTienda = () => {
     <div className="payment-methods">
     <div className="method-card">
     <div className="payment-method">
-  <label className="method-label">
-    <input type="checkbox" checked />
+  <div className="method-label">
+    <input type="checkbox" id="med.pag" />
     <span>Pago en Efectivo</span>
-  </label>
-  <p className="method-description">Pago al momento de recibir el producto</p>
-</div>
+  </div>
+
         
         <div className="method-details">
           <p>Pago al momento de recibir el producto</p>
@@ -396,7 +395,7 @@ const ConfTienda = () => {
           </div>
         </div>
       </div>
-
+  </div>
       <div className="method-card">
         <div className="method-header">
           <input type="checkbox" id="transferencia" />
