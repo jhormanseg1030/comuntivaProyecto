@@ -2,6 +2,8 @@ import './quienSom.css';
 
 function QuienesSomos() {
   return (
+    <>
+    <div className='img'>
     <div className="div">
       <div className="div1">
         <h1>Quiénes Somos</h1>
@@ -15,7 +17,7 @@ function QuienesSomos() {
       <section className="section">
         <h2>Nuestro Propósito</h2>
         <p>
-         Impulsar el desarrollo rural y el comercio justo, brindando una plataforma que visibiliza el trabajo de los campesinos
+        Impulsar el desarrollo rural y el comercio justo, brindando una plataforma que visibiliza el trabajo de los campesinos
         y acerca sus productos frescos y locales a más personas de forma transparente y directa.
         </p>
       </section>
@@ -24,7 +26,7 @@ function QuienesSomos() {
         <div className="qs-card">
           <h3>Misión</h3>
           <p>
-            Facilitar un canal digital seguro, accesible y transparente que fortalezca la economía de los campesinos y pequeños productores,
+            Facilitar un canal digital seguro, accesible y transparente que fortalezca la economía de los campesinos,
             permitiéndoles ofrecer sus productos de manera justa y directa.
           </p>
         </div>
@@ -45,7 +47,7 @@ function QuienesSomos() {
           <li>Sostenibilidad</li>
           <li>Inclusión</li>
           <li>Calidad</li>
-          <li>Respeto por el campo</li>
+          <li>Crompromiso</li>
         </ul>
       </section>
 
@@ -65,7 +67,10 @@ function QuienesSomos() {
         Buscamos ofrecerles un canal directo para mejorar sus ingresos, dignificar su trabajo y motivar a las nuevas generaciones a seguir cultivando la tierra.
         </p>
         </section>
+        
     </div>
+    </div>
+    </>
   );
 }
 
