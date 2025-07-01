@@ -12,6 +12,7 @@ import ConfTienda from './components/Tienda/ConfTienda';
 import HomeTienda from "./components/Tienda/HomeTienda";
 import InicioVendedor from './components/Vendedor/InicioVendedor';
 import QuienesSomos from './components/Quienes somos/quienSom';
+import Carrito from './components/Carrito/carro';
 
 function App() {
   const [Count, SetCount] = useState(0)
@@ -27,8 +28,8 @@ function App() {
         <Route path='/Compra' element={<PagCompra></PagCompra>}></Route>
         <Route path='/Productos' element={<ProductosTienda></ProductosTienda>}></Route>
         <Route path='/Pago' element={<Pago></Pago>}></Route>
-        
-<Route path="/Quienes somos" element={<QuienesSomos></QuienesSomos>} />
+        <Route path='/carrito' element ={<Carrito></Carrito>}></Route>
+        <Route path="/Quienes somos" element={<QuienesSomos></QuienesSomos>} />
       </Routes>
     );
 }
