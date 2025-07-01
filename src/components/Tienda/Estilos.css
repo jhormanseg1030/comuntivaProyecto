@@ -119,6 +119,12 @@ hr {
     padding: 2px 4px;
     border-radius: 4px;
   }
+  .VenCar{
+    position: absolute;
+    color: white;
+    margin-top: 160px;
+    margin-left: 100px;
+  }
 
   .ImagProd{
     width: 100%;
