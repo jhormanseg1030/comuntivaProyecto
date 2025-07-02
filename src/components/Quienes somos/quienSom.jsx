@@ -1,8 +1,42 @@
 import './quienSom.css';
+import logo from '../Imagenes/logo.jpg';
+import { Link } from 'react-router-dom';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import Container from 'react-bootstrap/Container';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 
 function QuienesSomos() {
   return (
     <>
+    <Navbar expand="lg" className="bg-body-tertiary">
+        <Container fluid>
+          <img src={logo} alt="Logo" className="nav-brand"/>
+          <Navbar.Toggle aria-controls="navbarScroll" />
+          <Navbar.Collapse id="navbarScroll">
+            <Nav className="me-auto my-2 my-lg-0" navbarScroll>
+              <Nav.Link className='h' href="#action1">Inicio</Nav.Link>
+              <Nav.Link href="/Quienes somos">Quienes Somos</Nav.Link>
+              <Link to = "/"><Nav.Link href="#action3">Tiendas</Nav.Link></Link>
+              <Nav.Link href="#action4">Características</Nav.Link>
+              <Nav.Link href="#action5">Ayuda</Nav.Link>
+              <NavDropdown title="Categoría" id="navbarScrollingDropdown">
+                <NavDropdown.Item href="#action6">Acción 1</NavDropdown.Item>
+                <NavDropdown.Item href="#action7">Acción 2</NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item href="#action8">Otra opción</NavDropdown.Item>
+              </NavDropdown>
+            </Nav>
+            <Form className="d-flex">
+              <Form.Control type="search" placeholder="Buscar" className="me-2" aria-label="Search" />
+              <Button variant="outline-success">Buscar</Button>
+            </Form>
+          </Navbar.Collapse>
+          <Link className='link1' to= "/Login"> Iniciar Sesión</Link>
+        </Container>
+      </Navbar>
     <div className='img'>
     <div className="div">
       <div className="div1">
