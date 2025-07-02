@@ -1,5 +1,7 @@
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import Pinea from '../imagenes/Pinea.jpg';
+import Col from 'react-bootstrap/Col';
 
 function ModalProduc({show, handleClose}) {
  
@@ -7,11 +9,15 @@ function ModalProduc({show, handleClose}) {
   return (
     <>
       
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose} centered> 
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title className='titulo' >Piña 1 Und</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Woohoo, you are reading this text in a modal!</Modal.Body>
+        <Modal.Body>
+      <Col xs={10} md={6}>
+           <Image className='Img-Big' src={Pinea} rounded />
+          </Col>
+        </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
