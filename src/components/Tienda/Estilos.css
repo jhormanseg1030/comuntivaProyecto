@@ -121,10 +121,10 @@ hr {
   }
   .VenCar{
     position: absolute;
+    top: 160px;
+    right: 10px;    
     color: white;
-    margin-top: 160px;
-    margin-left: 100px;
-  }
+  } 
 
   .ImagProd{
     width: 100%;
@@ -182,4 +182,10 @@ hr {
     border: none;
     cursor: pointer;
     color: black;
+  }
+
+  .btModal {
+    position: absolute;
+    top: 160px;
+    right: 10px;
   }
