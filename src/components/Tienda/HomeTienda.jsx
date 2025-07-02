@@ -1,31 +1,37 @@
-import './Estilos.css'
+import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
+import Carousel from 'react-bootstrap/Carousel';
+import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
+import Image from 'react-bootstrap/Image';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import logo from '../imagenes/DonJuan.jpg';
-import Carousel from 'react-bootstrap/Carousel';
-import Frutas from '../Imagenes/Fruits.jpeg';
-import Zanahoria from '../Imagenes/zanahoria.jpg';
-import Frutas3 from '../Imagenes/Frutas3.jpeg';
 import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Image from 'react-bootstrap/Image';
-import Productos from '../imagenes/verd.png'
-import Camp from '../imagenes/camp.jpg'
-import Camp2 from'../imagenes/camp2.webp'
-import papa from '../imagenes/papa.jpeg'
-import Bultopapa from '../imagenes/bulto-papa.jpg'
-import Pinea from '../imagenes/Pinea.jpg'
-import Banano from '../imagenes/banano.jpg'
-import Arandanos from '../imagenes/Arandanos.jpeg'
-import Papaya from '../imagenes/Papaya.jpg'
-import Accordion from 'react-bootstrap/Accordion';
 import { Link } from 'react-router-dom';
+import Arandanos from '../imagenes/Arandanos.jpeg';
+import Banano from '../imagenes/banano.jpg';
+import Bultopapa from '../imagenes/bulto-papa.jpg';
+import Camp from '../imagenes/camp.jpg';
+import Camp2 from '../imagenes/camp2.webp';
+import logo from '../imagenes/DonJuan.jpg';
+import Frutas from '../Imagenes/Fruits.jpeg';
+import Frutas3 from '../Imagenes/Frutas3.jpeg';
+import papa from '../imagenes/papa.jpeg';
+import Papaya from '../imagenes/Papaya.jpg';
+import Pinea from '../imagenes/Pinea.jpg';
+import Productos from '../imagenes/verd.png';
+import Zanahoria from '../Imagenes/zanahoria.jpg';
+import './Estilos.css';
+import ModalProduc from './ModalProduc';
 
 
 function HomeTienda() {
+
+   const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
     return(
       <>
         <Navbar expand="lg" className="bg-body-tertiary">
@@ -209,25 +215,11 @@ function HomeTienda() {
   <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1zm3.915 10L3.102 4h10.796l-1.313 7zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0m7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
 </svg>
 
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-</button>
+<Button variant="primary" onClick={handleShow}>
+        Launch demo modal
+      </Button>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
+
               <Link to='/Productos'><Image className="ImagProd" src={Pinea}/></Link>
               <p className="descrip">Piña 1und</p>
         <p><span className="oferta">$ 3.654</span> <span className="Precio">$ 5.220</span></p>
@@ -274,6 +266,8 @@ function HomeTienda() {
                     </div>
                 </div>
             </footer>
+
+            <ModalProduc show={show} handleClose={handleClose} ></ModalProduc>
 
     </>
     );
