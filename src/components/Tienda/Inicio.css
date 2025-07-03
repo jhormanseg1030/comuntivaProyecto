@@ -2,11 +2,19 @@
 .inicio-container {
   padding: 20px;
   text-align: left;
+  margin-left: 10px;
+}
+.inicio-container p{
+  font-size: 25px;
+  text-align: left;
+  color: #000000;
+  margin-bottom: 20px;
+  font-weight: 300;
 }
 
 .form-container {
   max-width: 800px;
-  margin: 0 auto;
+  
 }
 
 .form-floating,
