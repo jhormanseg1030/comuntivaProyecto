@@ -10,6 +10,10 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
 import Zanahoria from '../Imagenes/zanahoria.jpg';
+import Carousel from 'react-bootstrap/Carousel';
+import Frutas1 from '../imagenes/Frutas1.jpg'
+import Frutas2 from '../imagenes/Frutas2.jpg'
+import Mercados8 from '../imagenes/Mercados8.jpg';
 import './Verdu.css';
 function Verduras() {
     return (
@@ -26,11 +30,11 @@ function Verduras() {
             <Nav.Link href="#action4">Características</Nav.Link>
             <Nav.Link href="#action5">Ayuda</Nav.Link>
             <NavDropdown title="Categoría" id="navbarScrollingDropdown">
-                <NavDropdown.Item href="#action6">frutas</NavDropdown.Item>
-                <NavDropdown.Item href="#action7">verduras</NavDropdown.Item>
-                <NavDropdown.Item href="#action8">lacteos</NavDropdown.Item>
-                <NavDropdown.Item href="#action9">papa</NavDropdown.Item>
-                <NavDropdown.Item href="#action10">granos</NavDropdown.Item>
+                <NavDropdown.Item href="/Frutas">frutas</NavDropdown.Item>
+                <NavDropdown.Item href="/Verduras">verduras</NavDropdown.Item>
+                <NavDropdown.Item href="/Lacteos">lacteos</NavDropdown.Item>
+                <NavDropdown.Item href="/Papa">papa</NavDropdown.Item>
+                <NavDropdown.Item href="/Grano">granos</NavDropdown.Item>
             </NavDropdown>
             </Nav>
             <Form className="d-flex">
@@ -42,8 +46,40 @@ function Verduras() {
         </Container>
     </Navbar>
 
+ <Carousel className='carusel'>
+        <Carousel.Item>
+          <img className='d-block w-100 carousel-img-full'
+          src={Frutas1}
+          alt='First slider'
+          />
+          <Carousel.Caption>
+            <h3>First slider label</h3>
+            <p>nulla vitae elit libero, a pharetra augue mollis</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item>
+          <img className='d-block w-100 carousel-img-full'
+          src={Frutas2}
+          alt='Second slider'
+          />
+          <Carousel.Caption>
+            <h3>Second slider</h3>
+            <p>alexander anderson, conocido como polvo de angel, un asesino serial de vaticano</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item>
+        <img className='d-block w-100 carousel-img-full'
+          src={Mercados8}
+          alt='Third slider'
+          />
+          <Carousel.Caption>
+            <h3>Third slider</h3>
+            <p>Solo Leveling, anime del protagonista sung jinwoo, tambien conocido monarca de las sombras</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+      </Carousel>
         
-        <Container className='Psp'>
+        <Container className='Uno'>
           <Row>
              <Col xs={12} md={4}>
             <div className="producto-card">

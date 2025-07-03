@@ -9,7 +9,6 @@ import logo from '../Imagenes/logo.jpg';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
-import Arandanos from '../imagenes/Arandanos.jpeg'
 import Banano from '../imagenes/banano.jpg'
 import Papaya from '../imagenes/Papaya.jpg'
 import Pinea from '../imagenes/Pinea.jpg'
@@ -17,6 +16,9 @@ import Carousel from 'react-bootstrap/Carousel';
 import Frutas1 from '../imagenes/Frutas1.jpg'
 import Frutas2 from '../imagenes/Frutas2.jpg'
 import Mercados8 from '../imagenes/Mercados8.jpg';
+import Sandias from '../imagenes/Sandias.jpg';
+import Naranjas from '../imagenes/Naranjas.jpg';
+import Manzanas from '../imagenes/Manzanas.jpg';
 import './Frutas.css';
 function Frutas() {
     return (
@@ -32,12 +34,12 @@ function Frutas() {
             <Nav.Link href="#action3">Tiendas</Nav.Link>
             <Nav.Link href="#action4">Características</Nav.Link>
             <Nav.Link href="#action5">Ayuda</Nav.Link>
-            <NavDropdown title="Categoría" id="navbarScrollingDropdown">
-                <NavDropdown.Item href="#action6">frutas</NavDropdown.Item>
-                <NavDropdown.Item href="#action7">verduras</NavDropdown.Item>
-                <NavDropdown.Item href="#action8">lacteos</NavDropdown.Item>
-                <NavDropdown.Item href="#action9">papa</NavDropdown.Item>
-                <NavDropdown.Item href="#action10">granos</NavDropdown.Item>
+<NavDropdown title="Categoría" id="navbarScrollingDropdown">
+                <NavDropdown.Item href="/Frutas">frutas</NavDropdown.Item>
+                <NavDropdown.Item href="/Verduras">verduras</NavDropdown.Item>
+                <NavDropdown.Item href="/Lacteos">lacteos</NavDropdown.Item>
+                <NavDropdown.Item href="/Papa">papa</NavDropdown.Item>
+                <NavDropdown.Item href="/Grano">granos</NavDropdown.Item>
             </NavDropdown>
             </Nav>
             <Form className="d-flex">
@@ -83,17 +85,6 @@ function Frutas() {
       </Carousel>
         
         <Container className='Psp'>
-          <Row>
-            <Col xs={12} md={4}>
-            <div className="producto-card">
-              <div className="nuevo">Nuevo</div>
-              <div className="desct">-40% OFF</div>
-              <Image className="ImagProd" src={Arandanos}/>
-        <p className="descrip">Arandanos</p>
-        <p><span className="oferta">$ 6.000</span> <span className="Precio">$ 10.000</span></p>
-      </div>
-      </Col>
-
       <Col xs={12} md={4}>
             <div className="producto-card">
               <div className="nuevo">Nuevo</div>
@@ -102,11 +93,25 @@ function Frutas() {
         <p><span className="pre">$ 7.300</span></p>
       </div>
       </Col>
-      </Row>
-      </Container>
+      <Col xs={12} md={4}>
+            <div className="producto-card">
+              <div className="nuevo">Nuevo</div>
+              <Image className="ImagProd" src={Manzanas}/>
+        <p className="descrip">Manzana 1 und</p>
+        <p><span className="pre">$ 7.300</span></p>
+      </div>
+      </Col>
 
-      <Container className='con'>
-          <Row>
+      <Col xs={12} md={4}>
+            <div className="producto-card">
+              <div className="nuevo">Nuevo</div>
+              <Image className="ImagProd" src={Sandias}/>
+        <p className="descrip">Sandia 1 und</p>
+        <p><span className="pre">$ 2.300</span></p>
+      </div>
+      </Col>
+      </Container>
+<Container className='con'>
       <Col xs={12} md={4}>
             <div className="producto-card">
               <div className="popular">Popular</div>
@@ -119,13 +124,22 @@ function Frutas() {
 
       <Col xs={12} md={4}>
             <div className="producto-card">
+              <div className="nuevo">Nuevo</div>
+              <Image className="ImagProd" src={Naranjas}/>
+        <p className="descrip">Naranja 1 und</p>
+        <p><span className="pre">$ 6.000</span></p>
+      </div>
+      </Col>
+
+      <Col xs={12} md={4}>
+            <div className="producto-card">
               <div className="popular">Popular</div>
               <Image className="ImagProd" src={Banano}/>
         <p className="descrip">Banano Criollo 1und</p>
         <p><span className="pre">$ 700</span></p>
       </div>
+      
       </Col>
-      </Row>
       </Container>
 
     
