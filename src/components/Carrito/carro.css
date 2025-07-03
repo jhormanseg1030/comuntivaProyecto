@@ -10,6 +10,32 @@ padding-bottom: 7px;
 .main-content {
 flex: 1;
 padding: 20px;
+display: flex;
+flex-direction: column;
+gap: 20px;
+}
+
+.product-item {
+    width: 100%;
+    max-width: 500px;
+    margin: 10px 0 20px 0;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    font-family: Arial, sans-serif;
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+.product-image {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #f0f0f0;
 }
 
 .cart-container {
