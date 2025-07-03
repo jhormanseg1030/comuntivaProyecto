@@ -13,6 +13,10 @@ import Arandanos from '../imagenes/Arandanos.jpeg'
 import Banano from '../imagenes/banano.jpg'
 import Papaya from '../imagenes/Papaya.jpg'
 import Pinea from '../imagenes/Pinea.jpg'
+import Carousel from 'react-bootstrap/Carousel';
+import Frutas1 from '../imagenes/Frutas1.jpg'
+import Frutas2 from '../imagenes/Frutas2.jpg'
+import Mercados8 from '../imagenes/Mercados8.jpg';
 import './Frutas.css';
 function Frutas() {
     return (
@@ -45,6 +49,38 @@ function Frutas() {
         </Container>
     </Navbar>
 
+      <Carousel className='carusel'>
+        <Carousel.Item>
+          <img className='d-block w-100 carousel-img-full'
+          src={Frutas1}
+          alt='First slider'
+          />
+          <Carousel.Caption>
+            <h3>First slider label</h3>
+            <p>nulla vitae elit libero, a pharetra augue mollis</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item>
+          <img className='d-block w-100 carousel-img-full'
+          src={Frutas2}
+          alt='Second slider'
+          />
+          <Carousel.Caption>
+            <h3>Second slider</h3>
+            <p>alexander anderson, conocido como polvo de angel, un asesino serial de vaticano</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item>
+        <img className='d-block w-100 carousel-img-full'
+          src={Mercados8}
+          alt='Third slider'
+          />
+          <Carousel.Caption>
+            <h3>Third slider</h3>
+            <p>Solo Leveling, anime del protagonista sung jinwoo, tambien conocido monarca de las sombras</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+      </Carousel>
         
         <Container className='Psp'>
           <Row>
