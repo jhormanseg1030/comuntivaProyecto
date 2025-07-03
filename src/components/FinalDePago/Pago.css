@@ -111,6 +111,7 @@ button{
 
 .metodo-pago i {
   font-size: 20px;
+  color: aqua;
 }
 
 .pa button:disabled {

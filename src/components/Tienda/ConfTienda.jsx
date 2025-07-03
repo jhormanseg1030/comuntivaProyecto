@@ -1,14 +1,14 @@
 // src/components/ConfTienda.js
-import React, { useState } from 'react';
-import './ConfTienda.css';
-import logo from '../imagenes/logo.jpg';
-import './Producto.css';
-import './Inicio.css';
-import './ProCompra.css';
-import './Pedidos.css';
-import "./Historial.css";
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import grafica from '../imagenes/grafica.png';
+import logo from '../imagenes/logo.jpg';
+import './ConfTienda.css';
+import "./Historial.css";
+import './Inicio.css';
+import './Pedidos.css';
+import './ProCompra.css';
+import './Producto.css';
 
 const ConfTienda = () => {
   const [contenido, setContenido] = useState('Inicio');
@@ -412,9 +412,11 @@ const ConfTienda = () => {
     </div>
   </div>
 }
+  {contenido === 'General'}
 
 
-          {contenido === 'Promociones' && 
+
+          {contenido === 'Promociones' &&
           <div>
             <h2>Gestionar descuentos y promociones</h2>
             <h5>Nombre del Descuento</h5>
@@ -539,7 +541,20 @@ const ConfTienda = () => {
   </div>
 </div>}
 
-          {contenido === 'Cuenta' && <p>Aquí puedes gestionar la información de tu cuenta.</p>}
+          {contenido === 'Cuenta' && <div>
+            <div className='xd'>
+              <div className='xd2'>
+                <h6 className='ho'>Email</h6>
+                <h6>Nombre</h6>
+                <h6>Apellido</h6>
+                <h6>Rol</h6>
+                <h6>Permisos</h6>
+              </div>
+            </div>
+            <p>Aquí puedes gestionar la información de tu cuenta.</p>
+          </div>
+          
+          }
         </div>
 
 
