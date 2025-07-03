@@ -11,7 +11,11 @@ import SegPrinci from './components/SegPrincipal/SegPrinci';
 import ConfTienda from './components/Tienda/ConfTienda';
 import HomeTienda from "./components/Tienda/HomeTienda";
 import InicioVendedor from './components/Vendedor/InicioVendedor';
-import Frutas from './components/Categoria_Menu/frutas';
+import Frutas from './components/Categoria_Menu/Frutas';
+import Papa from './components/Categoria_Menu/Papa';
+import Lacteos from './components/Categoria_Menu/Lacteos';
+import Verduras from './components/Categoria_Menu/Verduras';
+import Grano from './components/Categoria_Menu/Grano';
 
 function App() {
   const [Count, SetCount] = useState(0)
@@ -28,6 +32,10 @@ function App() {
         <Route path='/Productos' element={<ProductosTienda></ProductosTienda>}></Route>
         <Route path='/Pago' element={<Pago></Pago>}></Route>
         <Route path='/Frutas' element={<Frutas></Frutas>}></Route>
+        <Route path='/Papa' element={<Papa></Papa>}></Route>
+        <Route path='/Lacteos' element={<Lacteos></Lacteos>}></Route>
+        <Route path='/Verduras' element={<Verduras></Verduras>}></Route>
+        <Route path='/Grano' element={<Grano></Grano>}></Route>
       </Routes>
     );
 }

@@ -9,12 +9,9 @@ import logo from '../Imagenes/logo.jpg';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
-import Arandanos from '../imagenes/Arandanos.jpeg'
-import Banano from '../imagenes/banano.jpg'
-import Papaya from '../imagenes/Papaya.jpg'
-import Pinea from '../imagenes/Pinea.jpg'
-import './Frutas.css';
-function Frutas() {
+import Bultopapa from '../imagenes/bulto-papa.jpg'
+import './Pap.css';
+function Papa() {
     return (
     <>
     <Navbar expand="lg" className="bg-body-tertiary">
@@ -48,53 +45,21 @@ function Frutas() {
         
         <Container className='Psp'>
           <Row>
-            <Col xs={12} md={4}>
+               <Col xs={12} md={4}>
             <div className="producto-card">
-              <div className="nuevo">Nuevo</div>
-              <div className="desct">-40% OFF</div>
-              <Image className="ImagProd" src={Arandanos}/>
-        <p className="descrip">Arandanos</p>
-        <p><span className="oferta">$ 6.000</span> <span className="Precio">$ 10.000</span></p>
-      </div>
-      </Col>
-
-      <Col xs={12} md={4}>
-            <div className="producto-card">
-              <div className="nuevo">Nuevo</div>
-              <Image className="ImagProd" src={Papaya}/>
-        <p className="descrip">Papaya 1 und</p>
-        <p><span className="pre">$ 7.300</span></p>
+              <div className="popular">Popular</div>
+              <div className="agotado">Agotado</div>
+              <Image className="ImagProd" src={Bultopapa}/>
+        <p className="descrip">Papa Pastusa</p>
+        <p><span className="pre">$ 30.000</span></p>
       </div>
       </Col>
       </Row>
       </Container>
-
-      <Container className='con'>
-          <Row>
-      <Col xs={12} md={4}>
-            <div className="producto-card">
-              <div className="popular">Popular</div>
-              <div className="desct">-30% OFF</div>
-              <Link to='/Productos'><Image className="ImagProd" src={Pinea}/></Link>
-              <p className="descrip">Piña 1und</p>
-        <p><span className="oferta">$ 3.654</span> <span className="Precio">$ 5.220</span></p>
-      </div>
-      </Col>
-
-      <Col xs={12} md={4}>
-            <div className="producto-card">
-              <div className="popular">Popular</div>
-              <Image className="ImagProd" src={Banano}/>
-        <p className="descrip">Banano Criollo 1und</p>
-        <p><span className="pre">$ 700</span></p>
-      </div>
-      </Col>
-      </Row>
-      </Container>
-
+       
     
     </>
     )
 }
 
-export default Frutas;
+export default Papa;
