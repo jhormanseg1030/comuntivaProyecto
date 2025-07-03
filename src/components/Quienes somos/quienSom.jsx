@@ -37,9 +37,9 @@ function QuienesSomos() {
           <Link className='link1' to= "/Login"> Iniciar Sesión</Link>
         </Container>
       </Navbar>
-    <div className='img'>
-    <div className="div">
-      <div className="div1">
+    <div className='img1'>
+    <div className="div2">
+      <div className="div0">
         <h1>Quiénes Somos</h1>
         <p>
           En <strong>COMUCTIVA</strong> trabajamos para conectar directamente a campesinos y consumidores finales.
