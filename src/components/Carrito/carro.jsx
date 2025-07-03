@@ -7,6 +7,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from 'react-router-dom';
 import logo from '../Imagenes/logo.jpg';
+import Pinea from '../imagenes/Pinea.jpg'
 
 function Carrito () {
     return (
@@ -37,78 +38,69 @@ function Carrito () {
             <Link className='link1' to= "/Login"> Iniciar Sesión </Link>
         </Container>
     </Navbar>
-        <div className="page-container">
+            <div className="page-container">
 
-        <div className="main-content">
-            <h2>Artículos</h2> 
-            <div className="international-item">
-            <div className="item-tag">Promo</div>
-            <h5 className="item-title">
-                Piña dulcesita, recien sacada de la cosecha
-            </h5>
-            <div className="item-color"> verde </div>
-                <div className="item-pricing">
-                <span className="current-price">COP $4.069</span>
-                <span className="original-price">COP $2.000</span>
-            </div>
-            <div className="item-discount"></div>
-            <div className="item-shipping">Envío: 8.000</div>
-            <div className="item-store">Tienda don Juan</div>
-            </div>
-        </div>
-        <div className="cart-container">
-            <h2 className="cart-title">Tu Carrito </h2>
-            <div className="cart-items">
-            <div className="empty-cart-message">
-                <p>Tu carrito no tienen compras en este momento</p>
-            </div>
-        </div>
-        <div className="cart-summary">
-            <div className="summary-row">
-                <span>Envío:</span>
-                <span>0</span>
-            </div>
-            <div className="summary-row">
-                <span>Subtotal:</span>
-                <span>0</span>
-            </div>
-            <div className="summary-row total">
-                <span>Total:</span>
-                <span>0</span>
-            </div>
-            <button className="checkout-button" disabled>Continuar compra</button>
-            </div>
-            <div className="info-sections">
-                <div className="info-section">
-                    <h3 className="info-section-title">Entrega rápida y sin complicaciones </h3>
-                    <ul className="info-section-list">
-                        <li>En este momento no tenemos reembolsos </li>
-                        <li>En este momento no tenemos reembolsos </li>
-                        <li>En este momento no tenemos reembolsos </li>
-                        <li>En este momento no tenemos reembolsos </li>
-                    </ul>
-                </div>
-                
-                <div className="info-section">
-                    <h3 className="info-section-title">Seguridad & Privacidad</h3>
-                    <p className="info-section-text">Pagos seguros - Datos personales seguros</p>
-                </div>
-                
-                <div className="info-section">
-                    <h3 className="info-section-title">Pagos seguros</h3>
-                    <div className="payment-methods">
-                            <strong>NEQUI</strong>
-                            <strong>EFECTY</strong>
-                            <strong>DAVIPLATA</strong>
-                            <strong>PAYPAL</strong>
-                        <div className="payment-method">
-                            <div className="payment-features">
+                <div className="main-content">
+                    <h2>Productos Frescos</h2>
+                    
+                    <div className="product-item">
+                        <img src={Pinea} alt="Piña fresca" className="product-image" />
+                        
+                        <div className="product-content">
+                            <div className="product-tag">Fresco</div>
+                            <h3 className="product-title">Piña Golden Premium</h3>
+                            
+                            <div className="product-details">
+                                Dulce y jugosa, cosechada hoy
                             </div>
+                            
+                            <div>
+                                <span className="product-price">$2.500/kg</span>
+                                
+                                <span className="product-original-price">$3.200/kg</span>
+                            </div>
+                            
+                            <div className="product-shipping">Disponible: 20 unidades</div>
+                            <div className="product-seller">Proveedor: Finca Los Dulces Frutos</div>
                         </div>
                     </div>
-                    <p className="payment-security-text">
-                    Con socios de pago populares tus datos personales están seguros
-                    </p>
+                </div>
+
+                <div className="cart-container">
+                    <h2 className="cart-title">Tu Carrito</h2>
+                    <div className="cart-items">
+                        <div className="empty-cart-message">
+                            <p>Tu carrito está vacío</p>
+                        </div>
+                    </div>
+                    
+                    <div className="cart-summary">
+                        <div className="summary-row">
+                            <span>Envío:</span>
+                            <span>$0</span>
+                        </div>
+                        <div className="summary-row">
+                            <span>Subtotal:</span>
+                            <span>$0</span>
+                        </div>
+                        <div className="summary-row total">
+                            <span>Total:</span>
+                            <span>$0</span>
+                        </div>
+                        <button className="checkout-button" disabled>Continuar compra</button>
+                    </div>
+                    <div className="info-sections">
+                        <div className="info-section">
+                            <h3 className="info-section-title">Entrega garantizada</h3>
+                            <p className="info-section-text">
+                                Productos frescos entregados en máximo 24 horas
+                            </p>
+                    </div>
+                        <div className="info-section">
+                        <h3 className="info-section-title">Métodos de pago</h3>
+                        <p className="info-section-text">
+                                Próximamente disponibles
+                        </p>
                 </div>
             </div>
         </div>
