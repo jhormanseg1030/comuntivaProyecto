@@ -13,13 +13,14 @@ import HomeTienda from "./components/Tienda/HomeTienda";
 import InicioVendedor from './components/Vendedor/InicioVendedor';
 import QuienesSomos from './components/Quienes somos/quienSom';
 import Carrito from './components/Carrito/carro';
+import Inicio_Pag from './components/Inicio/Inicio_Pag';
 
 function App() {
   const [Count, SetCount] = useState(0)
     return(
       <Routes>
         <Route path='/Login' element={<InicioSe></InicioSe>}></Route>
-        <Route path='/' element={<HomeCli></HomeCli>}></Route>
+        <Route path='/Tienda' element={<HomeCli></HomeCli>}></Route>
         <Route path='/TiendaDonJuan' element={<HomeTienda></HomeTienda>}></Route>
         <Route path='/Segunda' element={<SegPrinci></SegPrinci>}></Route>
         <Route path='/Registro' element={<RegistrarUsu></RegistrarUsu>}></Route>
@@ -30,6 +31,7 @@ function App() {
         <Route path='/Pago' element={<Pago></Pago>}></Route>
         <Route path='/carrito' element ={<Carrito></Carrito>}></Route>
         <Route path="/Quienes somos" element={<QuienesSomos></QuienesSomos>} />
+        <Route path='/' element={<Inicio_Pag></Inicio_Pag>}></Route>
       </Routes>
     );
 }
