@@ -6,7 +6,9 @@ import './Producto.css';
 import './Inicio.css';
 import './ProCompra.css';
 import './Pedidos.css';
+import "./Historial.css";
 import { Link } from 'react-router-dom';
+import grafica from '../imagenes/grafica.png';
 
 const ConfTienda = () => {
   const [contenido, setContenido] = useState('Inicio');
@@ -209,20 +211,13 @@ const ConfTienda = () => {
     <div className="form-section">
       <h3>Información Básica</h3>
       <div className="form-row">
-        <div className="form-group">
+        <div className="form-group1">
           <label>Nombre del Producto*</label>
           <input type="text" placeholder="Ej: Arroz Orgánico" required />
         </div>
-        <div className="form-group">
+        <div className="form-group1">
           <label>Código de Barras/Referencia</label>
           <input type="text" placeholder="Código único" />
-        </div>
-      </div>
-
-      <div className="form-row">
-        <div className="form-group">
-          <label>Descripción</label>
-          <textarea placeholder="Descripción detallada del producto"></textarea>
         </div>
       </div>
 
@@ -247,6 +242,13 @@ const ConfTienda = () => {
             <option value="procesado">Procesado</option>
             <option value="organico">Orgánico</option>
           </select>
+        </div>
+      </div>
+
+      <div className="form-row">
+        <div className="form-group2">
+          <label>Descripción</label>
+          <textarea placeholder="Descripción detallada del producto"></textarea>
         </div>
       </div>
     </div>
@@ -302,12 +304,7 @@ const ConfTienda = () => {
       <div className="form-row">
         <div className="form-group">
           <label>Peso (opcional)</label>
-          <input type="number" placeholder="Ej: 1.5" />
-          <select className="small-select">
-            <option value="kg">kg</option>
-            <option value="g">g</option>
-            <option value="lb">lb</option>
-          </select>
+          <input className="ejem" type="number" placeholder="Ej: 1.5" />
         </div>
         <div className="form-group">
           <label>Dimensiones (opcional)</label>
@@ -321,6 +318,11 @@ const ConfTienda = () => {
               <option value="cm">cm</option>
               <option value="m">m</option>
             </select>
+            <select className="small-select">
+            <option value="kg">kg</option>
+            <option value="g">gr</option>
+            <option value="lb">lib</option>
+          </select>
           </div>
         </div>
       </div>
@@ -359,7 +361,64 @@ const ConfTienda = () => {
     </div>
   </div>
 </div>}
-          {contenido === 'Historial' && <p>Aquí puedes ver el historial de tus transacciones.</p>}
+        {contenido === 'Historial' && 
+  <div className="sales-history-container">
+    <div className="div1">
+      <div className="div2">
+        <h2>Ganancias del vendedor</h2>
+        <div className="date-filter">
+          <label htmlFor="start-date">Desde:</label>
+          <input type="date" id="start-date" />
+          <label htmlFor="end-date">Hasta:</label>
+          <input type="date" id="end-date" />
+        </div>
+        <div className="total-sales">
+          <p>Total de Ventas</p>
+          <span>$2.450.000</span>
+        </div>
+      </div>
+
+      <div className="summary-graphic">
+        <img src={grafica} alt="grafica" className="summary-graphic"/>
+      </div>
+    </div>
+
+    <div className="sales-table">
+      <h3>Transacciones recientes</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>29-06-2025</td>
+            <td>Arroz Orgánico</td>
+            <td>3</td>
+            <td>$75.000</td>
+          </tr>
+          <tr>
+            <td>30-06-2025</td>
+            <td>Tomate</td>
+            <td>5</td>
+            <td>$50.000</td>
+          </tr>
+          <tr>
+            <td>30-07-2025</td>
+            <td>Papa Pastusa</td>
+            <td>1</td>
+            <td>$20.000</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+}
+
 
           {contenido === 'Promociones' && 
           <div>
@@ -380,12 +439,11 @@ const ConfTienda = () => {
     <div className="payment-methods">
     <div className="method-card">
     <div className="payment-method">
-  <label className="method-label">
-    <input type="checkbox" checked />
-    <span>Pago en Efectivo</span>
-  </label>
-  <p className="method-description">Pago al momento de recibir el producto</p>
-</div>
+  <div className="method-label">
+    <input type="checkbox" id="med" />
+   <label  htmlFor="med">Pago en efectivo</label>
+  </div>
+
         
         <div className="method-details">
           <p>Pago al momento de recibir el producto</p>
@@ -396,7 +454,7 @@ const ConfTienda = () => {
           </div>
         </div>
       </div>
-
+  </div>
       <div className="method-card">
         <div className="method-header">
           <input type="checkbox" id="transferencia" />

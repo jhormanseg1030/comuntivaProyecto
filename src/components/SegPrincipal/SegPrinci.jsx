@@ -35,8 +35,8 @@ function Segprinci() {
           <Navbar.Collapse id="navbarScroll">
             <Nav className="me-auto my-2 my-lg-0" navbarScroll>
               <Nav.Link href="#action1">Inicio</Nav.Link>
-              <Nav.Link href="#action2">Quienes Somos</Nav.Link>
-              <Nav.Link href="#action3">Tiendas</Nav.Link>
+              <Link to="/Quienes somos"><Nav.Link href="#action2">Quienes Somos</Nav.Link></Link>
+              <Link to="/"><Nav.Link href="#action3">Tiendas</Nav.Link></Link>
               <Nav.Link href="#action4">Características</Nav.Link>
               <Nav.Link href="#action5">Ayuda</Nav.Link>
               <NavDropdown title="Categoría" id="navbarScrollingDropdown">

@@ -4,5 +4,119 @@
     background-color: #ffff;
     width: 55%;
     border: 1px solid black;
-    margin-top: 5px;
+    margin-top: 10px;
 }
+.Pag2{
+    margin: 10px;
+    padding: 10px;
+    background-color: #ffff;
+    width: 55%;
+    border: 1px solid black;
+    margin-top: 10px;
+}
+.Pag3{
+    margin: 10px;
+    padding: 10px;
+    background-color: #ffff;
+    width: 55%;
+    border: 1px solid black;
+    margin-top: 10px;
+
+}
+.Cami{
+    display: flex;
+    align-items:start;
+}
+
+.text{
+    justify-content: right;
+    margin: 15px;
+
+}
+.tex{
+    margin: 15px;
+}   
+.cont1{
+    display: flex;
+    justify-content: right;
+    margin-top: -540px;
+    width: 95%;
+    
+}
+.cont2{
+    border: 1px solid black; 
+}
+.val{
+    display: flex;
+    align-items: end;
+    justify-content: baseline;
+}
+.com{
+    margin-left: 150px;
+}
+.cont3{
+    margin-top: 15px;
+}
+.cont4{
+    margin-top: 15px;
+    display: flex;
+    align-items: end;
+    justify-content: baseline;
+}
+.Valo{
+    margin-left: 110px;
+}
+.pa{
+    margin-top: 15px;
+    display: grid;
+    place-content: center;
+}
+
+button{
+    border-color: green;
+    background-color: #51d18c;
+}
+.Chec{
+    display: grid;
+    place-content: start;
+    margin-top: 10px;
+    gap: 10px;
+}
+
+.metodos-pago {
+  display: flex;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.metodo-pago {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 15px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.metodo-pago:hover {
+  border-color: #4CAF50;
+}
+
+.metodo-pago.seleccionado {
+  border-color: #4CAF50;
+  background-color: #e8f5e9;
+}
+
+.metodo-pago i {
+  font-size: 20px;
+}
+
+.pa button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+
+    /*FOOTER*/

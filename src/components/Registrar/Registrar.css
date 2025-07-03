@@ -23,14 +23,14 @@
     background-color: #f8f9fa;
 }
 
-/* Contenedor del formulario (igual que en login) */
+
 .form-container-expanded {
     width: 100%;
     max-width: 450px;
     margin-left: 30px;
 }
 
-/* Formulario (ajustes mínimos) */
+
 .registration-form {
     background-color: white;
     padding: 1.5rem;
@@ -44,7 +44,7 @@
     text-align: center;
 }
 
-/* Grupos de campos (igual que en login) */
+
 .form-group-expanded {
     margin-bottom: 1.2rem;
 }
@@ -57,7 +57,7 @@
     border-radius: 4px;
 }
 
-/* Pie del formulario (igual que en login) */
+
 .form-footer-expanded {
     display: flex;
     justify-content: space-between;
@@ -65,7 +65,7 @@
     margin-top: 2rem;
 }
 
-/* Botón (mismo estilo que login) */
+
 .submit-btn-expanded {
     padding: 1rem 2rem;
     font-size: 1.1rem;
@@ -81,17 +81,17 @@
     background-color: #00e187;
 }
 
-/* Enlace "¿Ya tienes cuenta?" */
+
 .register-link {
     color: #0066cc;
     text-decoration: none;
     font-size: 0.9rem;
 }
 
-/* Estilo para el select (añadido) */
+
 .expanded-input[type="select"] {
     appearance: none;
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg..."); /* Añade tu icono de flecha */
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg..."); 
     background-repeat: no-repeat;
     background-position: right 1rem center;
 }

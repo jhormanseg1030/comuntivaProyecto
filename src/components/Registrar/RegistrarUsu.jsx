@@ -5,16 +5,15 @@ import imagen1 from '../imagenes/imagen1.jpg'
 
 const RegistrarUsu = () => {
     return (
-        <div className="main-wrapper"> {/* Usamos la misma clase contenedora */}
-            {/* Sección de imagen (igual que en login) */}
+        <div className="main-wrapper"> 
+            
             <div className="image-section">
-                <img src={imagen1} alt="Imagen decorativa de registro" /> {/* Usa tu imagen */}
+                <img src={imagen1} alt="Imagen decorativa de registro" /> 
             </div>
-
-            {/* Sección de formulario (estructura similar a login) */}
+            
             <div className="form-section">
                 <div className="form-container-expanded">
-                    <form className="registration-form"> {/* Cambiado a registration-form */}
+                    <form className="registration-form"> 
                         <h2>Registro de Usuario</h2>
                         
                         <div className="form-group-expanded">
