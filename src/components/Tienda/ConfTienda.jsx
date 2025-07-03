@@ -48,7 +48,7 @@ const ConfTienda = () => {
         <div className="contenido-dinamico">
         {contenido === 'Inicio' && 
 <div className="inicio-container">
-  <p>Aquí puedes ver las tareas para configurar tu tienda.</p>
+  <p>Aquí puedes ver las tareas para configurar tu tienda</p>
   <div className="form-container">
     <div className="form-floating">
       <input type="text" className="form-control" id="floatingPassword" placeholder=""/>
@@ -75,7 +75,7 @@ const ConfTienda = () => {
   <div className="seccion-pedidos">
     {/* Header con filtros y botones */}
     <div className="pedidos-header">
-      <h3>Aquí puedes gestionar tus pedidos.</h3>
+      <h3>Aquí puedes gestionar tus pedidos</h3>
       <div className="controles-pedidos">
         <div className="filtros">
           <input 
@@ -83,20 +83,20 @@ const ConfTienda = () => {
             placeholder="Buscar por cliente o ID..." 
             className="input-busqueda"
           />
-          <select className="select-filtro">
+          <input 
+            type="date" 
+            className="input-fecha"
+          />
+             <select className="select-filtro">
             <option>Todos los estados</option>
             <option>Pendiente</option>
             <option>Procesando</option>
             <option>Enviado</option>
             <option>Entregado</option>
             <option>Cancelado</option>
-          </select>
-          <input 
-            type="date" 
-            className="input-fecha"
-          />
+          </select> 
         </div>
-        <button className="btn-nuevo">
+      <button className="btn-nuevo">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
             <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
           </svg>
@@ -198,13 +198,7 @@ const ConfTienda = () => {
           {contenido === 'Productos' && 
 <div className="productos-container">
   <div className="productos-header">
-    <h3>Gestión de Productos</h3>
-    <button className="btn-add-product">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
-      </svg>
-      Añadir Producto
-    </button>
+    <h3>Aquí puedes gestionar tus productos</h3>
   </div>
 
   <div className="product-form-container">
@@ -432,7 +426,7 @@ const ConfTienda = () => {
 
           {contenido === 'Proceso de compra' && 
 <div className="proceso-compra-container">
-  <h2>Configuración del Proceso de Compra</h2>
+  <h2>Aquí puedes configurar el proceso de compra</h2>
   
   <div className="config-section">
     <h3>Métodos de Pago</h3>
