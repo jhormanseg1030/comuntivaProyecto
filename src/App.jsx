@@ -19,6 +19,7 @@ import Grano from './components/Categoria_Menu/Grano';
 import QuienesSomos from './components/Quienes somos/quienSom';
 import Carrito from './components/Carrito/carro';
 import Inicio_Pag from './components/Inicio/Inicio_Pag';
+import Actu_Clie from './components/Config_Cliente/Actu_Clie';
 
 function App() {
   const [Count, SetCount] = useState(0)
@@ -42,6 +43,7 @@ function App() {
         <Route path='/carrito' element ={<Carrito></Carrito>}></Route>
         <Route path="/Quienes somos" element={<QuienesSomos></QuienesSomos>} />
         <Route path='/' element={<Inicio_Pag></Inicio_Pag>}></Route>
+        <Route path='/Confi_Cliente' element={<Actu_Clie></Actu_Clie>}></Route>
       </Routes>
     );
 }
