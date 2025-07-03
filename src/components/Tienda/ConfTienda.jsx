@@ -417,8 +417,15 @@ const ConfTienda = () => {
           {contenido === 'Promociones' && 
           <div>
             <h2>Gestionar descuentos y promociones</h2>
+            <h5>Nombre del Descuento</h5>
+            <input type="text" />
+            <i class="bi bi-toggle-on"></i>
+            Descuento con cupón
+            <h5>Configura opcionalmenteun código de cupón para activar la promocion</h5>
             <p>Aquí puedes gestionar tus promociones, añade códigos de descuento y descuentos automáticos que se aplican en el pago</p>
             <button>Crear Promociones</button>
+
+            
             </div>}
 
           {contenido === 'Galería' && <p>Aquí puedes gestionar la galería de tu tienda.</p>}
