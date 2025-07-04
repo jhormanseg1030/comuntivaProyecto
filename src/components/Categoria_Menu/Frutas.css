@@ -4,19 +4,13 @@
     margin-left: 40px;
     margin-right: 40px;
 }
-
-.Psp{
-    display:flex;
-    justify-content: center;
+.Unon{
     margin-top: 30px;
     flex-direction: row;
-    gap: 20px;
+    display: flex;
+    gap: 30px;
+    max-width: 2000px;
 }
-.con {
-        display:flex;
-    justify-content: center;
-    margin-top: 30px;
-    flex-direction: row;
-    gap: 20px;
+.row .Unon{
+    max-width: 2000px;
 }
-
