@@ -49,7 +49,7 @@ const ConfTienda = () => {
         {contenido === 'Inicio' && 
 <div className="inicio-container">
   <p>Aquí puedes ver las tareas para configurar tu tienda</p>
-  <div className="form-container">
+  <div className="form-container1">
     <div className="form-floating">
       <input type="text" className="form-control" id="floatingPassword" placeholder=""/>
       <label htmlFor="floatingPassword">Asignar un Nombre a tu Tienda</label>
@@ -439,7 +439,7 @@ const ConfTienda = () => {
   
   <div className="config-section">
     <h3>Métodos de Pago</h3>
-    <div className="payment-methods">
+    <div className="payment-methods1">
     <div className="method-card">
     <div className="payment-method">
   <div className="method-label">
@@ -515,7 +515,7 @@ const ConfTienda = () => {
           <input type="checkbox" /> Envío a domicilio
         </label>
         <div className="option-details">
-          <div className="form-row">
+          <div className="form-row1">
             <div className="form-group">
               <label>Costo de envío base:</label>
               <input type="number" placeholder="Valor fijo" />
