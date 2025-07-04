@@ -1,26 +1,37 @@
 
 .Fondo{
+  background-image: url('../imagenes/Agricul.jpg');
   width: 100%;
   height: 100vh;
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center; /* Centra la imagen */
+  background-position: center;
+  filter: blur(0px);
+  align-content: center;
+  justify-content: center;
+  
 }
 .Perfil-container {
   font-family: 'Times New Roman', Times, serif;
   max-width: 400px;
   margin: 0 auto;
   padding: 20px;
-  background-color: #86ee86;
+  background-color: #ccd4ccd8;
+  background-position: 10px;
   border-radius: 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  float: inherit;
+  filter: blur(0px);
+
+  
 }
 
-.profile-header {
+.perfil-header {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
+  
 }
 
 .name {
@@ -29,7 +40,7 @@
 }
 
 
-.profile-content {
+.perfil-content {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -37,7 +48,7 @@
   margin-bottom: 30px;
 }
 
-.profile-pic {
+.perfil-pic {
   width: 100px;
   height: 100px;
   border-radius: 50%;
@@ -47,24 +58,24 @@
   justify-content: center;
 }
 
-.profile-image {
+.perfil-image {
   width: 100%;
   height: 100%;
   object-fit: cover; /* Para que la imagen cubra todo el espacio sin deformarse */
 }
 
-.profile-info {
+.perfil-info {
   width: 100%;
 }
 
-.profile-name {
+.perfil-name {
   text-align: center;
   margin-bottom: 20px;
   color: #070000;
 }
 
 .info-section {
-  background-color: rgb(207, 241, 199);
+  background-color:#d0dad028;
   padding: 15px;
   border-radius: 8px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
@@ -94,7 +105,7 @@
 }
 
 .send-button {
-  background-color: #d9e1e7;
+  background-color: #d9e1e76c;
   color: rgb(14, 9, 9);
   border: none;
   border-radius: 20px;
