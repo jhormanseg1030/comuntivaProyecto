@@ -1,25 +1,25 @@
-import React from 'react';
-import './Perfi.css';
 import perfil from '../imagenes/perfil.png';
-
+import './Perfi.css';
 const Perfil = () => {
   return (
+    <div className='Fondo'>
+    <div>
     <div className="Perfil-container">
-      <div className="profile-header">
+      <div className="perfil-header">
             <span className="name">Joe Hernandez</span>
       </div>
 
-      <div className="profile-content">
-        <div className="profile-pic">
+      <div className="perfil-content">
+        <div className="perfil-pic">
           <img 
             src={perfil} 
-            alt="Profile" 
-            className="profile-image"
+            alt="Perfill" 
+            className="perfil-image"
           />
         </div>
         
-        <div className="profile-info">
-          <h2 className="profile-name">Joe Hernandez</h2>
+        <div className="perfil-info">
+          <h2 className="perfil-name">Joe Hernandez</h2>
           
           <div className="info-section">
             <div className="info-row">
@@ -36,7 +36,7 @@ const Perfil = () => {
             </div>
             <div className='info-row'>
               <span className="info-label">Tipo de Documento:</span>
-              <span className="info-value">C.c</span>
+              <span className="info-value">C.C</span>
             </div>
             <div className='info-row'>
               <span className="info-label">Numero de Documento:</span>
@@ -47,8 +47,13 @@ const Perfil = () => {
       </div>
 
       <div className="Sal">
-        <button className="send-button">Volver</button>
+
+    <button className="send-button" onClick={() => window.location.href = "/Segunda"}>Volver</button>
+  
+
       </div>
+    </div>
+    </div>
     </div>
   );
 };
