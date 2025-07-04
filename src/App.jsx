@@ -11,6 +11,11 @@ import SegPrinci from './components/SegPrincipal/SegPrinci';
 import ConfTienda from './components/Tienda/ConfTienda';
 import HomeTienda from "./components/Tienda/HomeTienda";
 import InicioVendedor from './components/Vendedor/InicioVendedor';
+import Frutas from './components/Categoria_Menu/Frutas';
+import Papa from './components/Categoria_Menu/Papa';
+import Lacteos from './components/Categoria_Menu/Lacteos';
+import Verduras from './components/Categoria_Menu/Verduras';
+import Grano from './components/Categoria_Menu/Grano';
 import QuienesSomos from './components/Quienes somos/quienSom';
 import Carrito from './components/Carrito/carro';
 import Inicio_Pag from './components/Inicio/Inicio_Pag';
@@ -30,6 +35,11 @@ function App() {
         <Route path='/Compra' element={<PagCompra></PagCompra>}></Route>
         <Route path='/Productos' element={<ProductosTienda></ProductosTienda>}></Route>
         <Route path='/Pago' element={<Pago></Pago>}></Route>
+        <Route path='/Frutas' element={<Frutas></Frutas>}></Route>
+        <Route path='/Papa' element={<Papa></Papa>}></Route>
+        <Route path='/Lacteos' element={<Lacteos></Lacteos>}></Route>
+        <Route path='/Verduras' element={<Verduras></Verduras>}></Route>
+        <Route path='/Grano' element={<Grano></Grano>}></Route>
         <Route path='/carrito' element ={<Carrito></Carrito>}></Route>
         <Route path="/Quienes somos" element={<QuienesSomos></QuienesSomos>} />
         <Route path='/' element={<Inicio_Pag></Inicio_Pag>}></Route>

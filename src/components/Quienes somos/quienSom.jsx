@@ -23,11 +23,12 @@ function QuienesSomos() {
               <Nav.Link href="#action4">Características</Nav.Link>
               <Nav.Link href="#action5">Ayuda</Nav.Link>
               <NavDropdown title="Categoría" id="navbarScrollingDropdown">
-                <NavDropdown.Item href="#action6">Acción 1</NavDropdown.Item>
-                <NavDropdown.Item href="#action7">Acción 2</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action8">Otra opción</NavDropdown.Item>
-              </NavDropdown>
+                <NavDropdown.Item href="/Frutas">frutas</NavDropdown.Item>
+                <NavDropdown.Item href="/Verduras">verduras</NavDropdown.Item>
+                <NavDropdown.Item href="/Lacteos">lacteos</NavDropdown.Item>
+                <NavDropdown.Item href="/Papa">papa</NavDropdown.Item>
+                <NavDropdown.Item href="/Grano">granos</NavDropdown.Item>
+            </NavDropdown>
             </Nav>
             <Form className="d-flex">
               <Form.Control type="search" placeholder="Buscar" className="me-2" aria-label="Search" />
@@ -37,9 +38,9 @@ function QuienesSomos() {
           <Link className='link1' to= "/Login"> Iniciar Sesión</Link>
         </Container>
       </Navbar>
-    <div className='img'>
-    <div className="div">
-      <div className="div1">
+    <div className='img1'>
+    <div className="div2">
+      <div className="div0">
         <h1>Quiénes Somos</h1>
         <p>
           En <strong>COMUCTIVA</strong> trabajamos para conectar directamente a campesinos y consumidores finales.
