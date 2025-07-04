@@ -204,7 +204,7 @@ const ConfTienda = () => {
   <div className="product-form-container">
     <div className="form-section">
       <h3>Información Básica</h3>
-      <div className="form-row">
+      <div className="form-row2">
         <div className="form-group1">
           <label>Nombre del Producto*</label>
           <input type="text" placeholder="Ej: Arroz Orgánico" required />
@@ -215,7 +215,7 @@ const ConfTienda = () => {
         </div>
       </div>
 
-      <div className="form-row">
+      <div className="form-row2">
         <div className="form-group">
           <label>Categoría*</label>
           <select required>
@@ -239,7 +239,7 @@ const ConfTienda = () => {
         </div>
       </div>
 
-      <div className="form-row">
+      <div className="form-row2">
         <div className="form-group2">
           <label>Descripción</label>
           <textarea placeholder="Descripción detallada del producto"></textarea>
@@ -249,7 +249,7 @@ const ConfTienda = () => {
 
     <div className="form-section">
       <h3>Precio y Unidades</h3>
-      <div className="form-row">
+      <div className="form-row2">
         <div className="form-group">
           <label>Unidad de Medida*</label>
           <select required>
@@ -267,7 +267,7 @@ const ConfTienda = () => {
         </div>
       </div>
 
-      <div className="form-row">
+      <div className="form-row2">
         <div className="form-group">
           <label>Precio por Mayor (opcional)</label>
           <div className="price-tier-container">
@@ -284,7 +284,7 @@ const ConfTienda = () => {
 
     <div className="form-section">
       <h3>Inventario y Logística</h3>
-      <div className="form-row">
+      <div className="form-row2">
         <div className="form-group">
           <label>Cantidad en Stock*</label>
           <input type="number" placeholder="Ej: 100" required />
@@ -295,7 +295,7 @@ const ConfTienda = () => {
         </div>
       </div>
 
-      <div className="form-row">
+      <div className="form-row2">
         <div className="form-group">
           <label>Peso (opcional)</label>
           <input className="ejem" type="number" placeholder="Ej: 1.5" />
@@ -321,7 +321,7 @@ const ConfTienda = () => {
         </div>
       </div>
 
-      <div className="form-row">
+      <div className="form-row2">
         <div className="form-group">
           <label>Método de Envío</label>
           <div className="checkbox-group">

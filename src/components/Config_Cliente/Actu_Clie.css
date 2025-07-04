@@ -23,8 +23,7 @@ body {
     margin-bottom: 40px; 
 }
 
-
-.form-row {
+.form-row{
     display: flex;
     flex-wrap: wrap;
     margin: 0 -10px; 
