@@ -14,6 +14,7 @@ import Carousel from 'react-bootstrap/Carousel';
 import Frutas1 from '../imagenes/Frutas1.jpg'
 import Frutas2 from '../imagenes/Frutas2.jpg'
 import Mercados8 from '../imagenes/Mercados8.jpg';
+import Papas from '../imagenes/Papas.jpg';
 import './Pap.css';
 function Papa() {
     return (
@@ -24,11 +25,11 @@ function Papa() {
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
             <Nav className="me-auto my-2 my-lg-0" navbarScroll>
-            <Nav.Link className='h' href="#action1">Inicio</Nav.Link>
-            <Nav.Link href="#action2">Quienes Somos</Nav.Link>
-            <Nav.Link href="#action3">Tiendas</Nav.Link>
-            <Nav.Link href="#action4">Características</Nav.Link>
-            <Nav.Link href="#action5">Ayuda</Nav.Link>
+                          <Nav.Link className='h' href="#action1">Inicio</Nav.Link>
+                          <Nav.Link href="/Quienes somos">Quienes Somos</Nav.Link>
+                          <Link to = "/"><Nav.Link href="#action3">Tiendas</Nav.Link></Link>
+                          <Nav.Link href="#action4">Características</Nav.Link>
+                          <Nav.Link href="#action5">Ayuda</Nav.Link>
             <NavDropdown title="Categoría" id="navbarScrollingDropdown">
                 <NavDropdown.Item href="/Frutas">frutas</NavDropdown.Item>
                 <NavDropdown.Item href="/Verduras">verduras</NavDropdown.Item>
@@ -79,15 +80,25 @@ function Papa() {
         </Carousel.Item>
       </Carousel>
         
-        <Container className='Psp'>
-          <Row>
+        <Container className='Un'>
+          <Row className='lort'>
                <Col xs={12} md={4}>
-            <div className="producto-card">
+            <div className="producto-ca">
               <div className="popular">Popular</div>
               <div className="agotado">Agotado</div>
-              <Image className="ImagProd" src={Bultopapa}/>
+              <Image className="ImagPr" src={Bultopapa}/>
         <p className="descrip">Papa Pastusa</p>
         <p><span className="pre">$ 30.000</span></p>
+      </div>
+      </Col>
+
+              <Col xs={12} md={4}>
+            <div className="producto-ca">
+              <div className="popular">Popular</div>
+              <div className="agotado">Agotado</div>
+              <Image className="ImagPr" src={Papas}/>
+        <p className="descrip">Papas bulto</p>
+        <p><span className="pre">$ 60.000</span></p>
       </div>
       </Col>
       </Row>

@@ -28,12 +28,12 @@ function Frutas() {
         <img src={logo} alt="Logo" className="nav-brand"/>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
-            <Nav className="me-auto my-2 my-lg-0" navbarScroll>
-            <Nav.Link className='h' href="#action1">Inicio</Nav.Link>
-            <Nav.Link href="#action2">Quienes Somos</Nav.Link>
-            <Nav.Link href="#action3">Tiendas</Nav.Link>
-            <Nav.Link href="#action4">Características</Nav.Link>
-            <Nav.Link href="#action5">Ayuda</Nav.Link>
+           <Nav className="me-auto my-2 my-lg-0" navbarScroll>
+                         <Nav.Link className='h' href="#action1">Inicio</Nav.Link>
+                         <Nav.Link href="/Quienes somos">Quienes Somos</Nav.Link>
+                         <Link to = "/"><Nav.Link href="#action3">Tiendas</Nav.Link></Link>
+                         <Nav.Link href="#action4">Características</Nav.Link>
+                         <Nav.Link href="#action5">Ayuda</Nav.Link>
 <NavDropdown title="Categoría" id="navbarScrollingDropdown">
                 <NavDropdown.Item href="/Frutas">frutas</NavDropdown.Item>
                 <NavDropdown.Item href="/Verduras">verduras</NavDropdown.Item>
@@ -84,9 +84,10 @@ function Frutas() {
         </Carousel.Item>
       </Carousel>
         
-        <Container className='Psp'>
+        <Container className='Unon'>
+          <Row>
       <Col xs={12} md={4}>
-            <div className="producto-card">
+            <div className="producto">
               <div className="nuevo">Nuevo</div>
               <Image className="ImagProd" src={Papaya}/>
         <p className="descrip">Papaya 1 und</p>
@@ -94,26 +95,25 @@ function Frutas() {
       </div>
       </Col>
       <Col xs={12} md={4}>
-            <div className="producto-card">
+            <div className="producto">
               <div className="nuevo">Nuevo</div>
               <Image className="ImagProd" src={Manzanas}/>
-        <p className="descrip">Manzana 1 und</p>
+        <p className="descrip">Manzana 1 und"</p>
         <p><span className="pre">$ 7.300</span></p>
       </div>
       </Col>
 
       <Col xs={12} md={4}>
-            <div className="producto-card">
+            <div className="producto">
               <div className="nuevo">Nuevo</div>
               <Image className="ImagProd" src={Sandias}/>
         <p className="descrip">Sandia 1 und</p>
         <p><span className="pre">$ 2.300</span></p>
       </div>
       </Col>
-      </Container>
-<Container className='con'>
+      
       <Col xs={12} md={4}>
-            <div className="producto-card">
+            <div className="producto">
               <div className="popular">Popular</div>
               <div className="desct">-30% OFF</div>
               <Link to='/Productos'><Image className="ImagProd" src={Pinea}/></Link>
@@ -123,7 +123,7 @@ function Frutas() {
       </Col>
 
       <Col xs={12} md={4}>
-            <div className="producto-card">
+            <div className="producto">
               <div className="nuevo">Nuevo</div>
               <Image className="ImagProd" src={Naranjas}/>
         <p className="descrip">Naranja 1 und</p>
@@ -132,7 +132,7 @@ function Frutas() {
       </Col>
 
       <Col xs={12} md={4}>
-            <div className="producto-card">
+            <div className="producto">
               <div className="popular">Popular</div>
               <Image className="ImagProd" src={Banano}/>
         <p className="descrip">Banano Criollo 1und</p>
@@ -140,6 +140,7 @@ function Frutas() {
       </div>
       
       </Col>
+      </Row>
       </Container>
 
     
