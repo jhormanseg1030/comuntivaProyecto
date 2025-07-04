@@ -12,7 +12,13 @@
     flex-wrap: wrap;
     gap: 15px;
   }
-  
+  .pedidos-header h3{
+    font-size: 25px;
+    text-align:left;
+    color: #000000;
+    margin-bottom: 25px;
+    font-weight: 300;
+  }
   .controles-pedidos {
     display: flex;
     gap: 15px;

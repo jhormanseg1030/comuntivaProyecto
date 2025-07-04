@@ -3,6 +3,13 @@
     padding: 20px;
     text-align: left;
   }
+  .proceso-compra-container h2{
+     font-size: 25px;
+  text-align: left;
+  color: #000000;
+  margin-bottom: 20px;
+  font-weight: 300;
+  }
   
   .config-section {
     margin-bottom: 30px;
@@ -18,25 +25,43 @@
     border-bottom: 1px solid #eee;
     padding-bottom: 10px;
   }
-  
-  .payment-methods {
+
+  .payment-method {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 10px;
+    
   }
   
+  .method-label{
+   display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    font-weight: 600;
+   }
+   .method-label #med{
+    width: 50px;}
+
+
   .method-card {
     border: 1px solid #ddd;
     border-radius: 8px;
     padding: 15px;
     background: #f9f9f9;
-  }
   
+  }
+  .method-card #tarjeta{
+    width: 50px;
+  }
   .method-header {
     display: flex;
     align-items: center;
     gap: 10px;
     margin-bottom: 10px;
+  }
+  .method-header #transferencia{
+    width: 50px;
   }
   
   .method-header label {
@@ -47,11 +72,24 @@
   
   .method-details {
     padding-left: 28px;
+   
   }
   
   .method-details p {
     margin-top: 0;
     color: #666;
+  }
+  .method-options{
+      display: grid;
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+  .form-group{
+    display: grid;
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
   }
   
   .bank-accounts {
@@ -85,6 +123,10 @@
     margin-top: 10px;
     padding-left: 28px;
   }
+  .form-row1{
+    flex-direction: row;
+    justify-content: center;
+  }
   .form-actions {
     display: flex;
     justify-content: flex-end;
@@ -108,3 +150,4 @@
     border-radius: 4px;
     cursor: pointer;
   }
+ 

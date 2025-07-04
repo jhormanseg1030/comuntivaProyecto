@@ -6,17 +6,12 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from 'react-router-dom';
 import logo from '../Imagenes/logo.jpg';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Image from 'react-bootstrap/Image';
-import Bultopapa from '../imagenes/bulto-papa.jpg'
 import Carousel from 'react-bootstrap/Carousel';
 import Frutas1 from '../imagenes/Frutas1.jpg'
 import Frutas2 from '../imagenes/Frutas2.jpg'
 import Mercados8 from '../imagenes/Mercados8.jpg';
-import Papas from '../imagenes/Papas.jpg';
-import './Pap.css';
-function Papa() {
+import './Gran.css';
+function Grano() {
     return (
     <>
     <Navbar expand="lg" className="bg-body-tertiary">
@@ -47,67 +42,43 @@ function Papa() {
         </Container>
     </Navbar>
 
- <Carousel className='carusel'>
+<Carousel className='carusel'>
         <Carousel.Item>
-          <img className='d-block w-100 carousel-img-full'
-          src={Frutas1}
-          alt='First slider'
-          />
-          <Carousel.Caption>
+        <img className='d-block w-100 carousel-img-full'
+        src={Frutas1}
+        alt='First slider'
+        />
+        <Carousel.Caption>
             <h3>First slider label</h3>
             <p>nulla vitae elit libero, a pharetra augue mollis</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item>
-          <img className='d-block w-100 carousel-img-full'
-          src={Frutas2}
-          alt='Second slider'
-          />
-          <Carousel.Caption>
-            <h3>Second slider</h3>
-            <p>alexander anderson, conocido como polvo de angel, un asesino serial de vaticano</p>
-          </Carousel.Caption>
+        </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
         <img className='d-block w-100 carousel-img-full'
-          src={Mercados8}
-          alt='Third slider'
-          />
-          <Carousel.Caption>
+        src={Frutas2}
+        alt='Second slider'
+        />
+        <Carousel.Caption>
+            <h3>Second slider</h3>
+            <p>alexander anderson, conocido como polvo de angel, un asesino serial de vaticano</p>
+        </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item>
+        <img className='d-block w-100 carousel-img-full'
+        src={Mercados8}
+        alt='Third slider'
+        />
+        <Carousel.Caption>
             <h3>Third slider</h3>
             <p>Solo Leveling, anime del protagonista sung jinwoo, tambien conocido monarca de las sombras</p>
-          </Carousel.Caption>
+        </Carousel.Caption>
         </Carousel.Item>
-      </Carousel>
-        
-        <Container className='Un'>
-          <Row className='lort'>
-               <Col xs={12} md={4}>
-            <div className="producto-ca">
-              <div className="popular">Popular</div>
-              <div className="agotado">Agotado</div>
-              <Image className="ImagPr" src={Bultopapa}/>
-        <p className="descrip">Papa Pastusa</p>
-        <p><span className="pre">$ 30.000</span></p>
-      </div>
-      </Col>
-
-              <Col xs={12} md={4}>
-            <div className="producto-ca">
-              <div className="popular">Popular</div>
-              <div className="agotado">Agotado</div>
-              <Image className="ImagP" src={Papas}/>
-              <Image className="ImagPr" src={Papas}/>
-        <p className="descrip">Papas bulto</p>
-        <p><span className="pre">$ 60.000</span></p>
-      </div>
-      </Col>
-      </Row>
-      </Container>
-       
-    
-    </>
+    </Carousel>
+    <div className='Texto'>
+        <h3>No hay granos disponibles en la lista</h3>
+        </div>
+</>
     )
 }
 
-export default Papa;
+export default Grano;

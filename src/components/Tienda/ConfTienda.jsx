@@ -1,12 +1,14 @@
 // src/components/ConfTienda.js
-import React, { useState } from 'react';
-import './ConfTienda.css';
-import logo from '../imagenes/logo.jpg';
-import './Producto.css';
-import './Inicio.css';
-import './ProCompra.css';
-import './Pedidos.css';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import grafica from '../imagenes/grafica.png';
+import logo from '../imagenes/logo.jpg';
+import './ConfTienda.css';
+import "./Historial.css";
+import './Inicio.css';
+import './Pedidos.css';
+import './ProCompra.css';
+import './Producto.css';
 
 const ConfTienda = () => {
   const [contenido, setContenido] = useState('Inicio');
@@ -46,8 +48,8 @@ const ConfTienda = () => {
         <div className="contenido-dinamico">
         {contenido === 'Inicio' && 
 <div className="inicio-container">
-  <p>Aquí puedes ver las tareas para configurar tu tienda.</p>
-  <div className="form-container">
+  <p>Aquí puedes ver las tareas para configurar tu tienda</p>
+  <div className="form-container1">
     <div className="form-floating">
       <input type="text" className="form-control" id="floatingPassword" placeholder=""/>
       <label htmlFor="floatingPassword">Asignar un Nombre a tu Tienda</label>
@@ -73,7 +75,7 @@ const ConfTienda = () => {
   <div className="seccion-pedidos">
     {/* Header con filtros y botones */}
     <div className="pedidos-header">
-      <h3>Aquí puedes gestionar tus pedidos.</h3>
+      <h3>Aquí puedes gestionar tus pedidos</h3>
       <div className="controles-pedidos">
         <div className="filtros">
           <input 
@@ -81,20 +83,20 @@ const ConfTienda = () => {
             placeholder="Buscar por cliente o ID..." 
             className="input-busqueda"
           />
-          <select className="select-filtro">
+          <input 
+            type="date" 
+            className="input-fecha"
+          />
+             <select className="select-filtro">
             <option>Todos los estados</option>
             <option>Pendiente</option>
             <option>Procesando</option>
             <option>Enviado</option>
             <option>Entregado</option>
             <option>Cancelado</option>
-          </select>
-          <input 
-            type="date" 
-            className="input-fecha"
-          />
+          </select> 
         </div>
-        <button className="btn-nuevo">
+      <button className="btn-nuevo">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
             <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
           </svg>
@@ -196,37 +198,24 @@ const ConfTienda = () => {
           {contenido === 'Productos' && 
 <div className="productos-container">
   <div className="productos-header">
-    <h3>Gestión de Productos</h3>
-    <button className="btn-add-product">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
-      </svg>
-      Añadir Producto
-    </button>
+    <h3>Aquí puedes gestionar tus productos</h3>
   </div>
 
   <div className="product-form-container">
     <div className="form-section">
       <h3>Información Básica</h3>
-      <div className="form-row">
-        <div className="form-group">
+      <div className="form-row2">
+        <div className="form-group1">
           <label>Nombre del Producto*</label>
           <input type="text" placeholder="Ej: Arroz Orgánico" required />
         </div>
-        <div className="form-group">
+        <div className="form-group1">
           <label>Código de Barras/Referencia</label>
           <input type="text" placeholder="Código único" />
         </div>
       </div>
 
-      <div className="form-row">
-        <div className="form-group">
-          <label>Descripción</label>
-          <textarea placeholder="Descripción detallada del producto"></textarea>
-        </div>
-      </div>
-
-      <div className="form-row">
+      <div className="form-row2">
         <div className="form-group">
           <label>Categoría*</label>
           <select required>
@@ -249,11 +238,18 @@ const ConfTienda = () => {
           </select>
         </div>
       </div>
+
+      <div className="form-row2">
+        <div className="form-group2">
+          <label>Descripción</label>
+          <textarea placeholder="Descripción detallada del producto"></textarea>
+        </div>
+      </div>
     </div>
 
     <div className="form-section">
       <h3>Precio y Unidades</h3>
-      <div className="form-row">
+      <div className="form-row2">
         <div className="form-group">
           <label>Unidad de Medida*</label>
           <select required>
@@ -271,7 +267,7 @@ const ConfTienda = () => {
         </div>
       </div>
 
-      <div className="form-row">
+      <div className="form-row2">
         <div className="form-group">
           <label>Precio por Mayor (opcional)</label>
           <div className="price-tier-container">
@@ -288,7 +284,7 @@ const ConfTienda = () => {
 
     <div className="form-section">
       <h3>Inventario y Logística</h3>
-      <div className="form-row">
+      <div className="form-row2">
         <div className="form-group">
           <label>Cantidad en Stock*</label>
           <input type="number" placeholder="Ej: 100" required />
@@ -299,15 +295,10 @@ const ConfTienda = () => {
         </div>
       </div>
 
-      <div className="form-row">
+      <div className="form-row2">
         <div className="form-group">
           <label>Peso (opcional)</label>
-          <input type="number" placeholder="Ej: 1.5" />
-          <select className="small-select">
-            <option value="kg">kg</option>
-            <option value="g">g</option>
-            <option value="lb">lb</option>
-          </select>
+          <input className="ejem" type="number" placeholder="Ej: 1.5" />
         </div>
         <div className="form-group">
           <label>Dimensiones (opcional)</label>
@@ -321,11 +312,16 @@ const ConfTienda = () => {
               <option value="cm">cm</option>
               <option value="m">m</option>
             </select>
+            <select className="small-select">
+            <option value="kg">kg</option>
+            <option value="g">gr</option>
+            <option value="lb">lib</option>
+          </select>
           </div>
         </div>
       </div>
 
-      <div className="form-row">
+      <div className="form-row2">
         <div className="form-group">
           <label>Método de Envío</label>
           <div className="checkbox-group">
@@ -359,13 +355,79 @@ const ConfTienda = () => {
     </div>
   </div>
 </div>}
-          {contenido === 'Historial' && <p>Aquí puedes ver el historial de tus transacciones.</p>}
+        {contenido === 'Historial' && 
+  <div className="sales-history-container">
+    <div className="div1">
+      <div className="div2">
+        <h2>Ganancias del vendedor</h2>
+        <div className="date-filter">
+          <label htmlFor="start-date">Desde:</label>
+          <input type="date" id="start-date" />
+          <label htmlFor="end-date">Hasta:</label>
+          <input type="date" id="end-date" />
+        </div>
+        <div className="total-sales">
+          <p>Total de Ventas</p>
+          <span>$2.450.000</span>
+        </div>
+      </div>
 
-          {contenido === 'Promociones' && 
+      <div className="summary-graphic">
+        <img src={grafica} alt="grafica" className="summary-graphic"/>
+      </div>
+    </div>
+
+    <div className="sales-table">
+      <h3>Transacciones recientes</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>29-06-2025</td>
+            <td>Arroz Orgánico</td>
+            <td>3</td>
+            <td>$75.000</td>
+          </tr>
+          <tr>
+            <td>30-06-2025</td>
+            <td>Tomate</td>
+            <td>5</td>
+            <td>$50.000</td>
+          </tr>
+          <tr>
+            <td>30-07-2025</td>
+            <td>Papa Pastusa</td>
+            <td>1</td>
+            <td>$20.000</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+}
+  {contenido === 'General'}
+
+
+
+          {contenido === 'Promociones' &&
           <div>
             <h2>Gestionar descuentos y promociones</h2>
+            <h5>Nombre del Descuento</h5>
+            <input type="text" />
+            <i class="bi bi-toggle-on"></i>
+            Descuento con cupón
+            <h5>Configura opcionalmenteun código de cupón para activar la promocion</h5>
             <p>Aquí puedes gestionar tus promociones, añade códigos de descuento y descuentos automáticos que se aplican en el pago</p>
             <button>Crear Promociones</button>
+
+            
             </div>}
 
           {contenido === 'Galería' && <p>Aquí puedes gestionar la galería de tu tienda.</p>}
@@ -373,19 +435,18 @@ const ConfTienda = () => {
 
           {contenido === 'Proceso de compra' && 
 <div className="proceso-compra-container">
-  <h2>Configuración del Proceso de Compra</h2>
+  <h2>Aquí puedes configurar el proceso de compra</h2>
   
   <div className="config-section">
     <h3>Métodos de Pago</h3>
-    <div className="payment-methods">
+    <div className="payment-methods1">
     <div className="method-card">
     <div className="payment-method">
-  <label className="method-label">
-    <input type="checkbox" checked />
-    <span>Pago en Efectivo</span>
-  </label>
-  <p className="method-description">Pago al momento de recibir el producto</p>
-</div>
+  <div className="method-label">
+    <input type="checkbox" id="med" />
+   <label  htmlFor="med">Pago en efectivo</label>
+  </div>
+
         
         <div className="method-details">
           <p>Pago al momento de recibir el producto</p>
@@ -396,7 +457,7 @@ const ConfTienda = () => {
           </div>
         </div>
       </div>
-
+  </div>
       <div className="method-card">
         <div className="method-header">
           <input type="checkbox" id="transferencia" />
@@ -454,7 +515,7 @@ const ConfTienda = () => {
           <input type="checkbox" /> Envío a domicilio
         </label>
         <div className="option-details">
-          <div className="form-row">
+          <div className="form-row1">
             <div className="form-group">
               <label>Costo de envío base:</label>
               <input type="number" placeholder="Valor fijo" />
@@ -479,8 +540,88 @@ const ConfTienda = () => {
     <button className="btn-save">Guardar Configuración</button>
   </div>
 </div>}
-
-          {contenido === 'Cuenta' && <p>Aquí puedes gestionar la información de tu cuenta.</p>}
+          {contenido === 'Cuenta' && <div>
+            <div className='xd'>
+              <div className="container-fluid">
+                <div className="alert text-center" role="alert">
+                  Su tienda requiere la contraseña 'leopard' para ingresar a durante el periodo de prueba. <a href="#">Suscríbase ahora.</a>
+                </div>
+                <div className="card">
+                  <div className="card-header">
+                    <h2>Cuentas</h2>
+                    <button type="button" className="btn btn-success">Crear Cuenta</button>
+                  </div>
+                    <div className="card-body p-0">
+                      <div className="table-responsive">
+                        <table className="table table-hover">
+                          <thead>
+                              <tr>
+                                  <th scope="col">Email</th>
+                                  <th scope="col">Nombre</th>
+                                  <th scope="col">Apellido</th>
+                                  <th scope="col">Rol</th>
+                                  <th scope="col">Permisos</th>
+                              </tr>
+                          </thead>
+                            <tbody>
+                              <tr>
+                                  <td className="email-cell">
+                                      jhomirasegura293@gmail.com <span className="badge">Dueño</span>
+                                  </td>
+                                  <td></td>
+                                  <td></td>
+                                  <td>Administrador</td>
+                                  <td className="permissions-icons">
+                                      <i className="bi bi-pencil"></i>
+                                      <i className="bi bi-person"></i>
+                                      <i className="bi bi-box"></i>
+                                      <i className="bi bi-graph-up"></i>
+                                      <i className="bi bi-gear"></i>
+                                      <i className="bi bi-currency-dollar"></i>
+                                      <i className="bi bi-bell"></i>
+                                      <i className="bi bi-credit-card"></i>
+                                      <i className="bi bi-truck"></i>
+                                      <i className="bi bi-eye"></i>
+                                  </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                      </div>
+                    </div>
+                </div>
+              </div>       
+              <div class="maestro-contenedor">
+                <div class="caja-informacion espacio-superior">
+                  <div class="contenido-caja">
+                    <h5 class="titulo-seccion">Saldo de la Tienda</h5>
+                      <p class="texto-descripcion">
+                      Agregue créditos a tu tienda para usar los servicios de despachos automáticos, estos créditos te permiten utilizar
+                      todo el potencial de tu tienda aprovechando la mensajería automatizada a través de WhatsApp y correos automatizados.
+                      </p>
+                      <div class="alinear-derecha">
+                        <button type="button" class="btn btn-principal btn-pequeno">Agregar Crédito</button>
+                      </div>
+                  </div>
+                </div>
+                <div class="caja-informacion espacio-superior">
+                  <div class="contenido-caja">
+                    <h5 class="titulo-seccion">Eliminar Tienda</h5>
+                    <p class="texto-descripcion">
+                      Si tiene alguna pregunta sobre cómo funciona su tienda o sobre nuestros planes, envíenos un correo electrónico a
+                      <a href="mailto:support@jumpseller.com"> Comuctiva357Camp@gmail.com</a> y uno de nuestros administradores con gusto le ayudará.
+                      Si aún desea eliminar su tienda, haga clic en el botón.
+                    </p>
+                      <div class="alinear-derecha">
+                        <button type="button" class="btn btn-peligro btn-pequeno">Borrar</button>
+                      </div>
+                  </div>
+                </div>
+              </div>  
+            </div>
+            <p>Aquí puedes gestionar la información de tu cuenta.</p>
+          </div>
+          
+          }
         </div>
 
 

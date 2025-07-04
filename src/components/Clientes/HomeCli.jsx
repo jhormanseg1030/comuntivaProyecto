@@ -30,16 +30,17 @@ function HomeCli() {
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav className="me-auto my-2 my-lg-0" navbarScroll>
-              <Nav.Link className='h' href="#action1">Inicio</Nav.Link>
-              <Nav.Link href="#action2">Quienes Somos</Nav.Link>
-              <Nav.Link href="#action3">Tiendas</Nav.Link>
+              <Nav.Link className='h' href="/">Inicio</Nav.Link>
+              <Nav.Link href="/Quienes somos">Quienes Somos</Nav.Link>
+              <Nav.Link href="/Tienda">Tiendas</Nav.Link>
               <Nav.Link href="#action4">Características</Nav.Link>
               <Nav.Link href="#action5">Ayuda</Nav.Link>
               <NavDropdown title="Categoría" id="navbarScrollingDropdown">
-                <NavDropdown.Item href="#action6">Acción 1</NavDropdown.Item>
-                <NavDropdown.Item href="#action7">Acción 2</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action8">Otra opción</NavDropdown.Item>
+                <Link to="Frutas"><NavDropdown.Item href="#action6">frutas</NavDropdown.Item></Link>
+                <Link to="Verduras"><NavDropdown.Item href="#action7">verduras</NavDropdown.Item></Link>
+                <Link to="Lacteos"><NavDropdown.Item href="#action8">lacteos</NavDropdown.Item></Link>
+                <Link to="Papa"><NavDropdown.Item href="#action9">papa</NavDropdown.Item></Link>
+                <Link to="Grano"><NavDropdown.Item href="#action10">granos</NavDropdown.Item></Link>
               </NavDropdown>
             </Nav>
             <Form className="d-flex">
