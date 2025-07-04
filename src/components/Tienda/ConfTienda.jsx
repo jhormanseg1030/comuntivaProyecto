@@ -76,7 +76,7 @@ const ConfTienda = () => {
   <div className="seccion-pedidos">
     {/* Header con filtros y botones */}
     <div className="pedidos-header">
-      <h3>Aquí puedes gestionar tus pedidos</h3>
+      <h3>Aquí puedes gestionar tus pedidos</h3></div>
       <div className="controles-pedidos">
         <div className="filtros">
           <input 
@@ -88,7 +88,7 @@ const ConfTienda = () => {
             type="date" 
             className="input-fecha"
           />
-             <select className="select-filtro">
+            <select className="select-filtro">
             <option>Todos los estados</option>
             <option>Pendiente</option>
             <option>Procesando</option>
@@ -104,7 +104,7 @@ const ConfTienda = () => {
           Nuevo Pedido
         </button>
       </div>
-    </div>
+   
 
     {/* Tabla de pedidos */}
     <div className="tabla-pedidos-container">
