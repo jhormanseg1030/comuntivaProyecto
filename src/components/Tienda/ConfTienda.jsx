@@ -1,12 +1,14 @@
 // src/components/ConfTienda.js
-import React, { useState } from 'react';
-import './ConfTienda.css';
-import logo from '../imagenes/logo.jpg';
-import './Producto.css';
-import './Inicio.css';
-import './ProCompra.css';
-import './Pedidos.css';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import grafica from '../imagenes/grafica.png';
+import logo from '../imagenes/logo.jpg';
+import './ConfTienda.css';
+import "./Historial.css";
+import './Inicio.css';
+import './Pedidos.css';
+import './ProCompra.css';
+import './Producto.css';
 
 const ConfTienda = () => {
   const [contenido, setContenido] = useState('Inicio');
@@ -353,13 +355,79 @@ const ConfTienda = () => {
     </div>
   </div>
 </div>}
-          {contenido === 'Historial' && <p>Aquí puedes ver el historial de tus transacciones.</p>}
+        {contenido === 'Historial' && 
+  <div className="sales-history-container">
+    <div className="div1">
+      <div className="div2">
+        <h2>Ganancias del vendedor</h2>
+        <div className="date-filter">
+          <label htmlFor="start-date">Desde:</label>
+          <input type="date" id="start-date" />
+          <label htmlFor="end-date">Hasta:</label>
+          <input type="date" id="end-date" />
+        </div>
+        <div className="total-sales">
+          <p>Total de Ventas</p>
+          <span>$2.450.000</span>
+        </div>
+      </div>
 
-          {contenido === 'Promociones' && 
+      <div className="summary-graphic">
+        <img src={grafica} alt="grafica" className="summary-graphic"/>
+      </div>
+    </div>
+
+    <div className="sales-table">
+      <h3>Transacciones recientes</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>29-06-2025</td>
+            <td>Arroz Orgánico</td>
+            <td>3</td>
+            <td>$75.000</td>
+          </tr>
+          <tr>
+            <td>30-06-2025</td>
+            <td>Tomate</td>
+            <td>5</td>
+            <td>$50.000</td>
+          </tr>
+          <tr>
+            <td>30-07-2025</td>
+            <td>Papa Pastusa</td>
+            <td>1</td>
+            <td>$20.000</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+}
+  {contenido === 'General'}
+
+
+
+          {contenido === 'Promociones' &&
           <div>
             <h2>Gestionar descuentos y promociones</h2>
+            <h5>Nombre del Descuento</h5>
+            <input type="text" />
+            <i class="bi bi-toggle-on"></i>
+            Descuento con cupón
+            <h5>Configura opcionalmenteun código de cupón para activar la promocion</h5>
             <p>Aquí puedes gestionar tus promociones, añade códigos de descuento y descuentos automáticos que se aplican en el pago</p>
             <button>Crear Promociones</button>
+
+            
             </div>}
 
           {contenido === 'Galería' && <p>Aquí puedes gestionar la galería de tu tienda.</p>}
@@ -472,8 +540,88 @@ const ConfTienda = () => {
     <button className="btn-save">Guardar Configuración</button>
   </div>
 </div>}
-
-          {contenido === 'Cuenta' && <p>Aquí puedes gestionar la información de tu cuenta.</p>}
+          {contenido === 'Cuenta' && <div>
+            <div className='xd'>
+              <div className="container-fluid">
+                <div className="alert text-center" role="alert">
+                  Su tienda requiere la contraseña 'leopard' para ingresar a durante el periodo de prueba. <a href="#">Suscríbase ahora.</a>
+                </div>
+                <div className="card">
+                  <div className="card-header">
+                    <h2>Cuentas</h2>
+                    <button type="button" className="btn btn-success">Crear Cuenta</button>
+                  </div>
+                    <div className="card-body p-0">
+                      <div className="table-responsive">
+                        <table className="table table-hover">
+                          <thead>
+                              <tr>
+                                  <th scope="col">Email</th>
+                                  <th scope="col">Nombre</th>
+                                  <th scope="col">Apellido</th>
+                                  <th scope="col">Rol</th>
+                                  <th scope="col">Permisos</th>
+                              </tr>
+                          </thead>
+                            <tbody>
+                              <tr>
+                                  <td className="email-cell">
+                                      jhomirasegura293@gmail.com <span className="badge">Dueño</span>
+                                  </td>
+                                  <td></td>
+                                  <td></td>
+                                  <td>Administrador</td>
+                                  <td className="permissions-icons">
+                                      <i className="bi bi-pencil"></i>
+                                      <i className="bi bi-person"></i>
+                                      <i className="bi bi-box"></i>
+                                      <i className="bi bi-graph-up"></i>
+                                      <i className="bi bi-gear"></i>
+                                      <i className="bi bi-currency-dollar"></i>
+                                      <i className="bi bi-bell"></i>
+                                      <i className="bi bi-credit-card"></i>
+                                      <i className="bi bi-truck"></i>
+                                      <i className="bi bi-eye"></i>
+                                  </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                      </div>
+                    </div>
+                </div>
+              </div>       
+              <div class="maestro-contenedor">
+                <div class="caja-informacion espacio-superior">
+                  <div class="contenido-caja">
+                    <h5 class="titulo-seccion">Saldo de la Tienda</h5>
+                      <p class="texto-descripcion">
+                      Agregue créditos a tu tienda para usar los servicios de despachos automáticos, estos créditos te permiten utilizar
+                      todo el potencial de tu tienda aprovechando la mensajería automatizada a través de WhatsApp y correos automatizados.
+                      </p>
+                      <div class="alinear-derecha">
+                        <button type="button" class="btn btn-principal btn-pequeno">Agregar Crédito</button>
+                      </div>
+                  </div>
+                </div>
+                <div class="caja-informacion espacio-superior">
+                  <div class="contenido-caja">
+                    <h5 class="titulo-seccion">Eliminar Tienda</h5>
+                    <p class="texto-descripcion">
+                      Si tiene alguna pregunta sobre cómo funciona su tienda o sobre nuestros planes, envíenos un correo electrónico a
+                      <a href="mailto:support@jumpseller.com"> Comuctiva357Camp@gmail.com</a> y uno de nuestros administradores con gusto le ayudará.
+                      Si aún desea eliminar su tienda, haga clic en el botón.
+                    </p>
+                      <div class="alinear-derecha">
+                        <button type="button" class="btn btn-peligro btn-pequeno">Borrar</button>
+                      </div>
+                  </div>
+                </div>
+              </div>  
+            </div>
+            <p>Aquí puedes gestionar la información de tu cuenta.</p>
+          </div>
+          
+          }
         </div>
 
 

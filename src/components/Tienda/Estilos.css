@@ -119,6 +119,12 @@ hr {
     padding: 2px 4px;
     border-radius: 4px;
   }
+  .VenCar{
+    position: absolute;
+    top: 160px;
+    right: 10px;    
+    color: white;
+  } 
 
   .ImagProd{
     width: 100%;
@@ -176,4 +182,10 @@ hr {
     border: none;
     cursor: pointer;
     color: black;
+  }
+
+  .btModal {
+    position: absolute;
+    top: 160px;
+    right: 10px;
   }
