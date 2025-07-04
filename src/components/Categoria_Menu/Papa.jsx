@@ -10,6 +10,11 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
 import Bultopapa from '../imagenes/bulto-papa.jpg'
+import Carousel from 'react-bootstrap/Carousel';
+import Frutas1 from '../imagenes/Frutas1.jpg'
+import Frutas2 from '../imagenes/Frutas2.jpg'
+import Mercados8 from '../imagenes/Mercados8.jpg';
+import Papas from '../imagenes/Papas.jpg';
 import './Pap.css';
 function Papa() {
     return (
@@ -20,17 +25,17 @@ function Papa() {
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
             <Nav className="me-auto my-2 my-lg-0" navbarScroll>
-            <Nav.Link className='h' href="#action1">Inicio</Nav.Link>
-            <Nav.Link href="#action2">Quienes Somos</Nav.Link>
-            <Nav.Link href="#action3">Tiendas</Nav.Link>
-            <Nav.Link href="#action4">Características</Nav.Link>
-            <Nav.Link href="#action5">Ayuda</Nav.Link>
+                          <Nav.Link className='h' href="#action1">Inicio</Nav.Link>
+                          <Nav.Link href="/Quienes somos">Quienes Somos</Nav.Link>
+                          <Link to = "/"><Nav.Link href="#action3">Tiendas</Nav.Link></Link>
+                          <Nav.Link href="#action4">Características</Nav.Link>
+                          <Nav.Link href="#action5">Ayuda</Nav.Link>
             <NavDropdown title="Categoría" id="navbarScrollingDropdown">
-                <NavDropdown.Item href="#action6">frutas</NavDropdown.Item>
-                <NavDropdown.Item href="#action7">verduras</NavDropdown.Item>
-                <NavDropdown.Item href="#action8">lacteos</NavDropdown.Item>
-                <NavDropdown.Item href="#action9">papa</NavDropdown.Item>
-                <NavDropdown.Item href="#action10">granos</NavDropdown.Item>
+                <NavDropdown.Item href="/Frutas">frutas</NavDropdown.Item>
+                <NavDropdown.Item href="/Verduras">verduras</NavDropdown.Item>
+                <NavDropdown.Item href="/Lacteos">lacteos</NavDropdown.Item>
+                <NavDropdown.Item href="/Papa">papa</NavDropdown.Item>
+                <NavDropdown.Item href="/Grano">granos</NavDropdown.Item>
             </NavDropdown>
             </Nav>
             <Form className="d-flex">
@@ -42,16 +47,59 @@ function Papa() {
         </Container>
     </Navbar>
 
+ <Carousel className='carusel'>
+        <Carousel.Item>
+          <img className='d-block w-100 carousel-img-full'
+          src={Frutas1}
+          alt='First slider'
+          />
+          <Carousel.Caption>
+            <h3>First slider label</h3>
+            <p>nulla vitae elit libero, a pharetra augue mollis</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item>
+          <img className='d-block w-100 carousel-img-full'
+          src={Frutas2}
+          alt='Second slider'
+          />
+          <Carousel.Caption>
+            <h3>Second slider</h3>
+            <p>alexander anderson, conocido como polvo de angel, un asesino serial de vaticano</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item>
+        <img className='d-block w-100 carousel-img-full'
+          src={Mercados8}
+          alt='Third slider'
+          />
+          <Carousel.Caption>
+            <h3>Third slider</h3>
+            <p>Solo Leveling, anime del protagonista sung jinwoo, tambien conocido monarca de las sombras</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+      </Carousel>
         
-        <Container className='Psp'>
-          <Row>
+        <Container className='Un'>
+          <Row className='lort'>
                <Col xs={12} md={4}>
-            <div className="producto-card">
+            <div className="producto-ca">
               <div className="popular">Popular</div>
               <div className="agotado">Agotado</div>
-              <Image className="ImagProd" src={Bultopapa}/>
+              <Image className="ImagPr" src={Bultopapa}/>
         <p className="descrip">Papa Pastusa</p>
         <p><span className="pre">$ 30.000</span></p>
+      </div>
+      </Col>
+
+              <Col xs={12} md={4}>
+            <div className="producto-ca">
+              <div className="popular">Popular</div>
+              <div className="agotado">Agotado</div>
+              <Image className="ImagP" src={Papas}/>
+              <Image className="ImagPr" src={Papas}/>
+        <p className="descrip">Papas bulto</p>
+        <p><span className="pre">$ 60.000</span></p>
       </div>
       </Col>
       </Row>

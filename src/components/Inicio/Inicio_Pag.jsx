@@ -1,28 +1,28 @@
 import Button from 'react-bootstrap/Button';
+import Carousel from 'react-bootstrap/Carousel';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import Tomates from '../imagenes/Tomates.jpg'
-import Zanahorias from '../imagenes/Zanahorias.jpg'
-import Platanos from '../imagenes/Platanos.jpg'
-import Manzanas from '../imagenes/Manzanas.jpg'
-import Papayas from '../imagenes/Papayas.jpg'
-import Naranjas from '../imagenes/Naranjas.jpg'
-import Cebollas from '../imagenes/Cebollas.jpg'
-import Sandias from '../imagenes/Sandias.jpg'
-import Papas from '../imagenes/Papas.jpg'
-import Pinea from '../imagenes/Pinea.jpg'
-import Fresas from '../imagenes/Fresas.jpg'
-import Mangos from '../imagenes/Mangos.jpg'
+import { Link } from 'react-router-dom';
+import Cebollas from '../imagenes/Cebollas.jpg';
+import Fresas from '../imagenes/Fresas.jpg';
 import logo from '../Imagenes/logo.jpg';
-import Carousel from 'react-bootstrap/Carousel';
-import Promocion1 from '../imagenes/Promocion1.png'
-import Promocion2 from '../imagenes/Promocion2.png'
-import Promocion3 from '../imagenes/Promocion3.png'
-import './Inicio_Pag.css'
-import { Link } from 'react-router-dom'
+import Mangos from '../imagenes/Mangos.jpg';
+import Manzanas from '../imagenes/Manzanas.jpg';
+import Naranjas from '../imagenes/Naranjas.jpg';
+import Papas from '../imagenes/Papas.jpg';
+import Papayas from '../imagenes/Papayas.jpg';
+import Pinea from '../imagenes/Pinea.jpg';
+import Platanos from '../imagenes/Platanos.jpg';
+import Promocion1 from '../imagenes/Promocion1.png';
+import Promocion2 from '../imagenes/Promocion2.png';
+import Promocion3 from '../imagenes/Promocion3.png';
+import Sandias from '../imagenes/Sandias.jpg';
+import Tomates from '../imagenes/Tomates.jpg';
+import Zanahorias from '../imagenes/Zanahorias.jpg';
+import './Inicio_Pag.css';
 
 function Inicio_Pag ()  {
   const productos = [
@@ -32,7 +32,7 @@ function Inicio_Pag ()  {
     { id: 4, nombre: "Plátanos", precio: "$3000/Uni", imagen: Platanos },
     { id: 5, nombre: "Papayas", precio: "$3600/Uni", imagen: Papayas },
     { id: 6, nombre: "Naranjas ", precio: "$2000/lb", imagen: Naranjas },
-    { id: 7, nombre: "Cebollas ", precio: "$1500/lb", imagen: Cebollas},  
+    { id: 7, nombre: "Cebollas ", precio: "$1500/lb", imagen: Cebollas},
     { id: 8, nombre: "Sandias ", precio: "$6500/Uni", imagen: Sandias,},
     { id: 9, nombre: "Papas ", precio: "$60000/Bulto", imagen: Papas},
     { id: 10, nombre: "Piña ", precio: "$3000/Uni", imagen: Pinea, ruta:"/Productos"},
@@ -54,10 +54,11 @@ function Inicio_Pag ()  {
               <Nav.Link href="#action4">Características</Nav.Link>
               <Nav.Link href="#action5">Ayuda</Nav.Link>
               <NavDropdown title="Categoría" id="navbarScrollingDropdown">
-                <NavDropdown.Item href="#action6">Acción 1</NavDropdown.Item>
-                <NavDropdown.Item href="#action7">Acción 2</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action8">Otra opción</NavDropdown.Item>
+                <Link to="Frutas"><NavDropdown.Item href="#action6">frutas</NavDropdown.Item></Link>
+                <Link to="Verduras"><NavDropdown.Item href="#action7">verduras</NavDropdown.Item></Link>
+                <Link to="Lacteos"><NavDropdown.Item href="#action8">lacteos</NavDropdown.Item></Link>
+                <Link to="Papa"><NavDropdown.Item href="#action9">papa</NavDropdown.Item></Link>
+                <Link to="Grano"><NavDropdown.Item href="#action10">granos</NavDropdown.Item></Link>
               </NavDropdown>
             </Nav>
             <Form className="d-flex">

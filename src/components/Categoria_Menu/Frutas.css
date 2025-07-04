@@ -1,14 +1,16 @@
-
-.Psp {
- 
+.carusel{
+    margin-top: 40px;
+    width:auto;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+.Unon{
     margin-top: 30px;
-    max-width: max-content;
-    justify-content: center;
-    
+    flex-direction: row;
+    display: flex;
+    gap: 30px;
+    max-width: 2000px;
 }
-.con{
-    justify-content: center;
-}
-.row{
-    justify-content: center;
+.row .Unon{
+    max-width: 2000px;
 }

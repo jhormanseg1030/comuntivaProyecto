@@ -9,7 +9,6 @@ import logo from '../Imagenes/logo.jpg';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
-import Arandanos from '../imagenes/Arandanos.jpeg'
 import Banano from '../imagenes/banano.jpg'
 import Papaya from '../imagenes/Papaya.jpg'
 import Pinea from '../imagenes/Pinea.jpg'
@@ -17,6 +16,9 @@ import Carousel from 'react-bootstrap/Carousel';
 import Frutas1 from '../imagenes/Frutas1.jpg'
 import Frutas2 from '../imagenes/Frutas2.jpg'
 import Mercados8 from '../imagenes/Mercados8.jpg';
+import Sandias from '../imagenes/Sandias.jpg';
+import Naranjas from '../imagenes/Naranjas.jpg';
+import Manzanas from '../imagenes/Manzanas.jpg';
 import './Frutas.css';
 function Frutas() {
     return (
@@ -26,18 +28,18 @@ function Frutas() {
         <img src={logo} alt="Logo" className="nav-brand"/>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
-            <Nav className="me-auto my-2 my-lg-0" navbarScroll>
-            <Nav.Link className='h' href="#action1">Inicio</Nav.Link>
-            <Nav.Link href="#action2">Quienes Somos</Nav.Link>
-            <Nav.Link href="#action3">Tiendas</Nav.Link>
-            <Nav.Link href="#action4">Características</Nav.Link>
-            <Nav.Link href="#action5">Ayuda</Nav.Link>
-            <NavDropdown title="Categoría" id="navbarScrollingDropdown">
-                <NavDropdown.Item href="#action6">frutas</NavDropdown.Item>
-                <NavDropdown.Item href="#action7">verduras</NavDropdown.Item>
-                <NavDropdown.Item href="#action8">lacteos</NavDropdown.Item>
-                <NavDropdown.Item href="#action9">papa</NavDropdown.Item>
-                <NavDropdown.Item href="#action10">granos</NavDropdown.Item>
+           <Nav className="me-auto my-2 my-lg-0" navbarScroll>
+                         <Nav.Link className='h' href="#action1">Inicio</Nav.Link>
+                         <Nav.Link href="/Quienes somos">Quienes Somos</Nav.Link>
+                         <Link to = "/"><Nav.Link href="#action3">Tiendas</Nav.Link></Link>
+                         <Nav.Link href="#action4">Características</Nav.Link>
+                         <Nav.Link href="#action5">Ayuda</Nav.Link>
+<NavDropdown title="Categoría" id="navbarScrollingDropdown">
+                <NavDropdown.Item href="/Frutas">frutas</NavDropdown.Item>
+                <NavDropdown.Item href="/Verduras">verduras</NavDropdown.Item>
+                <NavDropdown.Item href="/Lacteos">lacteos</NavDropdown.Item>
+                <NavDropdown.Item href="/Papa">papa</NavDropdown.Item>
+                <NavDropdown.Item href="/Grano">granos</NavDropdown.Item>
             </NavDropdown>
             </Nav>
             <Form className="d-flex">
@@ -82,33 +84,36 @@ function Frutas() {
         </Carousel.Item>
       </Carousel>
         
-        <Container className='Psp'>
+        <Container className='Unon'>
           <Row>
-            <Col xs={12} md={4}>
-            <div className="producto-card">
-              <div className="nuevo">Nuevo</div>
-              <div className="desct">-40% OFF</div>
-              <Image className="ImagProd" src={Arandanos}/>
-        <p className="descrip">Arandanos</p>
-        <p><span className="oferta">$ 6.000</span> <span className="Precio">$ 10.000</span></p>
-      </div>
-      </Col>
-
       <Col xs={12} md={4}>
-            <div className="producto-card">
+            <div className="producto">
               <div className="nuevo">Nuevo</div>
               <Image className="ImagProd" src={Papaya}/>
         <p className="descrip">Papaya 1 und</p>
         <p><span className="pre">$ 7.300</span></p>
       </div>
       </Col>
-      </Row>
-      </Container>
-
-      <Container className='con'>
-          <Row>
       <Col xs={12} md={4}>
-            <div className="producto-card">
+            <div className="producto">
+              <div className="nuevo">Nuevo</div>
+              <Image className="ImagProd" src={Manzanas}/>
+        <p className="descrip">Manzana 1 und"</p>
+        <p><span className="pre">$ 7.300</span></p>
+      </div>
+      </Col>
+
+      <Col xs={12} md={4}>
+            <div className="producto">
+              <div className="nuevo">Nuevo</div>
+              <Image className="ImagProd" src={Sandias}/>
+        <p className="descrip">Sandia 1 und</p>
+        <p><span className="pre">$ 2.300</span></p>
+      </div>
+      </Col>
+      
+      <Col xs={12} md={4}>
+            <div className="producto">
               <div className="popular">Popular</div>
               <div className="desct">-30% OFF</div>
               <Link to='/Productos'><Image className="ImagProd" src={Pinea}/></Link>
@@ -118,12 +123,22 @@ function Frutas() {
       </Col>
 
       <Col xs={12} md={4}>
-            <div className="producto-card">
+            <div className="producto">
+              <div className="nuevo">Nuevo</div>
+              <Image className="ImagProd" src={Naranjas}/>
+        <p className="descrip">Naranja 1 und</p>
+        <p><span className="pre">$ 6.000</span></p>
+      </div>
+      </Col>
+
+      <Col xs={12} md={4}>
+            <div className="producto">
               <div className="popular">Popular</div>
               <Image className="ImagProd" src={Banano}/>
         <p className="descrip">Banano Criollo 1und</p>
         <p><span className="pre">$ 700</span></p>
       </div>
+      
       </Col>
       </Row>
       </Container>

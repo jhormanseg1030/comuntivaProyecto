@@ -1,16 +1,19 @@
 // src/components/ConfTienda.js
-import React, { useState } from 'react';
-import './ConfTienda.css';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import grafica from '../imagenes/grafica.png';
 import logo from '../imagenes/logo.jpg';
-import './Producto.css';
+import './ConfTienda.css';
+import "./Historial.css";
 import './Inicio.css';
-import './ProCompra.css';
 import './Pedidos.css';
 import "./Historial.css";
 import './Promociones.css';
 import { Link } from 'react-router-dom';
 import grafica from '../imagenes/grafica.png';
 import Button from 'react-bootstrap/Button';
+import './ProCompra.css';
+import './Producto.css';
 
 const ConfTienda = () => {
   const [contenido, setContenido] = useState('Inicio');
@@ -51,7 +54,7 @@ const ConfTienda = () => {
         {contenido === 'Inicio' && 
 <div className="inicio-container">
   <p>Aquí puedes ver las tareas para configurar tu tienda</p>
-  <div className="form-container">
+  <div className="form-container1">
     <div className="form-floating">
       <input type="text" className="form-control" id="floatingPassword" placeholder=""/>
       <label htmlFor="floatingPassword">Asignar un Nombre a tu Tienda</label>
@@ -206,7 +209,7 @@ const ConfTienda = () => {
   <div className="product-form-container">
     <div className="form-section">
       <h3>Información Básica</h3>
-      <div className="form-row">
+      <div className="form-row2">
         <div className="form-group1">
           <label>Nombre del Producto*</label>
           <input type="text" placeholder="Ej: Arroz Orgánico" required />
@@ -217,7 +220,7 @@ const ConfTienda = () => {
         </div>
       </div>
 
-      <div className="form-row">
+      <div className="form-row2">
         <div className="form-group">
           <label>Categoría*</label>
           <select required>
@@ -241,7 +244,7 @@ const ConfTienda = () => {
         </div>
       </div>
 
-      <div className="form-row">
+      <div className="form-row2">
         <div className="form-group2">
           <label>Descripción</label>
           <textarea placeholder="Descripción detallada del producto"></textarea>
@@ -251,7 +254,7 @@ const ConfTienda = () => {
 
     <div className="form-section">
       <h3>Precio y Unidades</h3>
-      <div className="form-row">
+      <div className="form-row2">
         <div className="form-group">
           <label>Unidad de Medida*</label>
           <select required>
@@ -269,7 +272,7 @@ const ConfTienda = () => {
         </div>
       </div>
 
-      <div className="form-row">
+      <div className="form-row2">
         <div className="form-group">
           <label>Precio por Mayor (opcional)</label>
           <div className="price-tier-container">
@@ -286,7 +289,7 @@ const ConfTienda = () => {
 
     <div className="form-section">
       <h3>Inventario y Logística</h3>
-      <div className="form-row">
+      <div className="form-row2">
         <div className="form-group">
           <label>Cantidad en Stock*</label>
           <input type="number" placeholder="Ej: 100" required />
@@ -297,7 +300,7 @@ const ConfTienda = () => {
         </div>
       </div>
 
-      <div className="form-row">
+      <div className="form-row2">
         <div className="form-group">
           <label>Peso (opcional)</label>
           <input className="ejem" type="number" placeholder="Ej: 1.5" />
@@ -323,7 +326,7 @@ const ConfTienda = () => {
         </div>
       </div>
 
-      <div className="form-row">
+      <div className="form-row2">
         <div className="form-group">
           <label>Método de Envío</label>
           <div className="checkbox-group">
@@ -414,9 +417,11 @@ const ConfTienda = () => {
     </div>
   </div>
 }
+  {contenido === 'General'}
 
 
-          {contenido === 'Promociones' && 
+
+          {contenido === 'Promociones' &&
           <div>
             <div className='Nomdesc'>
             <h5>Nombre del Descuento</h5>
@@ -574,7 +579,7 @@ const ConfTienda = () => {
   
   <div className="config-section">
     <h3>Métodos de Pago</h3>
-    <div className="payment-methods">
+    <div className="payment-methods1">
     <div className="method-card">
     <div className="payment-method">
   <div className="method-label">
@@ -650,7 +655,7 @@ const ConfTienda = () => {
           <input type="checkbox" /> Envío a domicilio
         </label>
         <div className="option-details">
-          <div className="form-row">
+          <div className="form-row1">
             <div className="form-group">
               <label>Costo de envío base:</label>
               <input type="number" placeholder="Valor fijo" />
@@ -675,8 +680,88 @@ const ConfTienda = () => {
     <button className="btn-save">Guardar Configuración</button>
   </div>
 </div>}
-
-          {contenido === 'Cuenta' && <p>Aquí puedes gestionar la información de tu cuenta.</p>}
+          {contenido === 'Cuenta' && <div>
+            <div className='xd'>
+              <div className="container-fluid">
+                <div className="alert text-center" role="alert">
+                  Su tienda requiere la contraseña 'leopard' para ingresar a durante el periodo de prueba. <a href="#">Suscríbase ahora.</a>
+                </div>
+                <div className="card">
+                  <div className="card-header">
+                    <h2>Cuentas</h2>
+                    <button type="button" className="btn btn-success">Crear Cuenta</button>
+                  </div>
+                    <div className="card-body p-0">
+                      <div className="table-responsive">
+                        <table className="table table-hover">
+                          <thead>
+                              <tr>
+                                  <th scope="col">Email</th>
+                                  <th scope="col">Nombre</th>
+                                  <th scope="col">Apellido</th>
+                                  <th scope="col">Rol</th>
+                                  <th scope="col">Permisos</th>
+                              </tr>
+                          </thead>
+                            <tbody>
+                              <tr>
+                                  <td className="email-cell">
+                                      jhomirasegura293@gmail.com <span className="badge">Dueño</span>
+                                  </td>
+                                  <td></td>
+                                  <td></td>
+                                  <td>Administrador</td>
+                                  <td className="permissions-icons">
+                                      <i className="bi bi-pencil"></i>
+                                      <i className="bi bi-person"></i>
+                                      <i className="bi bi-box"></i>
+                                      <i className="bi bi-graph-up"></i>
+                                      <i className="bi bi-gear"></i>
+                                      <i className="bi bi-currency-dollar"></i>
+                                      <i className="bi bi-bell"></i>
+                                      <i className="bi bi-credit-card"></i>
+                                      <i className="bi bi-truck"></i>
+                                      <i className="bi bi-eye"></i>
+                                  </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                      </div>
+                    </div>
+                </div>
+              </div>       
+              <div class="maestro-contenedor">
+                <div class="caja-informacion espacio-superior">
+                  <div class="contenido-caja">
+                    <h5 class="titulo-seccion">Saldo de la Tienda</h5>
+                      <p class="texto-descripcion">
+                      Agregue créditos a tu tienda para usar los servicios de despachos automáticos, estos créditos te permiten utilizar
+                      todo el potencial de tu tienda aprovechando la mensajería automatizada a través de WhatsApp y correos automatizados.
+                      </p>
+                      <div class="alinear-derecha">
+                        <button type="button" class="btn btn-principal btn-pequeno">Agregar Crédito</button>
+                      </div>
+                  </div>
+                </div>
+                <div class="caja-informacion espacio-superior">
+                  <div class="contenido-caja">
+                    <h5 class="titulo-seccion">Eliminar Tienda</h5>
+                    <p class="texto-descripcion">
+                      Si tiene alguna pregunta sobre cómo funciona su tienda o sobre nuestros planes, envíenos un correo electrónico a
+                      <a href="mailto:support@jumpseller.com"> Comuctiva357Camp@gmail.com</a> y uno de nuestros administradores con gusto le ayudará.
+                      Si aún desea eliminar su tienda, haga clic en el botón.
+                    </p>
+                      <div class="alinear-derecha">
+                        <button type="button" class="btn btn-peligro btn-pequeno">Borrar</button>
+                      </div>
+                  </div>
+                </div>
+              </div>  
+            </div>
+            <p>Aquí puedes gestionar la información de tu cuenta.</p>
+          </div>
+          
+          }
         </div>
 
 
