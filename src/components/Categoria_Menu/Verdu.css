@@ -2,13 +2,13 @@
     display: flex;
     margin-top: 30px;
     justify-content: center;
-    gap: 30px;
+    gap: 56px;
     grid-template-columns: auto;
     padding: 10px 10px;
 }
 .ImagPro{
-    width: 240px;
-    height: 200px;
+    width: 450px;
+    height: 250px;
     
 }
 .lor{

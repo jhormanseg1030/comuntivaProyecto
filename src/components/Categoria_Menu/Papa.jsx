@@ -80,31 +80,29 @@ function Papa() {
         </Carousel.Item>
       </Carousel>
         
-        <Container className='Un'>
-          <Row className='lort'>
-               <Col xs={12} md={4}>
-            <div className="producto-ca">
-              <div className="popular">Popular</div>
-              <div className="agotado">Agotado</div>
-              <Image className="ImagPr" src={Bultopapa}/>
-        <p className="descrip">Papa Pastusa</p>
-        <p><span className="pre">$ 30.000</span></p>
+          <div className='conte'>
+        <Container className='Uno'>
+        
+             <Col xs={12} md={4}>
+            <div className="producto-card">
+              <div className="nuevo">Nuevo</div>
+              <Image className="ImagPro" src={Papas}/>
+        <p className="descri">Papa lb</p>
+        <p><span className="pre">$ 1.400</span></p>
       </div>
       </Col>
 
-              <Col xs={12} md={4}>
-            <div className="producto-ca">
-              <div className="popular">Popular</div>
-              <div className="agotado">Agotado</div>
-              <Image className="ImagPr" src={Papas}/>
-        <p className="descrip">Papas bulto</p>
-        <p><span className="pre">$ 60.000</span></p>
+          <Col xs={12} md={4}>
+            <div className="producto-card">
+              <div className="nuevo">Nuevo</div>
+              <Image className="ImagPro" src={Bultopapa}/>
+        <p className="descri">Bulto de papa</p>
+        <p><span className="pre">$60.000</span></p>
       </div>
       </Col>
-      </Row>
+         
       </Container>
-       
-    
+        </div>
     </>
     )
 }
