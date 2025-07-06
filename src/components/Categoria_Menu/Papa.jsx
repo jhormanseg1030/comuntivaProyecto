@@ -19,33 +19,33 @@ import './Pap.css';
 function Papa() {
     return (
     <>
-    <Navbar expand="lg" className="bg-body-tertiary">
+      <Navbar expand="lg" className="bg-body-tertiary">
         <Container fluid>
         <img src={logo} alt="Logo" className="nav-brand"/>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
             <Nav className="me-auto my-2 my-lg-0" navbarScroll>
-                          <Nav.Link className='h' href="#action1">Inicio</Nav.Link>
-                          <Nav.Link href="/Quienes somos">Quienes Somos</Nav.Link>
-                          <Link to = "/"><Nav.Link href="#action3">Tiendas</Nav.Link></Link>
-                          <Nav.Link href="#action4">Características</Nav.Link>
-                          <Nav.Link href="#action5">Ayuda</Nav.Link>
-            <NavDropdown title="Categoría" id="navbarScrollingDropdown">
-                <NavDropdown.Item href="/Frutas">frutas</NavDropdown.Item>
-                <NavDropdown.Item href="/Verduras">verduras</NavDropdown.Item>
-                <NavDropdown.Item href="/Lacteos">lacteos</NavDropdown.Item>
-                <NavDropdown.Item href="/Papa">papa</NavDropdown.Item>
-                <NavDropdown.Item href="/Grano">granos</NavDropdown.Item>
-            </NavDropdown>
+                  <Nav.Link className='h' href="#action1">Inicio</Nav.Link>
+                  <Nav.Link href="/Quienes somos">Quienes Somos</Nav.Link>
+                  <Link to = "/"><Nav.Link href="#action3">Tiendas</Nav.Link></Link>
+                  <Nav.Link href="#action4">Características</Nav.Link>
+                  <Nav.Link href="#action5">Ayuda</Nav.Link>
+                <NavDropdown title="Categoría" id="navbarScrollingDropdown">
+                  <NavDropdown.Item href="/Frutas">frutas</NavDropdown.Item>
+                  <NavDropdown.Item href="/Verduras">verduras</NavDropdown.Item>
+                  <NavDropdown.Item href="/Lacteos">lacteos</NavDropdown.Item>
+                  <NavDropdown.Item href="/Papa">papa</NavDropdown.Item>
+                  <NavDropdown.Item href="/Grano">granos</NavDropdown.Item>
+              </NavDropdown>
             </Nav>
             <Form className="d-flex">
-            <Form.Control type="search" placeholder="Buscar" className="me-2" aria-label="Search" />
-            <Button variant="outline-success">Buscar</Button>
+              <Form.Control type="search" placeholder="Buscar" className="me-2" aria-label="Search" />
+              <Button variant="outline-success">Buscar</Button>
             </Form>
         </Navbar.Collapse>
         <Link className='link1' to= "/Login"> Iniciar Sesión</Link>
         </Container>
-    </Navbar>
+      </Navbar>
 
  <Carousel className='carusel'>
         <Carousel.Item>
@@ -80,38 +80,38 @@ function Papa() {
         </Carousel.Item>
       </Carousel>
         
-          <div className='conte'>
+      <div className='conte'> 
         <Container className='Uno'>
-        
-             <Col xs={12} md={4}>
+          <Col xs={12} md={4}>
             <div className="producto-card">
               <div className="nuevo">Nuevo</div>
               <Image className="ImagPro" src={Papas}/>
-        <p className="descri">Papa lb</p>
-        <p><span className="pre">$ 1.400</span></p>
-      </div>
-      </Col>
+              <p className="descri">Papa lb</p>
+              <p><span className="pre">$ 1.400</span></p>
+            </div>
+          </Col>
 
           <Col xs={12} md={4}>
             <div className="producto-card">
               <div className="nuevo">Nuevo</div>
               <Image className="ImagPro" src={Bultopapa}/>
-        <p className="descri">Bulto de papa</p>
-        <p><span className="pre">$60.000</span></p>
-              <Col xs={12} md={4}>
-                
+              <p className="descri">Bulto de papa</p>
+              <p><span className="pre">$60.000</span></p>
+            </div>
+          </Col>
+
+          <Col xs={12} md={4}>    
             <div className="producto-ca">
               <div className="popular">Popular</div>
               <div className="agotado">Agotado</div>
               <Image className="ImagP" src={Papas}/>
               <Image className="ImagPr" src={Papas}/>
-        <p className="descrip">Papas bulto</p>
-        <p><span className="pre">$ 60.000</span></p>
-      </div>
-      </Col>
-         
-      </Container>
-        </div>
+              <p className="descrip">Papas bulto</p>
+              <p><span className="pre">$ 60.000</span></p>
+            </div>
+          </Col>
+         </Container>
+         </div>
     </>
     )
 }
