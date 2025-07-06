@@ -98,6 +98,15 @@ function Papa() {
               <Image className="ImagPro" src={Bultopapa}/>
         <p className="descri">Bulto de papa</p>
         <p><span className="pre">$60.000</span></p>
+              <Col xs={12} md={4}>
+                
+            <div className="producto-ca">
+              <div className="popular">Popular</div>
+              <div className="agotado">Agotado</div>
+              <Image className="ImagP" src={Papas}/>
+              <Image className="ImagPr" src={Papas}/>
+        <p className="descrip">Papas bulto</p>
+        <p><span className="pre">$ 60.000</span></p>
       </div>
       </Col>
          

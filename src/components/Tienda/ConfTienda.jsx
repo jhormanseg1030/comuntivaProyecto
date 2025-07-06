@@ -1,14 +1,15 @@
 // src/components/ConfTienda.js
-import React, { useState } from 'react';
-import './ConfTienda.css';
-import logo from '../imagenes/logo.jpg';
-import './Producto.css';
-import './Inicio.css';
-import './ProCompra.css';
-import './Pedidos.css';
-import "./Historial.css";
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import grafica from '../imagenes/grafica.png';
+import logo from '../imagenes/logo.jpg';
+import './ConfTienda.css';
+import "./Historial.css";
+import './Inicio.css';
+import './Pedidos.css';
+import './Promociones.css';
+import './Producto.css';
+import './ProCompra.css';
 
 const ConfTienda = () => {
   const [contenido, setContenido] = useState('Inicio');
@@ -48,8 +49,8 @@ const ConfTienda = () => {
         <div className="contenido-dinamico">
         {contenido === 'Inicio' && 
 <div className="inicio-container">
-  <p>Aquí puedes ver las tareas para configurar tu tienda.</p>
-  <div className="form-container">
+  <p>Aquí puedes ver las tareas para configurar tu tienda</p>
+  <div className="form-container1">
     <div className="form-floating">
       <input type="text" className="form-control" id="floatingPassword" placeholder=""/>
       <label htmlFor="floatingPassword">Asignar un Nombre a tu Tienda</label>
@@ -75,7 +76,7 @@ const ConfTienda = () => {
   <div className="seccion-pedidos">
     {/* Header con filtros y botones */}
     <div className="pedidos-header">
-      <h3>Aquí puedes gestionar tus pedidos.</h3>
+      <h3>Aquí puedes gestionar tus pedidos</h3></div>
       <div className="controles-pedidos">
         <div className="filtros">
           <input 
@@ -83,27 +84,27 @@ const ConfTienda = () => {
             placeholder="Buscar por cliente o ID..." 
             className="input-busqueda"
           />
-          <select className="select-filtro">
+          <input 
+            type="date" 
+            className="input-fecha"
+          />
+            <select className="select-filtro">
             <option>Todos los estados</option>
             <option>Pendiente</option>
             <option>Procesando</option>
             <option>Enviado</option>
             <option>Entregado</option>
             <option>Cancelado</option>
-          </select>
-          <input 
-            type="date" 
-            className="input-fecha"
-          />
+          </select> 
         </div>
-        <button className="btn-nuevo">
+      <button className="btn-nuevo">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
             <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
           </svg>
           Nuevo Pedido
         </button>
       </div>
-    </div>
+   
 
     {/* Tabla de pedidos */}
     <div className="tabla-pedidos-container">
@@ -198,19 +199,13 @@ const ConfTienda = () => {
           {contenido === 'Productos' && 
 <div className="productos-container">
   <div className="productos-header">
-    <h3>Gestión de Productos</h3>
-    <button className="btn-add-product">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
-      </svg>
-      Añadir Producto
-    </button>
+    <h3>Aquí puedes gestionar tus productos</h3>
   </div>
 
   <div className="product-form-container">
     <div className="form-section">
       <h3>Información Básica</h3>
-      <div className="form-row">
+      <div className="form-row2">
         <div className="form-group1">
           <label>Nombre del Producto*</label>
           <input type="text" placeholder="Ej: Arroz Orgánico" required />
@@ -221,7 +216,7 @@ const ConfTienda = () => {
         </div>
       </div>
 
-      <div className="form-row">
+      <div className="form-row2">
         <div className="form-group">
           <label>Categoría*</label>
           <select required>
@@ -245,7 +240,7 @@ const ConfTienda = () => {
         </div>
       </div>
 
-      <div className="form-row">
+      <div className="form-row2">
         <div className="form-group2">
           <label>Descripción</label>
           <textarea placeholder="Descripción detallada del producto"></textarea>
@@ -255,7 +250,7 @@ const ConfTienda = () => {
 
     <div className="form-section">
       <h3>Precio y Unidades</h3>
-      <div className="form-row">
+      <div className="form-row2">
         <div className="form-group">
           <label>Unidad de Medida*</label>
           <select required>
@@ -273,7 +268,7 @@ const ConfTienda = () => {
         </div>
       </div>
 
-      <div className="form-row">
+      <div className="form-row2">
         <div className="form-group">
           <label>Precio por Mayor (opcional)</label>
           <div className="price-tier-container">
@@ -290,7 +285,7 @@ const ConfTienda = () => {
 
     <div className="form-section">
       <h3>Inventario y Logística</h3>
-      <div className="form-row">
+      <div className="form-row2">
         <div className="form-group">
           <label>Cantidad en Stock*</label>
           <input type="number" placeholder="Ej: 100" required />
@@ -301,7 +296,7 @@ const ConfTienda = () => {
         </div>
       </div>
 
-      <div className="form-row">
+      <div className="form-row2">
         <div className="form-group">
           <label>Peso (opcional)</label>
           <input className="ejem" type="number" placeholder="Ej: 1.5" />
@@ -327,7 +322,7 @@ const ConfTienda = () => {
         </div>
       </div>
 
-      <div className="form-row">
+      <div className="form-row2">
         <div className="form-group">
           <label>Método de Envío</label>
           <div className="checkbox-group">
@@ -418,13 +413,145 @@ const ConfTienda = () => {
     </div>
   </div>
 }
+  {contenido === 'General'}
 
 
-          {contenido === 'Promociones' && 
+
+          {contenido === 'Promociones' &&
           <div>
-            <h2>Gestionar descuentos y promociones</h2>
-            <p>Aquí puedes gestionar tus promociones, añade códigos de descuento y descuentos automáticos que se aplican en el pago</p>
-            <button>Crear Promociones</button>
+            <div className='Nomdesc'>
+              <h5>Nombre del Descuento</h5>
+              <input type="text" placeholder="" className="Nompromo"/>
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" className="bi bi-toggle-on" viewBox="0 0 16 16">
+              <path d="M5 3a5 5 0 0 0 0 10h6a5 5 0 0 0 0-10zm6 9a4 4 0 1 1 0-8 4 4 0 0 1 0 8"/>
+              </svg>Descuento con cupón
+                <div className='modiftext'>Configura opcionalmente un código de cupón para activar la promocion</div>
+                  <div className= 'Descripcupon'>
+                    <div>
+                      <h6>Nombre</h6>
+                      <input type="text" placeholder="Ej: 1C9148" className="Nomcupon"/>
+                    </div>
+                      <div>
+                        <h6>Límite total de consumo</h6>
+                          <div className= 'limiconsu'>
+                            <input type="number" placeholder="0" required clsName="btninfi2"/>
+                            <div className='infinito'>
+                              <div>
+                              <button className='btninfi'>∞</button>
+                              </div>
+                            </div>
+                          </div>
+                      </div>
+                        <div>
+                        <h6>Veces Usado</h6>
+                        <h6>0</h6>
+                      </div>
+                  </div>
+                    <hr/>
+                                 <div className= 'Descripcupon'>
+              <div>
+             <input type="text" placeholder="Ej: 1C9148" className="Nomcupon"/>
+             </div>
+             
+             <div>
+             <div className= 'limiconsu'>
+              <input type="number" placeholder="0" required clsName="btninfi2"/>
+              <div className='infinito'>
+                <div>
+                <button className='btninfi'>∞</button>
+                </div>
+                </div>
+                </div>
+              </div>
+
+               <div>
+             <div className= 'limiconsu'>
+              <input type="number" placeholder="0" required/>
+              <div className='infinito'>
+                <div>
+                <button className='btninfi'>∞</button>
+                </div>
+                </div>
+                </div>
+              </div>
+             
+
+             <div>
+              <h6 className='trash'>0</h6>
+             </div>
+             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+              <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
+              <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
+            </svg>
+             <hr/>
+             </div>
+             <div className='cupons'>
+             <h6 className='textcupons'>Tienes 2 cupones</h6>
+             <div>
+              <button>Agregar cupones</button>
+             </div>
+              </div>
+            
+
+
+
+
+            </div>
+
+             <div className='Nomdesc'>
+            <h5>Descuento</h5>
+            <div className = 'monto'>
+              <div>
+            <h6>Tipo</h6>
+            <select required>
+            <option value="">COP</option>
+            <option value="granos">Porcentaje</option>
+          </select>
+          </div>
+            
+            <div >
+                <h6>Monto</h6>
+              <input type="number" placeholder="0" required/>
+          </div>
+          </div>
+          <div>
+            <label>
+          <input type="checkbox"/>
+          Acumulativa
+          </label>
+          </div>
+          El descuento será acumulado sobre cualquier otro descuento descuento activo acumulable.
+            </div>
+
+            <div className='Nomdesc'>
+              <h5>Clientes</h5>
+              <h6>Aplicar a:</h6>
+              <select required>
+            <option value="">Todos</option>
+            <option value="granos">Clientes No registrados</option>
+            <option value="granos">Clientes Registrados</option>
+            <option value="granos">No registrado</option>
+            </select>
+          </div>
+
+              <div className='Nomdesc'>
+                <h5>Límites</h5>
+                <div className='monto'>
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-toggle-on" viewBox="0 0 16 16">
+                <path d="M5 3a5 5 0 0 0 0 10h6a5 5 0 0 0 0-10zm6 9a4 4 0 1 1 0-8 4 4 0 0 1 0 8"/>
+                </svg><h6>Fecha Límite</h6>
+                </div>
+                <input type="date" id="start-date" />
+                <div className='modiftext'>El descuento puede ser válido para siempre o puede establecer las fechas específicas de duración.</div>
+                <div>
+                  <div className='monto'>
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-toggle-on" viewBox="0 0 16 16">
+                <path d="M5 3a5 5 0 0 0 0 10h6a5 5 0 0 0 0-10zm6 9a4 4 0 1 1 0-8 4 4 0 0 1 0 8"/>
+                </svg><h6>Límite de Uso</h6></div>
+                <input type="number" placeholder="0" required />
+                Especifique cuántas veces se puede utilizar el descuento.
+                </div>
+              </div>
             </div>}
 
           {contenido === 'Galería' && <p>Aquí puedes gestionar la galería de tu tienda.</p>}
@@ -432,19 +559,17 @@ const ConfTienda = () => {
 
           {contenido === 'Proceso de compra' && 
 <div className="proceso-compra-container">
-  <h2>Configuración del Proceso de Compra</h2>
+  <h2>Aquí puedes configurar el proceso de compra</h2>
   
   <div className="config-section">
     <h3>Métodos de Pago</h3>
-    <div className="payment-methods">
+    <div className="payment-methods1">
     <div className="method-card">
     <div className="payment-method">
   <div className="method-label">
     <input type="checkbox" id="med" />
-   <label  htmlFor="med">Pago en efectivo</label>
+  <label  htmlFor="med">Pago en efectivo</label>
   </div>
-
-        
         <div className="method-details">
           <p>Pago al momento de recibir el producto</p>
           <div className="method-options">
@@ -512,7 +637,7 @@ const ConfTienda = () => {
           <input type="checkbox" /> Envío a domicilio
         </label>
         <div className="option-details">
-          <div className="form-row">
+          <div className="form-row1">
             <div className="form-group">
               <label>Costo de envío base:</label>
               <input type="number" placeholder="Valor fijo" />
@@ -537,8 +662,88 @@ const ConfTienda = () => {
     <button className="btn-save">Guardar Configuración</button>
   </div>
 </div>}
-
-          {contenido === 'Cuenta' && <p>Aquí puedes gestionar la información de tu cuenta.</p>}
+          {contenido === 'Cuenta' && <div>
+            <div className='xd'>
+              <div className="container-fluid">
+                <div className="alert text-center" role="alert">
+                  Su tienda requiere la contraseña 'leopard' para ingresar a durante el periodo de prueba. <a href="#">Suscríbase ahora.</a>
+                </div>
+                <div className="card">
+                  <div className="card-header">
+                    <h2>Cuentas</h2>
+                    <button type="button" className="btn btn-success">Crear Cuenta</button>
+                  </div>
+                    <div className="card-body p-0">
+                      <div className="table-responsive">
+                        <table className="table table-hover">
+                          <thead>
+                              <tr>
+                                  <th scope="col">Email</th>
+                                  <th scope="col">Nombre</th>
+                                  <th scope="col">Apellido</th>
+                                  <th scope="col">Rol</th>
+                                  <th scope="col">Permisos</th>
+                              </tr>
+                          </thead>
+                            <tbody>
+                              <tr>
+                                  <td className="email-cell">
+                                      jhomirasegura293@gmail.com <span className="badge">Dueño</span>
+                                  </td>
+                                  <td></td>
+                                  <td></td>
+                                  <td>Administrador</td>
+                                  <td className="permissions-icons">
+                                      <i className="bi bi-pencil"></i>
+                                      <i className="bi bi-person"></i>
+                                      <i className="bi bi-box"></i>
+                                      <i className="bi bi-graph-up"></i>
+                                      <i className="bi bi-gear"></i>
+                                      <i className="bi bi-currency-dollar"></i>
+                                      <i className="bi bi-bell"></i>
+                                      <i className="bi bi-credit-card"></i>
+                                      <i className="bi bi-truck"></i>
+                                      <i className="bi bi-eye"></i>
+                                  </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                      </div>
+                    </div>
+                </div>
+              </div>       
+              <div class="maestro-contenedor">
+                <div class="caja-informacion espacio-superior">
+                  <div class="contenido-caja">
+                    <h5 class="titulo-seccion">Saldo de la Tienda</h5>
+                      <p class="texto-descripcion">
+                      Agregue créditos a tu tienda para usar los servicios de despachos automáticos, estos créditos te permiten utilizar
+                      todo el potencial de tu tienda aprovechando la mensajería automatizada a través de WhatsApp y correos automatizados.
+                      </p>
+                      <div class="alinear-derecha">
+                        <button type="button" class="btn btn-principal btn-pequeno">Agregar Crédito</button>
+                      </div>
+                  </div>
+                </div>
+                <div class="caja-informacion espacio-superior">
+                  <div class="contenido-caja">
+                    <h5 class="titulo-seccion">Eliminar Tienda</h5>
+                    <p class="texto-descripcion">
+                      Si tiene alguna pregunta sobre cómo funciona su tienda o sobre nuestros planes, envíenos un correo electrónico a
+                      <a href="mailto:support@jumpseller.com"> Comuctiva357Camp@gmail.com</a> y uno de nuestros administradores con gusto le ayudará.
+                      Si aún desea eliminar su tienda, haga clic en el botón.
+                    </p>
+                      <div class="alinear-derecha">
+                        <button type="button" class="btn btn-peligro btn-pequeno">Borrar</button>
+                      </div>
+                  </div>
+                </div>
+              </div>  
+            </div>
+            <p>Aquí puedes gestionar la información de tu cuenta.</p>
+          </div>
+          
+          }
         </div>
 
 
