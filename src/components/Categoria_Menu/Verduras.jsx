@@ -80,7 +80,6 @@ function Verduras() {
       </Carousel>
         
         <Container className='Uno'>
-          <Row className='lor'>
              <Col xs={12} md={4}>
             <div className="producto-car">
               <div className="nuevo">Nuevo</div>
@@ -106,7 +105,7 @@ function Verduras() {
         <p><span className="pre">$3.000</span></p>
       </div>
       </Col>
-      </Row>
+   
       </Container>
        
     
