@@ -83,30 +83,20 @@ function Papa() {
       <div className='conte'> 
         <Container className='Uno'>
           <Col xs={12} md={4}>
-            <div className="producto-card">
+            <div className="producto-ca">
               <div className="nuevo">Nuevo</div>
-              <Image className="ImagPro" src={Papas}/>
-              <p className="descri">Papa lb</p>
+              <Image className="ImagProd" src={Papas}/>
+              <p className="descrip">Papa lb</p>
               <p><span className="pre">$ 1.400</span></p>
             </div>
           </Col>
 
           <Col xs={12} md={4}>
-            <div className="producto-card">
-              <div className="nuevo">Nuevo</div>
-              <Image className="ImagPro" src={Bultopapa}/>
-              <p className="descri">Bulto de papa</p>
-              <p><span className="pre">$60.000</span></p>
-            </div>
-          </Col>
-          <Col xs={12} md={4}>    
             <div className="producto-ca">
-              <div className="popular">Popular</div>
-              <div className="agotado">Agotado</div>
-            
-              <Image className="ImagPro" src={Papas}/>
-              <p className="descrip">Papas bulto</p>
-              <p><span className="pre">$ 60.000</span></p>
+              <div className="nuevo">Nuevo</div>
+              <Image className="ImagProd" src={Bultopapa}/>
+              <p className="descrip">Bulto de papa</p>
+              <p><span className="pre">$60.000</span></p>
             </div>
           </Col>
          </Container>
