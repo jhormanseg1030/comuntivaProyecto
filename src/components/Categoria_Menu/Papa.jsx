@@ -99,13 +99,12 @@ function Papa() {
               <p><span className="pre">$60.000</span></p>
             </div>
           </Col>
-
           <Col xs={12} md={4}>    
             <div className="producto-ca">
               <div className="popular">Popular</div>
               <div className="agotado">Agotado</div>
-              <Image className="ImagP" src={Papas}/>
-              <Image className="ImagPr" src={Papas}/>
+            
+              <Image className="ImagPro" src={Papas}/>
               <p className="descrip">Papas bulto</p>
               <p><span className="pre">$ 60.000</span></p>
             </div>

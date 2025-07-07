@@ -10,6 +10,7 @@ import './Pedidos.css';
 import './Promociones.css';
 import './Producto.css';
 import './ProCompra.css';
+import './General.css';
 
 const ConfTienda = () => {
   const [contenido, setContenido] = useState('Inicio');
@@ -555,7 +556,7 @@ const ConfTienda = () => {
             </div>}
 
           {contenido === 'Galería' && <p>Aquí puedes gestionar la galería de tu tienda.</p>}
-          {contenido === 'General' && <p>Aquí puedes ajustar la configuración general de tu tienda.</p>}
+          {contenido === 'General'  }
 
           {contenido === 'Proceso de compra' && 
 <div className="proceso-compra-container">
