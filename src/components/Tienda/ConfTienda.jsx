@@ -7,7 +7,7 @@ import './ConfTienda.css';
 import "./Historial.css";
 import './Inicio.css';
 import './Pedidos.css';
-import './general.css'
+import './generalve.css'
 import './Promociones.css';
 import './Producto.css';
 import './ProCompra.css';
@@ -556,67 +556,52 @@ const ConfTienda = () => {
             </div>}
 
           {contenido === 'Galería' && <p>Aquí puedes gestionar la galería de tu tienda.</p>}
+
+
           {contenido === 'General' && 
   <div className='opciones-lis'>
+    <div className='contenido-op'>
             <h3>Opciones de listado de productos</h3>
             <div className='conten'>
         <div className='check'>    
-            <label >
               <input type="radio"
               name='opci'
               className='opciones'
               />
+               <label >
               Mostrar todos los productos
             </label>
         </div>
         <div className='check'>
-            <label >
               <input type="radio"
               name='opci'
               className='opcion2'
               />
-              Mostrar todos los productos
+            <label >
+              Mostrar productos agotados al final de la lista
             </label>
         </div>
         <div className='check'>
-            <label >
+            
               <input type="radio"
               name='opci'
               className='opcion3'
               />
-              Mostrar todos los productos
+             <label >
+              Ocultar productos agotados
             </label>
-        </div>
-        <div>
-            <label className='check'>
-              <input type="radio"
-              name='opci'
-              className='opcion4'
-              />
-              Mostrar todos los productos
-            </label>
-        </div>
-        <div>
-            <label className='check' >
-              <input type="radio"
-              name='opci'
-              className='opcion5'
-              />
-              Mostrar todos los productos
-            </label>
-        </div>
-        <div className='check'>
-            <label >
-              <input type="radio"
-              name='opci'
-              className='opcion6'
-              />
-              Mostrar todos los productos
-            </label>
-        </div>
+        </div>   
+        </div> 
+    </div>
+    <div className='opciones-lis'>
+      <div className='contenido-op'>
+            <h3>Redes Sociales </h3>
+      </div >
+      <div className='conten'><h4>No tienes ninguna red social configurada para tu tienda </h4></div>
     </div>
   </div>
-          }
+
+ }
            
           {contenido === 'Proceso de compra' && 
 <div className="proceso-compra-container">
