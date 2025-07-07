@@ -6,6 +6,7 @@ import './Producto.css';
 import './Inicio.css';
 import './ProCompra.css';
 import './Pedidos.css';
+import './general.css'
 import { Link } from 'react-router-dom';
 
 const ConfTienda = () => {
@@ -369,7 +370,67 @@ const ConfTienda = () => {
             </div>}
 
           {contenido === 'Galería' && <p>Aquí puedes gestionar la galería de tu tienda.</p>}
-          {contenido === 'General' && <p>Aquí puedes ajustar la configuración general de tu tienda.</p>}
+          {contenido === 'General' && 
+  <div className='opciones-lis'>
+            <h3>Opciones de listado de productos</h3>
+            <div className='conten'>
+        <div className='check'>    
+            <label >
+              <input type="radio"
+              name='opci'
+              className='opciones'
+              />
+              Mostrar todos los productos
+            </label>
+        </div>
+        <div className='check'>
+            <label >
+              <input type="radio"
+              name='opci'
+              className='opcion2'
+              />
+              Mostrar todos los productos
+            </label>
+        </div>
+        <div className='check'>
+            <label >
+              <input type="radio"
+              name='opci'
+              className='opcion3'
+              />
+              Mostrar todos los productos
+            </label>
+        </div>
+        <div>
+            <label className='check'>
+              <input type="radio"
+              name='opci'
+              className='opcion4'
+              />
+              Mostrar todos los productos
+            </label>
+        </div>
+        <div>
+            <label className='check' >
+              <input type="radio"
+              name='opci'
+              className='opcion5'
+              />
+              Mostrar todos los productos
+            </label>
+        </div>
+        <div className='check'>
+            <label >
+              <input type="radio"
+              name='opci'
+              className='opcion6'
+              />
+              Mostrar todos los productos
+            </label>
+        </div>
+    </div>
+  </div>
+          }
 
           {contenido === 'Proceso de compra' && 
 <div className="proceso-compra-container">
