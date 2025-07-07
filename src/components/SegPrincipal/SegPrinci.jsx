@@ -33,17 +33,17 @@ function Segprinci() {
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav className="me-auto my-2 my-lg-0" navbarScroll>
-              <Nav.Link href="#action1">Inicio</Nav.Link>
-              <Link to="/Quienes somos"><Nav.Link href="#action2">Quienes Somos</Nav.Link></Link>
-              <Link to="/"><Nav.Link href="#action3">Tiendas</Nav.Link></Link>
+              <Nav.Link href="/">Inicio</Nav.Link>
+              <Nav.Link href="/Quienes somos">Quienes Somos</Nav.Link>
+              <Nav.Link href="/Segunda">Tiendas</Nav.Link>
               <Nav.Link href="#action4">Características</Nav.Link>
               <Nav.Link href="#action5">Ayuda</Nav.Link>
               <NavDropdown title="Categoría" id="navbarScrollingDropdown">
-                <Link to="Frutas"><NavDropdown.Item href="#action6">frutas</NavDropdown.Item></Link>
-                <Link to="Verduras"><NavDropdown.Item href="#action7">verduras</NavDropdown.Item></Link>
-                <Link to="Lacteos"><NavDropdown.Item href="#action8">lacteos</NavDropdown.Item></Link>
-                <Link to="Papa"><NavDropdown.Item href="#action9">papa</NavDropdown.Item></Link>
-                <Link to="Grano"><NavDropdown.Item href="#action10">granos</NavDropdown.Item></Link>
+                <NavDropdown.Item href="/Frutas">frutas</NavDropdown.Item>
+                <NavDropdown.Item href="/Verduras">verduras</NavDropdown.Item>
+                <NavDropdown.Item href="/Lacteos">lacteos</NavDropdown.Item>
+                <NavDropdown.Item href="Papa">papa</NavDropdown.Item>
+                <NavDropdown.Item href="/Grano">granos</NavDropdown.Item>
               </NavDropdown>
             </Nav>
             <Form className="d-flex">
@@ -82,7 +82,6 @@ function Segprinci() {
       <div className='titulo'>
         <h2>Bienvenidos a comuctiva</h2>
       </div>
-
       <Carousel className='carousel-custom-width'>
         <Carousel.Item>
           <img className='d-block w-100 carousel-img-full'

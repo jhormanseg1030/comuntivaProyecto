@@ -42,7 +42,7 @@ function Inicio_Pag ()  {
 
   return (
     <>
-              <Navbar expand="lg" className="bg-body-tertiary">
+      <Navbar expand="lg" className="bg-body-tertiary">
         <Container fluid>
           <img src={logo} alt="Logo" className="nav-brand"/>
           <Navbar.Toggle aria-controls="navbarScroll" />
@@ -54,11 +54,11 @@ function Inicio_Pag ()  {
               <Nav.Link href="#action4">Características</Nav.Link>
               <Nav.Link href="#action5">Ayuda</Nav.Link>
               <NavDropdown title="Categoría" id="navbarScrollingDropdown">
-                <Link to="Frutas"><NavDropdown.Item href="#action6">frutas</NavDropdown.Item></Link>
-                <Link to="Verduras"><NavDropdown.Item href="#action7">verduras</NavDropdown.Item></Link>
-                <Link to="Lacteos"><NavDropdown.Item href="#action8">lacteos</NavDropdown.Item></Link>
-                <Link to="Papa"><NavDropdown.Item href="#action9">papa</NavDropdown.Item></Link>
-                <Link to="Grano"><NavDropdown.Item href="#action10">granos</NavDropdown.Item></Link>
+               <NavDropdown.Item href="/Frutas">frutas</NavDropdown.Item>
+                <NavDropdown.Item href="/Verduras">verduras</NavDropdown.Item>
+                <NavDropdown.Item href="/Lacteos">lacteos</NavDropdown.Item>
+                <NavDropdown.Item href="/Papa">papa</NavDropdown.Item>
+                <NavDropdown.Item href="/Grano">granos</NavDropdown.Item>
               </NavDropdown>
             </Nav>
             <Form className="d-flex">
