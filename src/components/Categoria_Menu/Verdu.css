@@ -1,0 +1,11 @@
+.Uno{
+    display: flex;
+    margin-top: 30px;
+    justify-content: center;
+    grid-template-columns: auto;
+}
+.ImagPro{
+    width: 350px;
+    height: 250px;
+    
+}

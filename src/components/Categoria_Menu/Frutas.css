@@ -1,0 +1,16 @@
+.carusel{
+    margin-top: 40px;
+    width:auto;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+.Unon{
+    margin-top: 30px;
+    flex-direction: row;
+    display: flex;
+    gap: 30px;
+    max-width: 2000px;
+}
+.row .Unon{
+    max-width: 2000px;
+}

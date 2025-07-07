@@ -85,7 +85,7 @@ font-size: 0.9rem;
 }
 
 .submit-btn {
-background-color: #00ff95;
+background-color: #0f802b;
 color: white;
 border: none;
 padding: 0.8rem 1.5rem;
@@ -95,7 +95,7 @@ transition: background-color 0.3s;
 }
 
 .submit-btn:hover {
-background-color: #00e187;
+background-color: #188b52;
 }
 
 .form-container-expanded {
@@ -126,6 +126,6 @@ margin-top: 2rem;
 .submit-btn-expanded {
 padding: 1rem 2rem;
 font-size: 1.1rem;
-background-color: #00ff95; 
+background-color: #4aac8f; 
 
 }

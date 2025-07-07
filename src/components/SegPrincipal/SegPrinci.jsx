@@ -1,28 +1,27 @@
-import React from 'react';
 import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import CardGroup from 'react-bootstrap/CardGroup';
+import Carousel from 'react-bootstrap/Carousel';
 import Container from 'react-bootstrap/Container';
+import Dropdown from 'react-bootstrap/Dropdown';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import logo from '../Imagenes/logo.jpg';
-import Carousel from 'react-bootstrap/Carousel';
-import Frutas1 from '../imagenes/Frutas1.jpg'
-import Frutas2 from '../imagenes/Frutas2.jpg'
-import Frutas3 from '../imagenes/Frutas3.jpeg'
-import Mercados1 from '../imagenes/Mercados1.jpg'
-import Mercados2 from '../imagenes/Mercados2.jpg'
-import Mercados3 from '../imagenes/Mercados3.jpg'
-import Mercados4 from '../imagenes/Mercados4.jpg'
-import Mercados5 from '../imagenes/Mercados5.jpg'
-import Mercados6 from '../imagenes/Mercados6.jpg'
-import Mercados7 from '../imagenes/Mercados7.jpg'
-import Mercados8 from '../imagenes/Mercados8.jpg'
-import Card from 'react-bootstrap/Card';
-import CardGroup from 'react-bootstrap/CardGroup';
-import Dropdown from 'react-bootstrap/Dropdown';
-import './SegPrinci.css';
 import { Link } from 'react-router-dom';
+import Frutas1 from '../imagenes/Frutas1.jpg';
+import Frutas2 from '../imagenes/Frutas2.jpg';
+import Frutas3 from '../imagenes/Frutas3.jpeg';
+import logo from '../Imagenes/logo.jpg';
+import Mercados1 from '../imagenes/Mercados1.jpg';
+import Mercados2 from '../imagenes/Mercados2.jpg';
+import Mercados3 from '../imagenes/Mercados3.jpg';
+import Mercados4 from '../imagenes/Mercados4.jpg';
+import Mercados5 from '../imagenes/Mercados5.jpg';
+import Mercados6 from '../imagenes/Mercados6.jpg';
+import Mercados7 from '../imagenes/Mercados7.jpg';
+import Mercados8 from '../imagenes/Mercados8.jpg';
+import './SegPrinci.css';
 
 
 function Segprinci() {
@@ -34,16 +33,17 @@ function Segprinci() {
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav className="me-auto my-2 my-lg-0" navbarScroll>
-              <Nav.Link href="#action1">Inicio</Nav.Link>
-              <Nav.Link href="#action2">Quienes Somos</Nav.Link>
-              <Nav.Link href="#action3">Tiendas</Nav.Link>
+              <Nav.Link href="/">Inicio</Nav.Link>
+              <Nav.Link href="/Quienes somos">Quienes Somos</Nav.Link>
+              <Nav.Link href="/Segunda">Tiendas</Nav.Link>
               <Nav.Link href="#action4">Características</Nav.Link>
               <Nav.Link href="#action5">Ayuda</Nav.Link>
               <NavDropdown title="Categoría" id="navbarScrollingDropdown">
-                <NavDropdown.Item href="#action6">Acción 1</NavDropdown.Item>
-                <NavDropdown.Item href="#action7">Acción 2</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action8">Otra opción</NavDropdown.Item>
+                <NavDropdown.Item href="/Frutas">frutas</NavDropdown.Item>
+                <NavDropdown.Item href="/Verduras">verduras</NavDropdown.Item>
+                <NavDropdown.Item href="/Lacteos">lacteos</NavDropdown.Item>
+                <NavDropdown.Item href="Papa">papa</NavDropdown.Item>
+                <NavDropdown.Item href="/Grano">granos</NavDropdown.Item>
               </NavDropdown>
             </Nav>
             <Form className="d-flex">
@@ -51,7 +51,7 @@ function Segprinci() {
               <Button variant="outline-success">Buscar</Button>
             </Form>
           <div className='contenedor_botones'>
-     <div>
+    <div>
   <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" className="bi bi-cart-plus-fill" viewBox="0 0 16 16" >
   <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0m7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0M9 5.5V7h1.5a.5.5 0 0 1 0 1H9v1.5a.5.5 0 0 1-1 0V8H6.5a.5.5 0 0 1 0-1H8V5.5a.5.5 0 0 1 1 0"/>
 </svg>
@@ -63,7 +63,7 @@ function Segprinci() {
 </svg>
       </Dropdown.Toggle>
       <Dropdown.Menu>
-        <Dropdown.Item href="#/action-1">Perfil</Dropdown.Item>
+        <Dropdown.Item href="/Perfil">Perfil</Dropdown.Item>
         <Dropdown.Item href="#/action-2">Configuracion</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
@@ -82,7 +82,6 @@ function Segprinci() {
       <div className='titulo'>
         <h2>Bienvenidos a comuctiva</h2>
       </div>
-
       <Carousel className='carousel-custom-width'>
         <Carousel.Item>
           <img className='d-block w-100 carousel-img-full'

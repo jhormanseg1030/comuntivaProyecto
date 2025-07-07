@@ -12,7 +12,6 @@ const InicioSe = () => {
         <img src={imagen1} alt="Imagen decorativa" />
       </div>
       
-     
       <div className="form-section">
         <div className="form-container-expanded">
           <form className="login-form">

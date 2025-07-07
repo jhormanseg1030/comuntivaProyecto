@@ -1,36 +1,42 @@
-import './Estilos.css'
+import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
+import Carousel from 'react-bootstrap/Carousel';
+import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
+import Image from 'react-bootstrap/Image';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import logo from '../imagenes/DonJuan.jpg';
-import Carousel from 'react-bootstrap/Carousel';
-import Frutas from '../Imagenes/Fruits.jpeg';
-import Zanahoria from '../Imagenes/zanahoria.jpg';
-import Frutas3 from '../Imagenes/Frutas3.jpeg';
 import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Image from 'react-bootstrap/Image';
-import Productos from '../imagenes/verd.png'
-import Camp from '../imagenes/camp.jpg'
-import Camp2 from'../imagenes/camp2.webp'
-import papa from '../imagenes/papa.jpeg'
-import Bultopapa from '../imagenes/bulto-papa.jpg'
-import Pinea from '../imagenes/Pinea.jpg'
-import Banano from '../imagenes/banano.jpg'
-import Arandanos from '../imagenes/Arandanos.jpeg'
-import Papaya from '../imagenes/Papaya.jpg'
-import Accordion from 'react-bootstrap/Accordion';
 import { Link } from 'react-router-dom';
+import Arandanos from '../imagenes/Arandanos.jpeg';
+import Banano from '../imagenes/banano.jpg';
+import Bultopapa from '../imagenes/bulto-papa.jpg';
+import Camp from '../imagenes/camp.jpg';
+import Camp2 from '../imagenes/camp2.webp';
+import logo from '../imagenes/DonJuan.jpg';
+import Frutas from '../Imagenes/Fruits.jpeg';
+import Frutas3 from '../Imagenes/Frutas3.jpeg';
+import papa from '../imagenes/papa.jpeg';
+import Papaya from '../imagenes/Papaya.jpg';
+import Pinea from '../imagenes/Pinea.jpg';
+import Productos from '../imagenes/verd.png';
+import Zanahoria from '../Imagenes/zanahoria.jpg';
+import './Estilos.css';
+import ModalProduc from './ModalProduc';
 
 
 function HomeTienda() {
+
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
     return(
       <>
         <Navbar expand="lg" className="bg-body-tertiary">
       <Container fluid>
-       <img src={logo} alt="Logo" className="nav-brand"/>
+        <img src={logo} alt="Logo" className="nav-brand"/>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav className="me-auto my-2 my-lg-0" navbarScroll>
@@ -143,6 +149,12 @@ function HomeTienda() {
             <div className="producto-card">
               <div className="nuevo">Nuevo</div>
               <div className="desct">-40% OFF</div>
+              <div className="btnCarro">
+              <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" fill="currentColor" className="VenCar" viewBox="0 0 16 16">
+  <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9z"/>
+  <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1zm3.915 10L3.102 4h10.796l-1.313 7zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0m7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
+</svg>
+</div>
               <Image className="ImagProd" src={Arandanos}/>
         <p className="descrip">Arandanos</p>
         <p><span className="oferta">$ 6.000</span> <span className="Precio">$ 10.000</span></p>
@@ -152,6 +164,12 @@ function HomeTienda() {
       <Col xs={12} md={4}>
             <div className="producto-card">
               <div className="nuevo">Nuevo</div>
+              <div className="btnCarro">
+              <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" fill="currentColor" className="VenCar" viewBox="0 0 16 16">
+  <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9z"/>
+  <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1zm3.915 10L3.102 4h10.796l-1.313 7zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0m7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
+</svg>
+</div>
               <Image className="ImagProd" src={Zanahoria}/>
         <p className="descrip">Zanahoria 1000 gr</p>
         <p><span className="pre">$ 2.400</span></p>
@@ -161,6 +179,12 @@ function HomeTienda() {
       <Col xs={12} md={4}>
             <div className="producto-card">
               <div className="nuevo">Nuevo</div>
+              <div className="btnCarro">
+              <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" fill="currentColor" className="VenCar" viewBox="0 0 16 16">
+  <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9z"/>
+  <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1zm3.915 10L3.102 4h10.796l-1.313 7zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0m7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
+</svg>
+</div>
               <Image className="ImagProd" src={Papaya}/>
         <p className="descrip">Papaya 1 und</p>
         <p><span className="pre">$ 7.300</span></p>
@@ -194,6 +218,12 @@ function HomeTienda() {
             <div className="producto-card">
               <div className="popular">Popular</div>
               <div className="agotado">Agotado</div>
+              <div className="btnCarro">
+              <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" fill="currentColor" className="VenCar" viewBox="0 0 16 16">
+  <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9z"/>
+  <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1zm3.915 10L3.102 4h10.796l-1.313 7zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0m7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
+</svg>
+</div>
               <Image className="ImagProd" src={Bultopapa}/>
         <p className="descrip">Papa Pastusa</p>
         <p><span className="pre">$ 30.000</span></p>
@@ -204,7 +234,16 @@ function HomeTienda() {
             <div className="producto-card">
               <div className="popular">Popular</div>
               <div className="desct">-30% OFF</div>
-              <Link to='/Productos'><Image className="ImagProd" src={Pinea}/></Link>
+              <div className="btnCarro">
+              <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" fill="currentColor" className="VenCar" viewBox="0 0 16 16">
+  <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9z"/>
+  <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1zm3.915 10L3.102 4h10.796l-1.313 7zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0m7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
+</svg>
+</div>
+<div className ='btnCarro'>
+<Button className= "btModal" variant="link" onClick={handleShow}> </Button>
+</div>
+<Link to='/Productos'><Image className="ImagProd" src={Pinea}/></Link>
               <p className="descrip">Piña 1und</p>
         <p><span className="oferta">$ 3.654</span> <span className="Precio">$ 5.220</span></p>
       </div>
@@ -213,6 +252,12 @@ function HomeTienda() {
       <Col xs={12} md={4}>
             <div className="producto-card">
               <div className="popular">Popular</div>
+              <div className="btnCarro">
+              <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" fill="currentColor" className="VenCar" viewBox="0 0 16 16">
+  <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9z"/>
+  <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1zm3.915 10L3.102 4h10.796l-1.313 7zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0m7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
+</svg>
+</div>
               <Image className="ImagProd" src={Banano}/>
         <p className="descrip">Banano Criollo 1und</p>
         <p><span className="pre">$ 700</span></p>
@@ -250,6 +295,8 @@ function HomeTienda() {
                     </div>
                 </div>
             </footer>
+
+            <ModalProduc show={show} handleClose={handleClose} ></ModalProduc>
 
     </>
     );
