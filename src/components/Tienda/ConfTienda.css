@@ -23,15 +23,16 @@
   .menu-principal li {
     padding: 10px;
     cursor: pointer;
-    transition: background-color 0.3s; 
+    transition: background-color 0.3s;
+
   }
   
   .menu-principal li:hover {
-    background-color: #ddf3cb; 
+    background-color: #ddf3cb;
   }
   
   .menu-principal li.active {
-    background-color:#aae679; 
+    background-color:#aae679;
   }
   
   h2 {
@@ -336,4 +337,8 @@
 .btn-success:hover {
     background-color: #218838;
     border-color: #1e7e34;
+}
+.nav-link1{
+    color: black;
+    text-decoration: none;
 }
