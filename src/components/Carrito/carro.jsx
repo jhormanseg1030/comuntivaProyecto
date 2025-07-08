@@ -9,60 +9,85 @@ import { Link } from 'react-router-dom';
 import logo from '../Imagenes/logo.jpg';
 import { useState } from 'react';
 import Pinea from '../imagenes/Pinea.jpg';
+import banano from '../imagenes/banano.jpg';
+import Fresas from '../imagenes/Fresas.jpg';
 
 function Carrito() {
-    const [cart, setCart] = useState({
-        items: [],
-        total: 0
+    const [carrito, setCarrito] = useState([]);
+    const [quantities, setQuantities] = useState({
+        "Piña Golden Premium": 1,
+        "Banano Orgánico": 1,
+        "Fresas Frescas": 1
     });
 
-    const [quantity, setQuantity] = useState(1);
-    const productPrice = 2500;
+    const [selectedProducts, setSelectedProducts] = useState({
+        "Piña Golden Premium": false,
+        "Banano Orgánico": false,
+        "Fresas Frescas": false
+    });
 
-    const handleQuantityChange = (e) => {
-        const newQuantity = Math.max(1, Math.min(20, Number(e.target.value) || 1));
-        setQuantity(newQuantity);
+    const toggleProductSelection = (nombre) => {
+        setSelectedProducts({
+            ...selectedProducts,
+            [nombre]: !selectedProducts[nombre]
+        });
+    };
+
+    const agregarAlCarrito = (nombre, precio) => {
+        const cantidad = quantities[nombre] || 1;
+        const productoExistente = carrito.find(item => item.nombre === nombre);
         
-        if (cart.items.length > 0) {
-            setCart({
-                items: [{
-                    ...cart.items[0],
-                    quantity: newQuantity
-                }],
-                total: productPrice * newQuantity
-            });
-        }
-    };
-
-    const toggleCartItem = () => {
-        if (cart.items.length > 0) {
-            setCart({
-                items: [],
-                total: 0
-            });
+        if (productoExistente) {
+            setCarrito(carrito.map(item =>
+                item.nombre === nombre 
+                    ? {...item, cantidad: item.cantidad + cantidad} 
+                    : item
+            ));
         } else {
-            const newItem = {
-                id: 1,
-                name: "Piña Golden Premium",
-                price: productPrice,
-                quantity: quantity,
-                image: Pinea
-            };
-            
-            setCart({
-                items: [newItem],
-                total: productPrice * quantity
-            });
+            setCarrito([...carrito, { 
+                nombre, 
+                precio, 
+                cantidad,
+                imagen: nombre === "Piña Golden Premium" ? Pinea : 
+                       nombre === "Banano Orgánico" ? banano : Fresas
+            }]);
         }
     };
 
-    const subtotal = cart.items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    const eliminarDelCarrito = (nombre) => {
+        setCarrito(carrito.filter(item => item.nombre !== nombre));
+        setSelectedProducts({
+            ...selectedProducts,
+            [nombre]: false
+        });
+    };
+
+    const calcularTotal = () => {
+        return carrito.reduce((total, item) => total + (item.precio * item.cantidad), 0);
+    };
+
+    const updateQuantity = (nombre, newQuantity) => {
+        setQuantities({
+            ...quantities,
+            [nombre]: Math.max(1, Math.min(20, newQuantity))
+        });
+    };
+
+    const agregarSeleccionados = () => {
+        Object.keys(selectedProducts).forEach(nombre => {
+            if (selectedProducts[nombre]) {
+                const precio = nombre === "Piña Golden Premium" ? 2500 : 
+                              nombre === "Banano Orgánico" ? 1800 : 3200;
+                agregarAlCarrito(nombre, precio);
+            }
+        });
+    };
 
     return (
         <>
-            <Navbar expand="lg" className="bg-body-tertiary">
+            <Navbar expand="lg" className="bg-body-tertiary custom-navbar">
                 <Container fluid>
-                    <img src={logo} alt="Logo" className="nav-brand"/>
+                    <img src={logo} alt="Logo" className="nav-brand" style={{height: '40px'}}/>
                     <Navbar.Toggle aria-controls="navbarScroll" />
                     <Navbar.Collapse id="navbarScroll">
                         <Nav className="me-auto my-2 my-lg-0" navbarScroll>
@@ -86,68 +111,174 @@ function Carrito() {
                     <Link className='link1' to="/Login"> Iniciar Sesión </Link>
                 </Container>
             </Navbar>
-            
+
             <div className="page-container">
                 <div className="main-content">
-                    <h2>Productos Frescos</h2>
+                    <h1 className="titulo-principal">Productos Frescos</h1>
                     
-                    <div className="product-item">
-                        <img src={Pinea} alt="Piña fresca" className="product-image" />
+                    <div className="productos-grid">
+                       
+                        <div 
+                            className={`producto-card ${selectedProducts["Piña Golden Premium"] ? 'selected' : ''}`}
+                            onClick={() => toggleProductSelection("Piña Golden Premium")}
+                        >
+                            <div className="producto-imagen-container">
+                                <img src={Pinea} alt="Piña Golden Premium" className="producto-imagen" />
+                            </div>
+                            <div className="producto-info">
+                                <h3 className="producto-nombre">Piña Golden Premium</h3>
+                                <p className="producto-precio">$2.500/kg</p>
+                                
+                                <div className="producto-actions">
+                                    <div className="quantity-control">
+                                        <button 
+                                            className="quantity-btn" 
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                updateQuantity("Piña Golden Premium", quantities["Piña Golden Premium"] - 1)
+                                            }}
+                                        >
+                                            -
+                                        </button>
+                                        <span className="quantity">{quantities["Piña Golden Premium"]}</span>
+                                        <button 
+                                            className="quantity-btn" 
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                updateQuantity("Piña Golden Premium", quantities["Piña Golden Premium"] + 1)
+                                            }}
+                                        >
+                                            +
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         
-                        <div className="product-content">
-                            <div className="product-tag">Fresco</div>
-                            <h3 className="product-title">Piña Golden Premium</h3>
-                            
-                            <div className="product-price-container">
-                                <span className="product-price">$2.500/kg</span>
+                        <div 
+                            className={`producto-card ${selectedProducts["Banano Orgánico"] ? 'selected' : ''}`}
+                            onClick={() => toggleProductSelection("Banano Orgánico")}
+                        >
+                            <div className="producto-imagen-container">
+                                <img src={banano} alt="Banano Orgánico" className="producto-imagen" />
                             </div>
-                            
-                            <div className="product-info">
-                                <div className="product-shipping">Disponible: 20 unidades</div>
-                                <div className="product-seller">Proveedor: Finca Los Dulces Frutos</div>
+                            <div className="producto-info">
+                                <h3 className="producto-nombre">Banano Orgánico</h3>
+                                <p className="producto-precio">$1.800/kg</p>
+                                
+                                <div className="producto-actions">
+                                    <div className="quantity-control">
+                                        <button 
+                                            className="quantity-btn" 
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                updateQuantity("Banano Orgánico", quantities["Banano Orgánico"] - 1)
+                                            }}
+                                        >
+                                            -
+                                        </button>
+                                        <span className="quantity">{quantities["Banano Orgánico"]}</span>
+                                        <button 
+                                            className="quantity-btn" 
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                updateQuantity("Banano Orgánico", quantities["Banano Orgánico"] + 1)
+                                            }}
+                                        >
+                                            +
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
-                            
-                            <div className="product-selection">
-                                <Form.Check 
-                                    type="checkbox"
-                                    label="Agregar al carrito"
-                                    checked={cart.items.length > 0}
-                                    onChange={toggleCartItem}
-                                />
-                                <Form.Control
-                                    type="number"
-                                    min="1"
-                                    max="20"
-                                    value={quantity}
-                                    onChange={handleQuantityChange}
-                                    className="quantity-input mt-2"
-                                />
+                        </div>
+
+                       
+                        <div 
+                            className={`producto-card ${selectedProducts["Fresas Frescas"] ? 'selected' : ''}`}
+                            onClick={() => toggleProductSelection("Fresas Frescas")}
+                        >
+                            <div className="producto-imagen-container">
+                                <img src={Fresas} alt="Fresas Frescas" className="producto-imagen" />
+                            </div>
+                            <div className="producto-info">
+                                <h3 className="producto-nombre">Fresas Frescas</h3>
+                                <p className="producto-precio">$3.200/kg</p>
+                                
+                                <div className="producto-actions">
+                                    <div className="quantity-control">
+                                        <button 
+                                            className="quantity-btn" 
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                updateQuantity("Fresas Frescas", quantities["Fresas Frescas"] - 1)
+                                            }}
+                                        >
+                                            -
+                                        </button>
+                                        <span className="quantity">{quantities["Fresas Frescas"]}</span>
+                                        <button 
+                                            className="quantity-btn" 
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                updateQuantity("Fresas Frescas", quantities["Fresas Frescas"] + 1)
+                                            }}
+                                        >
+                                            +
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    
+                    <div className="add-selected-container">
+                        <button 
+                            className="add-selected-btn"
+                            onClick={agregarSeleccionados}
+                            disabled={!Object.values(selectedProducts).some(val => val)}
+                        >
+                            Agregar seleccionados al carrito
+                        </button>
+                    </div>
                 </div>
 
-                <div className={`cart-container ${cart.items.length > 0 ? 'cart-with-items' : ''}`}>
-                    <h2 className="cart-title">Tu Carrito</h2>
+                <div className="cart-sidebar">
+                    <h2 className="cart-title">Tu Carrito <span className="cart-count">({carrito.reduce((sum, item) => sum + item.cantidad, 0)})</span></h2>
                     <div className="cart-items">
-                        {cart.items.length > 0 ? (
-                            cart.items.map(item => (
-                                <div key={item.id} className="cart-item">
-                                    <div className="cart-item-image">
-                                        <img src={item.image} alt={item.name} />
-                                    </div>
-                                    <div className="cart-item-details">
-                                        <h4>{item.name}</h4>
-                                        <p>Cantidad: {item.quantity}</p>
-                                        <p>Precio unitario: ${item.price}</p>
-                                        <p>Subtotal: ${item.price * item.quantity}</p>
+                        {carrito.length === 0 ? (
+                            <p className="empty-cart">Tu carrito está vacío</p>
+                        ) : (
+                            carrito.map((item, index) => (
+                                <div key={index} className="cart-item">
+                                    <img src={item.imagen} alt={item.nombre} className="cart-item-img" />
+                                    <div className="cart-item-info">
+                                        <h4>{item.nombre}</h4>
+                                        <p>{item.cantidad} × ${item.precio}</p>
+                                        <div className="cart-item-actions">
+                                            <button 
+                                                className="quantity-btn"
+                                                onClick={() => updateQuantity(item.nombre, quantities[item.nombre] - 1)}
+                                            >
+                                                -
+                                            </button>
+                                            <span className="quantity">{item.cantidad}</span>
+                                            <button 
+                                                className="quantity-btn"
+                                                onClick={() => updateQuantity(item.nombre, quantities[item.nombre] + 1)}
+                                            >
+                                                +
+                                            </button>
+                                        </div>
+                                        <button 
+                                            className="remove-item"
+                                            onClick={() => eliminarDelCarrito(item.nombre)}
+                                        >
+                                            Eliminar
+                                        </button>
                                     </div>
                                 </div>
                             ))
-                        ) : (
-                            <div className="empty-cart-message">
-                                <p>Tu carrito está vacío</p>
-                            </div>
                         )}
                     </div>
                     
@@ -158,38 +289,36 @@ function Carrito() {
                         </div>
                         <div className="summary-row">
                             <span>Subtotal:</span>
-                            <span>${subtotal}</span>
+                            <span>${calcularTotal()}</span>
                         </div>
                         <div className="summary-row total">
                             <span>Total:</span>
-                            <span>${subtotal}</span>
+                            <span>${calcularTotal()}</span>
                         </div>
-                        <button 
-                            className={`checkout-button ${cart.items.length === 0 ? 'disabled' : ''}`} 
-                            disabled={cart.items.length === 0}
-                        >
-                            Continuar compra
-                        </button>
                     </div>
                     
-                    <div className="info-sections">
-                        <div className="info-section">
-                            <h3 className="info-section-title">Entrega garantizada</h3>
-                            <p className="info-section-text">
-                                Productos frescos entregados en máximo 24 horas
-                            </p>
-                        </div>
-                        <div className="info-section">
-                            <h3 className="info-section-title">Métodos de pago</h3>
-                            <p className="info-section-text">
-                                Próximamente disponibles
-                            </p>
-                        </div>
-                    </div>
+                    <button 
+                        className={`checkout-btn ${carrito.length === 0 ? 'disabled' : ''}`} 
+                        disabled={carrito.length === 0}
+                    >
+                        Continuar compra
+                    </button>
                 </div>
             </div>
+
+            <footer className="footer">
+                <div className="footer-content">
+                    <img src={logo} alt="Logotipo" className="footer-logo" />
+                    <p>© 2025 Comuctiva. Todos los derechos reservados.</p>
+                    <div className="footer-links">
+                        <a href="#!" className="footer-link">Política de Privacidad</a>
+                        <span>|</span>
+                        <a href="#!" className="footer-link">Términos de Servicio</a>
+                    </div>
+                </div>
+            </footer>
         </>
     );
-};
+}
 
 export default Carrito;
