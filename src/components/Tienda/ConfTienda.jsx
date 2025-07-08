@@ -4,13 +4,13 @@ import { Link } from 'react-router-dom';
 import grafica from '../imagenes/grafica.png';
 import logo from '../imagenes/logo.jpg';
 import './ConfTienda.css';
+import './generalve.css';
 import "./Historial.css";
 import './Inicio.css';
 import './Pedidos.css';
-import './generalve.css'
-import './Promociones.css';
-import './Producto.css';
 import './ProCompra.css';
+import './Producto.css';
+import './Promociones.css';
 
 const ConfTienda = () => {
   const [contenido, setContenido] = useState('Inicio');
@@ -105,7 +105,7 @@ const ConfTienda = () => {
           Nuevo Pedido
         </button>
       </div>
-   
+  
 
     {/* Tabla de pedidos */}
     <div className="tabla-pedidos-container">

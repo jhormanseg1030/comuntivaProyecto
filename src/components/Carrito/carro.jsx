@@ -1,4 +1,4 @@
-import './carro.css';
+import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
@@ -6,11 +6,11 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from 'react-router-dom';
-import logo from '../Imagenes/logo.jpg';
-import { useState } from 'react';
-import Pinea from '../imagenes/Pinea.jpg';
 import banano from '../imagenes/banano.jpg';
 import Fresas from '../imagenes/Fresas.jpg';
+import logo from '../Imagenes/logo.jpg';
+import Pinea from '../imagenes/Pinea.jpg';
+import './carro.css';
 
 function Carrito() {
     const [carrito, setCarrito] = useState([]);
@@ -49,7 +49,7 @@ function Carrito() {
                 precio, 
                 cantidad,
                 imagen: nombre === "Piña Golden Premium" ? Pinea : 
-                       nombre === "Banano Orgánico" ? banano : Fresas
+                    nombre === "Banano Orgánico" ? banano : Fresas
             }]);
         }
     };
@@ -87,7 +87,7 @@ function Carrito() {
         <>
             <Navbar expand="lg" className="bg-body-tertiary custom-navbar">
                 <Container fluid>
-                    <img src={logo} alt="Logo" className="nav-brand" style={{height: '40px'}}/>
+                    <img src={logo} alt="Logo" className="nav-brand"/>
                     <Navbar.Toggle aria-controls="navbarScroll" />
                     <Navbar.Collapse id="navbarScroll">
                         <Nav className="me-auto my-2 my-lg-0" navbarScroll>
@@ -116,9 +116,9 @@ function Carrito() {
                 <div className="main-content">
                     <h1 className="titulo-principal">Productos Frescos</h1>
                     
-                    <div className="productos-grid">
-                       
-                        <div 
+                    <div className="productos-grid1">
+                    
+                        <div
                             className={`producto-card ${selectedProducts["Piña Golden Premium"] ? 'selected' : ''}`}
                             onClick={() => toggleProductSelection("Piña Golden Premium")}
                         >
@@ -281,7 +281,7 @@ function Carrito() {
                             ))
                         )}
                     </div>
-                    
+                        
                     <div className="cart-summary">
                         <div className="summary-row">
                             <span>Envío:</span>
@@ -296,16 +296,16 @@ function Carrito() {
                             <span>${calcularTotal()}</span>
                         </div>
                     </div>
-                    
-                    <button 
+                        
+                    <Link to="/Pago"><button
                         className={`checkout-btn ${carrito.length === 0 ? 'disabled' : ''}`} 
                         disabled={carrito.length === 0}
                     >
                         Continuar compra
-                    </button>
+                    </button></Link>
                 </div>
             </div>
-
+                
             <footer className="footer">
                 <div className="footer-content">
                     <img src={logo} alt="Logotipo" className="footer-logo" />

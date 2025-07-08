@@ -38,7 +38,7 @@
   font-weight: 600;
 }
 
-.productos-grid {
+.productos-grid1{
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 25px;
@@ -342,7 +342,7 @@
 }
 
 .footer-logo {
-  height: 40px;
+  height: 100px;
   margin-bottom: 10px;
 }
 

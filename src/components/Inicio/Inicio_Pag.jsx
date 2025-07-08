@@ -54,7 +54,7 @@ function Inicio_Pag ()  {
               <Nav.Link href="#action4">Características</Nav.Link>
               <Nav.Link href="#action5">Ayuda</Nav.Link>
               <NavDropdown title="Categoría" id="navbarScrollingDropdown">
-               <NavDropdown.Item href="/Frutas">frutas</NavDropdown.Item>
+                <NavDropdown.Item href="/Frutas">frutas</NavDropdown.Item>
                 <NavDropdown.Item href="/Verduras">verduras</NavDropdown.Item>
                 <NavDropdown.Item href="/Lacteos">lacteos</NavDropdown.Item>
                 <NavDropdown.Item href="/Papa">papa</NavDropdown.Item>
@@ -88,7 +88,7 @@ function Inicio_Pag ()  {
         </Carousel.Item>
       </Carousel>
 
-      <div className="productos-grid">    
+      <div className="productos-grid">
         <h2 className="titulo">Productos Campesinos</h2>
         <div className="grid-cont">
           {productos.map((producto) => (
