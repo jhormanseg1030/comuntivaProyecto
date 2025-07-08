@@ -1,0 +1,36 @@
+.opciones-lis{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column ;
+    gap: 15px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+.conten{
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    padding: 20px 70px;
+
+}
+.contenido-op{
+    text-align: start;
+    padding: 10px 50px;
+}
+
+.check{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    white-space: nowrap;
+    gap: 15px;
+    font-size: 22px;
+    
+    
+}
+.text{
+
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    margin: auto;
+}
