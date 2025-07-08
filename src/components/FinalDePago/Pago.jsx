@@ -1,10 +1,10 @@
+import { useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
 import banano from '../imagenes/banano.jpg';
 import logo from '../Imagenes/logo.jpg';
 import './Pago.css';
-import { useState } from 'react';
 
 function Pago() {
   const [metodoSeleccionado, setMetodoSeleccionado] = useState(null);
@@ -12,6 +12,7 @@ function Pago() {
   const metodosPago = [
     { id: 'paypal', nombre: 'PayPal', icono: 'bi bi-paypal' },
     { id: 'tarjeta', nombre: 'Tarjeta', icono: 'bi bi-credit-card' },
+    {},
   ];
 
   return (

@@ -32,7 +32,7 @@ function App() {
         <Route path='/TiendaDonJuan' element={<HomeTienda></HomeTienda>}></Route>
         <Route path='/Segunda' element={<SegPrinci></SegPrinci>}></Route>
         <Route path='/Registro' element={<RegistrarUsu></RegistrarUsu>}></Route>
-        <Route path='/ConfTienda' element={<ConfTienda></ConfTienda>}></Route>
+        <Route path='/ConfTienda/*' element={<ConfTienda></ConfTienda>}></Route>
         <Route path='/Vende' element={<InicioVendedor></InicioVendedor>}></Route>
         <Route path='/Compra' element={<PagCompra></PagCompra>}></Route>
         <Route path='/Productos' element={<ProductosTienda></ProductosTienda>}></Route>
