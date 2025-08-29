@@ -1,7 +1,6 @@
-import React from 'react';
-import './Registrar.css'
 import { Link } from 'react-router-dom';
-import imagen1 from '../imagenes/imagen1.jpg'
+import imagen1 from '../imagenes/imagen1.jpg';
+import './Registrar.css';
 
 const RegistrarUsu = () => {
     return (
@@ -65,6 +64,9 @@ const RegistrarUsu = () => {
                 </div>
             </div>
         </div>
+
+
+
     );
 };
 
