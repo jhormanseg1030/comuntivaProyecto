@@ -52,6 +52,12 @@ function Carrito() {
                     nombre === "Banano Orgánico" ? banano : Fresas
             }]);
         }
+        
+        
+        setQuantities({
+            ...quantities,
+            [nombre]: 1
+        });
     };
 
     const eliminarDelCarrito = (nombre) => {
@@ -77,10 +83,18 @@ function Carrito() {
         Object.keys(selectedProducts).forEach(nombre => {
             if (selectedProducts[nombre]) {
                 const precio = nombre === "Piña Golden Premium" ? 2500 : 
-                              nombre === "Banano Orgánico" ? 1800 : 3200;
+                            nombre === "Banano Orgánico" ? 1800 : 3200;
                 agregarAlCarrito(nombre, precio);
             }
         });
+    };
+
+    const updateCartQuantity = (nombre, change) => {
+        setCarrito(carrito.map(item =>
+            item.nombre === nombre
+                ? {...item, cantidad: Math.max(1, item.cantidad + change)}
+                : item
+        ));
     };
 
     return (
@@ -154,7 +168,6 @@ function Carrito() {
                                 </div>
                             </div>
                         </div>
-
                         
                         <div 
                             className={`producto-card ${selectedProducts["Banano Orgánico"] ? 'selected' : ''}`}
@@ -193,7 +206,6 @@ function Carrito() {
                             </div>
                         </div>
 
-                       
                         <div 
                             className={`producto-card ${selectedProducts["Fresas Frescas"] ? 'selected' : ''}`}
                             onClick={() => toggleProductSelection("Fresas Frescas")}
@@ -258,14 +270,15 @@ function Carrito() {
                                         <div className="cart-item-actions">
                                             <button 
                                                 className="quantity-btn"
-                                                onClick={() => updateQuantity(item.nombre, quantities[item.nombre] - 1)}
+                                                onClick={() => updateCartQuantity(item.nombre, -1)}
                                             >
                                                 -
                                             </button>
                                             <span className="quantity">{item.cantidad}</span>
+                                            
                                             <button 
                                                 className="quantity-btn"
-                                                onClick={() => updateQuantity(item.nombre, quantities[item.nombre] + 1)}
+                                                onClick={() => updateCartQuantity(item.nombre, 1)}
                                             >
                                                 +
                                             </button>
