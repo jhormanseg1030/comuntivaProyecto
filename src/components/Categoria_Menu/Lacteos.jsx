@@ -11,6 +11,7 @@ import Frutas1 from '../imagenes/Frutas1.jpg'
 import Frutas2 from '../imagenes/Frutas2.jpg'
 import Mercados8 from '../imagenes/Mercados8.jpg';
 import './Lacte.css';
+import Footer_Abajo from '../Vendedor/Footer_Abajo';
 function lacteos() {
     return (
     <>
@@ -77,6 +78,7 @@ function lacteos() {
     <div className='Texto'>
         <h3>No hay lacteos disponibles en el momento</h3>
     </div>
+    <Footer_Abajo/>
 </>
     )
 }

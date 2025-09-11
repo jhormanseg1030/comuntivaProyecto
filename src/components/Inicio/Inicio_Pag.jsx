@@ -12,6 +12,7 @@ import Promocion2 from '../imagenes/Promocion2.png';
 import Promocion3 from '../imagenes/Promocion3.png';
 import LisProduc from '../Productos/LisProduc';
 import './Inicio_Pag.css';
+import Footer_Abajo from '../Vendedor/Footer_Abajo';
 
 function Inicio_Pag ()  {
 
@@ -65,17 +66,7 @@ function Inicio_Pag ()  {
       </Carousel>
     <LisProduc/>
       
-      <footer className="footer">
-          <div className="footer-content">
-              <img src={logo} alt="Logotipo" className="footer-logo" />
-              <p>© 2025 Comuctiva. Todos los derechos reservados.</p>
-              <div className="footer-links">
-                  <a href="#!" className="footer-link">Política de Privacidad</a>
-                  <span>|</span>
-                  <a href="#!" className="footer-link">Términos de Servicio</a>
-              </div>
-          </div>
-      </footer>
+      <Footer_Abajo/>
     </>
   );
 };

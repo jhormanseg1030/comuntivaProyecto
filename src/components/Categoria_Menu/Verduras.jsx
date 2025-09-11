@@ -15,6 +15,7 @@ import Mercados8 from '../imagenes/Mercados8.jpg';
 import Tomates from '../imagenes/Tomates.jpg'
 import Platanos from '../imagenes/Platanos.jpg'
 import './Verdu.css';
+import Footer_Abajo from '../Vendedor/Footer_Abajo';
 function Verduras() {
     return (
     <>
@@ -108,7 +109,7 @@ function Verduras() {
    
       </Container>
        
-    
+    <Footer_Abajo/>
     </>
     )
 }
