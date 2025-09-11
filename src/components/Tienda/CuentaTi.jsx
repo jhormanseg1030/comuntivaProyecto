@@ -52,28 +52,15 @@ function CuentaTi () {
               </div>       
               <div class="maestro-contenedor">
                 <div class="caja-informacion espacio-superior">
-                  <div class="contenido-caja">
-                    <h5 class="titulo-seccion">Saldo de la Tienda</h5>
-                      <p class="texto-descripcion">
-                      Agregue créditos a tu tienda para usar los servicios de despachos automáticos, estos créditos te permiten utilizar
-                      todo el potencial de tu tienda aprovechando la mensajería automatizada a través de WhatsApp y correos automatizados.
-                      </p>
-                      <div class="alinear-derecha">
-                        <button type="button" class="btn btn-principal btn-pequeno">Agregar Crédito</button>
-                      </div>
-                  </div>
+              
                 </div>
                 <div class="caja-informacion espacio-superior">
                   <div class="contenido-caja">
-                    <h5 class="titulo-seccion">Eliminar Tienda</h5>
+                    <h5 class="titulo-seccion">Dudas Plataforma</h5>
                     <p class="texto-descripcion">
-                      Si tiene alguna pregunta sobre cómo funciona su tienda o sobre nuestros planes, envíenos un correo electrónico a
+                      Si tiene alguna pregunta sobre cómo funciona la plataforma o sobre nuestros planes, envíenos un correo electrónico a
                       <a href="mailto:support@jumpseller.com"> Comuctiva357Camp@gmail.com</a> y uno de nuestros administradores con gusto le ayudará.
-                      Si aún desea eliminar su tienda, haga clic en el botón.
                     </p>
-                      <div class="alinear-derecha">
-                        <button type="button" class="btn btn-peligro btn-pequeno">Borrar</button>
-                      </div>
                   </div>
                 </div>
               </div>  
