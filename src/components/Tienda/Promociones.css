@@ -1,3 +1,4 @@
+
 .Nomdesc{
   max-width: 1100px;
   margin: 30px auto;
@@ -7,6 +8,9 @@
   box-shadow: 0 6px 15px rgba(0,0,0,0.1);
   font-family: 'Segoe UI', sans-serif;
   margin-left: 20px;
+}
+.Nomdesc {
+text-align: left;
 }
 .bi.bi-toggle-on{
     margin-right: 10px;

@@ -49,9 +49,7 @@ const ConfTienda = () => {
             <Link className='nav-link1' to={"/ConfTienda/PromocionTi"}>Promociones</Link>
           </li>
           
-        <h2>Personalización</h2>
-
-          <li onClick={() => manejarSeleccion('Galería')} className={contenido === 'Galería' ? 'active' : ''}>Galería</li>
+      
     
         <h2>Configuración</h2>
 

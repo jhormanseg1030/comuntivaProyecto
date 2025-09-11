@@ -1,7 +1,7 @@
 function GeneralTi () {
     return(
         <>
-<h1>General</h1>
+    <h1>General</h1>
     <div className='opciones-lis'>
         <div className='contenido-op'>
                 <h3>Opciones de listado de productos</h3>
@@ -40,7 +40,7 @@ function GeneralTi () {
         <div className='contenido-op'>
                 <h3>Redes Sociales </h3>
         </div >
-        <div className='conten'><h4>No tienes ninguna red social configurada para tu tienda </h4></div>
+        <div className='conten'><h4>No tienes ninguna red social configurada para tu sucursal </h4></div>
         </div>
     </div>
             

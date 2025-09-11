@@ -1,10 +1,10 @@
 function ProductoTienda () {
     return(
         <>
-    <h1>productos</h1>
+    <h1>Productos</h1>
     <div className="productos-container">
     <div className="productos-header">
-        <h3>Aquí puedes gestionar tus productos</h3>
+        <h3>Aquí puedes gestionar los productos de la sucursal</h3>
     </div>
     <div className="product-form-container">
         <div className="form-section">

@@ -1,6 +1,7 @@
 function Promocion () {
     return(
         <>
+        
         <h1>Promociones</h1>
           <div>
             <div className='Nomdesc'>
