@@ -36,7 +36,7 @@ function GeneralTi () {
             </div>   
             </div> 
         </div>
-        <div className='opciones-lis'>
+        <div className='opciones-lis1'>
         <div className='contenido-op'>
                 <h3>Redes Sociales </h3>
         </div >

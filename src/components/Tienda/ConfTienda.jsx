@@ -30,7 +30,6 @@ const ConfTienda = () => {
       <nav className="menu">
         <div className="logo">
         <img src={logo} alt="Logo" className="nav-brand"/>
-        <Link to ="/TiendaDonJuan"><button>Ver tienda</button></Link>
         </div>
         <ul className="menu-principal">
           <li onClick={() => manejarSeleccion('Inicio')} className={contenido === 'Inicio' ? 'active' : ''}>
