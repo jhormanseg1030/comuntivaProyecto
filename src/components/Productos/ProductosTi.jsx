@@ -13,6 +13,7 @@ import ImgP2 from '../imagenes/ImgP2.jpg';
 import ImgP3 from '../imagenes/ImgP3.webp';
 import Pinea from '../imagenes/Pinea.jpg';
 import './Productos.css';
+import Footer_Abajo from '../Vendedor/Footer_Abajo';
 
 function ProductosTi() {
     return(
@@ -120,17 +121,7 @@ Ideal para jugos, ensaladas, postres o para disfrutar sola.</h5>
       <h6>1</h6>
     </div>
     </div>
-    <footer className="footer">
-                    <div className="footer-content">
-                        <img src={logo} alt="Logotipo" className="footer-logo" />
-                        <p>© 2025 Don Juan. Todos los derechos reservados.</p>
-                        <div className="footer-links">
-                            <a href="#!" className="footer-link">Política de Privacidad</a>
-                            <span>|</span>
-                            <a href="#!" className="footer-link">Términos de Servicio</a>
-                        </div>
-                    </div>
-                </footer>
+     <Footer_Abajo/>
     </>
     )
 }

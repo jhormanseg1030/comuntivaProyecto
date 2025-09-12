@@ -16,6 +16,7 @@ import Frutas2 from '../imagenes/Frutas2.jpg'
 import Mercados8 from '../imagenes/Mercados8.jpg';
 import Papas from '../imagenes/Papas.jpg';
 import './Pap.css';
+import Footer_Abajo from '../Vendedor/Footer_Abajo';
 function Papa() {
     return (
     <>
@@ -101,6 +102,7 @@ function Papa() {
           </Col>
          </Container>
          </div>
+          <Footer_Abajo/>
     </>
     )
 }

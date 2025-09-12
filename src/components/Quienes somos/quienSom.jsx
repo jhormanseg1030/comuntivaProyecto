@@ -44,7 +44,7 @@ function QuienesSomos() {
         <h1>Quiénes Somos</h1>
         <p>
           En <strong>COMUCTIVA</strong> trabajamos para conectar directamente a campesinos y consumidores finales.
-        Queremos eliminar intermediarios y promover productos sostenibles, auténticos y de calidad, fortaleciendo la economía 
+        Queremos eliminar intermediarios y promover productos sostenibles, auténticos y de calidad, fortaleciendo la economía
         local y generando oportunidades para las comunidades rurales.
         </p>
       </div>
@@ -87,7 +87,7 @@ function QuienesSomos() {
       </section>
 
       
-       <section className="section">
+      <section className="section">
         <h2>Problemática</h2>
         <p>
         Muchos campesinos enfrentan barreras tecnológicas, baja visibilidad y dificultad para acceder a mercados justos.
@@ -102,6 +102,7 @@ function QuienesSomos() {
         Buscamos ofrecerles un canal directo para mejorar sus ingresos, dignificar su trabajo y motivar a las nuevas generaciones a seguir cultivando la tierra.
         </p>
         </section>
+        
         
     </div>
     </div>

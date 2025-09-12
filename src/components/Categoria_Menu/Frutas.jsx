@@ -20,6 +20,7 @@ import Sandias from '../imagenes/Sandias.jpg';
 import Naranjas from '../imagenes/Naranjas.jpg';
 import Manzanas from '../imagenes/Manzanas.jpg';
 import './Frutas.css';
+import Footer_Abajo from '../Vendedor/Footer_Abajo';
 function Frutas() {
     return (
     <>
@@ -143,7 +144,7 @@ function Frutas() {
       </Row>
       </Container>
 
-    
+    <Footer_Abajo/>
     </>
     )
 }

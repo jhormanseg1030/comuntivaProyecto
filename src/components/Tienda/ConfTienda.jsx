@@ -86,6 +86,8 @@ const ConfTienda = () => {
           <button>¿Necesitas Ayuda? Click aqui! </button>
         </div>
       </div>
+
+      <Footer/>
     </div>
   );
 };
