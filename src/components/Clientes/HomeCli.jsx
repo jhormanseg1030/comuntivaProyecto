@@ -21,6 +21,8 @@ import Mercados6 from '../imagenes/Mercados6.jpg';
 import Mercados7 from '../imagenes/Mercados7.jpg';
 import Mercados8 from '../imagenes/Mercados8.jpg';
 import './HomeCliente.css';
+import Footer_Abajo from '../Vendedor/Footer_Abajo';
+
 function HomeCli() {
   return (
     <>
@@ -55,10 +57,13 @@ function HomeCli() {
       <div className='titulo'>
         <h2>Bienvenidos a comuctiva</h2>
       </div>
-
       <Carousel className='carousel-custom-width'>
         <Carousel.Item>
-          <img className='d-block w-100 carousel-img-full' src={Frutas1} alt='First slider'/>
+          <img className='d-block w-100 carousel-img-full'
+          src={Frutas1}
+          alt='First slider'
+          />
+          
         </Carousel.Item>
         <Carousel.Item>
           <img className='d-block w-100 carousel-img-full'
@@ -76,106 +81,51 @@ function HomeCli() {
       
       <CardGroup className='confi'>
       <Card>
-        <Link to='/TiendaDonJuan'><Card.Img variant= "top" src={Mercados1} /></Link>
+      <Link to='/TiendaDonJuan'><Card.Img variant="top" src={Mercados1} /></Link>
         <Card.Body>
-          <Card.Title>Don Juan</Card.Title>
+          <Card.Title>Sucursal Sur</Card.Title>
           <Card.Text>
-            bienvenido a mi tienda, donde encontraras los mejores productos del mercado, con buenos precios, y calidad en su maximo explendor, ven y mira mi tienda
-          </Card.Text>
+          Ubicada en el corazón del sur bogotano, esta sucursal refleja la calidez y la tradición de una zona llena de historia y comunidad. 
+          Aquí encontrarás productos frescos y accesibles, ideales para las familias que buscan calidad sin complicaciones.          </Card.Text>
         </Card.Body>
       </Card>
 
       <Card>
-        <Link to='/FincaBendicion'><Card.Img variant= "top" src={Mercados2}  /></Link>
+      <Link to='/FincaBendicion'><Card.Img variant="top" src={Mercados2}  /></Link>
         <Card.Body>
-          <Card.Title>Finca La Bendición</Card.Title>
+          <Card.Title>Sucursal Norte</Card.Title>
           <Card.Text>
-          Desde las montañas de Antioquia, traemos plátanos, yucas y aguacates cosechados al ritmo del sol. ¡Sabor campesino en cada bocado!
-          </Card.Text>
+          En la vibrante y sofisticada zona norte, nuestra sucursal ofrece productos que reflejan la diversidad y el dinamismo de esta región.
+          Desde ingredientes campesinos hasta opciones exclusivas, es el lugar perfecto para quienes valoran sabor y calidad.          </Card.Text>
         </Card.Body>
       </Card>
 
       <Card>
-        <Link to='/CosechasValle'><Card.Img variant= "top" src={Mercados3}/></Link>
+      <Link to='/CosechasValle'><Card.Img variant= "top" src={Mercados3}/></Link>
         <Card.Body>
-          <Card.Title>Cosechas del Valle</Card.Title>
+          <Card.Title>Sucursal Zona Centro </Card.Title>
           <Card.Text>
-          Tomates, cebollas y pimientos rojos como el atardecer. Cultivados sin químicos, regados con agua pura de la cordillera.
-          </Card.Text>
+        En el centro histórico y cultural de la ciudad, esta sucursal combina tradición y modernidad.
+        Ofrecemos productos cultivados con esmero, que mantienen viva la conexión con nuestras raíces y con la naturaleza que rodea la capital.          </Card.Text>
         </Card.Body>
       </Card>
 
       <Card>
-        <Link to='/VerdurasDonaRosa'><Card.Img variant= "top" src={Mercados4} /></Link>
+      <Link to='/VerdurasDonaRosa'><Card.Img variant= "top" src={Mercados4} /></Link>
         <Card.Body>
-          <Card.Title>Verduras Doña Rosa</Card.Title>
+          <Card.Title>Sucursal Zona Occidente y Suroccidente</Card.Title>
           <Card.Text>
-          Mangos jugosos, piñas dulces y papayas gigantes. Nuestra tierra fértil nos regala lo mejor. ¡Prueba la diferencia!
-          </Card.Text>
+          Situada en una zona industrial y en crecimiento, esta sucursal se destaca por su variedad y frescura.
+          La tierra fértil y el esfuerzo de su gente se reflejan en cada fruta y vegetal que llega hasta aquí, listos para ser parte de tu mesa.          </Card.Text>
         </Card.Body>
       </Card>
     </CardGroup>
-
-
-    <CardGroup className='confi'>  
-    <Card>
-        <Link to='/FrutasElCampesino'><Card.Img variant= "top" src={Mercados5} /></Link>
-        <Card.Body>
-          <Card.Title>Frutas Frescas El Campesino</Card.Title>
-          <Card.Text>
-          Lechugas crujientes, zanahorias dulces y espinacas tiernas. Doña Rosa las cosecha a mano, como lo hizo por 40 años.
-          </Card.Text>
-        </Card.Body>
-      </Card>
-
-      <Card>
-        <Link to='/HuertaOrganica'><Card.Img variant= "top" src={Mercados6} /></Link>
-        <Card.Body>
-          <Card.Title>Huerta Orgánica Los Andes</Card.Title>
-          <Card.Text>
-          Todo 100% orgánico: brócoli, coliflor y remolacha. Sin pesticidas, solo abono natural. ¡Salud que se ve y se siente!
-          </Card.Text>
-        </Card.Body>
-      </Card>
-
-      <Card>
-        <Link to='/ProductosDonLucho'><Card.Img variant= "top" src={Mercados7} /></Link>
-        <Card.Body>
-          <Card.Title>Productos Don Lucho</Card.Title>
-          <Card.Text>
-          Plátano, ñame y guayabas de mi parcela familiar. Trabajada con mis propias manos. ¡Calidad de la buena!
-          </Card.Text>
-        </Card.Body>
-      </Card>
-
-      <Card>
-        <Link to='/FrutasAltura'><Card.Img variant= "top" src={Mercados8} /></Link>
-        <Card.Body>
-          <Card.Title>Frutas de Altura</Card.Title>
-          <Card.Text>
-          Fresas, moras y uvas cultivadas en clima frío. Dulces como el esfuerzo de los campesinos que las siembran.
-          </Card.Text>
-        </Card.Body>
-      </Card>
-    </CardGroup>
-
-    <div className='Container'>
-      <Link className='link'> Registra tu tienda</Link>
-    </div>
-
-        <footer className="footer">
-            <div className="footer-content">
-                <img src={logo} alt="Logotipo" className="footer-logo" />
-                <p>© 2025 Comuctiva. Todos los derechos reservados.</p>
-                <div className="footer-links">
-                    <a href="#!" className="footer-link">Política de Privacidad</a>
-                    <span>|</span>
-                    <a href="#!" className="footer-link">Términos de Servicio</a>
-                </div>
-            </div>
-        </footer>
+    <Footer_Abajo/>
     </>
   );
 }
 
 export default HomeCli;
+
+
+

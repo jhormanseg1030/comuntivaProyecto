@@ -86,7 +86,7 @@ function Frutas() {
       </Carousel>
         
         <Container className='Unon'>
-          <Row>
+          <div className='rousito'>
       <Col xs={12} md={4}>
             <div className="producto">
               <div className="nuevo">Nuevo</div>
@@ -112,7 +112,8 @@ function Frutas() {
         <p><span className="pre">$ 2.300</span></p>
       </div>
       </Col>
-      
+      </div>
+      <div className='rousito'>
       <Col xs={12} md={4}>
             <div className="producto">
               <div className="popular">Popular</div>
@@ -141,7 +142,7 @@ function Frutas() {
       </div>
       
       </Col>
-      </Row>
+      </div>
       </Container>
 
     <Footer_Abajo/>
