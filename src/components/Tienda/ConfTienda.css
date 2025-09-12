@@ -4,9 +4,10 @@
   }
   
   .menu {
-    width: auto; 
-    background-color: #f4f4f4; /* Color de fondo del menú */
-    padding: 20px;
+    width:auto; 
+    background-color: #eeebeb7e; /* Color de fondo del menú */
+    padding:15px;
+    height: 1853px;
   }
   .logo {
     display: flex;
@@ -17,7 +18,7 @@
   
   .menu-principal {
     list-style: none;
-    padding: 0;
+    padding: 5px;
   }
   
   .menu-principal li {
@@ -341,4 +342,8 @@
 .nav-link1{
     color: black;
     text-decoration: none;
+}
+.foret{
+    background-color: #212529;
+    justify-content: end;
 }

@@ -6,11 +6,21 @@
 }
 .Unon{
     margin-top: 30px;
-    flex-direction: row;
+    display: flex;
     display: flex;
     gap: 30px;
     max-width: 2000px;
+    flex-direction: column;
 }
 .row .Unon{
     max-width: 2000px;
+}
+.rousito{
+    
+
+    width: 100% !important;
+    display: flex;
+    flex-direction: row;
+    margin: auto !important;
+   
 }

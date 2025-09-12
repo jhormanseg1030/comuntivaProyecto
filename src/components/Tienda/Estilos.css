@@ -64,9 +64,8 @@
 .pd{
     text-align: center;
 }
-hr {
-    border: 1px solid black;
-    margin-top: 20px;
+.hrHome {
+    margin-top: 80px;
     margin-bottom: 20px;
   }
 .footer-logo{
@@ -147,9 +146,10 @@ hr {
     margin-left: 5px;
   }
 
-  .text{
+  .textHome{
     margin-top: 2rem;
     text-align: center;
+    margin:20px;
   }
 
   .pre{
