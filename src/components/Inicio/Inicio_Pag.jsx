@@ -8,8 +8,8 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from 'react-router-dom';
 import logo from '../Imagenes/logo.jpg';
 import Promocion1 from '../imagenes/Promocion1.png';
-import Promocion2 from '../imagenes/Promocion2.png';
-import Promocion3 from '../imagenes/Promocion3.png';
+import apoya from '../imagenes/apoya.jpeg';
+import unidos from '../imagenes/unidos.jpeg';
 import LisProduc from '../Productos/LisProduc';
 import './Inicio_Pag.css';
 import Footer_Abajo from '../Vendedor/Footer_Abajo';
@@ -53,13 +53,13 @@ function Inicio_Pag ()  {
         </Carousel.Item>
         <Carousel.Item>
           <img className='d-block w-100 carousel-img-full'
-          src={Promocion2}
+          src={apoya}
           alt='Second slider'
           />
         </Carousel.Item>
         <Carousel.Item>
         <img className='d-block w-100 carousel-img-full'
-          src={Promocion3}
+          src={unidos}
           alt='Third slider'
           />
         </Carousel.Item>

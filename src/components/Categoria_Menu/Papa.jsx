@@ -48,15 +48,13 @@ function Papa() {
         </Container>
       </Navbar>
 
- <Carousel className='carusel'>
+<Carousel className='carusel'>
         <Carousel.Item>
           <img className='d-block w-100 carousel-img-full'
           src={Frutas1}
           alt='First slider'
           />
           <Carousel.Caption>
-            <h3>First slider label</h3>
-            <p>nulla vitae elit libero, a pharetra augue mollis</p>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
@@ -65,9 +63,7 @@ function Papa() {
           alt='Second slider'
           />
           <Carousel.Caption>
-            <h3>Second slider</h3>
-            <p>alexander anderson, conocido como polvo de angel, un asesino serial de vaticano</p>
-          </Carousel.Caption>
+            </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
         <img className='d-block w-100 carousel-img-full'
@@ -75,18 +71,15 @@ function Papa() {
           alt='Third slider'
           />
           <Carousel.Caption>
-            <h3>Third slider</h3>
-            <p>Solo Leveling, anime del protagonista sung jinwoo, tambien conocido monarca de las sombras</p>
-          </Carousel.Caption>
+            </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
         
-      <div className='conte'> 
-        <Container className='Uno'>
+        <Container className='Unopro'>
           <Col xs={12} md={4}>
             <div className="producto-ca">
               <div className="nuevo">Nuevo</div>
-              <Image className="ImagProd" src={Papas}/>
+              <Image className="ImagPro" src={Papas}/>
               <p className="descrip">Papa lb</p>
               <p><span className="pre">$ 1.400</span></p>
             </div>
@@ -95,13 +88,13 @@ function Papa() {
           <Col xs={12} md={4}>
             <div className="producto-ca">
               <div className="nuevo">Nuevo</div>
-              <Image className="ImagProd" src={Bultopapa}/>
+              <Image className="ImagPro" src={Bultopapa}/>
               <p className="descrip">Bulto de papa</p>
               <p><span className="pre">$60.000</span></p>
             </div>
           </Col>
-         </Container>
-         </div>
+        </Container>
+
           <Footer_Abajo/>
     </>
     )
