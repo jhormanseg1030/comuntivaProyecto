@@ -91,7 +91,7 @@ function HomeCli() {
       </Card>
 
       <Card>
-      <Link to='/FincaBendicion'><Card.Img variant="top" src={Mercados2}  /></Link>
+      <Link to='/SucursalNor'><Card.Img variant="top" src={Mercados2}  /></Link>
         <Card.Body>
           <Card.Title>Sucursal Norte</Card.Title>
           <Card.Text>
@@ -101,7 +101,7 @@ function HomeCli() {
       </Card>
 
       <Card>
-      <Link to='/CosechasValle'><Card.Img variant= "top" src={Mercados3}/></Link>
+      <Link to='/SucursalZo'><Card.Img variant= "top" src={Mercados3}/></Link>
         <Card.Body>
           <Card.Title>Sucursal Zona Centro </Card.Title>
           <Card.Text>
@@ -111,7 +111,7 @@ function HomeCli() {
       </Card>
 
       <Card>
-      <Link to='/VerdurasDonaRosa'><Card.Img variant= "top" src={Mercados4} /></Link>
+      <Link to='/SucursalOcc'><Card.Img variant= "top" src={Mercados4} /></Link>
         <Card.Body>
           <Card.Title>Sucursal Zona Occidente y Suroccidente</Card.Title>
           <Card.Text>
