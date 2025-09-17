@@ -21,6 +21,9 @@ import SegPrinci from './components/SegPrincipal/SegPrinci';
 import ConfTienda from './components/Tienda/ConfTienda';
 import HomeTienda from "./components/Tienda/HomeTienda";
 import InicioVendedor from './components/Vendedor/InicioVendedor';
+import SucursalNor from './components/Tienda/SucursalNor';
+import SucursalZo from './components/Tienda/SucursalZo';
+import SurcursalOcc from './components/Tienda/SucursalOcc';
 
 
 function App() {
@@ -30,6 +33,9 @@ function App() {
         <Route path='/Login' element={<InicioSe></InicioSe>}></Route>
         <Route path='/Tienda' element={<HomeCli></HomeCli>}></Route>
         <Route path='/TiendaDonJuan' element={<HomeTienda></HomeTienda>}></Route>
+        <Route path='/SucursalNor' element={<SucursalNor></SucursalNor>}></Route>
+        <Route path='/SucursalZo' element={<SucursalZo></SucursalZo>}></Route>
+        <Route path='SucursalOcc' element={<SurcursalOcc></SurcursalOcc>}></Route>
         <Route path='/Segunda' element={<SegPrinci></SegPrinci>}></Route>
         <Route path='/Registro' element={<RegistrarUsu></RegistrarUsu>}></Route>
         <Route path='/ConfTienda/*' element={<ConfTienda></ConfTienda>}></Route>

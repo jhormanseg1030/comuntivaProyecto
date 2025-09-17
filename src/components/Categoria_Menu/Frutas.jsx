@@ -58,30 +58,18 @@ function Frutas() {
           src={Frutas1}
           alt='First slider'
           />
-          <Carousel.Caption>
-            <h3>First slider label</h3>
-            <p>nulla vitae elit libero, a pharetra augue mollis</p>
-          </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
           <img className='d-block w-100 carousel-img-full'
           src={Frutas2}
           alt='Second slider'
           />
-          <Carousel.Caption>
-            <h3>Second slider</h3>
-            <p>alexander anderson, conocido como polvo de angel, un asesino serial de vaticano</p>
-          </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
         <img className='d-block w-100 carousel-img-full'
           src={Mercados8}
           alt='Third slider'
           />
-          <Carousel.Caption>
-            <h3>Third slider</h3>
-            <p>Solo Leveling, anime del protagonista sung jinwoo, tambien conocido monarca de las sombras</p>
-          </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
         
