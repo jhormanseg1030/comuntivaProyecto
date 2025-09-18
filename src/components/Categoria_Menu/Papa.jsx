@@ -11,9 +11,9 @@ import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
 import Bultopapa from '../imagenes/bulto-papa.jpg'
 import Carousel from 'react-bootstrap/Carousel';
-import Frutas1 from '../imagenes/Frutas1.jpg'
-import Frutas2 from '../imagenes/Frutas2.jpg'
-import Mercados8 from '../imagenes/Mercados8.jpg';
+import Ppapa from '../imagenes/Ppapa.jpg';
+import papaa from '../imagenes/papaa.jpg';
+import Spapa from '../imagenes/Spapa.jpg';
 import Papas from '../imagenes/Papas.jpg';
 import './Pap.css';
 import Footer_Abajo from '../Vendedor/Footer_Abajo';
@@ -51,19 +51,19 @@ function Papa() {
 <Carousel className='carusel'>
         <Carousel.Item>
           <img className='d-block w-100 carousel-img-full'
-          src={Frutas1}
+          src={papaa}
           alt='First slider'
           />
         </Carousel.Item>
         <Carousel.Item>
           <img className='d-block w-100 carousel-img-full'
-          src={Frutas2}
+          src={Spapa}
           alt='Second slider'
           />
         </Carousel.Item>
         <Carousel.Item>
         <img className='d-block w-100 carousel-img-full'
-          src={Mercados8}
+          src={Ppapa}
           alt='Third slider'
           />
         </Carousel.Item>
