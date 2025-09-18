@@ -48,7 +48,7 @@ function Papa() {
         </Container>
       </Navbar>
 
- <Carousel className='carusel'>
+<Carousel className='carusel'>
         <Carousel.Item>
           <img className='d-block w-100 carousel-img-full'
           src={Frutas1}
@@ -69,12 +69,11 @@ function Papa() {
         </Carousel.Item>
       </Carousel>
         
-      <div className='conte'> 
-        <Container className='Uno'>
+        <Container className='Unopro'>
           <Col xs={12} md={4}>
             <div className="producto-ca">
               <div className="nuevo">Nuevo</div>
-              <Image className="ImagProd" src={Papas}/>
+              <Image className="ImagPro" src={Papas}/>
               <p className="descrip">Papa lb</p>
               <p><span className="pre">$ 1.400</span></p>
             </div>
@@ -83,13 +82,13 @@ function Papa() {
           <Col xs={12} md={4}>
             <div className="producto-ca">
               <div className="nuevo">Nuevo</div>
-              <Image className="ImagProd" src={Bultopapa}/>
+              <Image className="ImagPro" src={Bultopapa}/>
               <p className="descrip">Bulto de papa</p>
               <p><span className="pre">$60.000</span></p>
             </div>
           </Col>
-         </Container>
-         </div>
+        </Container>
+
           <Footer_Abajo/>
     </>
     )

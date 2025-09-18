@@ -68,7 +68,7 @@ function Verduras() {
         </Carousel.Item>
       </Carousel>
         
-        <Container className='Uno'>
+        <Container className='Unopro'>
              <Col xs={12} md={4}>
             <div className="producto-car">
               <div className="nuevo">Nuevo</div>
