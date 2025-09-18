@@ -194,23 +194,6 @@ function SucursalNor() {
       </Row>
       </Container>
       
-      <div className="carruselPuntos">
-  <button className="flechas">&#8249;</button>
-
-  <div className="puntos">
-    <span className="punto"></span>
-    <span className="punto"></span>
-    <span className="punto"></span>
-    <span className="punto"></span>
-    <span className="punto"></span>
-    <span className="punto"></span>
-    <span className="punto"></span>
-    <span className="punto"></span>
-  </div>
-
-  <button className="flechas">&#8250;</button>
-</div>
-
       <hr className="hrHome"/>
       <h4 className='textHome'>Productos Destacados</h4>
       <Container>
@@ -266,24 +249,6 @@ function SucursalNor() {
       </Col>
       </Row>
       </Container>
-
-      <div className="carruselPuntos">
-  <button className="flechas">&#8249;</button>
-
-  <div className="puntos">
-    <span className="punto"></span>
-    <span className="punto"></span>
-    <span className="punto"></span>
-    <span className="punto"></span>
-    <span className="punto"></span>
-    <span className="punto"></span>
-    <span className="punto"></span>
-    <span className="punto"></span>
-  </div>
-
-  <button className="flechas">&#8250;</button>
-</div>
-
       
     <Footer_Abajo/>
 
