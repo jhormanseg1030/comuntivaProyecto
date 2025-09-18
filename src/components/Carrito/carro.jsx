@@ -5,6 +5,7 @@ import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import Dropdown from 'react-bootstrap/Dropdown';
 import { Link } from 'react-router-dom';
 import banano from '../imagenes/banano.jpg';
 import Fresas from '../imagenes/Fresas.jpg';
@@ -141,8 +142,8 @@ function Carrito() {
                     <Navbar.Toggle aria-controls="navbarScroll" />
                     <Navbar.Collapse id="navbarScroll">
                         <Nav className="me-auto my-2 my-lg-0" navbarScroll>
-                            <Nav.Link className='h' href="#action1">Inicio</Nav.Link>
-                            <Nav.Link href="#action2">Quienes Somos</Nav.Link>
+                            <Nav.Link className='h' href="/">Inicio</Nav.Link>
+                            <Nav.Link href="/Quienes somos">Quienes Somos</Nav.Link>
                             <Link to="/Login"><Nav.Link href="#action3">Tiendas</Nav.Link></Link>
                             <Nav.Link href="#action4">Características</Nav.Link>
                             <Nav.Link href="#action5">Ayuda</Nav.Link>
@@ -157,8 +158,20 @@ function Carrito() {
                             <Form.Control type="search" placeholder="Buscar" className="me-2" aria-label="Search" />
                             <Button variant="outline-success">Buscar</Button>
                         </Form>
-                    </Navbar.Collapse>
-                    <Link className='link1' to="/Login"> Iniciar Sesión </Link>
+                    </Navbar.Collapse><Dropdown drop="start">
+  
+      <Dropdown.Toggle variant="success" id="dropdown-basic" >
+        
+      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" className="bi bi-person-circle" viewBox="0 0 16 16">
+  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/><path fillRule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+</svg>
+      </Dropdown.Toggle>
+    
+      <Dropdown.Menu>
+        <Dropdown.Item href="/Perfil">Perfil</Dropdown.Item>
+        <Dropdown.Item href="/action2">Configuracion</Dropdown.Item>
+      </Dropdown.Menu>
+    </Dropdown>
                 </Container>
             </Navbar>
 
@@ -507,11 +520,13 @@ function Carrito() {
                             </div>
                         </button>
                     </Link>
-
+                    
                     <div className="exito-continue-shopping">
+                        <Link to = "/Segunda">
                         <button className="exito-continue-btn">
                             Seguir comprando
                         </button>
+                        </Link>
                     </div>
                 </div>
             </div>

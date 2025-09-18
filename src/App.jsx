@@ -53,6 +53,7 @@ function App() {
         <Route path="/Quienes somos" element={<QuienesSomos></QuienesSomos>} />
         <Route path='/' element={<Inicio_Pag></Inicio_Pag>}></Route>
         <Route path='/Confi_Cliente' element={<Actu_Clie></Actu_Clie>}></Route>
+        
       </Routes>
     );
 }

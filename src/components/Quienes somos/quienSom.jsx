@@ -35,7 +35,6 @@ function QuienesSomos() {
               <Button variant="outline-success">Buscar</Button>
             </Form>
           </Navbar.Collapse>
-          <Link className='link1' to= "/Login"> Iniciar Sesión</Link>
         </Container>
       </Navbar>
     <div className='img1'>

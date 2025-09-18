@@ -29,7 +29,7 @@ function Segprinci() {
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav className="me-auto my-2 my-lg-0" navbarScroll>
-              <Nav.Link href="/">Inicio</Nav.Link>
+              <Nav.Link href="/Segunda">Inicio</Nav.Link>
               <Nav.Link href="/Quienes somos">Quienes Somos</Nav.Link>
               <Nav.Link href="/Segunda">Tiendas</Nav.Link>
               <Nav.Link href="#action4">Características</Nav.Link>
@@ -46,21 +46,28 @@ function Segprinci() {
               <Form.Control type="search" placeholder="Buscar" className="me-2" aria-label="Search" />
               <Button variant="outline-success">Buscar</Button>
             </Form>
-          <div className='contenedor_botones'>
-    <div>
-  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" className="bi bi-cart-plus-fill" viewBox="0 0 16 16" >
+<div className='mor'>
+      <Dropdown drop="start">
+        
+        <Dropdown.Item href="/carrito"> <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" className="bi bi-cart-plus-fill" viewBox="0 0 16 16" >
   <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0m7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0M9 5.5V7h1.5a.5.5 0 0 1 0 1H9v1.5a.5.5 0 0 1-1 0V8H6.5a.5.5 0 0 1 0-1H8V5.5a.5.5 0 0 1 1 0"/>
-</svg>
+</svg></Dropdown.Item>
+    
+</Dropdown>
 </div>
+
 <Dropdown drop="start">
-      <Dropdown.Toggle variant="success" id="dropdown-basic" > 
+  
+      <Dropdown.Toggle variant="success" id="dropdown-basic" >
+        
       <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" className="bi bi-person-circle" viewBox="0 0 16 16">
   <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/><path fillRule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
 </svg>
       </Dropdown.Toggle>
+    
       <Dropdown.Menu>
         <Dropdown.Item href="/Perfil">Perfil</Dropdown.Item>
-        <Dropdown.Item href="#/action-2">Configuracion</Dropdown.Item>
+        <Dropdown.Item href="/Confi_Cliente">Configuracion</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
 <div className="dropdown-menu">
@@ -69,7 +76,7 @@ function Segprinci() {
   <div className="dropdown-divider"></div>
   <a className="dropdown-item" href="#">Separated link</a>
 </div>
-</div>
+
 
 </Navbar.Collapse>
         </Container>
@@ -80,23 +87,29 @@ function Segprinci() {
       </div>
       <Carousel className='carousel-custom-width'>
         <Carousel.Item>
-          <img className='d-block w-100 carousel-img-full'
-          src={Frutas1}
-          alt='First slider'
-          />
+          <div className='imagencita'>
+            <img className='d-block '
+            src={Frutas1}
+            alt='First slider'
+            />
+          </div>
           
         </Carousel.Item>
         <Carousel.Item>
-          <img className='d-block w-100 carousel-img-full'
-          src={Frutas2}
-          alt='Second slider'
-          />
+          <div className='imagencita'>
+            <img className='d-block'
+            src={Frutas2}
+            alt='Second slider'
+            />
+          </div>
         </Carousel.Item>
         <Carousel.Item>
-        <img className='d-block w-100 carousel-img-full'
-          src={Frutas3}
-          alt='Third slider'
-          />
+          <div className='imagencita'>
+            <img className='d-block'
+            src={Frutas3}
+            alt='Third slider'
+            />
+          </div>
         </Carousel.Item>
       </Carousel>
       
