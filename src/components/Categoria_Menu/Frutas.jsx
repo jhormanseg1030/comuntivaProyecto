@@ -58,18 +58,30 @@ function Frutas() {
           src={Frutas1}
           alt='First slider'
           />
+          <Carousel.Caption>
+            <h3>First slider label</h3>
+            <p>nulla vitae elit libero, a pharetra augue mollis</p>
+          </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
           <img className='d-block w-100 carousel-img-full'
           src={Frutas2}
           alt='Second slider'
           />
+          <Carousel.Caption>
+            <h3>Second slider</h3>
+            <p>alexander anderson, conocido como polvo de angel, un asesino serial de vaticano</p>
+          </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
         <img className='d-block w-100 carousel-img-full'
           src={Mercados8}
           alt='Third slider'
           />
+          <Carousel.Caption>
+            <h3>Third slider</h3>
+            <p>Solo Leveling, anime del protagonista sung jinwoo, tambien conocido monarca de las sombras</p>
+          </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
         
@@ -78,7 +90,7 @@ function Frutas() {
       <Col xs={12} md={4}>
             <div className="producto">
               <div className="nuevo">Nuevo</div>
-              <Image className="ImagProd" src={Papaya}/>
+              <Image className="ImagPro" src={Papaya}/>
         <p className="descrip">Papaya 1 und</p>
         <p><span className="pre">$ 7.300</span></p>
       </div>
@@ -86,7 +98,7 @@ function Frutas() {
       <Col xs={12} md={4}>
             <div className="producto">
               <div className="nuevo">Nuevo</div>
-              <Image className="ImagProd" src={Manzanas}/>
+              <Image className="ImagPro" src={Manzanas}/>
         <p className="descrip">Manzana 1 und"</p>
         <p><span className="pre">$ 7.300</span></p>
       </div>
@@ -95,7 +107,7 @@ function Frutas() {
       <Col xs={12} md={4}>
             <div className="producto">
               <div className="nuevo">Nuevo</div>
-              <Image className="ImagProd" src={Sandias}/>
+              <Image className="ImagPro" src={Sandias}/>
         <p className="descrip">Sandia 1 und</p>
         <p><span className="pre">$ 2.300</span></p>
       </div>
@@ -106,7 +118,7 @@ function Frutas() {
             <div className="producto">
               <div className="popular">Popular</div>
               <div className="desct">-30% OFF</div>
-              <Link to='/Productos'><Image className="ImagProd" src={Pinea}/></Link>
+              <Link to='/Productos'><Image className="ImagPro" src={Pinea}/></Link>
               <p className="descrip">Piña 1und</p>
         <p><span className="oferta">$ 3.654</span> <span className="Precio">$ 5.220</span></p>
       </div>
@@ -115,7 +127,7 @@ function Frutas() {
       <Col xs={12} md={4}>
             <div className="producto">
               <div className="nuevo">Nuevo</div>
-              <Image className="ImagProd" src={Naranjas}/>
+              <Image className="ImagPro" src={Naranjas}/>
         <p className="descrip">Naranja 1 und</p>
         <p><span className="pre">$ 6.000</span></p>
       </div>
@@ -124,7 +136,7 @@ function Frutas() {
       <Col xs={12} md={4}>
             <div className="producto">
               <div className="popular">Popular</div>
-              <Image className="ImagProd" src={Banano}/>
+              <Image className="ImagPro" src={Banano}/>
         <p className="descrip">Banano Criollo 1und</p>
         <p><span className="pre">$ 700</span></p>
       </div>

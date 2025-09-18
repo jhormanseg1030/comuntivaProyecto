@@ -7,9 +7,9 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from 'react-router-dom';
 import logo from '../Imagenes/logo.jpg';
 import Carousel from 'react-bootstrap/Carousel';
-import Frutas1 from '../imagenes/Frutas1.jpg'
-import Frutas2 from '../imagenes/Frutas2.jpg'
-import Mercados8 from '../imagenes/Mercados8.jpg';
+import lacte from '../imagenes/lacte.jpg';
+import lacteo from '../imagenes/lacteo.jpg';
+import Prolacte from '../imagenes/Prolacte.jpg';
 import './Lacte.css';
 import Footer_Abajo from '../Vendedor/Footer_Abajo';
 function lacteos() {
@@ -21,11 +21,11 @@ function lacteos() {
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
             <Nav className="me-auto my-2 my-lg-0" navbarScroll>
-                          <Nav.Link href="/">Inicio</Nav.Link>
-                          <Nav.Link href="/Quienes somos">Quienes Somos</Nav.Link>
-                          <Nav.Link href="/Segunda">Tiendas</Nav.Link>
-                          <Nav.Link href="#action4">Características</Nav.Link>
-                          <Nav.Link href="#action5">Ayuda</Nav.Link>
+                        <Nav.Link href="/">Inicio</Nav.Link>
+                        <Nav.Link href="/Quienes somos">Quienes Somos</Nav.Link>
+                        <Nav.Link href="/Segunda">Tiendas</Nav.Link>
+                        <Nav.Link href="#action4">Características</Nav.Link>
+                        <Nav.Link href="#action5">Ayuda</Nav.Link>
             <NavDropdown title="Categoría" id="navbarScrollingDropdown">
                 <NavDropdown.Item href="/Frutas">frutas</NavDropdown.Item>
                 <NavDropdown.Item href="/Verduras">verduras</NavDropdown.Item>
@@ -46,19 +46,19 @@ function lacteos() {
     <Carousel className='carusel'>
         <Carousel.Item>
         <img className='d-block w-100 carousel-img-full'
-        src={Frutas1}
+        src={lacte}
         alt='First slider'
         />
         </Carousel.Item>
         <Carousel.Item>
         <img className='d-block w-100 carousel-img-full'
-        src={Frutas2}
+        src={lacteo}
         alt='Second slider'
         />
         </Carousel.Item>
         <Carousel.Item>
         <img className='d-block w-100 carousel-img-full'
-        src={Mercados8}
+        src={Prolacte}
         alt='Third slider'
         />
         </Carousel.Item>
