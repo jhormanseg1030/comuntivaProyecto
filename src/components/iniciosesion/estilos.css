@@ -216,8 +216,8 @@
   align-items: center;
   font-weight: 500;
   gap: 10px;
-  border: 1px solid #e8f5e9;
-  background-color: rgba(255, 255, 255, 0.9);
+  border: 1px solid #fff;
+  background-color: #fff(236, 230, 230);
   cursor: pointer;
   transition: all 0.3s ease;
   font-size: 14px;
@@ -230,7 +230,7 @@
   transform: translateY(-2px);
 }
 
-/* Responsive */
+
 @media (max-width: 768px) {
   .main-wrapper {
     flex-direction: column;
@@ -264,7 +264,7 @@
   }
 }
 
-/* Scroll personalizado para el formulario */
+
 .form-full::-webkit-scrollbar {
   width: 8px;
 }
@@ -283,7 +283,7 @@
   background: rgba(255, 255, 255, 0.6);
 }
 
-/* Estilo para el checkbox */
+
 input[type="checkbox"] {
   accent-color: #4CAF50;
   width: 16px;
