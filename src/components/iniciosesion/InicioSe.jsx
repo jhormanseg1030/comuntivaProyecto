@@ -73,7 +73,7 @@ const InicioSe = () => {
           <p className="p line">O inicia sesión con</p>
 
           <div className="flex-row">
-            <button className="btn google">
+            <button className="btn-google">
               <svg
                 xmlSpace="preserve"
                 style={{enableBackground:"new 0 0 512 512"}}
@@ -114,7 +114,7 @@ const InicioSe = () => {
               Google
             </button>
             
-            <button className="btn apple">
+            <button className="btn-apple">
               <svg
                 xmlSpace="preserve"
                 style={{enableBackground:"new 0 0 22.773 22.773"}}
