@@ -1,9 +1,9 @@
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
 
 .main-wrapper {
   display: flex;
@@ -206,7 +206,8 @@
   background-color: rgba(255, 255, 255, 0.4);
 }
 
-.btn {
+
+.btn-google {
   margin-top: 10px;
   width: 48%;
   height: 50px;
@@ -217,19 +218,44 @@
   font-weight: 500;
   gap: 10px;
   border: 1px solid #fff;
-  background-color: #fff(236, 230, 230);
+  background-color: #fff;
   cursor: pointer;
   transition: all 0.3s ease;
   font-size: 14px;
-  color: #2E7D32;
+  color: #757575;
 }
 
-.btn:hover {
-  border: 1px solid #2E7D32;
-  box-shadow: 0 0 8px rgba(46, 125, 50, 0.3);
+.btn-google:hover {
+  border: 1px solid #DB4437;
+  box-shadow: 0 0 8px rgba(219, 68, 55, 0.3);
   transform: translateY(-2px);
+  background-color: #f8f8f8;
 }
 
+.btn-apple {
+  margin-top: 10px;
+  width: 48%;
+  height: 50px;
+  border-radius: 10em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+  gap: 10px;
+  border: 1px solid #fff;
+  background-color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 14px;
+  color: #757575;
+}
+
+.btn-apple:hover {
+  border: 1px solid #000000;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
+  background-color: #f8f8f8;
+}
 
 @media (max-width: 768px) {
   .main-wrapper {
@@ -253,7 +279,8 @@
     border-radius: 0;
   }
   
-  .btn {
+  .btn-google,
+  .btn-apple {
     width: 100%;
     margin-bottom: 10px;
   }
@@ -263,7 +290,6 @@
     align-items: stretch;
   }
 }
-
 
 .form-full::-webkit-scrollbar {
   width: 8px;
@@ -282,7 +308,6 @@
 .form-full::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.6);
 }
-
 
 input[type="checkbox"] {
   accent-color: #4CAF50;
