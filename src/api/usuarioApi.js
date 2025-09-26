@@ -1,5 +1,3 @@
-const APIUSU_URL = import.meta.env.VITE_APIUSU_URL || "http://localhost:8080";
-
 export const obtenerUsuario = async () => {
    try {
 const res = await fetch(`http://localhost:8080/api/usuario`);
@@ -16,7 +14,7 @@ const res = await fetch(`http://localhost:8080/api/usuario`);
   }
 };
 export const crearUsuario = async (data) => {
-  const res = await fetch('http://localhost:8080/crear', {
+  const res = await fetch('http://localhost:8080/api/usuario/crear', {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),

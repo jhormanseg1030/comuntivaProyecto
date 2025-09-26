@@ -10,6 +10,17 @@ export const obtenerPedidosPorId = async (id) => {
    const res = await fetch(`http://localhost:8080/api/pedidos/${id}`, {
     method: "GET",
   });
-  if (!res.ok) throw new Error("Empleado no encontrado");
+  if (!res.ok) throw new Error("Pedido no encontrado");
+  return res.json();
+};
+
+
+export const crearPedido = async (data) => {
+  const res = await fetch('http://localhost:8080/api/pedidos/crearemos', {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+  if (!res.ok) throw new Error("Error al crear pedido");
   return res.json();
 };

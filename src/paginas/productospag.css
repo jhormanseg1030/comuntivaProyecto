@@ -1,0 +1,184 @@
+/* src/pages/productos.css - Estilos combinados para todas las páginas de productos */
+
+/* Estilos generales 
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.title {
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Estilos para la lista de productos */
+.btn-crear {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.btn-crear:hover {
+  background-color: #0056b3;
+}
+
+.table-container {
+  overflow-x: auto;  /* Responsivo para móviles */
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+}
+
+th {
+  background-color: #f0f0f0;
+  font-weight: bold;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tr:hover {
+  background-color: #f5f5f5;
+}
+
+.btn-editar {
+  color: #007bff;
+  text-decoration: none;
+  margin-right: 10px;
+  padding: 5px 10px;
+  border: 1px solid #007bff;
+  border-radius: 4px;
+}
+
+.btn-editar:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-eliminar {
+  color: #dc3545;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px 10px;
+  border: 1px solid #dc3545;
+  border-radius: 4px;
+}
+
+.btn-eliminar:hover {
+  background-color: #dc3545;
+  color: white;
+}
+
+.no-data {
+  text-align: center;
+  color: #666;
+  font-style: italic;
+  margin-top: 20px;
+}
+
+.loading {
+  text-align: center;
+  font-size: 1.2em;
+  color: #666;
+}
+
+/* Estilos para formularios (crear y editar) */
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1em;
+  box-sizing: border-box;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0,123,255,0.3);
+}
+
+textarea {
+  height: 100px;
+  resize: vertical;
+}
+
+/* Botones para formularios */
+.btn-submit-crear {
+  padding: 12px 24px;
+  background-color: #28a745;  /* Verde para crear */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1em;
+  margin-right: 10px;
+}
+
+.btn-submit-crear:hover:not(:disabled) {
+  background-color: #218838;
+}
+
+.btn-submit-editar {
+  padding: 12px 24px;
+  background-color: #007bff;  /* Azul para editar */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1em;
+  margin-right: 10px;
+}
+
+.btn-submit-editar:hover:not(:disabled) {
+  background-color: #0056b3;
+}
+
+.btn-submit:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+.btn-cancelar {
+  padding: 12px 24px;
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1em;
+  text-decoration: none;
+}
+
+.btn-cancelar:hover {
+  background-color: #5a6268;
+}
