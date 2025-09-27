@@ -24,6 +24,7 @@ import InicioVendedor from './components/Vendedor/InicioVendedor';
 import SucursalNor from './components/Tienda/SucursalNor';
 import SucursalZo from './components/Tienda/SucursalZo';
 import SurcursalOcc from './components/Tienda/SucursalOcc';
+import ListaProduc from './paginas/ListaProductos';
 
 
 function App() {
@@ -53,12 +54,9 @@ function App() {
         <Route path="/Quienes somos" element={<QuienesSomos></QuienesSomos>} />
         <Route path='/' element={<Inicio_Pag></Inicio_Pag>}></Route>
         <Route path='/Confi_Cliente' element={<Actu_Clie></Actu_Clie>}></Route>
+        <Route path='/prueba' element={<ListaProduc></ListaProduc>}></Route>
+    </Routes> 
 
-        {/*<Route path="/productos" element={<ListaProductos></ListaProductos>}/>
-        {<Route path="/productos/crear" element={<CrearProducto> </CrearProducto>}/>
-        {<Route path="/productos/editar/:id" element={<EditarProducto />} />*/}
-        
-      </Routes>
     );
 }
 export default App;
