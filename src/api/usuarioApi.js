@@ -22,3 +22,25 @@ export const crearUsuario = async (data) => {
   if (!res.ok) throw new Error("Error al crear usuario");
   return res.json();
 };
+// Obtener usuario por ID
+export const obtenerUsuarioPorId = async (id) => {
+  const res = await fetch(`http://localhost:8080/api/usuario/${id}`, {
+    method: "GET",
+  });
+  if (!res.ok) throw new Error("Usuario no encontrado");
+  return res.json();
+};
+// Actualizar usuario
+export const actualizarUsuario = async (id, usuarioData) => {
+  const res = await fetch(`http://localhost:8080/api/usuario/${id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(usuarioData)
+  });
+  if (!res.ok) {
+    throw new Error("Error al actualizar usuario con ID ");
+  }
+  return await res.json();
+};
