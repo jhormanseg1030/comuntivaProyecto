@@ -4,3 +4,10 @@ export const obtenerUnidad = async () =>{
     if(!rest.ok) throw new Error("Error al obtener unidad de medida");
     return rest.json();
 }
+export const obtenerProductoPorId = async (id) => {
+  const res = await fetch(`http://localhost:8080/api/Unidad_Medida/${id}`, {
+    method: "GET",
+  });
+  if (!res.ok) throw new Error("Unidad de medida no encontrado");
+  return res.json();
+};

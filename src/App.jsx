@@ -25,6 +25,7 @@ import SucursalNor from './components/Tienda/SucursalNor';
 import SucursalZo from './components/Tienda/SucursalZo';
 import SurcursalOcc from './components/Tienda/SucursalOcc';
 import ListaProduc from './paginas/ListaProductos';
+import FormularioPedido from './components/Formularios/pedidosForm/pedidosForm';
 
 
 function App() {
@@ -55,9 +56,11 @@ function App() {
         <Route path='/' element={<Inicio_Pag></Inicio_Pag>}></Route>
         <Route path='/Confi_Cliente' element={<Actu_Clie></Actu_Clie>}></Route>
         <Route path='/prueba' element={<ListaProduc></ListaProduc>}></Route>
-    </Routes> 
+        <Route path='/listaPedi' element ={<FormularioPedido></FormularioPedido>}></Route>
+      
+    </Routes>
 
     );
 }
 export default App;
-/**/ 
+/**/

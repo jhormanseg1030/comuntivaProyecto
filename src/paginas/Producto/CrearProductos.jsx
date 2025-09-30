@@ -1,7 +1,7 @@
 // src/pages/CrearProducto.jsx
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { crearProducto } from '../api/productoApi';
+import { crearProducto } from '../../api/productoApi';
 import './productospag.css';
 
 const CrearProducto = () => {
