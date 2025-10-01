@@ -928,8 +928,8 @@ body {
     }
 
     .pago-container .form-group input {
-        background: #4caf50;
-        color: #ffffff;
+        background: #fff;
+        color: #000;
     }
 
     .pago-container .form-group input::placeholder {
@@ -947,7 +947,7 @@ body {
     .pago-container .producto-resumen-info h4,
     .pago-container .producto-resumen-info p,
     .pago-container .total-line {
-        color: #e2e8f0;
+        color: #000;
     }
 
     .pago-container .opcion-pago {
@@ -968,7 +968,7 @@ body {
     }
 
     .pago-container .producto-resumen {
-        background: #198754;
+        background: #fff;
         border-color: #4a5568;
     }
 
