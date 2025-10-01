@@ -2,7 +2,7 @@ import { useState } from "react";
 import Card from "react-bootstrap/Card";
 import { crearUsuario } from "../../api/usuarioApi";
 import FormularioUsuario from "../../components/Formularios/usuarioForm/usuarioForm";
-
+import ModalMensaje from "../../components/Formularios/usuarioForm/modalMensaje";
 
 const CrearUsuario = () => {
   // Estado para controlar la visibilidad del modal de retroalimentación y su contenido

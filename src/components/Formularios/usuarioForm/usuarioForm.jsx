@@ -4,7 +4,7 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import {obtenerDocumento} from "../../../api/tipDocuApi"
 
-// Componente reutilizable para crear o editar empleados
+// Componente reutilizable para crear o editar 
 const FormularioUsuario = ({ onSubmit, modo, usuario = null }) => {
   // Estado local para los campos del formulario
   const [formData, setFormData] = useState({
@@ -17,7 +17,7 @@ const FormularioUsuario = ({ onSubmit, modo, usuario = null }) => {
     correo: "",
     numdocumento:"",
     password:"",
-    tipDocumenId: "",
+    documenId: "",
   });
 
   // Estado para listas de cargos y oficinas
@@ -39,13 +39,11 @@ const FormularioUsuario = ({ onSubmit, modo, usuario = null }) => {
         correo: usuario.correo || "",
         numdocumento: usuario.numdocumento || "",
         password: usuario.password || "",
-        tipDocumenId: usuario.tipDocumenId || "",
+        documenId: usuario.documenId || "",
       });
     }
   }, [modo, usuario]);
-  // Estado para manejar errores de conexión y enviarlo al ModalConexionFallida
-  const [mensajeErrorConexion, setMensajeErrorConexion] = useState("");
-  // Cargar listas de cargos y oficinas al montar el componente
+  // Cargar lista de tipoducu
   useEffect(() => {
     const cargarDatos = async () => {
       try {
@@ -53,10 +51,7 @@ const FormularioUsuario = ({ onSubmit, modo, usuario = null }) => {
         settipDocumenId(tipDocuData);
         //si hay un error de conexión, se muestra el modal
       } catch (error) {
-        if (error != null) {
-          setMensajeErrorConexion(error.message);
-          setConexionFallida(true);
-        }
+        console.error( "Error al cargar un Tipo de documento", error);
       }
     };
     cargarDatos();
@@ -81,9 +76,6 @@ const FormularioUsuario = ({ onSubmit, modo, usuario = null }) => {
 
     setValidated(true);
   };
-
-  // Estado para manejar la conexión fallida al cargar cargos/oficinas
-  const [conexionFallida, setConexionFallida] = useState(false);
 
   return (
     <div className="col-md-8 align-items-center mx-auto p-4 border rounded bg-light">
@@ -170,11 +162,6 @@ const FormularioUsuario = ({ onSubmit, modo, usuario = null }) => {
           {modo === "editar" ? "Actualizar" : "Guardar"}
         </button>
       </Form>
-      <ModalConexionFallida
-        show={conexionFallida}
-        onClose={() => setConexionFallida(false)}
-        mensaje={mensajeErrorConexion}
-      />
     </div>
   );
 };
