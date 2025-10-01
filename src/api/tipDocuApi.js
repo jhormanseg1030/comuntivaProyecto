@@ -1,9 +1,8 @@
 export const obtenerDocumento = async () => {
-  const res = await fetch('http://localhost:8080/api/tipdoc');
-  if (!res.ok) {
-    throw new Error('Error al obtener tipo documento');
-  }
-  return await res.json();
+  const res = await fetch(`http://localhost:8080/api/tipdoc `);
+  if (!res.ok) throw new Error("Error al obtener tipo de documento");
+  return res.json();
+
 };
 export const obtenerDocumentoPorId = async (id) => {
   const res = await fetch(`http://localhost:8080/api/tipdoc/${id}`, {

@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import {
   actualizarUsuario,
@@ -7,12 +6,12 @@ import {
   obtenerUsuario,
 } from "../../../api/usuarioApi";
 import FormularioUsuario from "./usuarioForm";
-import ModalMensaje from "../usuarioForm/modalMensaje"
-import ModalUsuario from "./ModalUsuario";
+import ModalMensaje from "../usuarioForm/modalMensaje";
+import ModalUsuario from "../usuarioForm/ModalUsuario";
 
-//hook o Componente para listar empleados con eliminación y confirmación
+//hook o Componente para listar usuarios con eliminación y confirmación
 const ListaUsuario = () => {
-  // Estado para almacenar la lista de empleados
+  // Estado para almacenar la lista de usuario
   const [usuarios, setUsuarios] = useState([]);
 
   const [usuarioDetalle, setUsuarioDetalle] = useState(null);
@@ -24,15 +23,15 @@ const ListaUsuario = () => {
   // Estado para mostrar spinner mientras se cargan los datos
   const [cargando, setCargando] = useState(true);
 
-  // Cargar empleados al montar el componente
+  // Cargar usuario al montar el componente
   useEffect(() => {
     obtenerUsuario()
-      .then((data) => setUsuarios(data)) // Guardar empleados en el estado
+      .then((data) => setUsuarios(data)) // Guardar usuarios en el estado
       .catch((err) => setError(err.message)) // Mostrar error si falla
       .finally(() => setCargando(false)); // Ocultar spinner al terminar
   }, []);
 
-  // Abrir el modal de detalle y guardar el empleado a mostrar
+  // Abrir el modal de detalle y guardar el usuario a mostrar
   const verDetalle = (usu) => {
     setUsuarioDetalle(usu);
     setMostrarDetalle(true);
@@ -47,7 +46,7 @@ const ListaUsuario = () => {
   const [usuarioEditar, setUsuarioEditar] = useState(null);
 
   const abrirModalEdicion = (usu) => {
-    setUsuarioEditar(usu); // Carga los datos del empleado
+    setUsuarioEditar(usu); // Carga los datos del usuario
     setMostrarModalEdicion(true); // Muestra el modal
   };
 
@@ -55,10 +54,10 @@ const ListaUsuario = () => {
     try {
       await actualizarUsuario(usuarioEditar.id, data);
 
-      // Obtener datos completos del empleado actualizado
+      // Obtener datos completos del usuario actualizado
       const usuarioActualizado = await obtenerUsuarioPorId(obtenerUsuarioPorId.id);
 
-      // Reemplazar el empleado en la lista con los datos actualizados
+      // Reemplazar el usuario en la lista con los datos actualizados
       setUsuarios((prev) =>
         prev.map((e) => (e.id === usuarioEditar.id ? usuarioActualizado : e))
       );
@@ -69,7 +68,7 @@ const ListaUsuario = () => {
       // Mostrar mensaje de éxito
       mostrarModal(
         "👍 Actualizado",
-        "Empleado actualizado correctamente",
+        "Usuario actualizado correctamente",
         "success"
       );
        } catch (error) {
@@ -106,7 +105,7 @@ const ListaUsuario = () => {
           <p className="text-muted">Cargando usuarios...</p>
         </div>
       ) : (
-        // Mostrar tabla de empleados cuando termina la carga
+        // Mostrar tabla de usuario cuando termina la carga
         <table className="table table-striped">
           <thead>
             <tr>
@@ -121,16 +120,16 @@ const ListaUsuario = () => {
               <tr key={usu.id}>
                 <td>{usu.nombre}</td>
                 <td>{usu.apellido}</td>
-                <td>{usu.nombreCargo}</td>
+                <td>{usu.tipo}</td>
                 <td>
-                  {/* Botón para ver detalle del empleado en modal */}
+                  {/* Botón para ver detalle del usuario en modal */}
                   <button
                     className="btn btn-sm btn-info me-2"
                     onClick={() => verDetalle(usu)}
                   >
                     Ver
                   </button>
-                  {/* Enlace para editar el empleado */}
+                  {/* Enlace para editar el usuario */}
                   <button
                     className="btn btn-sm btn-warning me-2"
                     onClick={() => abrirModalEdicion(usu)}
@@ -143,13 +142,13 @@ const ListaUsuario = () => {
           </tbody>
         </table>
       )}
-      {/*Modal para mostrar detalle del empleado*/}
+      {/*Modal para mostrar detalle del usuario*/}
       <ModalUsuario
         usuario={usuarioDetalle}
         show={mostrarDetalle}
         onClose={cerrarDetalle}
       />
-      {/*Modal para mostrar el formulario que permite editar el empleado*/}
+      {/*Modal para mostrar el formulario que permite editar el usuario*/}
       <Modal
         show={mostrarModalEdicion}
         onHide={() => setMostrarModalEdicion(false)}
@@ -163,7 +162,7 @@ const ListaUsuario = () => {
           {usuarioEditar && (
             <FormularioUsuario
               modo="editar"
-              empleado={usuarioEditar}
+              usuario={usuarioEditar}
               onSubmit={handleActualizarUsuario}
             />
           )}

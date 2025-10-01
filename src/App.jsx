@@ -26,6 +26,10 @@ import SucursalZo from './components/Tienda/SucursalZo';
 import SurcursalOcc from './components/Tienda/SucursalOcc';
 import ListaProduc from './paginas/ListaProductos';
 import FormularioPedido from './components/Formularios/pedidosForm/pedidosForm';
+import UsuarioLayout from './paginas/UsuarioPag/UsuarioLayout';
+import UsuarioList from './paginas/UsuarioPag/UsuarioList';
+import CrearUsuario from './paginas/UsuarioPag/CrearUsuario';
+import FormularioUsuario from './components/Formularios/usuarioForm/usuarioForm';
 
 
 function App() {
@@ -57,7 +61,12 @@ function App() {
         <Route path='/Confi_Cliente' element={<Actu_Clie></Actu_Clie>}></Route>
         <Route path='/prueba' element={<ListaProduc></ListaProduc>}></Route>
         <Route path='/listaPedi' element ={<FormularioPedido></FormularioPedido>}></Route>
-      
+        <Route path='/usuarios' element={<UsuarioLayout></UsuarioLayout>}>
+        <Route path='listarUsu' element={<UsuarioList></UsuarioList>}></Route>
+        <Route path='crearUsu' element={<CrearUsuario></CrearUsuario>}></Route>
+        </Route>
+        <Route path='/formulari' element={<FormularioUsuario></FormularioUsuario>}></Route>
+        <Route></Route>
     </Routes>
 
     );
