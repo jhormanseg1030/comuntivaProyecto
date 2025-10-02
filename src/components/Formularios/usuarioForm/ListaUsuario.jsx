@@ -55,7 +55,7 @@ const ListaUsuario = () => {
       await actualizarUsuario(usuarioEditar.id, data);
 
       // Obtener datos completos del usuario actualizado
-      const usuarioActualizado = await obtenerUsuarioPorId(obtenerUsuarioPorId.id);
+      const usuarioActualizado = await obtenerUsuarioPorId(usuarioEditar.id);
 
       // Reemplazar el usuario en la lista con los datos actualizados
       setUsuarios((prev) =>
@@ -120,7 +120,7 @@ const ListaUsuario = () => {
               <tr key={usu.id}>
                 <td>{usu.nombre}</td>
                 <td>{usu.apellido}</td>
-                <td>{usu.tipo}</td>
+                <td>{usu.tipDocumenId}</td>
                 <td>
                   {/* Botón para ver detalle del usuario en modal */}
                   <button

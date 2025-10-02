@@ -21,7 +21,7 @@ const FormularioUsuario = ({ onSubmit, modo, usuario = null }) => {
   });
 
   // Estado para listas de cargos y oficinas
-  const [tipDocumenId, settipDocumenId] = useState([]);
+  const [tipDocumens, setTipDocumens] = useState([]);
 
   // Estado para activar validación visual
   const [validated, setValidated] = useState(false);
@@ -47,11 +47,14 @@ const FormularioUsuario = ({ onSubmit, modo, usuario = null }) => {
   useEffect(() => {
     const cargarDatos = async () => {
       try {
-        const tipDocuData = await obtenerDocumento();
-        settipDocumenId(tipDocuData);
+        const tipDocusData = await obtenerDocumento();
+        setTipDocumens(tipDocusData);
         //si hay un error de conexión, se muestra el modal
-      } catch (error) {
-        console.error( "Error al cargar un Tipo de documento", error);
+       } catch (error) {
+        if (error != null) {
+          setMensajeErrorConexion(error.message);
+          setConexionFallida(true);
+        }
       }
     };
     cargarDatos();
@@ -136,21 +139,21 @@ const FormularioUsuario = ({ onSubmit, modo, usuario = null }) => {
           </Form.Group>
         </Row>
 
-        {/* Selects de cargo y oficina */}
+        {/* Selects de tipo documento */}
         <Row className="mb-6">
-          <Form.Group as={Col} md="6" controlId="formGrtipDocumenId">
+          <Form.Group as={Col} md="6" controlId="formGrdocumenId">
             <Form.Label>Tipo de documento</Form.Label>
             <Form.Select
-              name="tipDocumenId"
-              value={formData.tipDocumenId}
+              name="documenId"
+              value={formData.documenId}
               onChange={handleChange}
               className="form-select mb-2"
             >
               <option value="">Seleccione un tipo de documento</option>
               <option value="null">Sin tipo de documento</option>
-              {tipDocumenId.map((tipDocumenId) => (
+              {tipDocumens.map((tipDocumenId) => (
                 <option key={tipDocumenId.id} value={tipDocumenId.id}>
-                  {tipDocumenId.nombre}
+                  {tipDocumenId.tipDocumenId}
                 </option>
               ))}
             </Form.Select>
