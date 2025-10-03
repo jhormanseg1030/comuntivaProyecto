@@ -1,54 +1,90 @@
 /* src/components/ConfTienda.css */
 .conf-tienda {
     display: flex;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
   
   .menu {
-    width:auto; 
-    background-color: #eeebeb7e; /* Color de fondo del menú */
-    padding:15px;
-    height: 1853px;
+    width: 280px; 
+    background-color: #f8f9fa;
+    padding: 20px;
+    height: 100vh;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
   }
-  .logo {
+
+  /* Este header contiene el logo y la descripción "Admin" */
+  .menu-header {
     display: flex;
-    flex-direction: column;
     align-items: center;
+    padding: 15px 0 20px 0;
+    border-bottom: 1px solid #e0e0e0;
     margin-bottom: 20px;
+  }
+  
+  .menu-logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    margin-right: 12px;
+  }
+  
+  .admin-text {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
   }
   
   .menu-principal {
     list-style: none;
-    padding: 5px;
+    padding: 0;
+    margin: 0;
   }
   
   .menu-principal li {
-    padding: 10px;
+    padding: 0;
     cursor: pointer;
-    transition: background-color 0.3s;
-
+    transition: all 0.3s ease;
+    border-radius: 8px;
+    margin-bottom: 5px;
+    font-weight: 500;
+    font-size: 14px;
+    color: #333;
   }
   
   .menu-principal li:hover {
-    background-color: #ddf3cb;
+    background-color: #e8f5e8;
+    transform: translateX(5px);
   }
   
   .menu-principal li.active {
-    background-color:#aae679;
+    background-color: #4CAF50;
+    color: white;
+    font-weight: 600;
   }
   
-  h2 {
-    margin-top: 20px; 
-    margin-bottom: 10px;
+  .nav-link1 {
+    color: inherit;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    font-weight: inherit;
+    padding: 12px 15px;
+  }
+  
+  .nav-link1:hover {
+    color: inherit;
+    text-decoration: none;
   }
   
   .contenido {
     flex: 1; 
-    text-align: center;
     background-color: #fff;
     display: flex;
     flex-direction: column;
-    margin-right: 250px;
+    padding: 20px;
+    min-height: 100vh;
   } 
+  
   .contenido-dinamico {
     flex: 1; 
     margin-bottom: 20px;
@@ -57,23 +93,49 @@
   .ayuda {
     position: fixed;
     top: 300px; 
-    right:20px; 
+    right: 20px; 
     background-color: #f9f9f9; 
-    padding: 10px;
-    border: 1px solid #ccc; 
-    width:200px; 
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+    padding: 15px;
+    border: 1px solid #ddd; 
+    width: 220px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
     text-align: center;
     height: fit-content;
+    border-radius: 8px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
+
+  .ayuda h2 {
+    margin: 0 0 10px 0;
+    color: #333;
+    font-size: 16px;
+  }
+
+  .ayuda p {
+    margin: 0 0 15px 0;
+    color: #666;
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
 .ayuda button {
-  background-color: #aae679;
+  background-color: #4CAF50;
   border: none;
-  padding: 8px 16px;
-  border-radius: 4px;
+  padding: 10px 20px;
+  border-radius: 6px;
   margin-top: 10px;
   cursor: pointer;
+  color: white;
+  font-weight: 500;
+  font-size: 13px;
+  transition: background-color 0.3s ease;
+  width: 100%;
 }
+
+.ayuda button:hover {
+  background-color: #45a049;
+}
+
 .container-fluid {
     padding-top: 20px;
     padding-bottom: 20px;
@@ -81,42 +143,47 @@
 
 .card {
     border: none;
-    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
 }
 
 .card-header {
     background-color: white;
-    border-bottom: 1px solid #dee2e6;
+    border-bottom: 1px solid #e0e0e0;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 1.5rem;
+    padding: 1.25rem 1.5rem;
 }
 
 .card-header h2 {
     margin-bottom: 0;
-    font-size: 1.5rem;
-    font-weight: 500;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #333;
 }
 
 .table {
     margin-bottom: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .table th, .table td {
     vertical-align: middle;
     padding: 1rem 1.5rem;
     white-space: nowrap; 
+    font-size: 14px;
 }
 
 .table thead th {
     font-weight: 600;
-    color: #6c757d;
-    border-bottom: 2px solid #dee2e6;
+    color: #555;
+    border-bottom: 2px solid #e0e0e0;
+    background-color: #f8f9fa;
 }
 
 .table tbody tr:hover {
-    background-color: #f2f2f2;
+    background-color: #f8f9fa;
 }
 
 .table .email-cell span.badge {
@@ -138,6 +205,7 @@
 .btn-success {
     background-color: #28a745;
     border-color: #28a745;
+    font-weight: 500;
 }
 
 .btn-success:hover {
@@ -147,12 +215,13 @@
 
 .alert {
     margin-bottom: 20px;
-    border-radius: 0.25rem;
+    border-radius: 8px;
     padding: 1rem 1.25rem;
     background-color: #fff3cd;
     border-color: #ffeeba;
     color: #856404; 
     font-weight: 500;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .alert a {
@@ -160,6 +229,7 @@
     text-decoration: underline;
     font-weight: bold;
 }
+
 .maestro-contenedor {
     padding-top: 20px;
     padding-bottom: 20px;
@@ -172,24 +242,26 @@
 
 .caja-informacion {
     border: none;
-    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     background-color: #fff; 
-    border-radius: 0.375rem; 
+    border-radius: 8px; 
 }
 
 .contenido-caja {
-    padding: 1.25rem; 
+    padding: 1.5rem; 
 }
 
 .titulo-seccion {
     margin-bottom: 0.5rem; 
-    font-size: 1.25rem; 
-    font-weight: 500;
+    font-size: 1.3rem; 
+    font-weight: 600;
+    color: #333;
 }
 
 .texto-descripcion {
     margin-bottom: 1rem; 
-    color: #212529; 
+    color: #666;
+    line-height: 1.5;
 }
 
 .alinear-derecha {
@@ -202,7 +274,7 @@
 
 .btn {
     display: inline-block;
-    font-weight: 400;
+    font-weight: 500;
     line-height: 1.5;
     text-align: center;
     text-decoration: none;
@@ -210,10 +282,11 @@
     cursor: pointer;
     user-select: none;
     border: 1px solid transparent;
-    padding: 0.375rem 0.75rem; 
-    font-size: 1rem; 
-    border-radius: 0.25rem; 
-    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    padding: 0.5rem 1rem; 
+    font-size: 0.9rem; 
+    border-radius: 6px; 
+    transition: all 0.3s ease;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .btn-principal {
@@ -226,6 +299,7 @@
     color: #fff;
     background-color: #218838; 
     border-color: #1e7e34;
+    transform: translateY(-1px);
 }
 
 .btn-principal:active {
@@ -244,6 +318,7 @@
     color: #fff;
     background-color: #c82333; 
     border-color: #bd2130;
+    transform: translateY(-1px);
 }
 
 .btn-peligro:active {
@@ -253,97 +328,30 @@
 }
 
 .btn-pequeno {
-    padding: 0.25rem 0.5rem; 
-    font-size: 0.875rem;     
-    border-radius: 0.2rem; 
+    padding: 0.4rem 0.8rem; 
+    font-size: 0.85rem;     
+    border-radius: 6px; 
 }
 
-.alert {
-    margin-bottom: 20px;
-    border-radius: 0.25rem;
-    padding: 1rem 1.25rem;
-    background-color: #fff3cd; 
-    border-color: #ffeeba;
-    color: #856404; 
-    font-weight: 500;
-}
-
-.alert a {
-    color: #856404;
-    text-decoration: underline;
-    font-weight: bold;
-}
-
-.card {
-    border: none;
-    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
-}
-
-.card-header { 
-    background-color: white;
-    border-bottom: 1px solid #dee2e6;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 1.5rem;
-}
-
-.card-header h2 {
-    margin-bottom: 0;
-    font-size: 1.5rem;
-    font-weight: 500;
-}
-
-.table {
-    margin-bottom: 0;
-}
-
-.table th, .table td {
-    vertical-align: middle;
-    padding: 1rem 1.5rem;
-    white-space: nowrap;
-}
-
-.table thead th {
-    font-weight: 600;
-    color: #6c757d;
-    border-bottom: 2px solid #dee2e6;
-}
-
-.table tbody tr:hover {
-    background-color: #f2f2f2;
-}
-
-.table .email-cell span.badge {
-    background-color: #ffc107;
-    color: #212529;
-    font-weight: normal;
-    margin-left: 8px;
-    padding: 0.3em 0.6em;
-    border-radius: 0.25rem;
-    font-size: 0.75em;
-}
-
-.permissions-icons i {
-    margin-right: 5px;
-    color: #6c757d;
-    font-size: 1.1em;
-}
-
-.btn-success {
-    background-color: #28a745;
-    border-color: #28a745;
-}
-
-.btn-success:hover {
-    background-color: #218838;
-    border-color: #1e7e34;
-}
-.nav-link1{
-    color: black;
-    text-decoration: none;
-}
 .foret{
     background-color: #212529;
     justify-content: end;
+}
+
+/* Arreglos para la legibilidad */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    color: #333;
 }
