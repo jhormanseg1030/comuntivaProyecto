@@ -2,22 +2,17 @@ import { useEffect, useState } from "react";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
-import {obtenerDocumento} from "../../../api/tipDocuApi"
+import {obtenerDocumento} from "../../../api/tipDocuApi";
 
-// Componente reutilizable para crear o editar 
+// Componente reutilizable para crear o editar
 const FormularioUsuario = ({ onSubmit, modo, usuario = null }) => {
   // Estado local para los campos del formulario
   const [formData, setFormData] = useState({
     nombre: "",
     apellido: "",
-    apellido2: "",
-    direccion: "",
     telefono: "",
-    telefono2: "",
     correo: "",
-    numdocumento:"",
-    password:"",
-    documenId: "",
+    tipDocumenId: "",
   });
 
   // Estado para listas de cargos y oficinas
@@ -32,14 +27,9 @@ const FormularioUsuario = ({ onSubmit, modo, usuario = null }) => {
       setFormData({
         nombre: usuario.nombre || "",
         apellido: usuario.apellido || "",
-        apellido2: usuario.apellido2 || "",
-        direccion: usuario.direccion || "",
         telefono: usuario.telefono || "",
-        telefono2: usuario.telefono2 || "",
         correo: usuario.correo || "",
-        numdocumento: usuario.numdocumento || "",
-        password: usuario.password || "",
-        documenId: usuario.documenId || "",
+        tipDocumenId: usuario.tipDocumenId || "",
       });
     }
   }, [modo, usuario]);
@@ -52,8 +42,7 @@ const FormularioUsuario = ({ onSubmit, modo, usuario = null }) => {
         //si hay un error de conexión, se muestra el modal
        } catch (error) {
         if (error != null) {
-          setMensajeErrorConexion(error.message);
-          setConexionFallida(true);
+          console.error("Error al cargar tipos de documento:", error.message);
         }
       }
     };
@@ -114,13 +103,13 @@ const FormularioUsuario = ({ onSubmit, modo, usuario = null }) => {
         {/* Dirección y teléfono */}
         <Row className="mb-6">
           <Form.Group as={Col} md="6" controlId="validationCustom03">
-            <Form.Label>Dirección</Form.Label>
+            <Form.Label>Correo</Form.Label>
             <Form.Control
               required
               type="text"
-              placeholder="Dirección"
-              name="direccion"
-              value={formData.direccion}
+              placeholder="Correo"
+              name="correo"
+              value={formData.correo}
               onChange={handleChange}
             />
             <Form.Control.Feedback>Datos ok!</Form.Control.Feedback>
@@ -141,20 +130,20 @@ const FormularioUsuario = ({ onSubmit, modo, usuario = null }) => {
 
         {/* Selects de tipo documento */}
         <Row className="mb-6">
-          <Form.Group as={Col} md="6" controlId="formGrdocumenId">
+          <Form.Group as={Col} md="6" controlId="formGrtipDocumenId">
             <Form.Label>Tipo de documento</Form.Label>
             <Form.Select
-              name="documenId"
-              value={formData.documenId}
+              name="tipDocumenId"
+              value={formData.tipDocumenId}
               onChange={handleChange}
+              required
               className="form-select mb-2"
             >
-              <option value="">Seleccione un tipo de documento</option>
-              <option value="null">Sin tipo de documento</option>
-              {tipDocumens.map((tipDocumenId) => (
-                <option key={tipDocumenId.id} value={tipDocumenId.id}>
-                  {tipDocumenId.tipDocumenId}
-                </option>
+             <option value="">Seleccione un tipo de documento</option>
+              {tipDocumens.map((tipo) => (
+                <option key={tipo.id} value={tipo.id}>
+                {tipo.tipo} {/* o tipo.tipDocumento si así viene del backend */}
+              </option>
               ))}
             </Form.Select>
           </Form.Group>

@@ -120,7 +120,7 @@ const ListaUsuario = () => {
               <tr key={usu.id}>
                 <td>{usu.nombre}</td>
                 <td>{usu.apellido}</td>
-                <td>{usu.tipDocumenId}</td>
+                <td>{usu.tipDocumenId?.tipo || "Sin tipo de documento"}</td>
                 <td>
                   {/* Botón para ver detalle del usuario en modal */}
                   <button
