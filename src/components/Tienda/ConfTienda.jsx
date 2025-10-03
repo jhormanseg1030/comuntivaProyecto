@@ -98,4 +98,4 @@ const ConfTienda = () => {
   );
 };
 
-export default ConfTienda;
+export default ConfTienda;s
