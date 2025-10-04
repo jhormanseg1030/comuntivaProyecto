@@ -40,7 +40,7 @@ const FormularioUsuario = ({ onSubmit, modo, usuario = null }) => {
         const tipDocusData = await obtenerDocumento();
         setTipDocumens(tipDocusData);
         //si hay un error de conexión, se muestra el modal
-       } catch (error) {
+      } catch (error) {
         if (error != null) {
           console.error("Error al cargar tipos de documento:", error.message);
         }
@@ -139,7 +139,7 @@ const FormularioUsuario = ({ onSubmit, modo, usuario = null }) => {
               required
               className="form-select mb-2"
             >
-             <option value="">Seleccione un tipo de documento</option>
+            <option value="">Seleccione un tipo de documento</option>
               {tipDocumens.map((tipo) => (
                 <option key={tipo.id} value={tipo.id}>
                 {tipo.tipo} {/* o tipo.tipDocumento si así viene del backend */}

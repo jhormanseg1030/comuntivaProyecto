@@ -1,3 +1,4 @@
+import UnidadMedida from "../Formularios/UnidadMedidaForm/UnidadMedida";
 function ProductoTienda () {
     return(
         <>
@@ -59,11 +60,7 @@ function ProductoTienda () {
             <label>Unidad de Medida*</label>
             <select required>
                 <option value="">Seleccionar...</option>
-                <option value="libra">Libra</option>
-                <option value="kilo">Kilogramo</option>
-                <option value="bulto">Bulto</option>
-                <option value="unidad">Unidad</option>
-                <option value="litro">Litro</option>
+        <UnidadMedida></UnidadMedida>
             </select>
             </div>
             <div className="form-group">
