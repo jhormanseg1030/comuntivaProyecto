@@ -1,7 +1,7 @@
 // src/components/ConfTienda.js
 import { useState } from 'react';
 import { Link, Route, Routes } from 'react-router-dom';
-import logo from '../imagenes/logo.jpg';
+import logo from '../imagenes/logo.jpg'; 
 import './ConfTienda.css';
 import CuentaTi from './CuentaTi';
 import GeneralTi from './GeneralTi';
@@ -30,9 +30,12 @@ const ConfTienda = () => {
     <>
     <div className="conf-tienda">
       <nav className="menu">
-        <div className="logo">
-        <img src={logo} alt="Logo" className="nav-brand"/>
+        
+        <div className="menu-header">
+          <img src={logo} alt="Logo" className="menu-logo"/>
+          <span className="admin-text">Admin</span>
         </div>
+        
         <ul className="menu-principal">
           <li onClick={() => manejarSeleccion('Inicio')} className={contenido === 'Inicio' ? 'active' : ''}>
             <Link className='nav-link1' to={"/ConfTienda"}>Inicio</Link>
@@ -50,20 +53,14 @@ const ConfTienda = () => {
             <Link className='nav-link1' to={"/ConfTienda/PromocionTi"}>Promociones</Link>
           </li>
           
-      
-    
-        <h2>Configuración</h2>
-
           <li onClick={() => manejarSeleccion('General')} className={contenido === 'General' ? 'active' : ''}>
             <Link className='nav-link1' to={"/ConfTienda/GeneralTi"}>General</Link>
-
           </li>
           <li onClick={() => manejarSeleccion('Proceso de compra')} className={contenido === 'Proceso de compra' ? 'active' : ''}>
             <Link className='nav-link1' to={"/ConfTienda/Proceso_Com"}>Procesos de compra</Link>
           </li>
           <li onClick={() => manejarSeleccion('Cuenta')} className={contenido === 'Cuenta' ? 'active' : ''}>
             <Link className='nav-link1' to={"/ConfTienda/CuentaTi"}>Cuenta</Link>
-
           </li>
         </ul>
       </nav>
