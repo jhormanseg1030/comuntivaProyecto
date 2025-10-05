@@ -13,31 +13,28 @@ const ModalUsuario = ({ usuario, show, onClose }) => {
         {usuario && (
           <div>
             <p>
-              <strong>Nombre:</strong> {usuario.nombre}
+              <strong>Nombre:</strong> {usuario.nom_u}
             </p>
             <p>
-              <strong>Apellido:</strong> {usuario.apellido}
+              <strong>Apellido:</strong> {usuario.ape}
             </p>
               <p>
-              <strong>Apellido2:</strong> {usuario.apellido2}
+              <strong>Apellido2:</strong> {usuario.ape2}
             </p>
             <p>
-              <strong>Correo:</strong> {usuario.correo}
+              <strong>Correo:</strong> {usuario.corr}
             </p>
             <p>
-              <strong>Dirección:</strong> {usuario.direccion}
+              <strong>Teléfono:</strong> {usuario.tele}
             </p>
             <p>
-              <strong>Teléfono:</strong> {usuario.telefono}
+              <strong>Teléfono2:</strong> {usuario.tele2}
             </p>
             <p>
-              <strong>Teléfono2:</strong> {usuario.telefono2}
-            </p>
-            <p>
-              <strong>Tipo Documento:</strong> {usuario.tipDocumenId}
+              <strong>Tipo Documento:</strong> {usuario.nom_tipdocu}
             </p>
              <p>
-              <strong>Numero Documento:</strong> {usuario.numdocumento}
+              <strong>Numero Documento:</strong> {usuario.numdocu}
             </p>
             {/* Puedes agregar más campos si están disponibles */}
           </div>

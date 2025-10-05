@@ -94,8 +94,8 @@ const ListaUsuario = () => {
         "Usuario actualizado correctamente",
         "success"
       );
-       } catch (error) {
-      console.error('Error al crear producto:', error);
+      } catch (error) {
+      console.error('Error al actualizar usuario:', error);
       alert(error.message);  // Muestra mensaje del backend (ej. "Ya existe...")
     }
   };
@@ -118,28 +118,27 @@ const ListaUsuario = () => {
   };
 
   return (
-    <div className="card p-3">
-      {/* Mostrar error si existe */}
-      {error && <div className="alert alert-danger">{error}</div>}
-      {/* Mostrar spinner mientras se cargan los datos */}
-      {cargando ? (
-        <div className="text-center my-5">
-          <div className="spinner-border text-primary mb-3" role="status"></div>
-          <p className="text-muted">Cargando usuarios...</p>
-        </div>
-      ) : (
-        // Mostrar tabla de usuario cuando termina la carga
-        <table className="table table-striped">
+  <div className="lista-usuario-container">
+
+    {error && <div className="alert alert-danger">{error}</div>}
+
+    {cargando ? (
+      <div className="spinner-container">
+        <div className="spinner-border text-primary" role="status"></div>
+        <p>Cargando usuarios...</p>
+      </div>
+    ) : (
+      <div className="table-responsive">
+        <table className="table table-bordered table-hover">
           <thead>
             <tr>
               <th>Nombre</th>
               <th>Apellido</th>
               <th>Segundo Apellido</th>
-              <th>Telefono</th>
+              <th>Teléfono</th>
               <th>Teléfono Alternativo</th>
               <th>Correo</th>
-              <th>numdocumento</th>
-              <th>contraseña</th>
+              <th>Documento</th>
               <th>Tipo Documento</th>
               <th>Acciones</th>
             </tr>
@@ -154,16 +153,14 @@ const ListaUsuario = () => {
                 <td>{usu.tele2}</td>
                 <td>{usu.corr}</td>
                 <td>{usu.numdocu}</td>
-                <td>{usu.nom_tipdocu|| "Sin tipo de documento"}</td>
+                <td>{usu.nom_tipdocu || "Sin tipo de documento"}</td>
                 <td>
-                  {/* Botón para ver detalle del usuario en modal */}
                   <button
                     className="btn btn-sm btn-info me-2"
                     onClick={() => verDetalle(usu)}
                   >
                     Ver
                   </button>
-                  {/* Enlace para editar el usuario */}
                   <button
                     className="btn btn-sm btn-warning me-2"
                     onClick={() => abrirModalEdicion(usu)}
@@ -175,43 +172,44 @@ const ListaUsuario = () => {
             ))}
           </tbody>
         </table>
-      )}
-      {/*Modal para mostrar detalle del usuario*/}
-      <ModalUsuario
-        usuario={usuarioDetalle}
-        show={mostrarDetalle}
-        onClose={cerrarDetalle}
-      />
-      {/*Modal para mostrar el formulario que permite editar el usuario*/}
-      <Modal
-        show={mostrarModalEdicion}
-        onHide={() => setMostrarModalEdicion(false)}
-        size="lg"
-        centered
-      >
-        <Modal.Header closeButton>
-          <Modal.Title>Editar Usuario</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          {usuarioEditar && (
-            <FormularioUsuario
-              modo="editar"
-              usuario={usuarioEditar}
-              onSubmit={handleActualizarUsuario}
-            />
-          )}
-        </Modal.Body>
-      </Modal>
-      {/* Modal para mostrar mensajes de éxito o error */}
-      <ModalMensaje
-        show={modalVisible}
-        onClose={cerrarModal}
-        titulo={modalContenido.titulo}
-        mensaje={modalContenido.mensaje}
-        tipo={modalContenido.tipo}
-      />
-    </div>
-  );
+      </div>
+    )}
+
+    <ModalUsuario
+      usuario={usuarioDetalle}
+      show={mostrarDetalle}
+      onClose={cerrarDetalle}
+    />
+
+    <Modal
+      show={mostrarModalEdicion}
+      onHide={() => setMostrarModalEdicion(false)}
+      size="lg"
+      centered
+    >
+      <Modal.Header closeButton>
+        <Modal.Title>Editar Usuario</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        {usuarioEditar && (
+          <FormularioUsuario
+            modo="editar"
+            usuario={usuarioEditar}
+            onSubmit={handleActualizarUsuario}
+          />
+        )}
+      </Modal.Body>
+    </Modal>
+
+    <ModalMensaje
+      show={modalVisible}
+      onClose={cerrarModal}
+      titulo={modalContenido.titulo}
+      mensaje={modalContenido.mensaje}
+      tipo={modalContenido.tipo}
+    />
+  </div>
+);
 };
 
 export default ListaUsuario;

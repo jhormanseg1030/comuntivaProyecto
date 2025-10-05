@@ -1,0 +1,53 @@
+/* Contenedor principal del formulario */
+.usuario-form-container {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.08);
+  max-width: 800px;
+  margin: auto;
+}
+
+/* Título */
+.usuario-form-title {
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #329729;
+  margin-bottom: 1.5rem;
+}
+
+/* Etiquetas */
+.usuario-form-label {
+  font-weight: 600;
+  color: #333;
+}
+
+/* Inputs y selects */
+.usuario-form-control {
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.usuario-form-control:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+/* Botón */
+.usuario-form-button {
+  display: block;
+  margin: 2rem auto 0;
+  padding: 0.6rem 2rem;
+  font-weight: 600;
+  border-radius: 50px;
+  background-color: #198754;
+  color: white;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.usuario-form-button:hover {
+  background-color: #157347;
+}
