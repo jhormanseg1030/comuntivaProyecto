@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function CuentaTi () {
     return (
         <>
@@ -9,7 +11,9 @@ function CuentaTi () {
                 <div className="card">
                   <div className="card-header">
                     <h2>Cuentas</h2>
-                    <button type="button" className="btn btn-success">Crear Cuenta</button>
+                    <Link to={"/usuarios/listarUsu"}>
+                    <button type="button" className="btn btn-success">Consultar Usuarios</button>
+                    </Link>
                   </div>
                     <div className="card-body p-0">
                       <div className="table-responsive">
@@ -28,8 +32,8 @@ function CuentaTi () {
                                   <td className="email-cell">
                                       jhomirasegura293@gmail.com <span className="badge">Dueño</span>
                                   </td>
-                                  <td></td>
-                                  <td></td>
+                                  <td>Jhorman</td>
+                                  <td>Segura</td>
                                   <td>Administrador</td>
                                   <td className="permissions-icons">
                                       <i className="bi bi-pencil"></i>
@@ -49,11 +53,10 @@ function CuentaTi () {
                       </div>
                     </div>
                 </div>
-              </div>       
-              <div class="maestro-contenedor">
-                <div class="caja-informacion espacio-superior">
-              
-                </div>
+              </div>
+            
+
+              <div class="maestro-contenedor"> 
                 <div class="caja-informacion espacio-superior">
                   <div class="contenido-caja">
                     <h5 class="titulo-seccion">Dudas Plataforma</h5>
