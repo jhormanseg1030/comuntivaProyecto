@@ -2,37 +2,26 @@ import { useState } from "react";
 import Card from "react-bootstrap/Card";
 import { crearUsuario } from "../../api/usuarioApi";
 import FormularioUsuario from "../../components/Formularios/usuarioForm/usuarioForm";
-import ModalMensaje from "../../components/Formularios/usuarioForm/modalMensaje";
+import ModalMensaje from "../../components/ModalConexionFallida";
 
-const CrearUsuario = () => {
-  // Estado para controlar la visibilidad del modal de retroalimentación y su contenido
+const UsuarioCrear = () => {
   const [modalVisible, setModalVisible] = useState(false);
+  const [modalContenido, setModalContenido] = useState({ titulo: "", mensaje: "", tipo: "info" });
 
-  // Estado para definir el contenido del modal (título, mensaje, tipo)
-  const [modalContenido, setModalContenido] = useState({
-    titulo: "",
-    mensaje: "",
-    tipo: "info", // puede ser "success", "danger", etc.
-  });
-
-  // Función para mostrar el modal con contenido personalizado
   const mostrarModal = (titulo, mensaje, tipo = "info") => {
     setModalContenido({ titulo, mensaje, tipo });
     setModalVisible(true);
   };
 
-  // Función para cerrar el modal
   const cerrarModal = () => {
     setModalVisible(false);
-  };
-
-  // Manejar la creación del empleado llamando a la API y mostrando el modal según el resultado
+  }
   const handleCrearUsuario = async (data) => {
-    try {
+    try{
       await crearUsuario(data);
-      mostrarModal("✅ Usuario creado correctamente", "success");
-    } catch (error) {
-      mostrarModal("❌ Error", error.message, "danger");
+      mostrarModal("✅ Usuario creado", "El usuario fue registrado exitosamente", "success");
+    } catch (error){
+      mostrarModal("❌ Error", error.message, "danger")
     }
   };
 
@@ -40,7 +29,6 @@ const CrearUsuario = () => {
     <Card>
       <Card.Header>Crear Usuario</Card.Header>
       <Card.Body>
-        <Card.Title></Card.Title>
         <FormularioUsuario onSubmit={handleCrearUsuario} modo="crear" />
         <ModalMensaje
           show={modalVisible}
@@ -54,4 +42,5 @@ const CrearUsuario = () => {
   );
 };
 
-export default CrearUsuario;
+
+export default UsuarioCrear;

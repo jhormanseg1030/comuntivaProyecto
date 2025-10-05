@@ -4,6 +4,7 @@ import {
   actualizarUsuario,
   obtenerUsuarioPorId,
   obtenerUsuario,
+  eliminarUsuario,
 } from "../../../api/usuarioApi";
 import FormularioUsuario from "./usuarioForm";
 import ModalMensaje from "../usuarioForm/modalMensaje";
@@ -23,6 +24,10 @@ const ListaUsuario = () => {
   // Estado para mostrar spinner mientras se cargan los datos
   const [cargando, setCargando] = useState(true);
 
+  const [showModalEliminar, setShowModalEliminar] = useState(false);
+
+  const [usuarioSeleccionado, setUsuarioSeleccionado] = useState(null);
+
   // Cargar usuario al montar el componente
   useEffect(() => {
     obtenerUsuario()
@@ -30,6 +35,24 @@ const ListaUsuario = () => {
       .catch((err) => setError(err.message)) // Mostrar error si falla
       .finally(() => setCargando(false)); // Ocultar spinner al terminar
   }, []);
+
+  // Función para eliminar usuario
+  const eliminar = async(id_Usuario) => {
+    try{
+      await eliminarUsuario(id_Usuario);
+      setUsuarios((prev) => prev.filter((e) => e.id_Usuario !== id_Usuario));
+    } catch (error) {
+      setError("error al eliminar usuario");
+    }
+  };
+
+  const abreModalEliminar = (usu) => {
+    setUsuarioSeleccionado(usu);
+    setShowModalEliminar(true);
+  };
+
+  const cerrarModalEliminar = () => setShowModalEliminar(false);
+
 
   // Abrir el modal de detalle y guardar el usuario a mostrar
   const verDetalle = (usu) => {
@@ -52,14 +75,14 @@ const ListaUsuario = () => {
 
   const handleActualizarUsuario = async (data) => {
     try {
-      await actualizarUsuario(usuarioEditar.id, data);
+      await actualizarUsuario(usuarioEditar.id_Usuario, data);
 
       // Obtener datos completos del usuario actualizado
-      const usuarioActualizado = await obtenerUsuarioPorId(usuarioEditar.id);
+      const usuarioActualizado = await obtenerUsuarioPorId(usuarioEditar.id_Usuario);
 
       // Reemplazar el usuario en la lista con los datos actualizados
       setUsuarios((prev) =>
-        prev.map((e) => (e.id === usuarioEditar.id ? usuarioActualizado : e))
+        prev.map((e) => (e.id_Usuario === usuarioEditar.id_Usuario ? usuarioActualizado : e))
       );
 
       setMostrarModalEdicion(false);
@@ -109,18 +132,29 @@ const ListaUsuario = () => {
         <table className="table table-striped">
           <thead>
             <tr>
-              <th>Nombres</th>
-              <th>Apellidos</th>
+              <th>Nombre</th>
+              <th>Apellido</th>
+              <th>Segundo Apellido</th>
+              <th>Telefono</th>
+              <th>Teléfono Alternativo</th>
+              <th>Correo</th>
+              <th>numdocumento</th>
+              <th>contraseña</th>
               <th>Tipo Documento</th>
               <th>Acciones</th>
             </tr>
           </thead>
           <tbody>
             {usuarios.map((usu) => (
-              <tr key={usu.id}>
-                <td>{usu.nombre}</td>
-                <td>{usu.apellido}</td>
-                <td>{usu.tipDocumenId?.tipo || "Sin tipo de documento"}</td>
+              <tr key={usu.id_usu}>
+                <td>{usu.nom_u}</td>
+                <td>{usu.ape}</td>
+                <td>{usu.ape2}</td>
+                <td>{usu.tele}</td>
+                <td>{usu.tele2}</td>
+                <td>{usu.corr}</td>
+                <td>{usu.numdocu}</td>
+                <td>{usu.nom_tipdocu|| "Sin tipo de documento"}</td>
                 <td>
                   {/* Botón para ver detalle del usuario en modal */}
                   <button

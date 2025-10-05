@@ -1,8 +1,7 @@
-const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:8080"; 
 
 export const obtenerDocumento = async () => {
   try{
-    const res = await fetch(`${BASE_URL}/api/tipdoc`);
+    const res = await fetch(`http://localhost:8080/api/tipdoc`);
 
     if (!res.ok) throw new Error("No se pudo obtener la lista de tipos de documentos");
     return await res.json();
