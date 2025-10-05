@@ -2,7 +2,9 @@
 .seccion-pedidos {
     padding: 20px;
   }
-  
+.buttonPedi{
+  background-color: #28a745;
+}
   /* Header con controles */
   .pedidos-header {
     display: flex;
@@ -51,30 +53,7 @@
     gap: 6px;
     cursor: pointer;
   }
-  
-  /* Tabla de pedidos */
-  .tabla-pedidos-container {
-    overflow-x: auto;
-    margin-bottom: 30px;
-  }
-  
-  .tabla-pedidos {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-  }
-  
-  .tabla-pedidos th, 
-  .tabla-pedidos td {
-    padding: 12px 15px;
-    text-align: left;
-    border-bottom: 1px solid #eee;
-  }
-  
-  .tabla-pedidos th {
-    background-color: #f8f9fa;
-    font-weight: 600;
-  }
+
   
   /* Estilos de contenido */
   .cliente-info {

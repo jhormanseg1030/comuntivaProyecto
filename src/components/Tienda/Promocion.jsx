@@ -73,7 +73,7 @@ function Promocion () {
              <div className='cupons'>
              <h6 className='textcupons'>Tienes 2 cupones</h6>
              <div>
-              <button>Agregar cupones</button>
+              <button className="buttonPedi">Agregar cupones</button>
              </div>
               </div>
             
