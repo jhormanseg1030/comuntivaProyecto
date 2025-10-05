@@ -338,7 +338,7 @@
     justify-content: end;
 }
 
-/* Arreglos para la legibilidad */
+/* Mejoras en la legibilidad */
 * {
     box-sizing: border-box;
 }
@@ -354,4 +354,43 @@ body {
 h1, h2, h3, h4, h5, h6 {
     font-weight: 600;
     color: #333;
+}
+
+/* Configuracion del menu */
+.menu-principal li:nth-child(5) {
+  border-top: 1px solid #e0e0e0;
+  margin-top: 10px;
+  padding-top: 10px;
+}
+
+.menu-principal li:nth-child(8) {
+  border-top: 1px solid #e0e0e0;
+  margin-top: 10px;
+  padding-top: 10px;
+}
+
+.menu-principal li:nth-child(10) {
+  border-top: 1px solid #e0e0e0;
+  margin-top: 10px;
+  padding-top: 10px;
+}
+
+.menu-section {
+  padding: 6px 15px 2px 15px;
+  margin-top: 3px;
+}
+
+.section-title {
+  font-size: 0.65rem;
+  font-weight: 600;
+}
+
+.nav-link1 {
+  padding: 6px 15px;
+  font-size: 0.85rem;
+  gap: 8px;
+}
+
+.menu-principal li:not(.menu-section) {
+  margin-bottom: 1px;
 }
