@@ -53,21 +53,13 @@ function InicioTienda() {
       
       const formElements = event.target.elements;
       formData.append('nombreSucursal', formElements.formNombreSucursal.value);
-      formData.append('email', formElements.formEmail.value);
-      formData.append('telefono', formElements.formTelefono.value);
       formData.append('direccion', formElements.formDireccion.value);
-      formData.append('ciudad', formElements.formCiudad.value);
-      formData.append('departamento', formElements.formDepartamento.value);
-      formData.append('horarioApertura', formElements.formHorarioApertura.value);
-      formData.append('horarioCierre', formElements.formHorarioCierre.value);
-      formData.append('responsable', formElements.formResponsable.value);
+      formData.append('barrio', formElements.formBarrio.value);
       
       console.log('Datos de sucursal a enviar:', {
         nombreSucursal: formElements.formNombreSucursal.value,
-        email: formElements.formEmail.value,
-        telefono: formElements.formTelefono.value,
         direccion: formElements.formDireccion.value,
-        ciudad: formElements.formCiudad.value,
+        barrio: formElements.formBarrio.value,
         tieneImagen: !!sucursalImage
       });
       
@@ -108,28 +100,8 @@ function InicioTienda() {
                     />
                   </Form.Group>
 
-                  <Row className="mb-3">
-                    <Form.Group as={Col} controlId="formEmail">
-                      <Form.Label>Correo Electrónico</Form.Label>
-                      <Form.Control 
-                        type="email" 
-                        placeholder="sucursal@ejemplo.com" 
-                        required
-                      />
-                    </Form.Group>
-
-                    <Form.Group as={Col} controlId="formTelefono">
-                      <Form.Label>Teléfono de Contacto</Form.Label>
-                      <Form.Control 
-                        type="tel" 
-                        placeholder="Ingrese el número telefónico" 
-                        required
-                      />
-                    </Form.Group>
-                  </Row>
-
                   <Form.Group className="mb-3" controlId="formDireccion">
-                    <Form.Label>Dirección o Dominio de la Sucursal</Form.Label>
+                    <Form.Label>Dirección de la Sucursal</Form.Label>
                     <Form.Control 
                       type="text" 
                       placeholder="Cra 68 #677 sur ejemplo" 
@@ -137,52 +109,22 @@ function InicioTienda() {
                     />
                   </Form.Group>
 
-                  <Row className="mb-3">
-                    <Form.Group as={Col} controlId="formCiudad">
-                      <Form.Label>Ciudad</Form.Label>
-                      <Form.Control 
-                        type="text" 
-                        placeholder="Ingrese la ciudad" 
-                        required
-                      />
-                    </Form.Group>
-
-                    <Form.Group as={Col} controlId="formDepartamento">
-                      <Form.Label>Departamento</Form.Label>
-                      <Form.Control 
-                        type="text" 
-                        placeholder="Ingrese el departamento" 
-                        required
-                      />
-                    </Form.Group>
-                  </Row>
-
-                  <Row className="mb-3">
-                    <Form.Group as={Col} controlId="formHorarioApertura">
-                      <Form.Label>Horario de Apertura</Form.Label>
-                      <Form.Control type="time" required />
-                    </Form.Group>
-
-                    <Form.Group as={Col} controlId="formHorarioCierre">
-                      <Form.Label>Horario de Cierre</Form.Label>
-                      <Form.Control type="time" required />
-                    </Form.Group>
-
-                    <Form.Group as={Col} controlId="formResponsable">
-                      <Form.Label>Responsable</Form.Label>
-                      <Form.Control 
-                        type="text" 
-                        placeholder="Nombre del responsable" 
-                        required
-                      />
-                    </Form.Group>
-                  </Row>
+                  <Form.Group className="mb-3" controlId="formBarrio">
+                    <Form.Label>Barrio</Form.Label>
+                    <Form.Select 
+                      required
+                    >
+                      <option value="">Seleccione un barrio</option>
+                      {/* Aquí puedes agregar más opciones después */}
+                    </Form.Select>
+                  </Form.Group>
 
                   {showSuccess && (
                     <Alert variant="success" onClose={() => setShowSuccess(false)} dismissible>
                       ¡Los datos de la sucursal han sido actualizados correctamente!
                     </Alert>
                   )}
+
 
                   <div className="d-grid gap-2">
                     <Button 
@@ -194,6 +136,7 @@ function InicioTienda() {
                       {isSubmitting ? 'Guardando...' : 'Guardar Información'}
                     </Button>
                   </div>
+
                 </Form>
               </Col>
 
