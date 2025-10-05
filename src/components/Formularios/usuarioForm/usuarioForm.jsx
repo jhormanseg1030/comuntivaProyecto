@@ -3,8 +3,8 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import {obtenerDocumento} from "../../../api/tipDocuApi";
-import ModalUsuarioCreado from "../../ModalUsuarioCreado";
 import ModalConexionFallida from "../../ModalConexionFallida";
+import "../../Estilos_Form_usuario/usuarioForm.css";
 
 const FormularioUsuario = ({ onSubmit, modo = "crear", usuario = null }) => {
   const [formData, serFormData]= useState({
@@ -81,55 +81,107 @@ const FormularioUsuario = ({ onSubmit, modo = "crear", usuario = null }) => {
       setValidated(true);
     };
 
-  const [usuarioCreadoVisible, setUsuarioCreadoVisible] = useState(false);
-  const [mensajeUsuarioCreado, setMensajeUsuarioCreado] = useState("");
-
   const [conexionFallida, setConexionFallida] = useState(false);
 
 
-  return(
-  <div className="col-md-8 mx-auto p-4 border rounded bg-light">
+  return (
+    <div className="usuario-form-container">
+      <h4 className="usuario-form-title">
+        {modo === "editar" ? "Editar Usuario" : "Registrar Usuario"}
+      </h4>
+
       <Form noValidate validated={validated} onSubmit={handleSubmit}>
         <Row className="mb-3">
           <Form.Group as={Col} md="6" controlId="validationCustom01">
-            <Form.Label>Nombre</Form.Label>
-            <Form.Control required type="text" placeholder= "Nombre" name="nombre" value={formData.nombre} onChange={handleChange} />
-          
+            <Form.Label className="usuario-form-label">Nombre</Form.Label>
+            <Form.Control
+              required
+              type="text"
+              placeholder="Nombre"
+              name="nombre"
+              value={formData.nombre}
+              onChange={handleChange}
+              className="usuario-form-control"
+            />
           </Form.Group>
           <Form.Group as={Col} md="6" controlId="validationCustom02">
-            <Form.Label>Apellido</Form.Label>
-            <Form.Control required type="text" placeholder= "Apellido" name="apellido" value={formData.apellido} onChange={handleChange} />
+            <Form.Label className="usuario-form-label">Apellido</Form.Label>
+            <Form.Control
+              required
+              type="text"
+              placeholder="Apellido"
+              name="apellido"
+              value={formData.apellido}
+              onChange={handleChange}
+              className="usuario-form-control"
+            />
           </Form.Group>
         </Row>
 
         <Row className="mb-3">
           <Form.Group as={Col} md="6" controlId="validationCustom03">
-            <Form.Label>Segundo Apellido</Form.Label>
-            <Form.Control required type="text" placeholder= "Segundo Apellido" name="apellido2" value={formData.apellido2} onChange={handleChange} />
+            <Form.Label className="usuario-form-label">Segundo Apellido</Form.Label>
+            <Form.Control
+              required
+              type="text"
+              placeholder="Segundo Apellido"
+              name="apellido2"
+              value={formData.apellido2}
+              onChange={handleChange}
+              className="usuario-form-control"
+            />
           </Form.Group>
-
           <Form.Group as={Col} md="6" controlId="validationCustom04">
-            <Form.Label>Correo</Form.Label>
-            <Form.Control required type="email" placeholder="Correo" name="correo" value={formData.correo} onChange={handleChange} />
+            <Form.Label className="usuario-form-label">Correo</Form.Label>
+            <Form.Control
+              required
+              type="email"
+              placeholder="Correo"
+              name="correo"
+              value={formData.correo}
+              onChange={handleChange}
+              className="usuario-form-control"
+            />
           </Form.Group>
         </Row>
 
         <Row className="mb-3">
           <Form.Group as={Col} md="6" controlId="validationCustom05">
-            <Form.Label>Teléfono</Form.Label>
-            <Form.Control required type="tel" placeholder="Teléfono" name="telefono" value={formData.telefono} onChange={handleChange} />
+            <Form.Label className="usuario-form-label">Teléfono</Form.Label>
+            <Form.Control
+              required
+              type="tel"
+              placeholder="Teléfono"
+              name="telefono"
+              value={formData.telefono}
+              onChange={handleChange}
+              className="usuario-form-control"
+            />
           </Form.Group>
           <Form.Group as={Col} md="6" controlId="validationCustom06">
-            <Form.Label>Teléfono Alternativo</Form.Label>
-            <Form.Control required type="tel" placeholder="Teléfono Alternativo" name="telefono2" value={formData.telefono2} onChange={handleChange} />
+            <Form.Label className="usuario-form-label">Teléfono Alternativo</Form.Label>
+            <Form.Control
+              required
+              type="tel"
+              placeholder="Teléfono Alternativo"
+              name="telefono2"
+              value={formData.telefono2}
+              onChange={handleChange}
+              className="usuario-form-control"
+            />
           </Form.Group>
         </Row>
 
         <Row className="mb-3">
           <Form.Group as={Col} md="6" controlId="validationCustom07">
-            <Form.Label>Tipo de Documento</Form.Label>
-            <Form.Select required name="tipId" value={formData.tipId} onChange={handleChange}>
-
+            <Form.Label className="usuario-form-label">Tipo de Documento</Form.Label>
+            <Form.Select
+              required
+              name="tipId"
+              value={formData.tipId}
+              onChange={handleChange}
+              className="usuario-form-control"
+            >
               <option value="">Seleccione un tipo de documento...</option>
               {Documentos.map((tipo) => (
                 <option key={tipo.id_tipdocu} value={tipo.id_tipdocu}>
@@ -139,28 +191,35 @@ const FormularioUsuario = ({ onSubmit, modo = "crear", usuario = null }) => {
             </Form.Select>
           </Form.Group>
           <Form.Group as={Col} md="6">
-            <Form.Label>Número de Documento</Form.Label>
-            <Form.Control required name="numdocumento" value={formData.numdocumento} onChange={handleChange} />
+            <Form.Label className="usuario-form-label">Número de Documento</Form.Label>
+            <Form.Control
+              required
+              name="numdocumento"
+              value={formData.numdocumento}
+              onChange={handleChange}
+              className="usuario-form-control"
+            />
           </Form.Group>
         </Row>
 
-        <Row className="mb-3">
+        <Row className="mb-4">
           <Form.Group as={Col} md="6">
-            <Form.Label>Contraseña</Form.Label>
-            <Form.Control required type="password" name="password" value={formData.password} onChange={handleChange} />
+            <Form.Label className="usuario-form-label">Contraseña</Form.Label>
+            <Form.Control
+              required
+              type="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+              className="usuario-form-control"
+            />
           </Form.Group>
         </Row>
 
-        <button type="submit" className="btn btn-success">
+        <button type="submit" className="usuario-form-button">
           {modo === "editar" ? "Actualizar" : "Guardar"}
         </button>
       </Form>
-
-      <ModalUsuarioCreado
-        show={usuarioCreadoVisible}
-        onClose={() => setUsuarioCreadoVisible(false)}
-        mensaje={mensajeUsuarioCreado}
-      />
 
       <ModalConexionFallida
         show={conexionFallida}
@@ -169,26 +228,6 @@ const FormularioUsuario = ({ onSubmit, modo = "crear", usuario = null }) => {
       />
     </div>
   );
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 };
 
