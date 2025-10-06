@@ -154,6 +154,8 @@ function Segprinci() {
         </Card.Body>
       </Card>
     </CardGroup>
+
+    
     <div className='Container'>
       <Link className='link' to="/Vende">Configuracion Sucursal</Link>
     </div>
