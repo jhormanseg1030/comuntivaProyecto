@@ -25,13 +25,14 @@
 .carousel-img-full{
     height: 80vh;
     object-fit: cover;
-    border-radius: 10px;
+    border-radius: 20px;
 }
 @media (max-width: 768px) {
     .carousel-img-full{
         height: 60vh;
     }
 }
+
 /*-----------------------------------------------------------------------------------*/
 
 /* card */
@@ -100,9 +101,9 @@
 }
 .d-block{
     height: auto;
-    width: 100%;
-
-
+    width: 80%;
+    margin: 0 auto; 
+    display: block; 
 }
 .carousel-control-prev{
     width:5% !important ;
@@ -113,3 +114,4 @@
 .imagencita{
     border: none !important;
 }
+
