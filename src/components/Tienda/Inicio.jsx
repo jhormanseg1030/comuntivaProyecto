@@ -1,175 +1,150 @@
-import React, { useState, useRef } from 'react';
-import Button from 'react-bootstrap/Button';
-import Col from 'react-bootstrap/Col';
-import Form from 'react-bootstrap/Form';
-import Row from 'react-bootstrap/Row';
-import Container from 'react-bootstrap/Container';
-import Alert from 'react-bootstrap/Alert';
+import React, { useRef, useState, useEffect } from 'react';
+import { Form, Button, Alert } from 'react-bootstrap';
+import ModalDireccion from '../ModalDireccion';
+import { crearTienda } from '../../api/TiendaApi';
+import { obtenerDirecciones } from '../../api/DireccionesApi';
 
 function InicioTienda() {
-  const [showSuccess, setShowSuccess] = useState(false);
+  const formRef = useRef(null);
+  const fileInputRef = useRef(null);
+
+  const [showModal, setShowModal] = useState(false);
+  const [direccionId, setDireccionId] = useState(null);
+  const [direcciones, setDirecciones] = useState([]);
+  const [nombreLogo, setNombreLogo] = useState('');
   const [sucursalImage, setSucursalImage] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  
-  const formRef = useRef();
-  const fileInputRef = useRef();
+  const [showSuccess, setShowSuccess] = useState(false);
+
+  useEffect(() => {
+    const fetchDirecciones = async () => {
+      try {
+        const data = await obtenerDirecciones();
+        setDirecciones(data);
+      } catch (err) {
+        console.error("Error al cargar direcciones", err);
+      }
+    };
+    fetchDirecciones();
+  }, []);
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
+    setSucursalImage(file);
     if (file) {
-      if (file.size > 2 * 1024 * 1024) {
-        alert('La imagen no debe exceder los 2MB');
-        fileInputRef.current.value = '';
-        return;
-      }
-      
-      if (!file.type.match('image.*')) {
-        alert('Por favor seleccione un archivo de imagen (JPG, PNG)');
-        fileInputRef.current.value = '';
-        return;
-      }
-      
-      setSucursalImage(file);
-      
+      setNombreLogo(file.name);
       const reader = new FileReader();
-      reader.onloadend = () => {
-        setImagePreview(reader.result);
-      };
+      reader.onloadend = () => setImagePreview(reader.result);
       reader.readAsDataURL(file);
+    } else {
+      setNombreLogo('');
+      setImagePreview(null);
     }
+  };
+
+  const handleDireccionCreada = async (id) => {
+    setDireccionId(id);
+    const data = await obtenerDirecciones();
+    setDirecciones(data);
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     setIsSubmitting(true);
-    
+
+    if (!direccionId) {
+      alert("Por favor selecciona o crea una dirección.");
+      setIsSubmitting(false);
+      return;
+    }
+
     try {
-      const formData = new FormData();
-      
-      if (sucursalImage) {
-        formData.append('sucursalImage', sucursalImage);
-      }
-      
       const formElements = event.target.elements;
-      formData.append('nombreSucursal', formElements.formNombreSucursal.value);
-      formData.append('direccion', formElements.formDireccion.value);
-      formData.append('barrio', formElements.formBarrio.value);
+      const payload = {
+        nomti: formElements.formNombreSucursal.value,
+        direccId: direccionId,
+        loogo: nombreLogo
+      };
       
-      console.log('Datos de sucursal a enviar:', {
-        nombreSucursal: formElements.formNombreSucursal.value,
-        direccion: formElements.formDireccion.value,
-        barrio: formElements.formBarrio.value,
-        tieneImagen: !!sucursalImage
-      });
-      
+      const data = await crearTienda(payload);
+      window.dispatchEvent(new CustomEvent("tiendaCreada", { detail: data }));
+
       setShowSuccess(true);
       setTimeout(() => setShowSuccess(false), 5000);
-      
+
       setTimeout(() => {
         formRef.current.reset();
         setSucursalImage(null);
         setImagePreview(null);
         fileInputRef.current.value = '';
+        setDireccionId(null);
       }, 2000);
-      
+
     } catch (error) {
-      console.error('Error al enviar el formulario:', error);
-      alert('Ocurrió un error al enviar el formulario. Por favor intenta nuevamente.');
+      console.error(error);
+      alert("Ocurrió un error al guardar la tienda.");
     } finally {
       setIsSubmitting(false);
     }
   };
 
   return (
-    <>
-      <h1>Configuración de Sucursal</h1>
-      <div className="contenido-dinamico">
-        <div className="inicio-container">
-          <p>Aquí puedes configurar la información básica de tu sucursal</p>
-          <Container className="sucursal-form-container">
-            <Row>
-              <Col lg={8}>
-                <Form ref={formRef} className="sucursal-centered-form" onSubmit={handleSubmit}>
-                  <Form.Group className="mb-3" controlId="formNombreSucursal">
-                    <Form.Label>Nombre de la Sucursal</Form.Label>
-                    <Form.Control 
-                      type="text" 
-                      placeholder="Ingrese el nombre de la sucursal" 
-                      required
-                    />
-                  </Form.Group>
+    <div className="container mt-4">
+      <h2>Crear Tienda</h2>
+      <Form ref={formRef} onSubmit={handleSubmit}>
+        <Form.Group className="mb-3" controlId="formNombreSucursal">
+          <Form.Label>Nombre de la Tienda</Form.Label>
+          <Form.Control type="text" placeholder="Ej: Tienda Central" required />
+        </Form.Group>
 
-                  <Form.Group className="mb-3" controlId="formDireccion">
-                    <Form.Label>Dirección de la Sucursal</Form.Label>
-                    <Form.Control 
-                      type="text" 
-                      placeholder="Cra 68 #677 sur ejemplo" 
-                      required
-                    />
-                  </Form.Group>
+        <Form.Group className="mb-3" controlId="formLogoSucursal">
+          <Form.Label>Logo de la Tienda</Form.Label>
+          <Form.Control type="file" accept="image/*" onChange={handleImageChange} ref={fileInputRef} />
+          {imagePreview && (
+            <div className="mt-2">
+              <img src={imagePreview} alt="Preview" style={{ maxWidth: '200px' }} />
+            </div>
+          )}
+        </Form.Group>
 
-                  <Form.Group className="mb-3" controlId="formBarrio">
-                    <Form.Label>Barrio</Form.Label>
-                    <Form.Select 
-                      required
-                    >
-                      <option value="">Seleccione un barrio</option>
-                      {/* Aquí puedes agregar más opciones después */}
-                    </Form.Select>
-                  </Form.Group>
+        <Form.Group className="mb-3" controlId="formDireccion">
+          <Form.Label>Seleccionar Dirección</Form.Label>
+          <Form.Select
+            value={direccionId || ''}
+            onChange={(e) => setDireccionId(parseInt(e.target.value))}
+            required
+          >
+            <option value="">Seleccione una dirección</option>
+            {direcciones.map((dir) => (
+              <option key={dir.id_direc} value={dir.id_direc}>
+                {dir.nume} - {dir.barrio?.nomb}
+              </option>
+            ))}
+          </Form.Select>
+        </Form.Group>
 
-                  {showSuccess && (
-                    <Alert variant="success" onClose={() => setShowSuccess(false)} dismissible>
-                      ¡Los datos de la sucursal han sido actualizados correctamente!
-                    </Alert>
-                  )}
+        <Button variant="info" onClick={() => setShowModal(true)} className="me-2">
+          Crear Nueva Dirección
+        </Button>
 
+        <Button style={{ backgroundColor: '#28a745', borderColor: '#28a745' }} type="submit" disabled={isSubmitting}>
+          {isSubmitting ? "Guardando..." : "Guardar Información"}
+        </Button>
 
-                  <div className="d-grid gap-2">
-                    <Button 
-                      variant="success" 
-                      type="submit" 
-                      size="lg"
-                      disabled={isSubmitting}
-                    >
-                      {isSubmitting ? 'Guardando...' : 'Guardar Información'}
-                    </Button>
-                  </div>
+        {showSuccess && (
+          <Alert variant="success" className="mt-3">
+            ¡Tienda creada exitosamente!
+          </Alert>
+        )}
+      </Form>
 
-                </Form>
-              </Col>
-
-              <Col lg={4}>
-                <div className="sucursal-picture-container">
-                  <div className="sucursal-picture-upload">
-                    <div className="sucursal-image-preview">
-                      {imagePreview ? (
-                        <img src={imagePreview} alt="Vista previa de sucursal" />
-                      ) : (
-                        <span>Imagen de sucursal</span>
-                      )}
-                    </div>
-                    <Form.Group controlId="formImagenSucursal" className="mt-3">
-                      <Form.Label>Subir imagen de sucursal</Form.Label>
-                      <Form.Control 
-                        type="file" 
-                        accept="image/jpeg, image/png" 
-                        onChange={handleImageChange}
-                        ref={fileInputRef}
-                      />
-                    </Form.Group>
-                    <p className="sucursal-image-helper-text">
-                      Formatos aceptados: JPG, PNG (Max. 2MB)
-                    </p>
-                  </div>
-                </div>
-              </Col>
-            </Row>
-          </Container>
-        </div>
-      </div>
-    </>
+      <ModalDireccion
+        show={showModal}
+        handleClose={() => setShowModal(false)}
+        onDireccionCreada={handleDireccionCreada}
+      />
+    </div>
   );
 }
 

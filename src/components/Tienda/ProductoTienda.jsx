@@ -1,19 +1,49 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
 import Alert from 'react-bootstrap/Alert';
+import { obtenerUnidad } from '../../api/unidad_medidaApi';
+import { crearProducto } from '../../api/productoApi';
+import { obtenerTienda } from '../../api/TiendaApi';
 
 function ProductoTienda() {
   const [showSuccess, setShowSuccess] = useState(false);
   const [productImage, setProductImage] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  
+  const [unidades, setUnidades] = useState([]);
+  const [tiendas, setTiendas] = useState([]);
+  const [unidadId, setUnidadId] = useState('');
+  const [tiendaId, setTiendaId] = useState('');
+
   const formRef = useRef();
   const fileInputRef = useRef();
+
+  useEffect(() => {
+    const fetchUnidades = async () => {
+      try {
+        const data = await obtenerUnidad();
+        setUnidades(data);
+      } catch (err) {
+        console.error("Error al cargar unidades", err);
+      }
+    };
+
+    const fetchTiendas = async () => {
+      try {
+        const data = await obtenerTienda();
+        setTiendas(data);
+      } catch (err) {
+        console.error("Error al cargar tiendas", err);
+      }
+    };
+
+    fetchUnidades();
+    fetchTiendas();
+  }, []);
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -23,15 +53,15 @@ function ProductoTienda() {
         fileInputRef.current.value = '';
         return;
       }
-      
+
       if (!file.type.match('image.*')) {
         alert('Por favor seleccione un archivo de imagen (JPG, PNG)');
         fileInputRef.current.value = '';
         return;
       }
-      
+
       setProductImage(file);
-      
+
       const reader = new FileReader();
       reader.onloadend = () => {
         setImagePreview(reader.result);
@@ -43,40 +73,34 @@ function ProductoTienda() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     setIsSubmitting(true);
-    
+
     try {
-      const formData = new FormData();
-      
-      if (productImage) {
-        formData.append('productImage', productImage);
-      }
-      
       const formElements = event.target.elements;
-      formData.append('idTienda', formElements.formIdTienda.value);
-      formData.append('nombreProducto', formElements.formNombreProducto.value);
-      formData.append('valor', formElements.formValor.value);
-      formData.append('cantidad', formElements.formCantidad.value);
-      formData.append('descripcion', formElements.formDescripcion.value);
-      
-      console.log('Datos de producto a enviar:', {
-        idTienda: formElements.formIdTienda.value,
-        nombreProducto: formElements.formNombreProducto.value,
-        valor: formElements.formValor.value,
-        cantidad: formElements.formCantidad.value,
-        descripcion: formElements.formDescripcion.value,
-        tieneImagen: !!productImage
-      });
-      
+
+      const payload = {
+        nombre_Producto: formElements.nombre_Producto.value,
+        valor: parseFloat(formElements.valor.value),
+        cantidad: parseInt(formElements.cantidad.value),
+        descripcion: formElements.descripcion.value,
+        id_tienda: parseInt(tiendaId),
+        id_medida: parseInt(unidadId),
+        imagen: productImage?.name || ''
+      };
+
+      await crearProducto(payload);
+
       setShowSuccess(true);
       setTimeout(() => setShowSuccess(false), 5000);
-      
+
       setTimeout(() => {
         formRef.current.reset();
         setProductImage(null);
         setImagePreview(null);
         fileInputRef.current.value = '';
+        setUnidadId('');
+        setTiendaId('');
       }, 2000);
-      
+
     } catch (error) {
       console.error('Error al enviar el formulario:', error);
       alert('Ocurrió un error al enviar el formulario. Por favor intenta nuevamente.');
@@ -84,6 +108,7 @@ function ProductoTienda() {
       setIsSubmitting(false);
     }
   };
+
 
   return (
     <>
@@ -95,51 +120,58 @@ function ProductoTienda() {
             <Row>
               <Col lg={8}>
                 <Form ref={formRef} className="sucursal-centered-form" onSubmit={handleSubmit}>
-                  <Form.Group className="mb-3" controlId="formIdTienda">
-                    <Form.Label>ID (Tienda)</Form.Label>
-                    <Form.Control 
-                      type="text" 
-                      placeholder="Ingrese el ID único del producto" 
+                  <Form.Group className="mb-3" controlId="id_tienda">
+                    <Form.Label>Seleccionar Tienda</Form.Label>
+                    <Form.Select
+                      value={tiendaId}
+                      onChange={(e) => setTiendaId(e.target.value)}
                       required
-                    />
+                    >
+                      <option value="">Seleccione una tienda</option>
+                      {tiendas.map((t) => (
+                        <option key={t.id_ti} value={t.id_ti}>
+                          {t.nomti}
+                        </option>
+                      ))}
+                    </Form.Select>
                   </Form.Group>
 
-                  <Form.Group className="mb-3" controlId="formNombreProducto">
+                  <Form.Group className="mb-3" controlId="nombre_Producto">
                     <Form.Label>Nombre del Producto</Form.Label>
-                    <Form.Control 
-                      type="text" 
-                      placeholder="Ingrese el nombre del producto" 
-                      required
-                    />
+                    <Form.Control type="text" placeholder="Ingrese el nombre del producto" required />
                   </Form.Group>
 
                   <Row className="mb-3">
-                    <Form.Group as={Col} controlId="formValor">
+                    <Form.Group as={Col} controlId="valor">
                       <Form.Label>Valor</Form.Label>
-                      <Form.Control 
-                        type="number" 
-                        placeholder="Ingrese el valor" 
-                        required
-                      />
+                      <Form.Control type="number" placeholder="Ingrese el valor" required />
                     </Form.Group>
 
-                    <Form.Group as={Col} controlId="formCantidad">
+                    <Form.Group as={Col} controlId="cantidad">
                       <Form.Label>Cantidad</Form.Label>
-                      <Form.Control 
-                        type="number" 
-                        placeholder="Ingrese la cantidad" 
-                        required
-                      />
+                      <Form.Control type="number" placeholder="Ingrese la cantidad" required />
                     </Form.Group>
                   </Row>
 
-                  <Form.Group className="mb-3" controlId="formDescripcion">
+                  <Form.Group className="mb-3" controlId="descripcion">
                     <Form.Label>Descripción</Form.Label>
-                    <Form.Control 
-                      as="textarea" 
-                      rows={3}
-                      placeholder="Ingrese la descripción del producto" 
-                    />
+                    <Form.Control as="textarea" rows={3} placeholder="Ingrese la descripción del producto" />
+                  </Form.Group>
+
+                  <Form.Group className="mb-3" controlId="id_medida">
+                    <Form.Label>Unidad de Medida</Form.Label>
+                    <Form.Select
+                      value={unidadId}
+                      onChange={(e) => setUnidadId(e.target.value)}
+                      required
+                    >
+                      <option value="">Seleccione una unidad</option>
+                      {unidades.map((u) => (
+                        <option key={u.id_Medida} value={u.id_Medida}>
+                          {u.tip_Medida}
+                        </option>
+                      ))}
+                    </Form.Select>
                   </Form.Group>
 
                   {showSuccess && (
@@ -149,12 +181,7 @@ function ProductoTienda() {
                   )}
 
                   <div>
-                    <Button 
-                      variant="success" 
-                      type="submit" 
-                      size="md"
-                      disabled={isSubmitting}
-                    >
+                    <Button variant="success" type="submit" size="md" disabled={isSubmitting}>
                       {isSubmitting ? 'Guardando...' : 'Guardar Producto'}
                     </Button>
                   </div>
@@ -173,9 +200,9 @@ function ProductoTienda() {
                     </div>
                     <Form.Group controlId="formImagenProducto" className="mt-3">
                       <Form.Label>Subir imagen del producto</Form.Label>
-                      <Form.Control 
-                        type="file" 
-                        accept="image/jpeg, image/png" 
+                      <Form.Control
+                        type="file"
+                        accept="image/jpeg, image/png"
                         onChange={handleImageChange}
                         ref={fileInputRef}
                       />
@@ -192,6 +219,8 @@ function ProductoTienda() {
       </div>
     </>
   );
+
+
 }
 
 export default ProductoTienda;

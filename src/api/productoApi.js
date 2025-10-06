@@ -17,7 +17,7 @@ export const obtenerProductoPorId = async (id) => {
 };
 
 export const crearProducto = async (data) => {
-  const res = await fetch('http://localhost:8080/api/producto/crear', {
+  const res = await fetch('http://localhost:8080/api/producto', {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
