@@ -5,7 +5,6 @@ import logo from '../imagenes/logo.jpg';
 import './ConfTienda.css';
 
 // Componentes de las secciones
-import InicioTienda from './Inicio';
 import ProductoTienda from './ProductoTienda';
 import HistorialTi from './HistorialTi';
 import Hist_Pag from './Hist_Pag'; 
@@ -40,9 +39,6 @@ const ConfTienda = () => {
           <ul className="menu-principal">
             <li className="menu-section">
               <span className="section-title">📊 OPERACIONES</span>
-            </li>
-            <li onClick={() => manejarSeleccion('Inicio')} className={contenido === 'Inicio' ? 'active' : ''}>
-              <Link className='nav-link1' to={"/ConfTienda"}>🏠 Inicio</Link>
             </li>
             <li onClick={() => manejarSeleccion('Productos')} className={contenido === 'Productos' ? 'active' : ''}>
               <Link className='nav-link1' to={"/ConfTienda/ProductoTi"}>📦 Productos</Link>
@@ -83,7 +79,6 @@ const ConfTienda = () => {
         <div className="contenido">
           <div>
             <Routes>
-              <Route path='/' element={<InicioTienda />} />
               <Route path='/ProductoTi' element={<ProductoTienda />} />
               <Route path='/Vendedores' element={<GestVende />} />
               <Route path='/HistorialTi' element={<HistorialTi />} />
