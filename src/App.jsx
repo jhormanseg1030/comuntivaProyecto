@@ -29,8 +29,11 @@ import FormularioPedido from './components/Formularios/pedidosForm/pedidosForm';
 import UsuarioLayout from './paginas/UsuarioPag/UsuarioLayout';
 import UsuarioList from './paginas/UsuarioPag/UsuarioList';
 import CrearUsuario from './paginas/UsuarioPag/CrearUsuario';
-import FormularioUsuario from './components/Formularios/usuarioForm/usuarioForm';
+
 import Unidad_Medida from './components/Formularios/UnidadMedidaForm/UnidadMedida';
+import FormularioUsuario from './components/Formularios/usuarioForm/usuarioForm';
+
+import ConfVendedor from './components/Vendedor/ConfVendedor';
 
 
 function App() {
@@ -66,8 +69,10 @@ function App() {
         <Route path='listarUsu' element={<UsuarioList></UsuarioList>}></Route>
         <Route path='crearUsu' element={<CrearUsuario></CrearUsuario>}></Route>
         <Route path='Unidad' element ={<Unidad_Medida></Unidad_Medida>}></Route>
+
         </Route>
         <Route path='/formulari' element={<FormularioUsuario></FormularioUsuario>}></Route>
+  <Route path='/ConfVendedor/*' element={<ConfVendedor />} />
         <Route></Route>
       </Routes>
     </UserProvider>
