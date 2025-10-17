@@ -1,73 +1,42 @@
-import { Link } from 'react-router-dom';
 import imagen1 from '../imagenes/imagen1.jpg';
 import './Registrar.css';
+import FormularioUsuario from '../Formularios/usuarioForm/usuarioForm';
+import { useEffect, useState } from "react";
+import Col from "react-bootstrap/Col";
+import Form from "react-bootstrap/Form"; 
+import Row from "react-bootstrap/Row";
+import {obtenerDocumento} from "../../api/tipDocuApi";
+import {crearUsuario} from "../../api/usuarioApi";
+import ModalConexionFallida from "../ModalConexionFallida";
+import "../Estilos_Form_usuario/usuarioForm.css";
+
+const initialFormState = {
+  nombre: "",
+  apellido: "",
+  apellido2: "",
+  telefono: "",
+  telefono2: "",
+  correo: "",
+  numdocumento: "",
+  password: "",
+  tipId: "",
+};
+
 
 const RegistrarUsu = () => {
-    return (
-        <div className="main-wrapper"> 
-            
-            <div className="image-section">
-                <img src={imagen1} alt="Imagen decorativa de registro" /> 
-            </div>
-            
-            <div className="form-section">
-                <div className="form-container-expanded">
-                    <form className="registration-form"> 
-                        <h2>Registro de Usuario</h2>
-                        
-                        <div className="form-group-expanded">
-                            <label htmlFor="name">Nombre:</label>
-                            <input type="text" id="name" className="expanded-input" required />
-                        </div>
-                        
-                        <div className="form-group-expanded">
-                            <label htmlFor="lastName">Apellido:</label>
-                            <input type="text" id="lastName" className="expanded-input" required />
-                        </div>
-                        
-                        <div className="form-group-expanded">
-                            <label htmlFor="documentType">Tipo de Documento:</label>
-                            <select id="documentType" className="expanded-input" required>
-                                <option value="">Selecciona un tipo</option>
-                                <option value="cc">Cédula</option>
-                                <option value="ti">Cedula Extranjeria</option>
-                                <option value="ti">Passaporte</option>
-                            </select>
-                        </div>
-                        
-                        
-                        <div className="form-group-expanded">
-                            <label htmlFor="documentNumber">Número de Documento:</label>
-                            <input type="text" id="documentNumber" className="expanded-input" required />
-                        </div>
-                        
-                        <div className="form-group-expanded">
-                            <label htmlFor="email">Correo Electrónico:</label>
-                            <input type="email" id="email" className="expanded-input" required />
-                        </div>
-                        
-                        <div className="form-group-expanded">
-                            <label htmlFor="birthDate">Fecha de Nacimiento:</label>
-                            <input type="date" id="birthDate" className="expanded-input" required />
-                        </div>
-                        
-                        <div className="form-group-expanded">
-                            <label htmlFor="password">Contraseña:</label>
-                            <input type="password" id="password" className="expanded-input" required />
-                        </div>
-                        
-                        <div className="form-footer-expanded">
-                            <Link to="/login" className="register-link">¿Ya tienes cuenta?</Link>
-                            <Link to= "/Login"><button type="submit" className="submit-btn-expanded">Registrarse</button></Link>
-                        </div>
-                    </form>
-                </div>
-            </div>
+  return (
+    <div className="main-wrapper registro-flex">
+      <div className="registro-imagen">
+        <img src={imagen1} alt="Imagen decorativa de registro" className="registro-img" />
+      </div>
+      <div className="registro-formulario">
+        <div className="form-container-expanded">
+          {/* Formulario de registro de usuario a la derecha */}
+          <FormularioUsuario modo="crear" onSubmit={crearUsuario} />
         </div>
-
-
-
-    );
+      </div>
+    </div>
+  );
 };
 
 export default RegistrarUsu;
