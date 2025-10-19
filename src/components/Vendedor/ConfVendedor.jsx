@@ -6,7 +6,7 @@ import '../../components/Tienda/ConfTienda.css';
 import '../../components/Tienda/generalve.css';
 
 
-import InicioVendedor from './InicioVendedor';
+
 import PedidosVendedor from './PedidosVendedor';
 import ProductosVendedor from './ProductosVendedor';
 import HistorialTi from '../Tienda/HistorialTi';
