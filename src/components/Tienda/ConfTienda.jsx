@@ -3,8 +3,6 @@ import { useState } from 'react';
 import { Link, Route, Routes } from 'react-router-dom';
 import logo from '../imagenes/logo.jpg'; 
 import './ConfTienda.css';
-
-// Componentes de las secciones
 import ProductoTienda from './ProductoTienda';
 import HistorialTi from './HistorialTi';
 import Hist_Pag from './Hist_Pag'; 
@@ -13,11 +11,8 @@ import Gestras from './Gestras';
 import GeneralTi from './GeneralTi';
 import CuentaTi from './CuentaTi';
 import Footer_Abajo from '../Vendedor/Footer_Abajo';
-
-// CSS imports
 import './generalve.css';
 import "./Historial.css";
-import './Inicio.css';
 import './Producto.css';
 import './GestVende.css';
 
