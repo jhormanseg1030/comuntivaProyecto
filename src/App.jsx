@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import { UserProvider } from './context/UserContext';
 import './App.css';
 import Carrito from './components/Carrito/carro';
 import Frutas from './components/Categoria_Menu/Frutas';
@@ -20,27 +21,29 @@ import RegistrarUsu from './components/Registrar/RegistrarUsu';
 import SegPrinci from './components/SegPrincipal/SegPrinci';
 import ConfTienda from './components/Tienda/ConfTienda';
 import HomeTienda from "./components/Tienda/HomeTienda";
-import InicioVendedor from './components/Vendedor/InicioVendedor';
 import ListaProduc from './paginas/ListaProductos';
 import FormularioPedido from './components/Formularios/pedidosForm/pedidosForm';
 import UsuarioLayout from './paginas/UsuarioPag/UsuarioLayout';
 import UsuarioList from './paginas/UsuarioPag/UsuarioList';
 import CrearUsuario from './paginas/UsuarioPag/CrearUsuario';
-import FormularioUsuario from './components/Formularios/usuarioForm/usuarioForm';
+
 import Unidad_Medida from './components/Formularios/UnidadMedidaForm/UnidadMedida';
+import FormularioUsuario from './components/Formularios/usuarioForm/usuarioForm';
+
+import ConfVendedor from './components/Vendedor/ConfVendedor';
 
 
 function App() {
   const [Count, SetCount] = useState(0)
     return(
-      <Routes>
+      <UserProvider>
+        <Routes>
         <Route path='/Login' element={<InicioSe></InicioSe>}></Route>
         <Route path='/Tienda' element={<HomeCli></HomeCli>}></Route>
         <Route path='/TiendaDonJuan' element={<HomeTienda></HomeTienda>}></Route>
         <Route path='/Segunda' element={<SegPrinci></SegPrinci>}></Route>
         <Route path='/Registro' element={<RegistrarUsu></RegistrarUsu>}></Route>
         <Route path='/ConfTienda/*' element={<ConfTienda></ConfTienda>}></Route>
-        <Route path='/Vende' element={<InicioVendedor></InicioVendedor>}></Route>
         <Route path='/Compra' element={<PagCompra></PagCompra>}></Route>
         <Route path='/Productos' element={<ProductosTienda></ProductosTienda>}></Route>
         <Route path='/Pago' element={<Pago></Pago>}></Route>
@@ -60,10 +63,13 @@ function App() {
         <Route path='listarUsu' element={<UsuarioList></UsuarioList>}></Route>
         <Route path='crearUsu' element={<CrearUsuario></CrearUsuario>}></Route>
         <Route path='Unidad' element ={<Unidad_Medida></Unidad_Medida>}></Route>
+
         </Route>
         <Route path='/formulari' element={<FormularioUsuario></FormularioUsuario>}></Route>
+  <Route path='/ConfVendedor/*' element={<ConfVendedor />} />
         <Route></Route>
-    </Routes>
+      </Routes>
+    </UserProvider>
 
     );
 }

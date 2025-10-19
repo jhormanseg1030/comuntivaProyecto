@@ -7,7 +7,6 @@ import Container from 'react-bootstrap/Container';
 import Alert from 'react-bootstrap/Alert';
 import { obtenerUnidad } from '../../api/unidad_medidaApi';
 import { crearProducto } from '../../api/productoApi';
-import { obtenerTienda } from '../../api/TiendaApi';
 
 function ProductoTienda() {
   const [showSuccess, setShowSuccess] = useState(false);
@@ -15,7 +14,6 @@ function ProductoTienda() {
   const [imagePreview, setImagePreview] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [unidades, setUnidades] = useState([]);
-  const [tiendas, setTiendas] = useState([]);
   const [unidadId, setUnidadId] = useState('');
   const [tiendaId, setTiendaId] = useState('');
 
@@ -32,17 +30,7 @@ function ProductoTienda() {
       }
     };
 
-    const fetchTiendas = async () => {
-      try {
-        const data = await obtenerTienda();
-        setTiendas(data);
-      } catch (err) {
-        console.error("Error al cargar tiendas", err);
-      }
-    };
-
     fetchUnidades();
-    fetchTiendas();
   }, []);
 
   const handleImageChange = (e) => {
@@ -120,21 +108,6 @@ function ProductoTienda() {
             <Row>
               <Col lg={8}>
                 <Form ref={formRef} className="sucursal-centered-form" onSubmit={handleSubmit}>
-                  <Form.Group className="mb-3" controlId="id_tienda">
-                    <Form.Label>Seleccionar Tienda</Form.Label>
-                    <Form.Select
-                      value={tiendaId}
-                      onChange={(e) => setTiendaId(e.target.value)}
-                      required
-                    >
-                      <option value="">Seleccione una tienda</option>
-                      {tiendas.map((t) => (
-                        <option key={t.id_ti} value={t.id_ti}>
-                          {t.nomti}
-                        </option>
-                      ))}
-                    </Form.Select>
-                  </Form.Group>
 
                   <Form.Group className="mb-3" controlId="nombre_Producto">
                     <Form.Label>Nombre del Producto</Form.Label>

@@ -39,3 +39,21 @@ export const actualizarProducto = async (id, productoData) => {
   }
   return await res.json();
 };
+// Crear producto con imagen (FormData)
+export const crearProductoConImagen = async (formData) => {
+  // Enviar FormData sin establecer Content-Type para que el browser ponga el multipart boundary
+  const res = await fetch('http://localhost:8080/api/producto', {
+    method: 'POST',
+    body: formData,
+  });
+  if (!res.ok) throw new Error('Error al crear Producto con imagen');
+  return res.json();
+};
+// Eliminar producto
+export const eliminarProducto = async (id) => {
+  const res = await fetch(`http://localhost:8080/api/producto/${id}`, {
+    method: 'DELETE',
+  });
+  if (!res.ok) throw new Error('Error al eliminar producto');
+  return res.json();
+};

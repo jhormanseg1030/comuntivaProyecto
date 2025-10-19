@@ -157,7 +157,7 @@ function Segprinci() {
 
     
     <div className='Container'>
-      <Link className='link' to="/Vende">Configuracion Sucursal</Link>
+      <Link className='link' to="/ConfTienda/*">Configuracion Sucursal</Link>
     </div>
     <Footer_Abajo/>
     </>

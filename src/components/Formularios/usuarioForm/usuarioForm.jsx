@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Col from "react-bootstrap/Col";
-import Form from "react-bootstrap/Form";
+import Form from "react-bootstrap/Form"; 
 import Row from "react-bootstrap/Row";
 import {obtenerDocumento} from "../../../api/tipDocuApi";
 import ModalConexionFallida from "../../ModalConexionFallida";
@@ -20,8 +21,9 @@ const FormularioUsuario = ({ onSubmit, modo = "crear", usuario = null }) => {
   });
 
   const [Documentos, setDocumentos] = useState([]);
-
   const [validated, setValidated] = useState(false);
+  const [usuarioCreadoVisible, setUsuarioCreadoVisible] = useState(false);
+  const [mensajeUsuarioCreado, setMensajeUsuarioCreado] = useState("");
 
   useEffect(() => {
     if (modo === "editar" && usuario) {
@@ -73,9 +75,13 @@ const FormularioUsuario = ({ onSubmit, modo = "crear", usuario = null }) => {
           await onSubmit(formData);
           setMensajeUsuarioCreado("El usuario fue registrado exitosamente.");
           setUsuarioCreadoVisible(true);
+          setMenjaseErrorConexion("");
+          setConexionFallida(false);
         } catch (error) {
           setMenjaseErrorConexion(error.message);
           setConexionFallida(true);
+          setMensajeUsuarioCreado("");
+          setUsuarioCreadoVisible(false);
         }
       }
       setValidated(true);
@@ -216,11 +222,24 @@ const FormularioUsuario = ({ onSubmit, modo = "crear", usuario = null }) => {
           </Form.Group>
         </Row>
 
-        <button type="submit" className="usuario-form-button">
-          {modo === "editar" ? "Actualizar" : "Guardar"}
-        </button>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '1rem' }}>
+          <Link to="/login" style={{ fontSize: '0.98rem', color: '#1a73e8', textDecoration: 'underline' }}>
+            ¿Ya tienes cuenta?
+          </Link>
+          <button type="submit" className="usuario-form-button">
+            {modo === "editar" ? "Actualizar" : "Guardar"}
+          </button>
+        </div>
       </Form>
 
+      {/* Mensaje de éxito solo si el registro fue correcto */}
+      {usuarioCreadoVisible && (
+        <div className="alert alert-success mt-3" role="alert">
+          {mensajeUsuarioCreado}
+        </div>
+      )}
+
+      {/* Modal solo si hay error de conexión */}
       <ModalConexionFallida
         show={conexionFallida}
         onClose={() => setConexionFallida(false)}
