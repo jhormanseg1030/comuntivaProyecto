@@ -1,0 +1,60 @@
+.inicio-vendedor {
+  margin: 40px 0; /* solo margen superior/inferior, sin centrado */
+  padding: 40px 32px; /* más espacio interior */
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  color: #333;
+  max-width: 1200px; /* más ancho */
+  width: 95%; /* ocupa casi todo el ancho disponible */
+  box-sizing: border-box;
+}
+
+.inicio-header h1 {
+  margin: 0 0 8px 0;
+  font-size: 26px;
+  color: #1b5e20;
+}
+
+.intro {
+  margin: 0 0 16px 0;
+  color: #2e7d32;
+  font-weight: 600;
+}
+
+.inicio-content p {
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.beneficios-list {
+  margin: 12px 0;
+  padding-left: 20px;
+}
+
+.acciones {
+  margin-top: 18px;
+  display: flex;
+  gap: 12px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 8px 14px;
+  background: #388e3c;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+}
+
+.btn.secondary {
+  background: #eeeeee;
+  color: #333;
+  border: 1px solid #ccc;
+}
+
+.nota {
+  margin-top: 16px;
+  font-size: 13px;
+  color: #666;
+}

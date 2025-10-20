@@ -9,6 +9,7 @@ function ProductosVendedor() {
   const [success, setSuccess] = useState(null);
   const [query, setQuery] = useState('');
   const [categoria, setCategoria] = useState('');
+  const [noToken, setNoToken] = useState(false);
 
   const categoriasDisponibles = [
     { id: '', nombre: 'Todas' },
@@ -19,12 +20,17 @@ function ProductosVendedor() {
 
   useEffect(() => {
     const load = async () => {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        setNoToken(true);
+        setLoading(false);
+        return;
+      }
       try {
         const data = await obtenerProductos();
         setProductos(data);
       } catch (err) {
-        setError('No se pudieron cargar los productos');
-        console.error(err);
+        setError('No se pudieron cargar los productos. Verifica tu conexión o sesión.');
       } finally {
         setLoading(false);
       }
@@ -40,12 +46,16 @@ function ProductosVendedor() {
       setSuccess('Producto eliminado correctamente');
       setTimeout(() => setSuccess(null), 3000);
     } catch (err) {
-      console.error(err);
-      setError('Error al eliminar producto');
+      setError('Error al eliminar producto. Verifica tu sesión.');
     }
   };
 
   const handleCreate = async () => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      setError('Debes iniciar sesión para crear productos.');
+      return;
+    }
     try {
       const nuevo = { nombre_Producto: 'Nuevo producto', valor: 0, cantidad: 0, descripcion: '', id_tienda: 1, id_medida: 1 };
       const resp = await crearProducto(nuevo);
@@ -53,8 +63,7 @@ function ProductosVendedor() {
       setSuccess('Producto creado');
       setTimeout(() => setSuccess(null), 3000);
     } catch (err) {
-      console.error(err);
-      setError('Error al crear producto');
+      setError('Error al crear producto. Verifica tu sesión o conexión.');
     }
   };
 
