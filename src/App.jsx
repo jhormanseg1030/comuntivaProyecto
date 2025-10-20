@@ -30,13 +30,16 @@ import CrearUsuario from './paginas/UsuarioPag/CrearUsuario';
 import Unidad_Medida from './components/Formularios/UnidadMedidaForm/UnidadMedida';
 import FormularioUsuario from './components/Formularios/usuarioForm/usuarioForm';
 
+
 import ConfVendedor from './components/Vendedor/ConfVendedor';
+import EstadoSesion from './components/EstadoSesion';
 
 
 function App() {
   const [Count, SetCount] = useState(0)
     return(
       <UserProvider>
+        <EstadoSesion />
         <Routes>
         <Route path='/Login' element={<InicioSe></InicioSe>}></Route>
         <Route path='/Tienda' element={<HomeCli></HomeCli>}></Route>

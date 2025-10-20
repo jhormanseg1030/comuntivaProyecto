@@ -4,9 +4,6 @@ import logo from '../imagenes/logo.jpg';
 
 import '../../components/Tienda/ConfTienda.css';
 import '../../components/Tienda/generalve.css';
-
-
-
 import PedidosVendedor from './PedidosVendedor';
 import ProductosVendedor from './ProductosVendedor';
 import HistorialTi from '../Tienda/HistorialTi';
@@ -14,6 +11,7 @@ import ComprasVendedor from './ComprasVendedor';
 import ReportesVendedor from './ReportesVendedor';
 import CuentaVendedor from './CuentaVendedor';
 import Footer_Abajo from './Footer_Abajo';
+import InicioVendedor from './InicioVendedor';
 
 const ConfVendedor = () => {
   const [contenido, setContenido] = useState('Inicio');

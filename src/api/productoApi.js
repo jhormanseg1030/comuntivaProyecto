@@ -1,6 +1,11 @@
 // Obtener lista de productos
 export const obtenerProductos = async () => {
-  const res = await fetch('http://localhost:8080/api/producto')
+  const token = localStorage.getItem('token');
+  const res = await fetch('http://localhost:8080/api/producto', {
+    headers: {
+      'Authorization': `Bearer ${token}`,
+    },
+  });
   if (!res.ok) {
     throw new Error('Error al obtener productos');
   }
