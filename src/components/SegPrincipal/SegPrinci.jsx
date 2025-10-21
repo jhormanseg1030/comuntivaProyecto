@@ -31,7 +31,6 @@ function Segprinci() {
             <Nav className="me-auto my-2 my-lg-0" navbarScroll>
               <Nav.Link href="/Segunda">Inicio</Nav.Link>
               <Nav.Link href="/Quienes somos">Quienes Somos</Nav.Link>
-              <Nav.Link href="/Segunda">Tiendas</Nav.Link>
               <Nav.Link href="#action4">Características</Nav.Link>
               <Nav.Link href="#action5">Ayuda</Nav.Link>
               <NavDropdown title="Categoría" id="navbarScrollingDropdown">
@@ -112,50 +111,6 @@ function Segprinci() {
           </div>
         </Carousel.Item>
       </Carousel>
-      
-      <CardGroup className='confi'>
-      <Card>
-      <Link to='/TiendaDonJuan'><Card.Img variant="top" src={Mercados1} /></Link>
-        <Card.Body>
-          <Card.Title>Sucursal Sur</Card.Title>
-          <Card.Text>
-          Ubicada en el corazón del sur bogotano, esta sucursal refleja la calidez y la tradición de una zona llena de historia y comunidad. 
-          Aquí encontrarás productos frescos y accesibles, ideales para las familias que buscan calidad sin complicaciones.          </Card.Text>
-        </Card.Body>
-      </Card>
-
-      <Card>
-      <Link to='/SucursalNor'><Card.Img variant="top" src={Mercados2}  /></Link>
-        <Card.Body>
-          <Card.Title>Sucursal Norte</Card.Title>
-          <Card.Text>
-          En la vibrante y sofisticada zona norte, nuestra sucursal ofrece productos que reflejan la diversidad y el dinamismo de esta región.
-          Desde ingredientes campesinos hasta opciones exclusivas, es el lugar perfecto para quienes valoran sabor y calidad.          </Card.Text>
-        </Card.Body>
-      </Card>
-
-      <Card>
-      <Link to='/SucursalZo'><Card.Img variant= "top" src={Mercados3}/></Link>
-        <Card.Body>
-          <Card.Title>Sucursal Zona Centro </Card.Title>
-          <Card.Text>
-        En el centro histórico y cultural de la ciudad, esta sucursal combina tradición y modernidad.
-        Ofrecemos productos cultivados con esmero, que mantienen viva la conexión con nuestras raíces y con la naturaleza que rodea la capital.          </Card.Text>
-        </Card.Body>
-      </Card>
-
-      <Card>
-      <Link to='/SucursalOcc'><Card.Img variant= "top" src={Mercados4} /></Link>
-        <Card.Body>
-          <Card.Title>Sucursal Zona Occidente y Suroccidente</Card.Title>
-          <Card.Text>
-          Situada en una zona industrial y en crecimiento, esta sucursal se destaca por su variedad y frescura.
-          La tierra fértil y el esfuerzo de su gente se reflejan en cada fruta y vegetal que llega hasta aquí, listos para ser parte de tu mesa.          </Card.Text>
-        </Card.Body>
-      </Card>
-    </CardGroup>
-
-    
     <Footer_Abajo/>
     </>
   );
