@@ -1,3 +1,61 @@
+export const loginUsuario = async (tipDocId, numDoc, password) => {
+  try {
+    const res = await fetch('http://localhost:8080/api/usuario/login', {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        tipDocId: parseInt(tipDocId),
+        numDoc: parseInt(numDoc),
+        password: password
+      }),
+    });
+
+    if (!res.ok) {
+      if (res.status === 401) {
+        throw new Error("Credenciales inválidas");
+      }
+      throw new Error("Error al iniciar sesión");
+    }
+
+    const data = await res.json();
+    
+    // Guardar token y datos del usuario en localStorage
+    if (data.token) {
+      localStorage.setItem('token', data.token);
+      localStorage.setItem('usuario', JSON.stringify(data));
+    }
+    
+    return data;
+  } catch (error) {
+    if (error.message.includes("Failed to fetch") || error.message.includes("NetworkError")) {
+      throw new Error("No se pudo conectar con el servidor");
+    }
+    throw error;
+  }
+};
+
+// Función para cerrar sesión
+export const cerrarSesion = () => {
+  localStorage.removeItem('token');
+  localStorage.removeItem('usuario');
+};
+
+// Función para obtener el token
+export const obtenerToken = () => {
+  return localStorage.getItem('token');
+};
+
+// Función para obtener los datos del usuario logueado
+export const obtenerUsuarioLogueado = () => {
+  const usuario = localStorage.getItem('usuario');
+  return usuario ? JSON.parse(usuario) : null;
+};
+
+// Función para verificar si el usuario está logueado
+export const estaLogueado = () => {
+  return !!localStorage.getItem('token');
+};
+
 export const obtenerUsuario = async () => {
   try {
 const res = await fetch(`http://localhost:8080/api/usuario`);
