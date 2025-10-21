@@ -156,9 +156,6 @@ function Segprinci() {
     </CardGroup>
 
     
-    <div className='Container'>
-      <Link className='link' to="/ConfTienda/*">Configuracion Sucursal</Link>
-    </div>
     <Footer_Abajo/>
     </>
   );

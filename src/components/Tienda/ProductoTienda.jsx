@@ -9,7 +9,7 @@ import Card from 'react-bootstrap/Card';
 import Badge from 'react-bootstrap/Badge';
 import Table from 'react-bootstrap/Table';
 import { obtenerUnidad } from '../../api/unidad_medidaApi';
-// import { crearProducto } from '../../api/productoApi'; // Comentado temporalmente
+
 
 function ProductoTienda() {
   const [showSuccess, setShowSuccess] = useState(false);
@@ -20,7 +20,7 @@ function ProductoTienda() {
   const [unidadId, setUnidadId] = useState('');
   const [tiendaId, setTiendaId] = useState('');
 
-  // Nuevos estados para el panel de administración - CON DATOS DE EJEMPLO
+
   const [productosPendientes, setProductosPendientes] = useState([
     {
       id: 1,
@@ -61,7 +61,7 @@ function ProductoTienda() {
   ]);
   const [productoSeleccionado, setProductoSeleccionado] = useState(null);
   const [showDetalleModal, setShowDetalleModal] = useState(false);
-  const [vistaActual, setVistaActual] = useState('lista'); // 'lista' o 'formulario'
+  const [vistaActual, setVistaActual] = useState('lista'); 
 
   const formRef = useRef();
   const fileInputRef = useRef();
@@ -79,7 +79,7 @@ function ProductoTienda() {
     fetchUnidades();
   }, []);
 
-  // FUNCIONES DE EJEMPLO para el panel de administración
+
   const abrirDetalleProducto = (producto) => {
     setProductoSeleccionado(producto);
     setShowDetalleModal(true);
@@ -91,40 +91,33 @@ function ProductoTienda() {
   };
 
   const handleAprobarProducto = async (productoId) => {
-    // EJEMPLO: Simular aprobación de producto
+
     console.log('Aprobando producto:', productoId);
     
-    // Actualizar lista localmente
+
     const productosActualizados = productosPendientes.filter(p => p.id !== productoId);
     setProductosPendientes(productosActualizados);
     cerrarDetalleModal();
     
     alert('✅ Producto aprobado correctamente (esto es un ejemplo)');
     
-    // En una app real, aquí iría:
-    // await aprobarProducto(productoId);
-    // const productos = await obtenerProductosPendientes();
-    // setProductosPendientes(productos);
   };
 
   const handleRechazarProducto = async (productoId) => {
-    // EJEMPLO: Simular rechazo de producto
+
     console.log('Rechazando producto:', productoId);
     
-    // Actualizar lista localmente
+
     const productosActualizados = productosPendientes.filter(p => p.id !== productoId);
     setProductosPendientes(productosActualizados);
     cerrarDetalleModal();
     
     alert('❌ Producto rechazado correctamente (esto es un ejemplo)');
     
-    // En una app real, aquí iría:
-    // await rechazarProducto(productoId);
-    // const productos = await obtenerProductosPendientes();
-    // setProductosPendientes(productos);
+
   };
 
-  // Funciones existentes del formulario (modificadas para ejemplo)
+
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -167,11 +160,10 @@ function ProductoTienda() {
         imagen: productImage?.name || ''
       };
 
-      // EJEMPLO: Simular creación de producto
+
       console.log('Creando producto:', payload);
       
-      // En una app real, aquí iría:
-      // await crearProducto(payload);
+
 
       setShowSuccess(true);
       setTimeout(() => setShowSuccess(false), 5000);
@@ -200,7 +192,7 @@ function ProductoTienda() {
         <div className="inicio-container">
           <p>Gestión y revisión de productos agrícolas</p>
           
-          {/* Navegación entre vistas */}
+
           <div className="mb-4">
             <Button 
               variant={vistaActual === 'lista' ? 'primary' : 'outline-primary'}
@@ -218,7 +210,7 @@ function ProductoTienda() {
           </div>
 
           {vistaActual === 'lista' ? (
-            /* Vista de lista de productos pendientes - CON DATOS DE EJEMPLO */
+
             <Card className="productos-container">
               <Card.Header className="bg-light">
                 <h5 className="mb-0">📦 Productos Pendientes de Revisión</h5>
@@ -298,7 +290,7 @@ function ProductoTienda() {
               </Card.Body>
             </Card>
           ) : (
-            /* Vista del formulario existente (sin cambios) */
+
             <Container className="sucursal-form-container">
               <Row>
                 <Col lg={8}>
@@ -385,7 +377,7 @@ function ProductoTienda() {
             </Container>
           )}
 
-          {/* Modal de detalle del producto */}
+
           {showDetalleModal && productoSeleccionado && (
             <div className="modal-overlay" onClick={cerrarDetalleModal}>
               <div className="modal-content" onClick={(e) => e.stopPropagation()}>
