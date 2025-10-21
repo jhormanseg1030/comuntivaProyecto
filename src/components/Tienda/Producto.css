@@ -198,7 +198,7 @@
   margin-top: 15px;
 }
 
-/* Estilos para el contenedor de imagen de sucursal */
+
 .sucursal-form-container {
   background: #fff;
   border-radius: 8px;
@@ -254,7 +254,7 @@
   margin-bottom: 0;
 }
 
-/* Estilos para la tabla de productos */
+
 .table-responsive {
   border-radius: 8px;
   overflow: hidden;
@@ -271,13 +271,13 @@
   vertical-align: middle;
 }
 
-/* Badges de estado */
+
 .badge {
   font-size: 0.75em;
   padding: 0.35em 0.65em;
 }
 
-/* Botones de acción */
+
 .action-buttons {
   display: flex;
   gap: 5px;
@@ -296,7 +296,7 @@
   border-width: 1px;
 }
 
-/* BOTÓN PRODUCTOS PENDIENTES CON COLOR #198754 */
+
 .btn-primary {
   background-color: #198754 !important;
   border-color: #198754 !important;
@@ -318,7 +318,7 @@
   color: white !important;
 }
 
-/* Responsive */
+
 @media (max-width: 768px) {
   .contenido-dinamico {
     padding: 10px;
@@ -390,7 +390,7 @@
   }
 }
 
-/* Estilos para las tarjetas */
+
 .card {
   border: none;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -408,7 +408,6 @@
   color: #495057;
 }
 
-/* Estilos para los botones outline */
 .btn-outline-success {
   color: #28a745;
   border-color: #28a745;
@@ -431,7 +430,6 @@
   color: white;
 }
 
-/* Estilos para los checkboxes en el modal */
 .form-check-input:checked {
   background-color: #28a745;
   border-color: #28a745;
@@ -442,12 +440,12 @@
   color: #495057;
 }
 
-/* Estilos para los botones en el modal */
+
 .modal-footer .btn {
   min-width: 120px;
 }
 
-/* Estilos para la imagen grande en el modal */
+
 .product-image-large {
   background: #f8f9fa;
   border-radius: 8px;
@@ -455,7 +453,7 @@
   border: 1px solid #dee2e6;
 }
 
-/* Estilos para la información del producto en el modal */
+
 .product-info-section {
   background: #f8f9fa;
   border-radius: 8px;
@@ -470,7 +468,7 @@
   margin-bottom: 15px;
 }
 
-/* Estilos para los badges en la tabla */
+
 .badge.bg-warning {
   background-color: #ffc107 !important;
   color: #212529;
@@ -484,7 +482,7 @@
   background-color: #dc3545 !important;
 }
 
-/* Animaciones */
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -504,7 +502,7 @@
   animation: fadeIn 0.5s ease;
 }
 
-/* Scroll personalizado */
+
 .modal-content::-webkit-scrollbar {
   width: 6px;
 }
@@ -523,7 +521,7 @@
   background: #a8a8a8;
 }
 
-/* Estilos para los mensajes de alerta */
+
 .alert {
   border: none;
   border-radius: 8px;
@@ -539,7 +537,6 @@
   padding: 0.75rem;
 }
 
-/* Estilos para los formularios en el modal */
 .modal-body .form-check {
   margin-bottom: 10px;
   padding-left: 2.5em;
@@ -550,7 +547,7 @@
   margin-top: 0.3em;
 }
 
-/* Estilos para los separadores */
+
 hr {
   border: 0;
   height: 1px;
@@ -558,13 +555,13 @@ hr {
   margin: 20px 0;
 }
 
-/* Estilos para los placeholders */
+
 .form-control::placeholder {
   color: #6c757d;
   opacity: 0.7;
 }
 
-/* Estilos para los focus states */
+
 .form-control:focus,
 .form-select:focus {
   border-color: #86b7fe;
@@ -575,30 +572,29 @@ hr {
   box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
 }
 
-/* Estilos para los estados deshabilitados */
+
 .btn:disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }
 
-/* Estilos para las imágenes responsivas */
+
 .img-fluid {
   max-width: 100%;
   height: auto;
 }
 
-/* Estilos para el texto de ayuda */
+
 .text-muted {
   opacity: 0.8;
 }
 
-/* Estilos para los encabezados */
+
 h1, h2, h3, h4, h5, h6 {
   color: #333;
   font-weight: 600;
 }
 
-/* Estilos para las tarjetas */
 .card {
   border: none;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -616,7 +612,7 @@ h1, h2, h3, h4, h5, h6 {
   color: #495057;
 }
 
-/* Estilos para botones de navegación */
+
 .btn-group-navigation {
   display: flex;
   gap: 10px;
@@ -637,14 +633,14 @@ h1, h2, h3, h4, h5, h6 {
   color: white;
 }
 
-/* Efectos hover para las filas de la tabla */
+
 .table-hover tbody tr:hover {
   background-color: rgba(0, 123, 255, 0.05);
   transform: translateX(2px);
   transition: all 0.2s ease;
 }
 
-/* Estilos para el estado vacío */
+
 .empty-state {
   text-align: center;
   padding: 40px 20px;
@@ -657,7 +653,6 @@ h1, h2, h3, h4, h5, h6 {
   opacity: 0.5;
 }
 
-/* Estilos para tooltips */
 .tooltip-inner {
   background-color: #333;
   border-radius: 4px;
@@ -668,7 +663,7 @@ h1, h2, h3, h4, h5, h6 {
   border-top-color: #333;
 }
 
-/* Estilos para enlaces */
+
 a {
   color: #007bff;
   text-decoration: none;
