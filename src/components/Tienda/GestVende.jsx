@@ -11,7 +11,7 @@ const GestVende = () => {
           </div>
           <div className="card-body">
             
-            {/* Sección: Lista de Vendedores Activos */}
+
             <div className="seccion-vendedores mb-4">
               <h4>Vendedores Activos</h4>
               <div className="table-responsive">
@@ -26,7 +26,7 @@ const GestVende = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {/* Ejemplo de fila - reemplazar con datos dinámicos */}
+
                     <tr>
                       <td>Juan Pérez</td>
                       <td>juan@email.com</td>
@@ -62,7 +62,6 @@ const GestVende = () => {
               </div>
             </div>
 
-            {/* Sección: Consultar Usuarios Existentes */}
             <div className="seccion-consultar">
               <h4>🔍 Asignar Rol a Usuarios Existentes</h4>
               <div className="mb-3">
