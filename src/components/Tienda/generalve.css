@@ -1,39 +1,125 @@
-.opciones-lis{
-    margin-top: 50px;
-    display: flex;
-    flex-direction: column ;
-    gap: 15px;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-    font-size: 18px;
-    margin-left: 20px;
-}
-.conten{
-    display: flex;
-    align-items: start;
-    flex-direction: column;
-    padding: 20px 70px;
-
-}
-.conten h4{
-font-size: 18px;
-}
-.contenido-op{
-    text-align: start;
-    padding: 10px 50px;
-    font-size: 18px;
+/* Estilos para el apartado de Comunicaciones con cartas */
+.comunicaciones-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+    padding: 0 20px;
 }
 
-.check{
+.carta-comunicacion {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.carta-comunicacion:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.carta-header {
+    background: #f8f9fa;
+    padding: 20px;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.carta-header h3 {
+    margin: 0;
+    color: #333;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.carta-contenido {
+    padding: 20px;
+}
+
+.opcion-comunicacion {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.opcion-comunicacion:last-child {
+    margin-bottom: 0;
+    border-bottom: none;
+}
+
+.descripcion {
+    font-size: 14px;
+    color: #666;
+    margin: 8px 0 0 30px;
+    line-height: 1.4;
+}
+
+.btn-eliminar, .btn-recuperar {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.btn-eliminar {
+    background-color: #ff4444;
+    color: white;
+}
+
+.btn-eliminar:hover {
+    background-color: #cc0000;
+    transform: translateY(-1px);
+}
+
+.btn-recuperar {
+    background-color: #3483fa;
+    color: white;
+}
+
+.btn-recuperar:hover {
+    background-color: #2968c8;
+    transform: translateY(-1px);
+}
+
+/* Ajustes para los checkboxes */
+.check {
     display: flex;
     align-items: center;
     flex-direction: row;
     white-space: nowrap;
-    gap: 15px;
+    gap: 12px;
 }
-.text{
 
-    display: flex;
-    align-items: center;
-    justify-content: start;
-    margin: auto;
+.check input[type="checkbox"] {
+    margin-right: 0;
+    transform: scale(1.3);
+    cursor: pointer;
+}
+
+.check label {
+    font-weight: 500;
+    color: #333;
+    cursor: pointer;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .comunicaciones-grid {
+        grid-template-columns: 1fr;
+        padding: 0 10px;
+    }
+    
+    .carta-header {
+        padding: 15px;
+    }
+    
+    .carta-contenido {
+        padding: 15px;
+    }
 }

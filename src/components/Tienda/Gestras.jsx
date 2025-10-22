@@ -3,138 +3,259 @@ import './Gestras.css';
 import logoConmutiva from '../imagenes/logo.jpg';
 
 const Gestras = () => {
-  const [sucursalSeleccionada, setSucursalSeleccionada] = useState('todas');
   const [vehiculos, setVehiculos] = useState([]);
-  const [domiciliosActivos, setDomiciliosActivos] = useState([]);
+  const [cotizaciones, setCotizaciones] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [vistaActiva, setVistaActiva] = useState('cotizador'); // 'cotizador', 'vehiculos', 'historial'
 
-  
+  // Estado para el cotizador
+  const [datosEnvio, setDatosEnvio] = useState({
+    producto: '',
+    peso: '',
+    origen: '',
+    destino: '',
+    distancia: '',
+    urgencia: 'estandar'
+  });
+
+  // Configuración de vehículos
+  const configVehiculos = {
+    furgon: {
+      nombre: 'Furgón',
+      icono: '🚚',
+      capacidadKg: 1500,
+      tarifaBase: 80000,
+      costoKm: 1200,
+      maxDistancia: 300,
+      descripcion: 'Ideal para cargas medianas y productos empaquetados'
+    },
+    van: {
+      nombre: 'Van de Carga',
+      icono: '🚐',
+      capacidadKg: 3000,
+      tarifaBase: 120000,
+      costoKm: 1800,
+      maxDistancia: 500,
+      descripcion: 'Perfecto para grandes volúmenes y productos a granel'
+    }
+  };
+
+  // Datos de ejemplo para vehículos
   const vehiculosData = [
     {
       id: 1,
       tipo: 'furgon',
-      nombre: 'Furgón Norte 01',
+      nombre: 'Furgón 001',
       placa: 'ABC123',
-      sucursal: 'Sucursal Norte',
       conductor: 'Carlos Rodríguez',
       estado: 'disponible',
-      capacidad: '500 kg',
-      ubicacion: 'En sucursal',
+      capacidad: '1,500 kg',
+      ubicacion: 'En base',
+      viajesMes: 12,
+      ingresosMes: 3200000,
       mantenimiento: false
     },
     {
       id: 2,
-      tipo: 'moto',
-      nombre: 'Moto Sur 01',
+      tipo: 'furgon',
+      nombre: 'Furgón 002',
       placa: 'DEF456',
-      sucursal: 'Sucursal Sur',
       conductor: 'Ana Gómez',
       estado: 'en_ruta',
-      capacidad: '50 kg',
-      ubicacion: 'En reparto - Calle 100',
+      capacidad: '1,500 kg',
+      ubicacion: 'Ruta Bogotá-Medellín',
+      viajesMes: 8,
+      ingresosMes: 2100000,
       mantenimiento: false
     },
     {
       id: 3,
-      tipo: 'bicicleta',
-      nombre: 'Bici Centro 01',
-      placa: '-',
-      sucursal: 'Sucursal Centro',
+      tipo: 'van',
+      nombre: 'Van 001',
+      placa: 'GHI789',
       conductor: 'Miguel Torres',
       estado: 'disponible',
-      capacidad: '20 kg',
-      ubicacion: 'En sucursal',
+      capacidad: '3,000 kg',
+      ubicacion: 'En base',
+      viajesMes: 15,
+      ingresosMes: 4500000,
       mantenimiento: false
     },
     {
       id: 4,
-      tipo: 'furgon',
-      nombre: 'Furgón Sur 01',
-      placa: 'GHI789',
-      sucursal: 'Sucursal Sur',
+      tipo: 'van',
+      nombre: 'Van 002',
+      placa: 'JKL012',
       conductor: 'Laura Martínez',
       estado: 'mantenimiento',
-      capacidad: '500 kg',
+      capacidad: '3,000 kg',
       ubicacion: 'Taller mecánico',
+      viajesMes: 10,
+      ingresosMes: 2800000,
       mantenimiento: true
-    },
-    {
-      id: 5,
-      tipo: 'moto',
-      nombre: 'Moto Norte 02',
-      placa: 'JKL012',
-      sucursal: 'Sucursal Norte',
-      conductor: 'Pedro López',
-      estado: 'disponible',
-      capacidad: '50 kg',
-      ubicacion: 'En sucursal',
-      mantenimiento: false
-    },
-    {
-      id: 6,
-      tipo: 'bicicleta',
-      nombre: 'Bici Sur 02',
-      placa: '-',
-      sucursal: 'Sucursal Sur',
-      conductor: 'Sofia Ramírez',
-      estado: 'en_ruta',
-      capacidad: '20 kg',
-      ubicacion: 'En reparto - Carrera 45',
-      mantenimiento: false
     }
   ];
 
- 
-  const domiciliosData = [
+  // Datos de ejemplo para historial de cotizaciones
+  const cotizacionesData = [
     {
       id: 1,
-      pedido: 'PED-001',
-      sucursal: 'Sucursal Norte',
-      vehiculo: 'Moto Norte 02',
-      conductor: 'Pedro López',
-      destino: 'Carrera 45 # 12-34',
-      estado: 'en_camino',
-      tiempoEstimado: '15 min',
-      cliente: 'María González',
-      telefono: '3001234567'
+      fecha: '2024-01-15',
+      producto: 'Tomates',
+      peso: 1200,
+      vehiculo: 'furgon',
+      origen: 'Bogotá',
+      destino: 'Medellín',
+      distancia: 250,
+      total: 514794,
+      estado: 'completado'
     },
     {
       id: 2,
-      pedido: 'PED-002',
-      sucursal: 'Sucursal Sur',
-      vehiculo: 'Bici Sur 02',
-      conductor: 'Sofia Ramírez',
-      destino: 'Calle 100 # 45-67',
-      estado: 'preparando',
-      tiempoEstimado: '5 min',
-      cliente: 'Carlos Mendoza',
-      telefono: '3109876543'
+      fecha: '2024-01-14',
+      producto: 'Zanahorias',
+      peso: 2800,
+      vehiculo: 'van',
+      origen: 'Bogotá',
+      destino: 'Cali',
+      distancia: 480,
+      total: 1785809,
+      estado: 'en_proceso'
     },
     {
       id: 3,
-      pedido: 'PED-003',
-      sucursal: 'Sucursal Centro',
-      vehiculo: 'Bici Centro 01',
-      conductor: 'Miguel Torres',
-      destino: 'Avenida 68 # 23-45',
-      estado: 'en_camino',
-      tiempoEstimado: '8 min',
-      cliente: 'Ana Rodríguez',
-      telefono: '3205558888'
+      fecha: '2024-01-13',
+      producto: 'Lechugas',
+      peso: 800,
+      vehiculo: 'furgon',
+      origen: 'Bogotá',
+      destino: 'Cartagena',
+      distancia: 1100,
+      total: 0,
+      estado: 'rechazado'
     }
   ];
 
   useEffect(() => {
     setTimeout(() => {
       setVehiculos(vehiculosData);
-      setDomiciliosActivos(domiciliosData);
+      setCotizaciones(cotizacionesData);
       setLoading(false);
     }, 1000);
   }, []);
 
-  const filtrarVehiculos = sucursalSeleccionada === 'todas' 
-    ? vehiculos 
-    : vehiculos.filter(v => v.sucursal === sucursalSeleccionada);
+  // Función para recomendar vehículo (sin volumen)
+  const recomendarVehiculo = (peso, distancia) => {
+    if (peso <= configVehiculos.furgon.capacidadKg && 
+        distancia <= configVehiculos.furgon.maxDistancia) {
+      return 'furgon';
+    } else if (peso <= configVehiculos.van.capacidadKg && 
+               distancia <= configVehiculos.van.maxDistancia) {
+      return 'van';
+    } else {
+      return null;
+    }
+  };
+
+  // Función para calcular flete (sin volumen)
+  const calcularFlete = (vehiculoTipo, distancia, peso, urgencia) => {
+    const vehiculo = configVehiculos[vehiculoTipo];
+    if (!vehiculo) return null;
+
+    const costoDistancia = distancia * vehiculo.costoKm;
+    const seguro = (vehiculo.tarifaBase + costoDistancia) * 0.02;
+    const peajes = calcularPeajes(distancia);
+    const costoUrgencia = calcularCostoUrgencia(urgencia, costoDistancia);
+    const factorCarga = peso > vehiculo.capacidadKg * 0.8 ? 1.2 : 1;
+
+    const subtotal = (vehiculo.tarifaBase + costoDistancia + seguro + peajes + costoUrgencia) * factorCarga;
+    const iva = subtotal * 0.19;
+    const total = subtotal + iva;
+
+    return {
+      base: vehiculo.tarifaBase,
+      distancia: costoDistancia,
+      seguro,
+      peajes,
+      urgencia: costoUrgencia,
+      factorCarga,
+      subtotal,
+      iva,
+      total: Math.round(total)
+    };
+  };
+
+  // Funciones auxiliares
+  const calcularPeajes = (distancia) => {
+    return Math.round(distancia * 180); // $180 por km estimado en peajes
+  };
+
+  const calcularCostoUrgencia = (urgencia, costoDistancia) => {
+    switch(urgencia) {
+      case 'urgente': return costoDistancia * 0.5;
+      case 'express': return costoDistancia * 1.0;
+      default: return 0;
+    }
+  };
+
+  // Calcular cotización actual (sin volumen)
+  const vehiculoRecomendado = recomendarVehiculo(
+    parseInt(datosEnvio.peso) || 0,
+    parseInt(datosEnvio.distancia) || 0
+  );
+
+  const cotizacionActual = vehiculoRecomendado ? 
+    calcularFlete(
+      vehiculoRecomendado,
+      parseInt(datosEnvio.distancia) || 0,
+      parseInt(datosEnvio.peso) || 0,
+      datosEnvio.urgencia
+    ) : null;
+
+  const handleInputChange = (field, value) => {
+    setDatosEnvio(prev => ({
+      ...prev,
+      [field]: value
+    }));
+  };
+
+  const confirmarEnvio = () => {
+    if (cotizacionActual && vehiculoRecomendado) {
+      const nuevaCotizacion = {
+        id: cotizaciones.length + 1,
+        fecha: new Date().toISOString().split('T')[0],
+        producto: datosEnvio.producto,
+        peso: parseInt(datosEnvio.peso),
+        vehiculo: vehiculoRecomendado,
+        origen: datosEnvio.origen,
+        destino: datosEnvio.destino,
+        distancia: parseInt(datosEnvio.distancia),
+        total: cotizacionActual.total,
+        estado: 'pendiente'
+      };
+      
+      setCotizaciones(prev => [nuevaCotizacion, ...prev]);
+      alert('✅ Cotización confirmada y agregada al historial');
+      
+      // Reset form
+      setDatosEnvio({
+        producto: '',
+        peso: '',
+        origen: '',
+        destino: '',
+        distancia: '',
+        urgencia: 'estandar'
+      });
+    }
+  };
+
+  const formatCurrency = (amount) => {
+    return new Intl.NumberFormat('es-CO', {
+      style: 'currency',
+      currency: 'COP',
+      minimumFractionDigits: 0
+    }).format(amount);
+  };
 
   const getEstadoColor = (estado) => {
     switch(estado) {
@@ -154,21 +275,13 @@ const Gestras = () => {
     }
   };
 
-  const getIconoVehiculo = (tipo) => {
-    switch(tipo) {
-      case 'furgon': return '🚚';
-      case 'moto': return '🏍️';
-      case 'bicicleta': return '🚲';
-      default: return '🚗';
-    }
-  };
-
-  const getTipoTexto = (tipo) => {
-    switch(tipo) {
-      case 'furgon': return 'Furgón';
-      case 'moto': return 'Moto';
-      case 'bicicleta': return 'Bicicleta';
-      default: return tipo;
+  const getEstadoCotizacionColor = (estado) => {
+    switch(estado) {
+      case 'completado': return 'success';
+      case 'en_proceso': return 'warning';
+      case 'pendiente': return 'info';
+      case 'rechazado': return 'danger';
+      default: return 'secondary';
     }
   };
 
@@ -176,7 +289,7 @@ const Gestras = () => {
     return (
       <div className="transportadora-loading">
         <div className="loading-spinner"></div>
-        <p>Cargando información de transporte...</p>
+        <p>Cargando sistema de transporte...</p>
       </div>
     );
   }
@@ -187,12 +300,35 @@ const Gestras = () => {
         <div className="header-content">
           <img src={logoConmutiva} alt="Conmutiva" className="header-logo" />
           <div className="header-info">
-            <h1>🚚 Gestión de Transporte</h1>
-            <p>Control de flota y domicilios en tiempo real</p>
+            <h1>🚚 Sistema de Fletes y Transporte</h1>
+            <p>Gestión de fletes con Furgón y Van de Carga</p>
           </div>
         </div>
       </div>
 
+      {/* Navegación */}
+      <div className="navegacion-principal">
+        <button 
+          className={`nav-btn ${vistaActiva === 'cotizador' ? 'active' : ''}`}
+          onClick={() => setVistaActiva('cotizador')}
+        >
+          🧮 Cotizador
+        </button>
+        <button 
+          className={`nav-btn ${vistaActiva === 'vehiculos' ? 'active' : ''}`}
+          onClick={() => setVistaActiva('vehiculos')}
+        >
+          🚚 Vehículos
+        </button>
+        <button 
+          className={`nav-btn ${vistaActiva === 'historial' ? 'active' : ''}`}
+          onClick={() => setVistaActiva('historial')}
+        >
+          📋 Historial
+        </button>
+      </div>
+
+      {/* Stats Grid */}
       <div className="stats-grid">
         <div className="stat-card">
           <div className="stat-icon">🚚</div>
@@ -202,204 +338,378 @@ const Gestras = () => {
           </div>
         </div>
         <div className="stat-card">
-          <div className="stat-icon">🏍️</div>
+          <div className="stat-icon">🚐</div>
           <div className="stat-info">
-            <h3>{vehiculos.filter(v => v.tipo === 'moto').length}</h3>
-            <p>Motos</p>
+            <h3>{vehiculos.filter(v => v.tipo === 'van').length}</h3>
+            <p>Vans</p>
           </div>
         </div>
         <div className="stat-card">
-          <div className="stat-icon">🚲</div>
+          <div className="stat-icon">💰</div>
           <div className="stat-info">
-            <h3>{vehiculos.filter(v => v.tipo === 'bicicleta').length}</h3>
-            <p>Bicicletas</p>
+            <h3>{formatCurrency(vehiculos.reduce((sum, v) => sum + v.ingresosMes, 0))}</h3>
+            <p>Ingresos Mensuales</p>
           </div>
         </div>
         <div className="stat-card">
           <div className="stat-icon">📦</div>
           <div className="stat-info">
-            <h3>{domiciliosActivos.length}</h3>
-            <p>Domicilios Activos</p>
+            <h3>{cotizaciones.length}</h3>
+            <p>Cotizaciones</p>
           </div>
         </div>
       </div>
 
-      {/* Filtro de Sucursal - Se mantiene igual */}
-      <div className="filtro-section">
-        <div className="filtro-content">
-          <label><strong>Filtrar por Sucursal:</strong></label>
-          <select 
-            value={sucursalSeleccionada} 
-            onChange={(e) => setSucursalSeleccionada(e.target.value)}
-            className="sucursal-select"
-          >
-            <option value="todas">Todas las Sucursales</option>
-            <option value="Sucursal Norte">Sucursal Norte</option>
-            <option value="Sucursal Sur">Sucursal Sur</option>
-            <option value="Sucursal Centro">Sucursal Centro</option>
-          </select>
-        </div>
-      </div>
-
+      {/* Contenido Principal */}
       <div className="dashboard-main">
         
-        <div className="vehiculos-section">
-          <div className="seccion-header">
-            <h2>🛞 Flota de Vehículos</h2>
-            <div className="header-stats">
-              <span className="stat-badge total">{filtrarVehiculos.length} total</span>
-              <span className="stat-badge disponible">
-                {filtrarVehiculos.filter(v => v.estado === 'disponible').length} disponibles
-              </span>
-              <span className="stat-badge ruta">
-                {filtrarVehiculos.filter(v => v.estado === 'en_ruta').length} en ruta
-              </span>
+        {/* VISTA COTIZADOR */}
+        {vistaActiva === 'cotizador' && (
+          <div className="cotizador-section">
+            <div className="seccion-header">
+              <h2>🧮 Cotizador de Fletes</h2>
+              <p>Calcula el costo de transporte para tus productos agrícolas</p>
+            </div>
+
+            <div className="cotizador-grid">
+              {/* Formulario de Datos */}
+              <div className="formulario-cotizador">
+                <h3>📋 Datos del Envío</h3>
+                <div className="form-grid">
+                  <div className="form-group">
+                    <label>Producto Agrícola:</label>
+                    <input 
+                      type="text" 
+                      value={datosEnvio.producto}
+                      onChange={(e) => handleInputChange('producto', e.target.value)}
+                      placeholder="Ej: Tomates, Zanahorias..."
+                      className="form-control"
+                    />
+                  </div>
+                  
+                  <div className="form-group">
+                    <label>Peso (kg):</label>
+                    <input 
+                      type="number" 
+                      value={datosEnvio.peso}
+                      onChange={(e) => handleInputChange('peso', e.target.value)}
+                      placeholder="Peso en kilogramos"
+                      className="form-control"
+                    />
+                  </div>
+                  
+                  <div className="form-group">
+                    <label>Origen:</label>
+                    <input 
+                      type="text" 
+                      value={datosEnvio.origen}
+                      onChange={(e) => handleInputChange('origen', e.target.value)}
+                      placeholder="Ciudad de origen"
+                      className="form-control"
+                    />
+                  </div>
+                  
+                  <div className="form-group">
+                    <label>Destino:</label>
+                    <input 
+                      type="text" 
+                      value={datosEnvio.destino}
+                      onChange={(e) => handleInputChange('destino', e.target.value)}
+                      placeholder="Ciudad de destino"
+                      className="form-control"
+                    />
+                  </div>
+                  
+                  <div className="form-group">
+                    <label>Distancia (km):</label>
+                    <input 
+                      type="number" 
+                      value={datosEnvio.distancia}
+                      onChange={(e) => handleInputChange('distancia', e.target.value)}
+                      placeholder="Distancia en kilómetros"
+                      className="form-control"
+                    />
+                  </div>
+                  
+                  <div className="form-group full-width">
+                    <label>Nivel de Urgencia:</label>
+                    <div className="urgencia-options">
+                      <label className="urgencia-option">
+                        <input 
+                          type="radio" 
+                          value="estandar"
+                          checked={datosEnvio.urgencia === 'estandar'}
+                          onChange={(e) => handleInputChange('urgencia', e.target.value)}
+                        />
+                        <span>Estándar (3-5 días)</span>
+                      </label>
+                      <label className="urgencia-option">
+                        <input 
+                          type="radio" 
+                          value="urgente"
+                          checked={datosEnvio.urgencia === 'urgente'}
+                          onChange={(e) => handleInputChange('urgencia', e.target.value)}
+                        />
+                        <span>Urgente (24-48h) +50%</span>
+                      </label>
+                      <label className="urgencia-option">
+                        <input 
+                          type="radio" 
+                          value="express"
+                          checked={datosEnvio.urgencia === 'express'}
+                          onChange={(e) => handleInputChange('urgencia', e.target.value)}
+                        />
+                        <span>Express (mismo día) +100%</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Resultado de Cotización */}
+              <div className="resultado-cotizacion">
+                <h3>💡 Recomendación del Sistema</h3>
+                
+                {vehiculoRecomendado ? (
+                  <div className="recomendacion-vehiculo">
+                    <div className="vehiculo-recomendado">
+                      <div className="vehiculo-icono">
+                        {configVehiculos[vehiculoRecomendado].icono}
+                      </div>
+                      <div className="vehiculo-info">
+                        <h4>{configVehiculos[vehiculoRecomendado].nombre}</h4>
+                        <p>{configVehiculos[vehiculoRecomendado].descripcion}</p>
+                        <div className="capacidad-info">
+                          <span>Capacidad: {configVehiculos[vehiculoRecomendado].capacidadKg} kg</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Desglose de Costos */}
+                    {cotizacionActual && (
+                      <div className="desglose-costos">
+                        <h4>💰 Desglose de Costos</h4>
+                        <div className="costos-lista">
+                          <div className="costo-item">
+                            <span>Tarifa Base:</span>
+                            <span>{formatCurrency(cotizacionActual.base)}</span>
+                          </div>
+                          <div className="costo-item">
+                            <span>Por Distancia ({datosEnvio.distancia}km):</span>
+                            <span>{formatCurrency(cotizacionActual.distancia)}</span>
+                          </div>
+                          <div className="costo-item">
+                            <span>Seguro (2%):</span>
+                            <span>{formatCurrency(cotizacionActual.seguro)}</span>
+                          </div>
+                          <div className="costo-item">
+                            <span>Peajes Estimados:</span>
+                            <span>{formatCurrency(cotizacionActual.peajes)}</span>
+                          </div>
+                          {cotizacionActual.urgencia > 0 && (
+                            <div className="costo-item">
+                              <span>Servicio {datosEnvio.urgencia}:</span>
+                              <span>{formatCurrency(cotizacionActual.urgencia)}</span>
+                            </div>
+                          )}
+                          {cotizacionActual.factorCarga > 1 && (
+                            <div className="costo-item">
+                              <span>Recargo carga pesada:</span>
+                              <span>+20%</span>
+                            </div>
+                          )}
+                          <div className="costo-item subtotal">
+                            <span>Subtotal:</span>
+                            <span>{formatCurrency(cotizacionActual.subtotal)}</span>
+                          </div>
+                          <div className="costo-item">
+                            <span>IVA (19%):</span>
+                            <span>{formatCurrency(cotizacionActual.iva)}</span>
+                          </div>
+                          <div className="costo-item total">
+                            <span>TOTAL:</span>
+                            <span>{formatCurrency(cotizacionActual.total)}</span>
+                          </div>
+                        </div>
+
+                        <button 
+                          className="btn btn-success btn-confirmar"
+                          onClick={confirmarEnvio}
+                        >
+                          ✅ Confirmar Envío
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <div className="sin-recomendacion">
+                    <p>⚠️ Complete los datos del envío para obtener una cotización</p>
+                    {datosEnvio.peso > 0 && datosEnvio.distancia > 0 && (
+                      <p className="error">
+                        No hay vehículo disponible para estos parámetros. 
+                        Considere dividir la carga o usar otro medio de transporte.
+                      </p>
+                    )}
+                  </div>
+                )}
+              </div>
             </div>
           </div>
+        )}
 
-          <div className="vehiculos-grid">
-            {filtrarVehiculos.map(vehiculo => (
-              <div key={vehiculo.id} className={`vehiculo-card ${vehiculo.estado}`}>
-                <div className="vehiculo-header">
-                  <div className="vehiculo-icono-tipo">
-                    <div className="vehiculo-icono">
-                      {getIconoVehiculo(vehiculo.tipo)}
-                    </div>
-                    <div className="vehiculo-tipo">
-                      {getTipoTexto(vehiculo.tipo)}
-                    </div>
-                  </div>
-                  <div className={`estado-badge ${getEstadoColor(vehiculo.estado)}`}>
-                    {getEstadoTexto(vehiculo.estado)}
-                  </div>
-                </div>
-                
-                <div className="vehiculo-info">
-                  <h4>{vehiculo.nombre}</h4>
-                  <p className="vehiculo-placa">{vehiculo.placa}</p>
-                </div>
+        {/* VISTA VEHÍCULOS */}
+        {vistaActiva === 'vehiculos' && (
+          <div className="vehiculos-section">
+            <div className="seccion-header">
+              <h2>🚚 Flota de Transporte</h2>
+              <div className="header-stats">
+                <span className="stat-badge total">{vehiculos.length} total</span>
+                <span className="stat-badge disponible">
+                  {vehiculos.filter(v => v.estado === 'disponible').length} disponibles
+                </span>
+                <span className="stat-badge ruta">
+                  {vehiculos.filter(v => v.estado === 'en_ruta').length} en ruta
+                </span>
+              </div>
+            </div>
 
-                <div className="vehiculo-detalles">
-                  <div className="detalle-fila">
-                    <span className="detalle-label">Sucursal:</span>
-                    <span className="detalle-value">{vehiculo.sucursal}</span>
+            <div className="vehiculos-grid">
+              {vehiculos.map(vehiculo => (
+                <div key={vehiculo.id} className={`vehiculo-card ${vehiculo.estado}`}>
+                  <div className="vehiculo-header">
+                    <div className="vehiculo-icono-tipo">
+                      <div className="vehiculo-icono">
+                        {configVehiculos[vehiculo.tipo].icono}
+                      </div>
+                      <div className="vehiculo-tipo">
+                        {configVehiculos[vehiculo.tipo].nombre}
+                      </div>
+                    </div>
+                    <div className={`estado-badge ${getEstadoColor(vehiculo.estado)}`}>
+                      {getEstadoTexto(vehiculo.estado)}
+                    </div>
                   </div>
-                  <div className="detalle-fila">
-                    <span className="detalle-label">Conductor:</span>
-                    <span className="detalle-value">{vehiculo.conductor}</span>
+                  
+                  <div className="vehiculo-info">
+                    <h4>{vehiculo.nombre}</h4>
+                    <p className="vehiculo-placa">{vehiculo.placa}</p>
                   </div>
-                  <div className="detalle-fila">
-                    <span className="detalle-label">Capacidad:</span>
-                    <span className="detalle-value">{vehiculo.capacidad}</span>
+
+                  <div className="vehiculo-detalles">
+                    <div className="detalle-fila">
+                      <span className="detalle-label">Conductor:</span>
+                      <span className="detalle-value">{vehiculo.conductor}</span>
+                    </div>
+                    <div className="detalle-fila">
+                      <span className="detalle-label">Capacidad:</span>
+                      <span className="detalle-value">{vehiculo.capacidad}</span>
+                    </div>
+                    <div className="detalle-fila">
+                      <span className="detalle-label">Viajes/Mes:</span>
+                      <span className="detalle-value">{vehiculo.viajesMes}</span>
+                    </div>
+                    <div className="detalle-fila">
+                      <span className="detalle-label">Ingresos:</span>
+                      <span className="detalle-value">{formatCurrency(vehiculo.ingresosMes)}</span>
+                    </div>
+                    <div className="detalle-fila">
+                      <span className="detalle-label">Ubicación:</span>
+                      <span className="detalle-value ubicacion">{vehiculo.ubicacion}</span>
+                    </div>
                   </div>
-                  <div className="detalle-fila">
-                    <span className="detalle-label">Ubicación:</span>
-                    <span className="detalle-value ubicacion">{vehiculo.ubicacion}</span>
-                  </div>
-                </div>
-                
-                <div className="vehiculo-acciones">
-                  <button className="btn btn-sm btn-track">
-                    📍 Rastrear
-                  </button>
-                  <button className="btn btn-sm btn-edit">
-                    ✏️ Editar
-                  </button>
-                  {vehiculo.mantenimiento && (
-                    <button className="btn btn-sm btn-warning">
-                      🔧 Mantenimiento
+                  
+                  <div className="vehiculo-acciones">
+                    <button className="btn btn-sm btn-track">
+                      📍 Rastrear
                     </button>
-                  )}
+                    <button className="btn btn-sm btn-edit">
+                      ✏️ Editar
+                    </button>
+                    {vehiculo.mantenimiento && (
+                      <button className="btn btn-sm btn-warning">
+                        🔧 Mantenimiento
+                      </button>
+                    )}
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="domicilios-section">
-          <div className="seccion-header">
-            <h2>📦 Domicilios Activos</h2>
-            <div className="header-stats">
-              <span className="stat-badge total">{domiciliosActivos.length} activos</span>
-              <span className="stat-badge camino">
-                {domiciliosActivos.filter(d => d.estado === 'en_camino').length} en camino
-              </span>
+              ))}
             </div>
           </div>
+        )}
 
-          <div className="domicilios-lista">
-            {domiciliosActivos.map(domicilio => (
-              <div key={domicilio.id} className="domicilio-card">
-                <div className="domicilio-header">
-                  <div className="domicilio-info-principal">
-                    <div className="pedido-numero">{domicilio.pedido}</div>
-                    <div className="sucursal-tag">{domicilio.sucursal}</div>
-                  </div>
-                  <div className={`estado-dom ${domicilio.estado}`}>
-                    {domicilio.estado === 'en_camino' ? '🚚 En Camino' : '📋 Preparando'}
-                  </div>
-                </div>
-                
-                <div className="domicilio-detalles">
-                  <div className="detalle-fila">
-                    <span className="detalle-label">Cliente:</span>
-                    <span className="detalle-value">{domicilio.cliente}</span>
-                  </div>
-                  <div className="detalle-fila">
-                    <span className="detalle-label">Teléfono:</span>
-                    <span className="detalle-value">{domicilio.telefono}</span>
-                  </div>
-                  <div className="detalle-fila">
-                    <span className="detalle-label">Vehículo:</span>
-                    <span className="detalle-value vehiculo">{domicilio.vehiculo}</span>
-                  </div>
-                  <div className="detalle-fila">
-                    <span className="detalle-label">Conductor:</span>
-                    <span className="detalle-value">{domicilio.conductor}</span>
-                  </div>
-                  <div className="detalle-fila">
-                    <span className="detalle-label">Destino:</span>
-                    <span className="detalle-value destino">{domicilio.destino}</span>
-                  </div>
-                  <div className="detalle-fila">
-                    <span className="detalle-label">Tiempo estimado:</span>
-                    <span className="detalle-value tiempo">{domicilio.tiempoEstimado}</span>
-                  </div>
-                </div>
-                
-                <div className="domicilio-acciones">
-                  <button className="btn btn-sm btn-success">
-                    ✅ Completar
-                  </button>
-                  <button className="btn btn-sm btn-call">
-                    📞 Llamar
-                  </button>
-                  <button className="btn btn-sm btn-track">
-                    🗺️ Ruta
-                  </button>
-                </div>
+        {/* VISTA HISTORIAL */}
+        {vistaActiva === 'historial' && (
+          <div className="historial-section">
+            <div className="seccion-header">
+              <h2>📋 Historial de Cotizaciones</h2>
+              <div className="header-stats">
+                <span className="stat-badge total">{cotizaciones.length} total</span>
+                <span className="stat-badge completado">
+                  {cotizaciones.filter(c => c.estado === 'completado').length} completados
+                </span>
+                <span className="stat-badge proceso">
+                  {cotizaciones.filter(c => c.estado === 'en_proceso').length} en proceso
+                </span>
               </div>
-            ))}
-          </div>
+            </div>
 
-          <div className="acciones-rapidas">
-            <h4>⚡ Acciones Rápidas</h4>
-            <div className="acciones-grid">
-              <button className="btn btn-primary">
-                ➕ Agregar Vehículo
-              </button>
-              <button className="btn btn-success">
-                📦 Nuevo Domicilio
-              </button>
-              <button className="btn btn-info">
-                📊 Reportes
-              </button>
-              <button className="btn btn-warning">
-                🔧 Mantenimiento
-              </button>
+            <div className="tabla-cotizaciones">
+              <table className="table table-striped table-hover">
+                <thead className="table-light">
+                  <tr>
+                    <th>Fecha</th>
+                    <th>Producto</th>
+                    <th>Vehículo</th>
+                    <th>Ruta</th>
+                    <th>Distancia</th>
+                    <th>Total</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {cotizaciones.map(cotizacion => (
+                    <tr key={cotizacion.id}>
+                      <td>{cotizacion.fecha}</td>
+                      <td>
+                        <strong>{cotizacion.producto}</strong>
+                        <br />
+                        <small>{cotizacion.peso} kg</small>
+                      </td>
+                      <td>
+                        <span className="badge vehiculo-badge">
+                          {configVehiculos[cotizacion.vehiculo]?.icono} {configVehiculos[cotizacion.vehiculo]?.nombre}
+                        </span>
+                      </td>
+                      <td>
+                        {cotizacion.origen} → {cotizacion.destino}
+                      </td>
+                      <td>{cotizacion.distancia} km</td>
+                      <td className="fw-bold text-success">
+                        {cotizacion.total > 0 ? formatCurrency(cotizacion.total) : 'N/A'}
+                      </td>
+                      <td>
+                        <span className={`badge estado-${getEstadoCotizacionColor(cotizacion.estado)}`}>
+                          {cotizacion.estado}
+                        </span>
+                      </td>
+                      <td>
+                        <div className="acciones-cotizacion">
+                          <button className="btn btn-sm btn-info">
+                            👁️ Ver
+                          </button>
+                          <button className="btn btn-sm btn-warning">
+                            ✏️ Editar
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );

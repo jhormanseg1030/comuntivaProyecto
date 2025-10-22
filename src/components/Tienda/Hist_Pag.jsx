@@ -2,81 +2,132 @@ import React, { useState, useEffect } from 'react';
 import './Hist_Pag.css';
 
 const Hist_Pag = () => {
-  const [paymentData, setPaymentData] = useState([]);
-  const [currentMonth, setCurrentMonth] = useState('');
-  const [branch, setBranch] = useState('todas');
+  const [currentMonth, setCurrentMonth] = useState('2024-01');
   const [loading, setLoading] = useState(true);
 
-  
-  const sampleData = [
-    { id: 1, method: 'Efectivo', amount: 150000, date: '2024-01-15', description: 'Venta producto A', branch: 'Sucursal Norte' },
-    { id: 2, method: 'Nequi', amount: 75000, date: '2024-01-16', description: 'Venta servicio B', branch: 'Sucursal Norte' },
-    { id: 3, method: 'Tarjeta', amount: 200000, date: '2024-01-17', description: 'Venta producto C', branch: 'Sucursal Sur' },
-    { id: 4, method: 'Daviplata', amount: 50000, date: '2024-01-18', description: 'Venta servicio D', branch: 'Sucursal Centro' },
-    { id: 5, method: 'Efectivo', amount: 120000, date: '2024-01-19', description: 'Venta producto E', branch: 'Sucursal Sur' },
-    { id: 6, method: 'Nequi', amount: 80000, date: '2024-01-20', description: 'Venta servicio F', branch: 'Sucursal Norte' },
-    { id: 7, method: 'Tarjeta', amount: 180000, date: '2024-01-21', description: 'Venta producto G', branch: 'Sucursal Centro' },
-    { id: 8, method: 'Efectivo', amount: 90000, date: '2024-01-22', description: 'Venta servicio H', branch: 'Sucursal Sur' },
+  // Datos de ejemplo para métodos de pago por mes
+  const monthlyData = [
+    {
+      month: '2024-01',
+      label: 'Enero 2024',
+      methods: {
+        'Nequi': { percentage: 45, transactions: 560, amount: 2061000 },
+        'Daviplata': { percentage: 25, transactions: 311, amount: 1145000 },
+        'Tarjeta': { percentage: 20, transactions: 249, amount: 916000 },
+        'Efecty': { percentage: 10, transactions: 125, amount: 460000 }
+      },
+      total: { transactions: 1245, amount: 4582000 }
+    },
+    {
+      month: '2023-12',
+      label: 'Diciembre 2023',
+      methods: {
+        'Nequi': { percentage: 40, transactions: 480, amount: 1640000 },
+        'Daviplata': { percentage: 25, transactions: 300, amount: 1025000 },
+        'Tarjeta': { percentage: 23, transactions: 276, amount: 943000 },
+        'Efecty': { percentage: 12, transactions: 144, amount: 492000 }
+      },
+      total: { transactions: 1200, amount: 4100000 }
+    },
+    {
+      month: '2023-11',
+      label: 'Noviembre 2023',
+      methods: {
+        'Nequi': { percentage: 38, transactions: 456, amount: 1456000 },
+        'Daviplata': { percentage: 27, transactions: 324, amount: 1036800 },
+        'Tarjeta': { percentage: 22, transactions: 264, amount: 844800 },
+        'Efecty': { percentage: 13, transactions: 156, amount: 499200 }
+      },
+      total: { transactions: 1200, amount: 3836800 }
+    },
+    {
+      month: '2023-10',
+      label: 'Octubre 2023',
+      methods: {
+        'Nequi': { percentage: 35, transactions: 420, amount: 1260000 },
+        'Daviplata': { percentage: 28, transactions: 336, amount: 1008000 },
+        'Tarjeta': { percentage: 24, transactions: 288, amount: 864000 },
+        'Efecty': { percentage: 13, transactions: 156, amount: 468000 }
+      },
+      total: { transactions: 1200, amount: 3600000 }
+    }
   ];
- 
+
   const paymentMethods = {
-    'Efectivo': { color: '#28a745', icon: '💰' },
-    'Nequi': { color: '#9128ac', icon: '📱' },
-    'Tarjeta': { color: '#dc3545', icon: '💳' },
-    'Daviplata': { color: '#007bff', icon: '📲' }
+    'Nequi': { color: '#9128ac', icon: '📱', name: 'Nequi' },
+    'Daviplata': { color: '#007bff', icon: '📲', name: 'Daviplata' },
+    'Tarjeta': { color: '#dc3545', icon: '💳', name: 'Tarjeta Débito/Crédito' },
+    'Efecty': { color: '#28a745', icon: '💰', name: 'Efecty' }
   };
 
   useEffect(() => {
-    
     setTimeout(() => {
-      setPaymentData(sampleData);
-      setCurrentMonth('Enero 2024');
       setLoading(false);
     }, 1000);
   }, []);
 
- 
-  const filteredData = branch === 'todas' 
-    ? paymentData 
-    : paymentData.filter(transaction => transaction.branch === branch);
+  // Obtener datos del mes actual
+  const currentData = monthlyData.find(data => data.month === currentMonth) || monthlyData[0];
+  const previousData = monthlyData.find(data => data.month === getPreviousMonth(currentMonth));
 
-  
-  const calculateStats = () => {
-    const methodTotals = {};
-    const methodCounts = {};
-    let totalGeneral = 0;
+  // Función para obtener el mes anterior
+  function getPreviousMonth(currentMonth) {
+    const [year, month] = currentMonth.split('-').map(Number);
+    let prevMonth = month - 1;
+    let prevYear = year;
+    
+    if (prevMonth === 0) {
+      prevMonth = 12;
+      prevYear = year - 1;
+    }
+    
+    return `${prevYear}-${prevMonth.toString().padStart(2, '0')}`;
+  }
 
-    filteredData.forEach(transaction => {
-      const method = transaction.method;
-      methodTotals[method] = (methodTotals[method] || 0) + transaction.amount;
-      methodCounts[method] = (methodCounts[method] || 0) + 1;
-      totalGeneral += transaction.amount;
+  // Calcular tendencias vs mes anterior
+  const calculateTrends = () => {
+    const trends = {};
+    
+    Object.keys(paymentMethods).forEach(method => {
+      const current = currentData.methods[method]?.percentage || 0;
+      const previous = previousData?.methods[method]?.percentage || 0;
+      const change = current - previous;
+      
+      trends[method] = {
+        change,
+        trend: change > 0 ? 'up' : change < 0 ? 'down' : 'stable',
+        current,
+        previous
+      };
     });
-
-    const methods = Object.keys(methodTotals);
-    const ranking = methods.map(method => ({
-      method,
-      total: methodTotals[method],
-      count: methodCounts[method],
-      percentage: totalGeneral > 0 ? (methodTotals[method] / totalGeneral) * 100 : 0
-    })).sort((a, b) => b.percentage - a.percentage);
-
-    return {
-      ranking,
-      totalGeneral,
-      transactionCount: filteredData.length
-    };
+    
+    return trends;
   };
 
-  const { ranking, totalGeneral, transactionCount } = calculateStats();
+  const trends = calculateTrends();
 
-  
   const formatCurrency = (amount) => {
     return new Intl.NumberFormat('es-CO', {
       style: 'currency',
       currency: 'COP',
       minimumFractionDigits: 0
     }).format(amount);
+  };
+
+  const getTrendIcon = (trend) => {
+    switch (trend) {
+      case 'up': return '↗️';
+      case 'down': return '↘️';
+      default: return '→';
+    }
+  };
+
+  const getTrendClass = (trend) => {
+    switch (trend) {
+      case 'up': return 'text-success';
+      case 'down': return 'text-danger';
+      default: return 'text-warning';
+    }
   };
 
   if (loading) {
@@ -90,139 +141,196 @@ const Hist_Pag = () => {
 
   return (
     <div className="payment-history-container">
-
       <div className="card">
         <div className="card-header">
-          <h2>📊 Historial de Métodos de Pago</h2>
+          <h2>💳 Historial de Métodos de Pago</h2>
           <div className="header-info">
-            <span className="month">{currentMonth}</span>
-            <span className="transaction-count badge bg-secondary">{transactionCount} transacciones</span>
+            <div className="month-selector">
+              <label className="form-label"><strong>Periodo:</strong></label>
+              <select 
+                value={currentMonth} 
+                onChange={(e) => setCurrentMonth(e.target.value)}
+                className="form-select month-select"
+              >
+                {monthlyData.map(month => (
+                  <option key={month.month} value={month.month}>
+                    {month.label}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <span className="transaction-count badge bg-secondary">
+              {currentData.total.transactions} transacciones
+            </span>
           </div>
         </div>
 
         <div className="card-body">
-
-          <div className="filters mb-4">
-            <div className="filter-group">
-              <label className="form-label"><strong>Sucursal:</strong></label>
-              <select 
-                value={branch} 
-                onChange={(e) => setBranch(e.target.value)}
-                className="form-select branch-select"
-                style={{ width: '250px' }}
-              >
-                <option value="todas">Todas las Sucursales</option>
-                <option value="Sucursal Norte">Sucursal Norte</option>
-                <option value="Sucursal Sur">Sucursal Sur</option>
-                <option value="Sucursal Centro">Sucursal Centro</option>
-              </select>
-            </div>
-          </div>
-
-
-          <div className="summary-card alert alert-success">
-            <h3 className="alert-heading">Resumen General del Mes</h3>
-            <div className="total-amount h4">
-              {formatCurrency(totalGeneral)}
-            </div>
-            <div className="summary-details">
-              Total procesado en {currentMonth}
-            </div>
-          </div>
-
-
-          <div className="ranking-section mt-4">
-            <h3 className="titulo-seccion">🏆 Ranking de Métodos de Pago</h3>
-            <div className="ranking-cards">
-              {ranking.map((item, index) => (
-                <div key={item.method} className="caja-informacion ranking-card">
-                  <div className="contenido-caja">
-                    <div className="d-flex justify-content-between align-items-center mb-3">
-                      <div className="method-info d-flex align-items-center">
-                        <span className="method-icon me-2" style={{ fontSize: '1.5rem' }}>
-                          {paymentMethods[item.method]?.icon}
-                        </span>
-                        <span className="method-name h5 mb-0">{item.method}</span>
-                      </div>
-                      <div className="rank-badge badge bg-warning text-dark">#{index + 1}</div>
-                    </div>
-                    
-           
-                    <div className="progress-container mb-3">
-                      <div 
-                        className="progress-bar"
-                        style={{
-                          width: `${item.percentage}%`,
-                          backgroundColor: paymentMethods[item.method]?.color,
-                          height: '12px',
-                          borderRadius: '6px'
-                        }}
-                      ></div>
-                    </div>
-                    
-                  
-                    <div className="method-stats row text-center">
-                      <div className="col-md-4">
-                        <div className="stat">
-                          <span className="stat-value h6">{formatCurrency(item.total)}</span>
-                          <span className="stat-label text-muted">Monto Total</span>
-                        </div>
-                      </div>
-                      <div className="col-md-4">
-                        <div className="stat">
-                          <span className="stat-value h6">{item.count}</span>
-                          <span className="stat-label text-muted">Transacciones</span>
-                        </div>
-                      </div>
-                      <div className="col-md-4">
-                        <div className="stat">
-                          <span className="stat-value h6">{item.percentage.toFixed(1)}%</span>
-                          <span className="stat-label text-muted">Participación</span>
-                        </div>
-                      </div>
-                    </div>
+          {/* Resumen General */}
+          <div className="summary-section">
+            <div className="summary-grid">
+              <div className="summary-card total-card">
+                <h3>💰 Volumen Total</h3>
+                <div className="total-amount">{formatCurrency(currentData.total.amount)}</div>
+                <div className="summary-details">
+                  {currentData.total.transactions} transacciones en {currentData.label}
+                </div>
+              </div>
+              
+              <div className="summary-card metrics-card">
+                <h3>📊 Métricas Clave</h3>
+                <div className="metrics-grid">
+                  <div className="metric">
+                    <span className="metric-value">{Math.round(currentData.total.amount / currentData.total.transactions).toLocaleString()}</span>
+                    <span className="metric-label">Ticket Promedio</span>
+                  </div>
+                  <div className="metric">
+                    <span className="metric-value">+12%</span>
+                    <span className="metric-label">Crecimiento Mensual</span>
                   </div>
                 </div>
-              ))}
+              </div>
             </div>
           </div>
 
-       
-          <div className="transactions-section mt-5">
-            <h3 className="titulo-seccion">📋 Detalle de Transacciones</h3>
-            <div className="table-responsive">
+          {/* Distribución y Tendencias */}
+          <div className="distribution-section">
+            <div className="section-grid">
+              {/* Distribución Actual */}
+              <div className="distribution-card">
+                <h3>📈 Distribución Actual</h3>
+                <div className="distribution-bars">
+                  {Object.entries(currentData.methods)
+                    .sort(([,a], [,b]) => b.percentage - a.percentage)
+                    .map(([method, data]) => (
+                      <div key={method} className="distribution-item">
+                        <div className="method-header">
+                          <span className="method-icon">{paymentMethods[method].icon}</span>
+                          <span className="method-name">{paymentMethods[method].name}</span>
+                          <span className="method-percentage">{data.percentage}%</span>
+                        </div>
+                        <div className="progress-container">
+                          <div 
+                            className="progress-bar"
+                            style={{
+                              width: `${data.percentage}%`,
+                              backgroundColor: paymentMethods[method].color
+                            }}
+                          ></div>
+                        </div>
+                        <div className="method-details">
+                          <span>{data.transactions} transacciones</span>
+                          <span>{formatCurrency(data.amount)}</span>
+                        </div>
+                      </div>
+                    ))}
+                </div>
+              </div>
+
+              {/* Tendencias */}
+              <div className="trends-card">
+                <h3>🔄 Tendencias vs Mes Anterior</h3>
+                <div className="trends-list">
+                  {Object.entries(trends).map(([method, trend]) => (
+                    <div key={method} className="trend-item">
+                      <div className="trend-method">
+                        <span className="method-icon">{paymentMethods[method].icon}</span>
+                        <span className="method-name">{paymentMethods[method].name}</span>
+                      </div>
+                      <div className="trend-data">
+                        <span className="current-value">{trend.current}%</span>
+                        <span className={`trend-indicator ${getTrendClass(trend.trend)}`}>
+                          {getTrendIcon(trend.trend)} {trend.change > 0 ? '+' : ''}{trend.change}%
+                        </span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Evolución Mensual */}
+          <div className="evolution-section">
+            <h3>📅 Evolución Mensual</h3>
+            <div className="evolution-table">
               <table className="table table-striped table-hover">
                 <thead className="table-light">
                   <tr>
-                    <th>Fecha</th>
-                    <th>Método de Pago</th>
-                    <th>Descripción</th>
-                    <th>Sucursal</th>
-                    <th>Monto</th>
+                    <th>Mes</th>
+                    <th>Nequi</th>
+                    <th>Daviplata</th>
+                    <th>Tarjeta</th>
+                    <th>Efecty</th>
+                    <th>Total</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {filteredData.map(transaction => (
-                    <tr key={transaction.id}>
-                      <td>{transaction.date}</td>
-                      <td>
-                        <span 
-                          className="badge method-tag"
-                          style={{ 
-                            backgroundColor: paymentMethods[transaction.method]?.color,
-                            color: 'white'
-                          }}
-                        >
-                          {paymentMethods[transaction.method]?.icon} {transaction.method}
-                        </span>
-                      </td>
-                      <td>{transaction.description}</td>
-                      <td>{transaction.branch}</td>
-                      <td className="fw-bold text-success">{formatCurrency(transaction.amount)}</td>
+                  {monthlyData.map(monthData => (
+                    <tr key={monthData.month} className={monthData.month === currentMonth ? 'current-month' : ''}>
+                      <td><strong>{monthData.label}</strong></td>
+                      <td>{monthData.methods.Nequi?.percentage || 0}%</td>
+                      <td>{monthData.methods.Daviplata?.percentage || 0}%</td>
+                      <td>{monthData.methods.Tarjeta?.percentage || 0}%</td>
+                      <td>{monthData.methods.Efecty?.percentage || 0}%</td>
+                      <td className="fw-bold text-success">{formatCurrency(monthData.total.amount)}</td>
                     </tr>
                   ))}
                 </tbody>
               </table>
+            </div>
+          </div>
+
+          {/* Ranking de Métodos */}
+          <div className="ranking-section">
+            <h3>🏆 Ranking de Métodos de Pago - {currentData.label}</h3>
+            <div className="ranking-cards">
+              {Object.entries(currentData.methods)
+                .sort(([,a], [,b]) => b.percentage - a.percentage)
+                .map(([method, data], index) => (
+                  <div key={method} className="ranking-card">
+                    <div className="rank-header">
+                      <div className="method-info">
+                        <span className="method-icon">{paymentMethods[method].icon}</span>
+                        <span className="method-name">{paymentMethods[method].name}</span>
+                      </div>
+                      <div className="rank-badge">#{index + 1}</div>
+                    </div>
+                    
+                    <div className="progress-container">
+                      <div 
+                        className="progress-bar"
+                        style={{
+                          width: `${data.percentage}%`,
+                          backgroundColor: paymentMethods[method].color
+                        }}
+                      ></div>
+                    </div>
+                    
+                    <div className="method-stats">
+                      <div className="stat">
+                        <span className="stat-value">{data.percentage}%</span>
+                        <span className="stat-label">Participación</span>
+                      </div>
+                      <div className="stat">
+                        <span className="stat-value">{data.transactions}</span>
+                        <span className="stat-label">Transacciones</span>
+                      </div>
+                      <div className="stat">
+                        <span className="stat-value">{formatCurrency(data.amount)}</span>
+                        <span className="stat-label">Monto Total</span>
+                      </div>
+                    </div>
+
+                    {/* Tendencia */}
+                    <div className="trend-info">
+                      <span className={`trend ${getTrendClass(trends[method]?.trend)}`}>
+                        {getTrendIcon(trends[method]?.trend)} 
+                        {trends[method]?.change > 0 ? '+' : ''}{trends[method]?.change}% vs mes anterior
+                      </span>
+                    </div>
+                  </div>
+                ))}
             </div>
           </div>
         </div>

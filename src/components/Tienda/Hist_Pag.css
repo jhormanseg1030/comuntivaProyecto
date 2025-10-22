@@ -3,7 +3,6 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-
 .payment-history-loading {
     display: flex;
     flex-direction: column;
@@ -17,7 +16,7 @@
     width: 40px;
     height: 40px;
     border: 4px solid #e9ecef;
-    border-top: 4px solid #28a745;
+    border-top: 4px solid #9128ac;
     border-radius: 50%;
     animation: spin 1s linear infinite;
     margin-bottom: 15px;
@@ -28,31 +27,20 @@
     100% { transform: rotate(360deg); }
 }
 
+/* Header */
+.card-header {
+    border-bottom: 2px solid #e9ecef;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
 
 .header-info {
     display: flex;
-    gap: 15px;
+    justify-content: space-between;
     align-items: center;
+    margin-top: 10px;
 }
 
-.month {
-    font-weight: 600;
-    color: #495057;
-    background-color: #e9ecef;
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-size: 0.9rem;
-}
-
-
-.filters {
-    background-color: #f8f9fa;
-    padding: 15px;
-    border-radius: 6px;
-    border-left: 4px solid #28a745;
-}
-
-.filter-group {
+.month-selector {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -69,52 +57,118 @@
     border-radius: 6px;
     padding: 8px 12px;
     font-size: 14px;
+    min-width: 200px;
 }
 
+/* Sección de Resumen */
+.summary-section {
+    margin-bottom: 2rem;
+}
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+}
 
 .summary-card {
-    border-left: 4px solid #28a745 !important;
-    background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+    padding: 1.5rem;
+    border-radius: 12px;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    border-left: 4px solid #9128ac;
+}
+
+.total-card {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
 }
 
 .total-amount {
+    font-size: 2.5rem;
     font-weight: 700;
+    color: #2c3e50;
     margin: 10px 0;
-    color: #155724;
 }
 
+.summary-details {
+    color: #6c757d;
+    font-size: 0.9rem;
+}
 
-.ranking-cards {
+.metrics-card h3 {
+    margin-bottom: 1rem;
+}
+
+.metrics-grid {
     display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.metric {
+    text-align: center;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.metric-value {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 5px;
+}
+
+.metric-label {
+    display: block;
+    font-size: 0.8rem;
+    color: #6c757d;
+}
+
+/* Distribución y Tendencias */
+.distribution-section {
+    margin-bottom: 2rem;
+}
+
+.section-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
     gap: 20px;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
-.ranking-card {
-    transition: all 0.3s ease;
-    border: 1px solid #e0e0e0;
+.distribution-card, .trends-card {
+    padding: 1.5rem;
+    border-radius: 12px;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
-.ranking-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+.distribution-item {
+    margin-bottom: 1.5rem;
 }
 
-.method-info {
+.method-header {
     display: flex;
     align-items: center;
     gap: 10px;
+    margin-bottom: 8px;
 }
 
 .method-icon {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 }
 
 .method-name {
-    color: #333;
+    flex: 1;
     font-weight: 600;
+    color: #2c3e50;
 }
 
+.method-percentage {
+    font-weight: 700;
+    color: #2c3e50;
+}
 
 .progress-container {
     width: 100%;
@@ -122,7 +176,7 @@
     background: #e9ecef;
     border-radius: 6px;
     overflow: hidden;
-    margin: 15px 0;
+    margin: 8px 0;
 }
 
 .progress-bar {
@@ -131,40 +185,171 @@
     transition: width 0.5s ease-in-out;
 }
 
+.method-details {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: #6c757d;
+}
+
+/* Tendencias */
+.trends-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.trend-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.trend-method {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.trend-data {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.current-value {
+    font-weight: 700;
+    color: #2c3e50;
+}
+
+.trend-indicator {
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.text-success { color: #28a745 !important; }
+.text-danger { color: #dc3545 !important; }
+.text-warning { color: #ffc107 !important; }
+
+/* Evolución Mensual */
+.evolution-section {
+    margin-bottom: 2rem;
+}
+
+.evolution-section h3 {
+    margin-bottom: 1rem;
+    color: #2c3e50;
+}
+
+.evolution-table {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.current-month {
+    background-color: #e8f5e8 !important;
+    font-weight: 600;
+}
+
+/* Ranking */
+.ranking-section {
+    margin-bottom: 2rem;
+}
+
+.ranking-section h3 {
+    margin-bottom: 1rem;
+    color: #2c3e50;
+}
+
+.ranking-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.ranking-card {
+    padding: 1.5rem;
+    border-radius: 12px;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    border: 1px solid #e9ecef;
+    transition: transform 0.3s ease;
+}
+
+.ranking-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+.rank-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.method-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.rank-badge {
+    background: linear-gradient(135deg, #ffc107, #ffd54f);
+    color: #856404;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.8rem;
+}
 
 .method-stats {
-    margin-top: 15px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin: 1rem 0;
 }
 
 .stat {
     text-align: center;
+    padding: 8px;
+    background: #f8f9fa;
+    border-radius: 6px;
 }
 
 .stat-value {
     display: block;
     font-weight: 700;
     color: #2c3e50;
-    margin-bottom: 5px;
+    margin-bottom: 4px;
 }
 
 .stat-label {
     display: block;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     color: #6c757d;
 }
 
+.trend-info {
+    text-align: center;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e9ecef;
+}
 
-.method-tag {
-    padding: 4px 8px;
-    border-radius: 4px;
+.trend {
     font-size: 0.8rem;
     font-weight: 600;
 }
 
-
+/* Tablas */
 .table {
     margin-bottom: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .table th {
@@ -188,37 +373,54 @@
     background-color: rgba(0, 0, 0, 0.075);
 }
 
+/* Responsive */
+@media (max-width: 1024px) {
+    .summary-grid,
+    .section-grid {
+        grid-template-columns: 1fr;
+    }
+}
 
 @media (max-width: 768px) {
     .payment-history-container {
         padding: 10px;
     }
     
+    .header-info {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+    }
+    
+    .month-selector {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    
+    .form-select {
+        width: 100%;
+    }
+    
     .ranking-cards {
         grid-template-columns: 1fr;
     }
     
-    .method-stats .col-md-4 {
-        margin-bottom: 10px;
-    }
-    
-    .header-info {
-        flex-direction: column;
+    .method-stats {
+        grid-template-columns: 1fr;
         gap: 8px;
-        align-items: flex-start;
     }
     
-    .filter-group {
-        flex-direction: column;
-        align-items: flex-start;
+    .total-amount {
+        font-size: 2rem;
     }
     
-    .form-select {
-        width: 100% !important;
+    .metrics-grid {
+        grid-template-columns: 1fr;
     }
 }
 
-
+/* Utilidades */
 .mb-4 { margin-bottom: 1.5rem !important; }
 .mt-4 { margin-top: 1.5rem !important; }
 .mt-5 { margin-top: 3rem !important; }
@@ -232,21 +434,6 @@
 .fw-bold { font-weight: 700 !important; }
 .text-success { color: #28a745 !important; }
 
-
 .d-flex { display: flex !important; }
 .justify-content-between { justify-content: space-between !important; }
 .align-items-center { align-items: center !important; }
-
-
-.row {
-    display: flex;
-    flex-wrap: wrap;
-    margin-right: -15px;
-    margin-left: -15px;
-}
-
-.col-md-4 {
-    flex: 0 0 33.333333%;
-    max-width: 33.333333%;
-    padding: 0 15px;
-}
