@@ -133,9 +133,9 @@ const InicioSe = () => {
               {tiposDocumento.length === 0 ? (
                 <option disabled>Cargando...</option>
               ) : (
-                tiposDocumento.map(tipo => (
-                  <option key={tipo.id_tipdocu} value={tipo.id_tipdocu}>
-                    {tipo.tipo}
+                tiposDocumento.map(xd => (
+                  <option key={xd.id_tipdocu} value={xd.id_tipdocu}>
+                    {xd.tipo}
                   </option>
                 ))
               )}
