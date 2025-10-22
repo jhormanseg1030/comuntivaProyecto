@@ -9,7 +9,6 @@ import Hist_Pag from './Hist_Pag';
 import GestVende from './GestVende';
 import Gestras from './Gestras';
 import GeneralTi from './GeneralTi';
-import CuentaTi from './CuentaTi';
 import Footer_Abajo from '../Vendedor/Footer_Abajo';
 import './generalve.css';
 import "./Historial.css";
@@ -65,9 +64,6 @@ const ConfTienda = () => {
             <li onClick={() => manejarSeleccion('General')} className={contenido === 'General' ? 'active' : ''}>
               <Link className='nav-link1' to={"/ConfTienda/GeneralTi"}>⚙️ Configuración General</Link>
             </li>
-            <li onClick={() => manejarSeleccion('Cuenta')} className={contenido === 'Cuenta' ? 'active' : ''}>
-              <Link className='nav-link1' to={"/ConfTienda/CuentaTi"}>👤 Mi Cuenta</Link>
-            </li>
           </ul>
         </nav>
 
@@ -80,7 +76,6 @@ const ConfTienda = () => {
               <Route path='/HistorialPagos' element={<Hist_Pag />} />
               <Route path='/Transportadora' element={<Gestras />} />
               <Route path='/GeneralTi' element={<GeneralTi />} />
-              <Route path='/CuentaTi' element={<CuentaTi />} />
             </Routes>
           </div>
         </div>
