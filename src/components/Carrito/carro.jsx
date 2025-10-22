@@ -14,6 +14,7 @@ import Pinea from '../imagenes/Pinea.jpg';
 import Arandanos from '../imagenes/Arandanos.jpeg';
 import Mangos from '../imagenes/Mangos.jpg';
 import './carro.css';
+import '../../styles/header.css';
 
 function Carrito() {
     const [carrito, setCarrito] = useState([]);

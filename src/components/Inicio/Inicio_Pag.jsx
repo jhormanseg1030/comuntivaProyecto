@@ -12,6 +12,7 @@ import apoya from '../imagenes/apoya.jpeg';
 import unidos from '../imagenes/unidos.jpeg';
 import LisProduc from '../Productos/LisProduc';
 import './Inicio_Pag.css';
+import '../../styles/header.css';
 import Footer_Abajo from '../Vendedor/Footer_Abajo';
 
 function Inicio_Pag ()  {

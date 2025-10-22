@@ -8,7 +8,6 @@ import Grano from './components/Categoria_Menu/Grano';
 import Lacteos from './components/Categoria_Menu/Lacteos';
 import Papa from './components/Categoria_Menu/Papa';
 import Verduras from './components/Categoria_Menu/Verduras';
-import HomeCli from './components/Clientes/HomeCli';
 import PagCompra from './components/Compra/PagCompra';
 import Actu_Clie from './components/Config_Cliente/Actu_Clie';
 import Pago from './components/FinalDePago/Pago';
@@ -20,17 +19,13 @@ import QuienesSomos from './components/Quienes somos/quienSom';
 import RegistrarUsu from './components/Registrar/RegistrarUsu';
 import SegPrinci from './components/SegPrincipal/SegPrinci';
 import ConfTienda from './components/Tienda/ConfTienda';
-import HomeTienda from "./components/Tienda/HomeTienda";
 import ListaProduc from './paginas/ListaProductos';
 import FormularioPedido from './components/Formularios/pedidosForm/pedidosForm';
 import UsuarioLayout from './paginas/UsuarioPag/UsuarioLayout';
 import UsuarioList from './paginas/UsuarioPag/UsuarioList';
 import CrearUsuario from './paginas/UsuarioPag/CrearUsuario';
-
 import Unidad_Medida from './components/Formularios/UnidadMedidaForm/UnidadMedida';
 import FormularioUsuario from './components/Formularios/usuarioForm/usuarioForm';
-
-
 import ConfVendedor from './components/Vendedor/ConfVendedor';
 import EstadoSesion from './components/EstadoSesion';
 
@@ -42,8 +37,6 @@ function App() {
         <EstadoSesion />
         <Routes>
         <Route path='/Login' element={<InicioSe></InicioSe>}></Route>
-        <Route path='/Tienda' element={<HomeCli></HomeCli>}></Route>
-        <Route path='/TiendaDonJuan' element={<HomeTienda></HomeTienda>}></Route>
         <Route path='/Segunda' element={<SegPrinci></SegPrinci>}></Route>
         <Route path='/Registro' element={<RegistrarUsu></RegistrarUsu>}></Route>
         <Route path='/ConfTienda/*' element={<ConfTienda></ConfTienda>}></Route>

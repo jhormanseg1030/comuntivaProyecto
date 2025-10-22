@@ -3,6 +3,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import { Link, useLocation } from 'react-router-dom';
 import logo from '../Imagenes/logo.jpg';
 import './Pago.css';
+import '../../styles/header.css';
 import { useState } from 'react';
 import Pinea from '../imagenes/Pinea.jpg';
 import Arandanos from '../imagenes/Arandanos.jpeg';
