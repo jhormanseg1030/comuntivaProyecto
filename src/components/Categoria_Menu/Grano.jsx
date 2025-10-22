@@ -12,6 +12,7 @@ import frijol from '../imagenes/frijol.jpeg';
 import maiz from '../imagenes/maiz.jpg';
 import cafe from '../imagenes/cafe.jpg';
 import './Gran.css';
+import '../../styles/header.css';
 import Footer_Abajo from '../Vendedor/Footer_Abajo';
 function Grano() {
     return (

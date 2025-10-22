@@ -17,6 +17,7 @@ import Spapa from '../imagenes/Spapa.jpg';
 import Papas from '../imagenes/Papas.jpg';
 import Dropdown from 'react-bootstrap/Dropdown';
 import './Pap.css';
+import '../../styles/header.css';
 import Footer_Abajo from '../Vendedor/Footer_Abajo';
 function Papa() {
     return (

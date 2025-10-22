@@ -1,4 +1,5 @@
 import './quienSom.css';
+import '../../styles/header.css';
 import logo from '../Imagenes/logo.jpg';
 import { Link } from 'react-router-dom';
 import NavDropdown from 'react-bootstrap/NavDropdown';

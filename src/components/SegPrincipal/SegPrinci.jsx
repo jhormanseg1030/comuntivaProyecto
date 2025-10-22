@@ -18,6 +18,7 @@ import Mercados2 from '../imagenes/Mercados2.jpg';
 import Mercados3 from '../imagenes/Mercados3.jpg';
 import Mercados4 from '../imagenes/Mercados4.jpg';
 import './SegPrinci.css';
+import '../../styles/header.css';
 import Footer_Abajo from '../Vendedor/Footer_Abajo';
 
 function Segprinci() {

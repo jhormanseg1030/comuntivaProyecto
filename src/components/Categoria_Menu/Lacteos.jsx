@@ -12,6 +12,7 @@ import lacteo from '../imagenes/lacteo.jpg';
 import Prolacte from '../imagenes/Prolacte.jpg';
 import Dropdown from 'react-bootstrap/Dropdown';
 import './Lacte.css';
+import '../../styles/header.css';
 import Footer_Abajo from '../Vendedor/Footer_Abajo';
 function lacteos() {
     return (

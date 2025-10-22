@@ -1,0 +1,25 @@
+/* Shared header styles extracted from HomeCliente.css */
+.bg-body-tertiary{
+    background: linear-gradient(90deg, black 5%, #0b745a 50%, #51d18c 75%, #ffffa7 100% ); 
+}
+
+.d-flex{
+ color: white;
+}
+.container-fluid{
+    font-size: 15px;
+}
+.nav-brand{
+    width: 60px;
+}
+.me-auto.my-2.my-lg-0.navbar-nav.navbar-nav-scroll{
+    max-height: 200px;
+    margin-left: 20px;
+}
+a.nav-link{
+    color: rgb(255, 255, 255);
+}
+.btn.btn-outline-success{
+    margin-top: 0px;
+    color: white;
+}
