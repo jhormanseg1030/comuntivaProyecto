@@ -5,6 +5,7 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import {obtenerDocumento} from "../../../api/tipDocuApi";
 import ModalConexionFallida from "../../ModalConexionFallida";
+import ModalRegistroUsuario from '../../ModalRegistroUsuario';
 import "../../Estilos_Form_usuario/usuarioForm.css";
 
 const FormularioUsuario = ({ onSubmit, modo = "crear", usuario = null }) => {
@@ -64,13 +65,36 @@ const FormularioUsuario = ({ onSubmit, modo = "crear", usuario = null }) => {
     serFormData((prev) => ({...prev, [name]: value}));
   }
 
+    const [showModalRegistro, setShowModalRegistro] = useState(false);
+    const [mensajeModalRegistro, setMensajeModalRegistro] = useState("");
+    const [camposFaltantes, setCamposFaltantes] = useState([]);
+    const [documentoExistente, setDocumentoExistente] = useState(false);
+
     const handleSubmit = async (event) => {
       event.preventDefault();
       const form = event.currentTarget;
+      let campos = [];
+      // Validación manual de campos obligatorios
+      if (!formData.nombre) campos.push("nombre");
+      if (!formData.apellido) campos.push("apellido");
+      if (!formData.correo) campos.push("correo");
+      if (!formData.numdocumento) campos.push("numdocumento");
+      if (!formData.password) campos.push("password");
+      if (!formData.tipId) campos.push("tipId");
 
-      if (form.checkValidity() === false){
+      if (campos.length > 0) {
+        setCamposFaltantes(campos);
+        setDocumentoExistente(false);
+        setMensajeModalRegistro("Usuario no creado. Faltan los siguientes campos: " + campos.join(", "));
+        setShowModalRegistro(true);
+        setValidated(true);
+        return;
+      }
+
+      if (form.checkValidity() === false) {
         event.stopPropagation();
-      } else{
+        return;
+      } else {
         try {
           await onSubmit(formData);
           setMensajeUsuarioCreado("El usuario fue registrado exitosamente.");
@@ -78,8 +102,18 @@ const FormularioUsuario = ({ onSubmit, modo = "crear", usuario = null }) => {
           setMenjaseErrorConexion("");
           setConexionFallida(false);
         } catch (error) {
-          setMenjaseErrorConexion(error.message);
-          setConexionFallida(true);
+          let existeDoc = false;
+          let mensaje = error.message || "Usuario no creado.";
+          if (mensaje.includes("Ya existe un usuario con este número de documento")) {
+            existeDoc = true;
+            mensaje = "El número de documento ya fue registrado.";
+          }
+          setCamposFaltantes([]);
+          setDocumentoExistente(existeDoc);
+          setMensajeModalRegistro(mensaje);
+          setShowModalRegistro(true);
+          setMenjaseErrorConexion("");
+          setConexionFallida(false);
           setMensajeUsuarioCreado("");
           setUsuarioCreadoVisible(false);
         }
@@ -244,6 +278,14 @@ const FormularioUsuario = ({ onSubmit, modo = "crear", usuario = null }) => {
         show={conexionFallida}
         onClose={() => setConexionFallida(false)}
         mensaje={mensajeErrorConexion}
+      />
+
+      <ModalRegistroUsuario
+        show={showModalRegistro}
+        onClose={() => setShowModalRegistro(false)}
+        mensaje={mensajeModalRegistro}
+        camposFaltantes={camposFaltantes}
+        documentoExistente={documentoExistente}
       />
     </div>
   );
