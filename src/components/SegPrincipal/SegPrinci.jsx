@@ -9,6 +9,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../../hooks/useAuth';
 import Frutas1 from '../imagenes/Frutas1.jpg';
 import Frutas2 from '../imagenes/Frutas2.jpg';
 import Frutas3 from '../imagenes/Frutas3.jpeg';
@@ -22,6 +23,7 @@ import '../../styles/header.css';
 import Footer_Abajo from '../Vendedor/Footer_Abajo';
 
 function Segprinci() {
+  const { isAuthenticated } = useAuth();
   return (
     <>
       <Navbar expand="lg" className="bg-body-tertiary">
@@ -68,6 +70,10 @@ function Segprinci() {
       <Dropdown.Menu>
         <Dropdown.Item href="/Perfil">Perfil</Dropdown.Item>
         <Dropdown.Item href="/Confi_Cliente">Configuracion</Dropdown.Item>
+        {isAuthenticated && (
+          <Dropdown.Item href="/ConfVendedor">Vender</Dropdown.Item>
+        )}
+          <Dropdown.Item href="/" onClick={() => { localStorage.removeItem('user'); }}>Cerrar sesión</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
 <div className="dropdown-menu">
