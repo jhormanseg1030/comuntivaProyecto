@@ -29,7 +29,7 @@
 .imag1 {
     width: 100%;
     height: 290px;
-    object-fit: cover;    /* Recorta sin deformar la img*/
+    object-fit: cover;    
     transition: transform 0.3s ease;
     border-radius: 10px;
   }
@@ -42,24 +42,18 @@
     display: flex;
     gap: 10px;
     text-align: center;
-    /* padding-right: 5rem; */
-    /* position: relative; */
 }
 .nav-brand{
     border-radius: 40px;
 }
 .conteItemsCarrusel{
     background-color: rgb(104, 252, 104);
-    /* height: 280px; */
-    /* overflow: hidden; */
 }
 .carrusel2{
     display: flex;
     gap: 10px;
     text-align: center;
     margin-top: 2rem;
-    /* padding-right: 5rem; */
-    /* position: relative; */
 }
 .pd{
     text-align: center;

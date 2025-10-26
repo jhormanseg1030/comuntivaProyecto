@@ -27,7 +27,6 @@
     100% { transform: rotate(360deg); }
 }
 
-/* Header */
 .card-header {
     border-bottom: 2px solid #e9ecef;
     background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
@@ -60,7 +59,6 @@
     min-width: 200px;
 }
 
-/* Sección de Resumen */
 .summary-section {
     margin-bottom: 2rem;
 }
@@ -126,7 +124,6 @@
     color: #6c757d;
 }
 
-/* Distribución y Tendencias */
 .distribution-section {
     margin-bottom: 2rem;
 }
@@ -192,7 +189,6 @@
     color: #6c757d;
 }
 
-/* Tendencias */
 .trends-list {
     display: flex;
     flex-direction: column;
@@ -234,7 +230,6 @@
 .text-danger { color: #dc3545 !important; }
 .text-warning { color: #ffc107 !important; }
 
-/* Evolución Mensual */
 .evolution-section {
     margin-bottom: 2rem;
 }
@@ -256,7 +251,6 @@
     font-weight: 600;
 }
 
-/* Ranking */
 .ranking-section {
     margin-bottom: 2rem;
 }
@@ -347,7 +341,6 @@
     font-weight: 600;
 }
 
-/* Tablas */
 .table {
     margin-bottom: 0;
 }
@@ -373,7 +366,6 @@
     background-color: rgba(0, 0, 0, 0.075);
 }
 
-/* Responsive */
 @media (max-width: 1024px) {
     .summary-grid,
     .section-grid {
@@ -420,7 +412,6 @@
     }
 }
 
-/* Utilidades */
 .mb-4 { margin-bottom: 1.5rem !important; }
 .mt-4 { margin-top: 1.5rem !important; }
 .mt-5 { margin-top: 3rem !important; }

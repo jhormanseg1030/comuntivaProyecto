@@ -5,7 +5,6 @@ const Hist_Pag = () => {
   const [currentMonth, setCurrentMonth] = useState('2024-01');
   const [loading, setLoading] = useState(true);
 
-  // Datos de ejemplo para métodos de pago por mes
   const monthlyData = [
     {
       month: '2024-01',
@@ -66,11 +65,9 @@ const Hist_Pag = () => {
     }, 1000);
   }, []);
 
-  // Obtener datos del mes actual
   const currentData = monthlyData.find(data => data.month === currentMonth) || monthlyData[0];
   const previousData = monthlyData.find(data => data.month === getPreviousMonth(currentMonth));
 
-  // Función para obtener el mes anterior
   function getPreviousMonth(currentMonth) {
     const [year, month] = currentMonth.split('-').map(Number);
     let prevMonth = month - 1;
@@ -84,7 +81,6 @@ const Hist_Pag = () => {
     return `${prevYear}-${prevMonth.toString().padStart(2, '0')}`;
   }
 
-  // Calcular tendencias vs mes anterior
   const calculateTrends = () => {
     const trends = {};
     
@@ -166,7 +162,6 @@ const Hist_Pag = () => {
         </div>
 
         <div className="card-body">
-          {/* Resumen General */}
           <div className="summary-section">
             <div className="summary-grid">
               <div className="summary-card total-card">
@@ -193,10 +188,8 @@ const Hist_Pag = () => {
             </div>
           </div>
 
-          {/* Distribución y Tendencias */}
           <div className="distribution-section">
             <div className="section-grid">
-              {/* Distribución Actual */}
               <div className="distribution-card">
                 <h3>📈 Distribución Actual</h3>
                 <div className="distribution-bars">
@@ -227,7 +220,6 @@ const Hist_Pag = () => {
                 </div>
               </div>
 
-              {/* Tendencias */}
               <div className="trends-card">
                 <h3>🔄 Tendencias vs Mes Anterior</h3>
                 <div className="trends-list">
@@ -250,7 +242,6 @@ const Hist_Pag = () => {
             </div>
           </div>
 
-          {/* Evolución Mensual */}
           <div className="evolution-section">
             <h3>📅 Evolución Mensual</h3>
             <div className="evolution-table">
@@ -281,7 +272,6 @@ const Hist_Pag = () => {
             </div>
           </div>
 
-          {/* Ranking de Métodos */}
           <div className="ranking-section">
             <h3>🏆 Ranking de Métodos de Pago - {currentData.label}</h3>
             <div className="ranking-cards">
@@ -322,7 +312,6 @@ const Hist_Pag = () => {
                       </div>
                     </div>
 
-                    {/* Tendencia */}
                     <div className="trend-info">
                       <span className={`trend ${getTrendClass(trends[method]?.trend)}`}>
                         {getTrendIcon(trends[method]?.trend)} 

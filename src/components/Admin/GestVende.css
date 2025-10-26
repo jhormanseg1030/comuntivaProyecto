@@ -1,0 +1,531 @@
+.gestion-vendedores {
+  padding: 20px 0;
+  background-color: #f8f9fa;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container-fluid {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.card {
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  background: #fff;
+}
+
+.card-header {
+  background: #fff;
+  color: #333;
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.card-header h2 {
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.subtitulo {
+  color: #6c757d;
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.card-body {
+  padding: 2rem;
+  background-color: #fff;
+}
+
+.filtros-avanzados {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: #fafafa;
+}
+
+.filtros-avanzados h4 {
+  color: #2c3e50;
+  margin-bottom: 1.2rem;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.filtros-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.2rem;
+}
+
+.filtro-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.filtro-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #495057;
+  font-size: 0.9rem;
+}
+
+.form-control, .form-select {
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 0.6rem 0.8rem;
+  font-size: 0.9rem;
+  transition: border-color 0.2s ease;
+  background-color: #fff;
+  color: #333;
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.1);
+  outline: none;
+}
+
+.seccion-vendedores {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+.seccion-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.seccion-header h4 {
+  color: #2c3e50;
+  margin: 0;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.estadisticas-rapidas {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.estadistica {
+  background: #edf2f7;
+  color: #2d3748;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border: 1px solid #e2e8f0;
+}
+
+.table-responsive {
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+}
+
+.tabla-vendedores {
+  margin-bottom: 0;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tabla-vendedores th {
+  background: #f7fafc;
+  color: #2d3748;
+  font-weight: 600;
+  border-bottom: 2px solid #e2e8f0;
+  padding: 1rem 0.75rem;
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+.tabla-vendedores td {
+  vertical-align: middle;
+  border-bottom: 1px solid #f0f0f0;
+  padding: 1rem 0.75rem;
+  background-color: #fff;
+  color: #2d3748;
+}
+
+.tabla-vendedores tbody tr:hover td {
+  background-color: #f8fafc;
+}
+
+.fila-suspendida {
+  background-color: #fef5e7 !important;
+}
+
+.fila-suspendida:hover td {
+  background-color: #fef9e7 !important;
+}
+
+.info-vendedor {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.info-vendedor strong {
+  color: #2d3748;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.info-vendedor small {
+  color: #718096;
+  font-size: 0.8rem;
+}
+
+.estadisticas-vendedor {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.estadisticas-vendedor span {
+  font-size: 0.85rem;
+  color: #2d3748;
+  font-weight: 400;
+}
+
+.badge {
+  font-size: 0.75rem;
+  padding: 0.5rem 0.8rem;
+  border-radius: 6px;
+  font-weight: 600;
+  border: 2px solid;
+  display: inline-block;
+  min-width: 80px;
+  text-align: center;
+  background-color: #ffffff !important;
+  color: #2d3748 !important;
+}
+
+.estado-activo {
+  border-color: #38a169 !important;
+}
+
+.estado-suspendido {
+  border-color: #e53e3e !important;
+}
+
+.estado-pendiente {
+  border-color: #d69e2e !important;
+}
+
+.nivel-vendedor-básico {
+  border-color: #38a169 !important;
+}
+
+.nivel-vendedor-avanzado {
+  border-color: #3182ce !important;
+}
+
+.nivel-vendedor-premium {
+  border-color: #805ad5 !important;
+}
+
+.nivel-básico {
+  border-color: #38a169 !important;
+}
+
+.nivel-avanzado {
+  border-color: #3182ce !important;
+}
+
+.nivel-premium {
+  border-color: #805ad5 !important;
+}
+
+.sanciones-premios {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.premios {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.premio-badge {
+  background: #ffffff;
+  color: #d69e2e;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  border: 1px solid #faf089;
+}
+
+.sancion-badge {
+  background: #ffffff;
+  color: #c53030;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  border: 1px solid #fc8181;
+}
+
+.acciones-vendedor {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 140px;
+}
+
+.btn-pequeno {
+  padding: 0.5rem 0.7rem;
+  font-size: 0.8rem;
+  border: 1px solid;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 500;
+  text-align: center;
+  background: #fff;
+  color: #2d3748;
+}
+
+.btn-info {
+  background: #ffffff;
+  color: #3182ce;
+  border-color: #90cdf4;
+}
+
+.btn-info:hover {
+  background: #ebf8ff;
+  border-color: #63b3ed;
+}
+
+.btn-warning {
+  background: #ffffff;
+  color: #d69e2e;
+  border-color: #faf089;
+}
+
+.btn-warning:hover {
+  background: #fffaf0;
+  border-color: #f6e05e;
+}
+
+.btn-success {
+  background: #ffffff;
+  color: #38a169;
+  border-color: #9ae6b4;
+}
+
+.btn-success:hover {
+  background: #f0fff4;
+  border-color: #68d391;
+}
+
+.btn-peligro {
+  background: #ffffff;
+  color: #e53e3e;
+  border-color: #fc8181;
+}
+
+.btn-peligro:hover {
+  background: #fff5f5;
+  border-color: #f56565;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 2rem;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 450px;
+  position: relative;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  border: 1px solid #e2e8f0;
+}
+
+.close {
+  color: #a0aec0;
+  float: right;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  line-height: 1;
+}
+
+.close:hover {
+  color: #4a5568;
+}
+
+.modal-content h3 {
+  color: #2d3748;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  font-size: 1.3rem;
+}
+
+.opciones-premios {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  margin-top: 1.5rem;
+}
+
+.btn-premio {
+  background: #ffffff;
+  color: #d69e2e;
+  border: 1px solid #faf089;
+  padding: 0.8rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.btn-premio:hover {
+  background: #fffaf0;
+  border-color: #f6e05e;
+}
+
+span.badge {
+  background-color: #ffffff !important;
+  color: #2d3748 !important;
+  border: 2px solid;
+}
+
+span.estado-activo {
+  border-color: #38a169 !important;
+}
+
+span.estado-suspendido {
+  border-color: #e53e3e !important;
+}
+
+span.nivel-vendedor-básico {
+  border-color: #38a169 !important;
+}
+
+span.nivel-vendedor-avanzado {
+  border-color: #3182ce !important;
+}
+
+span.nivel-vendedor-premium {
+  border-color: #805ad5 !important;
+}
+
+@media (max-width: 768px) {
+  .gestion-vendedores {
+    padding: 10px 0;
+  }
+  
+  .card-header {
+    padding: 1rem 1.2rem;
+  }
+  
+  .card-body {
+    padding: 1.2rem;
+  }
+  
+  .seccion-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .estadisticas-rapidas {
+    width: 100%;
+    justify-content: flex-start;
+  }
+  
+  .filtros-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .acciones-vendedor {
+    flex-direction: row;
+    flex-wrap: wrap;
+    min-width: auto;
+    gap: 0.3rem;
+  }
+  
+  .btn-pequeno {
+    flex: 1;
+    min-width: 100px;
+    font-size: 0.75rem;
+    padding: 0.4rem 0.5rem;
+  }
+  
+  .tabla-vendedores {
+    font-size: 0.8rem;
+  }
+  
+  .tabla-vendedores th,
+  .tabla-vendedores td {
+    padding: 0.7rem 0.5rem;
+  }
+  
+  .modal-content {
+    margin: 5% auto;
+    width: 95%;
+    padding: 1.5rem;
+  }
+  
+  .badge {
+    min-width: 70px;
+    font-size: 0.7rem;
+    padding: 0.4rem 0.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .card-header h2 {
+    font-size: 1.3rem;
+  }
+  
+  .seccion-header h4 {
+    font-size: 1.1rem;
+  }
+  
+  .estadistica {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+  
+  .btn-pequeno {
+    min-width: 80px;
+    font-size: 0.7rem;
+  }
+}

@@ -1,4 +1,3 @@
-/* src/components/ConfTienda.css */
 .conf-tienda {
     display: flex;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -12,7 +11,6 @@
     box-shadow: 2px 0 5px rgba(0,0,0,0.1);
   }
 
-  /* Este header contiene el logo y la descripción "Admin" */
   .menu-header {
     display: flex;
     align-items: center;
@@ -338,7 +336,7 @@
     justify-content: end;
 }
 
-/* Mejoras en la legibilidad */
+
 * {
     box-sizing: border-box;
 }
@@ -356,7 +354,7 @@ h1, h2, h3, h4, h5, h6 {
     color: #333;
 }
 
-/* Configuracion del menu */
+
 .menu-principal li:nth-child(5) {
   border-top: 1px solid #e0e0e0;
   margin-top: 10px;

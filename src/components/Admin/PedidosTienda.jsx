@@ -5,7 +5,6 @@ function PedidosTienda(){
         <>
         <h1>Pedidos</h1>
   <div className="seccion-pedidos">
-    {/* Header con filtros y botones */}
     <div className="pedidos-header">
       <h3>Aquí puedes gestionar tus pedidos</h3></div>
       <div className="controles-pedidos">
@@ -16,7 +15,6 @@ function PedidosTienda(){
     </div>
       </div>
 
-    {/* Integración con inventario/facturas */}
     <div className="modulos-integracion">
       <div className="card-integracion">
         <h3>

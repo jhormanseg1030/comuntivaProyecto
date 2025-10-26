@@ -2,11 +2,11 @@ import { useState } from 'react';
 import { Link, Routes, Route } from 'react-router-dom';
 import logo from '../imagenes/logo.jpg';
 
-import '../../components/Tienda/ConfTienda.css';
-import '../../components/Tienda/generalve.css';
+import '../../components/Admin/ConfAdmin.css';
+import '../../components/Admin/GeneralTi.css';
 import PedidosVendedor from './PedidosVendedor';
 import ProductosVendedor from './ProductosVendedor';
-import HistorialTi from '../Tienda/HistorialTi';
+import HistorialTi from '../Admin/HistorialTi';
 import ComprasVendedor from './ComprasVendedor';
 import ReportesVendedor from './ReportesVendedor';
 import GeneralTi from '../Tienda/GeneralTi';
