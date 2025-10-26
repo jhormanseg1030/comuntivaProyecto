@@ -27,7 +27,6 @@
     gap:10px;
 }
 .img{
-    /* width:70%; */
     max-width: 100px;
     height: 80px;
     object-fit: cover;

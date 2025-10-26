@@ -1,4 +1,3 @@
-// src/components/GestVende.jsx
 import React, { useState } from 'react';
 import './GestVende.css';
 
@@ -7,7 +6,6 @@ const GestVende = () => {
   const [filtroNivel, setFiltroNivel] = useState('todos');
   const [busqueda, setBusqueda] = useState('');
 
-  // Datos de ejemplo para vendedores
   const [vendedores, setVendedores] = useState([
     {
       id: 1,
@@ -63,7 +61,6 @@ const GestVende = () => {
     }
   ]);
 
-  // Funciones para sanciones y premios
   const aplicarSancion = (vendedorId) => {
     const vendedor = vendedores.find(v => v.id === vendedorId);
     if (vendedor) {
@@ -101,7 +98,6 @@ const GestVende = () => {
     ));
   };
 
-  // Filtrar vendedores
   const vendedoresFiltrados = vendedores.filter(vendedor => {
     const coincideEstado = filtroEstado === 'todos' || vendedor.estado === filtroEstado;
     const coincideNivel = filtroNivel === 'todos' || vendedor.permisos.includes(filtroNivel);
@@ -121,7 +117,6 @@ const GestVende = () => {
           </div>
           <div className="card-body">
             
-            {/* Filtros Avanzados */}
             <div className="filtros-avanzados">
               <h4>🔍 Filtros Avanzados</h4>
               <div className="filtros-grid">
@@ -164,7 +159,6 @@ const GestVende = () => {
               </div>
             </div>
 
-            {/* Lista de Vendedores con Sistema de Sanciones y Premios */}
             <div className="seccion-vendedores">
               <div className="seccion-header">
                 <h4>📊 Lista de Vendedores ({vendedoresFiltrados.length})</h4>
@@ -259,7 +253,6 @@ const GestVende = () => {
                             </button>
                           </div>
 
-                          {/* Modal Premios */}
                           <div id={`modal-premios-${vendedor.id}`} className="modal">
                             <div className="modal-content">
                               <span className="close" onClick={() => document.getElementById(`modal-premios-${vendedor.id}`).style.display = 'none'}>&times;</span>

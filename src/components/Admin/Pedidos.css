@@ -1,11 +1,9 @@
-/* Estructura principal */
 .seccion-pedidos {
     padding: 20px;
   }
 .buttonPedi{
   background-color: #28a745;
 }
-  /* Header con controles */
   .pedidos-header {
     display: flex;
     justify-content: space-between;
@@ -55,7 +53,6 @@
   }
 
   
-  /* Estilos de contenido */
   .cliente-info {
     display: flex;
     flex-direction: column;
@@ -73,7 +70,6 @@
     font-size: 13px;
   }
   
-  /* Estados */
   .estado-badge {
     padding: 4px 10px;
     border-radius: 12px;
@@ -87,7 +83,6 @@
   .estado-enviado { background-color: #d4edda; color: #155724; }
   .estado-cancelado { background-color: #f8d7da; color: #721c24; }
   
-  /* Botones de acción */
   .acciones-pedido {
     display: flex;
     gap: 8px;
@@ -112,7 +107,6 @@
     background-color: rgba(0,0,0,0.05);
   }
   
-  /* Módulos de integración */
   .modulos-integracion {
     display: flex;
     gap: 20px;
