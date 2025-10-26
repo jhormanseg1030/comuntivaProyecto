@@ -9,7 +9,7 @@ import ProductosVendedor from './ProductosVendedor';
 import HistorialTi from '../Tienda/HistorialTi';
 import ComprasVendedor from './ComprasVendedor';
 import ReportesVendedor from './ReportesVendedor';
-import CuentaVendedor from './CuentaVendedor';
+import GeneralTi from '../Tienda/GeneralTi';
 import Footer_Abajo from './Footer_Abajo';
 import InicioVendedor from './InicioVendedor';
 
@@ -67,7 +67,7 @@ const ConfVendedor = () => {
             <Route path="ventas" element={<HistorialTi />} />
             <Route path="comprasvende" element={<ComprasVendedor />} />
             <Route path="reportes" element={<ReportesVendedor />} />
-            <Route path="cuenta" element={<CuentaVendedor />} />
+            <Route path="cuenta" element={<GeneralTi />} />
           </Routes>
         </div>
       </div>
