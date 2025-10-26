@@ -47,8 +47,12 @@ export const actualizarProducto = async (id, productoData) => {
 // Crear producto con imagen (FormData)
 export const crearProductoConImagen = async (formData) => {
   // Enviar FormData sin establecer Content-Type para que el browser ponga el multipart boundary
+  const token = localStorage.getItem('token');
   const res = await fetch('http://localhost:8080/api/producto', {
     method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${token}`,
+    },
     body: formData,
   });
   if (!res.ok) throw new Error('Error al crear Producto con imagen');

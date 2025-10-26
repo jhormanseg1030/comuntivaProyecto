@@ -13,6 +13,7 @@ import ImgP2 from '../imagenes/ImgP2.jpg';
 import ImgP3 from '../imagenes/ImgP3.webp';
 import Pinea from '../imagenes/Pinea.jpg';
 import './Productos.css';
+import '../../styles/header.css';
 import Footer_Abajo from '../Vendedor/Footer_Abajo';
 
 function ProductosTi() {

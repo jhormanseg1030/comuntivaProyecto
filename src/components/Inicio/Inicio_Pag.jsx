@@ -12,6 +12,7 @@ import apoya from '../imagenes/apoya.jpeg';
 import unidos from '../imagenes/unidos.jpeg';
 import LisProduc from '../Productos/LisProduc';
 import './Inicio_Pag.css';
+import '../../styles/header.css';
 import Footer_Abajo from '../Vendedor/Footer_Abajo';
 
 function Inicio_Pag ()  {
@@ -27,7 +28,6 @@ function Inicio_Pag ()  {
             <Nav className="me-auto my-2 my-lg-0" navbarScroll>
               <Nav.Link className='h' href="/">Inicio</Nav.Link>
               <Nav.Link href="/Quienes somos">Quienes Somos</Nav.Link>
-              <Nav.Link href="/Tienda">Tiendas</Nav.Link>
               <Nav.Link href="#action4">Características</Nav.Link>
               <Nav.Link href="#action5">Ayuda</Nav.Link>
               <NavDropdown title="Categoría" id="navbarScrollingDropdown">

@@ -15,6 +15,7 @@ import Mercados8 from '../imagenes/Mercados8.jpg';
 import Tomates from '../imagenes/Tomates.jpg'
 import Platanos from '../imagenes/Platanos.jpg'
 import './Verdu.css';
+import '../../styles/header.css';
 import Footer_Abajo from '../Vendedor/Footer_Abajo';
 import Dropdown from 'react-bootstrap/Dropdown';
 function Verduras() {
