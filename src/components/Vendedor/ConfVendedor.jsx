@@ -9,7 +9,7 @@ import ProductosVendedor from './ProductosVendedor';
 import HistorialTi from '../Admin/HistorialTi';
 import ComprasVendedor from './ComprasVendedor';
 import ReportesVendedor from './ReportesVendedor';
-import GeneralTi from '../Tienda/GeneralTi';
+import GeneralTi from '../Admin/GeneralTi';
 import Footer_Abajo from './Footer_Abajo';
 import InicioVendedor from './InicioVendedor';
 
