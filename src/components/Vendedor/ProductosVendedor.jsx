@@ -92,6 +92,8 @@ function ProductosVendedor() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     setIsSubmitting(true);
+    setError(null); // Limpiar errores anteriores
+    
     try {
       const formData = new FormData();
       formData.append('nombre_Producto', nombreProducto);
@@ -101,13 +103,17 @@ function ProductosVendedor() {
       formData.append('id_medida', unidadId);
       formData.append('categoria', categoriaNueva);
       if (productImage) formData.append('imagen', productImage);
+      
       const resp = await crearProductoConImagen(formData);
+      
       // Recargar productos desde backend para asegurar persistencia
       const nuevos = await obtenerProductos();
       setProductos(nuevos);
       setSuccess('Producto creado correctamente');
       setTimeout(() => setSuccess(null), 3000);
       setShowForm(false);
+      
+      // Limpiar formulario
       setNombreProducto('');
       setValor('');
       setCantidad('');
@@ -118,7 +124,20 @@ function ProductosVendedor() {
       setImagePreview(null);
       fileInputRef.current.value = '';
     } catch (error) {
-      setError('Error al crear producto. Verifica tu sesión o conexión.');
+      console.error('Error completo:', error);
+      
+      // Mostrar mensaje de error más específico
+      if (error.message.includes('401')) {
+        setError('Tu sesión ha expirado. Por favor, inicia sesión nuevamente.');
+      } else if (error.message.includes('403')) {
+        setError('No tienes permisos para crear productos.');
+      } else if (error.message.includes('400')) {
+        setError('Los datos del producto son incorrectos. Verifica todos los campos.');
+      } else if (error.message.includes('500')) {
+        setError('Error del servidor. Por favor, intenta más tarde.');
+      } else {
+        setError('Error al crear producto: ' + error.message + '. Verifica tu sesión o conexión.');
+      }
     } finally {
       setIsSubmitting(false);
     }
