@@ -38,7 +38,6 @@ function App() {
         <EstadoSesion />
         <Routes>
         <Route path='/Login' element={<InicioSe></InicioSe>}></Route>
-        <Route path='/Admin' element={<HomeCli></HomeCli>}></Route>
         <Route path='/TiendaDonJuan' element={<HomeTienda></HomeTienda>}></Route>
         <Route path='/Segunda' element={<SegPrinci></SegPrinci>}></Route>
         <Route path='/Registro' element={<RegistrarUsu></RegistrarUsu>}></Route>
