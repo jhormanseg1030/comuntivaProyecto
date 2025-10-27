@@ -39,7 +39,7 @@ function App() {
         <Routes>
         <Route path='/Login' element={<InicioSe></InicioSe>}></Route>
         <Route path='/TiendaDonJuan' element={<HomeTienda></HomeTienda>}></Route>
-        <Route path='/Segunda' element={<SegPrinci></SegPrinci>}></Route>
+        <Route path='/SegPrincipal' element={<SegPrinci></SegPrinci>}></Route>
         <Route path='/Registro' element={<RegistrarUsu></RegistrarUsu>}></Route>
         <Route path='/ConfAdmin/*' element={<ConfAdmin></ConfAdmin>}></Route>
         <Route path='/Compra' element={<PagCompra></PagCompra>}></Route>
@@ -61,7 +61,6 @@ function App() {
         <Route path='listarUsu' element={<UsuarioList></UsuarioList>}></Route>
         <Route path='crearUsu' element={<CrearUsuario></CrearUsuario>}></Route>
         <Route path='Unidad' element ={<Unidad_Medida></Unidad_Medida>}></Route>
-
         </Route>
         <Route path='/formulari' element={<FormularioUsuario></FormularioUsuario>}></Route>
   <Route path='/ConfVendedor/*' element={<ConfVendedor />} />
