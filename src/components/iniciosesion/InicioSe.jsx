@@ -69,8 +69,12 @@ const InicioSe = () => {
         sessionStorage.removeItem('redirectAfterLogin');
         navigate(redirectPath);
       } else {
-        // Si no hay ruta guardada, redirigir a la página principal
-        navigate('/Segunda');
+        // Redirigir según el rol recibido
+        if (response.rol === 'Admin') {
+          navigate('/ConfAdmin');
+        } else {
+          navigate('/SegPrincipal');
+        }
       }
       
     } catch (err) {

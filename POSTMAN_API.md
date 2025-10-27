@@ -76,7 +76,228 @@
 
 ---
 
-**Notas:**
-- Cambia el puerto en la URL si tu backend usa otro.
-- Si tienes problemas de CORS, revisa la configuración de tu backend.
-- Si el endpoint requiere otros datos, adáptalos según tu API.
+# Pruebas de Backend con Postman (API Frontend)
+
+## 1. Iniciar el backend
+Asegúrate de que tu backend Spring Boot esté corriendo en `http://localhost:8080`.
+
+---
+
+## 2. Endpoints principales de la carpeta `api`
+
+### 2.1. BarrioApi
+**GET barrios**
+```
+GET http://localhost:8080/api/barrios
+```
+**POST crear barrio**
+```
+POST http://localhost:8080/api/barrios
+```
+**Body (JSON):**
+```json
+{
+  "nombre": "Barrio Nuevo"
+}
+```
+
+---
+
+### 2.2. DepartamentoApi
+**GET departamentos**
+```
+GET http://localhost:8080/api/departamentos
+```
+**POST crear departamento**
+```
+POST http://localhost:8080/api/departamentos
+```
+**Body (JSON):**
+```json
+{
+  "nombre": "Antioquia"
+}
+```
+
+---
+
+### 2.3. MunicipioApi
+**GET municipios**
+```
+GET http://localhost:8080/api/municipios
+```
+**POST crear municipio**
+```
+POST http://localhost:8080/api/municipios
+```
+**Body (JSON):**
+```json
+{
+  "nombre": "Medellín",
+  "departamentoId": 1
+}
+```
+
+---
+
+### 2.4. DireccionesApi
+**GET direcciones**
+```
+GET http://localhost:8080/api/direcciones
+```
+**POST crear dirección**
+```
+POST http://localhost:8080/api/direcciones
+```
+**Body (JSON):**
+```json
+{
+  "calle": "Calle 123",
+  "barrioId": 1,
+  "municipioId": 1
+}
+```
+
+---
+
+### 2.5. PedidosApi
+**GET pedidos**
+```
+GET http://localhost:8080/api/pedidos
+```
+**POST crear pedido**
+```
+POST http://localhost:8080/api/pedidos
+```
+**Body (JSON):**
+```json
+{
+  "usuarioId": 1,
+  "productoId": 2,
+  "cantidad": 5
+}
+```
+
+---
+
+### 2.6. ProductoApi
+**GET productos**
+```
+GET http://localhost:8080/api/productos
+```
+**POST crear producto**
+```
+POST http://localhost:8080/api/productos
+```
+**Body (JSON):**
+```json
+{
+  "nombre": "Manzana",
+  "precio": 1200,
+  "unidadMedidaId": 1
+}
+```
+
+---
+
+### 2.7. TiendaApi
+**GET tiendas**
+```
+GET http://localhost:8080/api/tiendas
+```
+**POST crear tienda**
+```
+POST http://localhost:8080/api/tiendas
+```
+**Body (JSON):**
+```json
+{
+  "nombre": "Tienda Don Juan",
+  "direccionId": 1
+}
+```
+
+---
+
+### 2.8. UsuarioApi
+**GET usuarios**
+```
+GET http://localhost:8080/api/usuario
+```
+**POST crear usuario**
+```
+POST http://localhost:8080/api/usuario
+```
+**Body (JSON):**
+```json
+{
+  "nombre": "Pedro",
+  "apellido": "Ramírez",
+  "correo": "pedro@example.com",
+  "numdocumento": 33333333,
+  "password": "pedro123",
+  "tipId": 1
+}
+```
+
+---
+
+### 2.9. UnidadMedidaApi
+**GET unidades de medida**
+```
+GET http://localhost:8080/api/unidadmedida
+```
+**POST crear unidad de medida**
+```
+POST http://localhost:8080/api/unidadmedida
+```
+**Body (JSON):**
+```json
+{
+  "nombre": "Kilogramo"
+}
+```
+
+---
+
+### 2.10. TipDocuApi
+**GET tipos de documento**
+```
+GET http://localhost:8080/api/tipodocu
+```
+
+---
+
+### 2.11. ViasApi
+**GET vías**
+```
+GET http://localhost:8080/api/vias
+```
+**POST crear vía**
+```
+POST http://localhost:8080/api/vias
+```
+**Body (JSON):**
+```json
+{
+  "nombre": "Avenida"
+}
+```
+
+---
+
+## 3. Autenticación
+Para endpoints protegidos, agrega el token en los headers:
+```
+Authorization: Bearer <token>
+```
+
+---
+
+## 4. Verificar errores
+- Prueba con datos incorrectos para validar el manejo de errores.
+- Verifica los mensajes de error y respuestas del backend.
+
+---
+
+¿Necesitas ejemplos para algún endpoint específico o para pruebas avanzadas? ¡Avísame!
