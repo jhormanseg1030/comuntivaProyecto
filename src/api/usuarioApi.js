@@ -73,13 +73,51 @@ const res = await fetch(`http://localhost:8080/api/usuario`);
 };
 
 export const crearUsuario = async (data) => {
-  const res = await fetch('http://localhost:8080/api/usuario', {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data),
-  });
-  if (!res.ok) throw new Error("Error al crear usuario");
-  return res.json();
+  try {
+    // Convertir tipId de string a número
+    const payload = {
+      ...data,
+      tipId: parseInt(data.tipId),           // "1" -> 1
+      telefono: parseInt(data.telefono),     // por si acaso
+      telefono2: parseInt(data.telefono2),   // por si acaso
+      numdocumento: parseInt(data.numdocumento) // por si acaso
+    };
+
+    console.log("Enviando al backend:", payload); // Debug
+
+    const res = await fetch('http://localhost:8080/api/usuario', {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+
+    if (!res.ok) {
+      const errorText = await res.text();
+      console.error("Error del servidor:", errorText);
+      
+      if (res.status === 400) {
+        if (errorText.includes("documento")) {
+          throw new Error("Ya existe un usuario con este número de documento");
+        }
+        if (errorText.includes("correo")) {
+          throw new Error("Ya existe un usuario con este correo");
+        }
+        throw new Error("Datos inválidos: " + errorText);
+      }
+      if (res.status === 500) {
+        throw new Error("Error en el servidor");
+      }
+      throw new Error("Error al crear usuario");
+    }
+
+    return await res.json();
+  } catch (error) {
+    console.error("Error en crearUsuario:", error);
+    if (error.message.includes("Failed to fetch") || error.message.includes("NetworkError")) {
+      throw new Error("No se pudo conectar con el servidor. Verifica que el backend esté corriendo.");
+    }
+    throw error;
+  }
 };
 
 

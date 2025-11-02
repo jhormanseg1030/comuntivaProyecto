@@ -70,7 +70,7 @@ const InicioSe = () => {
         navigate(redirectPath);
       } else {
         // Redirigir según el rol recibido
-        if (response.rol === 'Admin') {
+        if (response.rol === 'Administrador') {
           navigate('/ConfAdmin');
         } else {
           navigate('/SegPrincipal');
