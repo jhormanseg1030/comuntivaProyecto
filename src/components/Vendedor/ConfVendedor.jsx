@@ -12,6 +12,7 @@ import ReportesVendedor from './ReportesVendedor';
 import GeneralTi from '../Admin/GeneralTi';
 import Footer_Abajo from './Footer_Abajo';
 import InicioVendedor from './InicioVendedor';
+import VentasReport from './VentasReport';
 
 const ConfVendedor = () => {
   const [contenido, setContenido] = useState('Inicio');
@@ -40,16 +41,14 @@ const ConfVendedor = () => {
             <li onClick={() => manejarSeleccion('Productos')} className={contenido === 'Productos' ? 'active' : ''}>
               <Link className='nav-link1' to={'/ConfVendedor/productosvende'}>📦 Productos</Link>
             </li>
-
-            <li className="menu-section"><span className="section-title">📈 REPORTES</span></li>
             <li onClick={() => manejarSeleccion('Ventas')} className={contenido === 'Ventas' ? 'active' : ''}>
-              <Link className='nav-link1' to={'/ConfVendedor/ventas'}>📊 Ventas</Link>
+              <Link className='nav-link1' to={'/ConfVendedor/ventasreport'}>📊 Ventas</Link>
             </li>
             <li onClick={() => manejarSeleccion('Compras')} className={contenido === 'Compras' ? 'active' : ''}>
               <Link className='nav-link1' to={'/ConfVendedor/comprasvende'}>🧾 Compras</Link>
             </li>
             <li onClick={() => manejarSeleccion('Reportes')} className={contenido === 'Reportes' ? 'active' : ''}>
-              <Link className='nav-link1' to={'/ConfVendedor/reportes'}>📊 Reportes</Link>
+              <Link className='nav-link1' to={'/ConfVendedor/reportes'}>📑 Reportes</Link>
             </li>
 
             <li className="menu-section"><span className="section-title">⚙️ CONFIGURACIÓN</span></li>
@@ -64,7 +63,7 @@ const ConfVendedor = () => {
             <Route index element={<InicioVendedor />} />
             <Route path="pedidosvende" element={<PedidosVendedor />} />
             <Route path="productosvende" element={<ProductosVendedor />} />
-            <Route path="ventas" element={<HistorialTi />} />
+            <Route path="ventasreport" element={<VentasReport />} />
             <Route path="comprasvende" element={<ComprasVendedor />} />
             <Route path="reportes" element={<ReportesVendedor />} />
             <Route path="cuenta" element={<GeneralTi />} />

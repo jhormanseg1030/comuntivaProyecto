@@ -19,7 +19,7 @@ export const obtenerPedidosPorId = async (id) => {
   return res.json();
 };
 export const crearPedido = async (data) => {
-  const res = await fetch('http://localhost:8080/api/pedidos/crearemos', {
+  const res = await fetch('http://localhost:8080/api/pedidos', {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
