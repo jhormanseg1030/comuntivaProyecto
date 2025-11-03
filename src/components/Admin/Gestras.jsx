@@ -1,16 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import './Gestras.css';
 import logoConmutiva from '../imagenes/logo.jpg';
+import { obtenerVehiculos, obtenerCotizaciones, obtenerConfigFletes } from '../../api/transportApi';
+import ModalConexionFallida from '../ModalConexionFallida';
 
 const Gestras = () => {
   const [vehiculos, setVehiculos] = useState([]);
   const [cotizaciones, setCotizaciones] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [mostrarModalError, setMostrarModalError] = useState(false);
   const [vistaActiva, setVistaActiva] = useState('vehiculos'); 
   const [cotizacionSeleccionada, setCotizacionSeleccionada] = useState(null);
   const [mostrarDetalleCotizacion, setMostrarDetalleCotizacion] = useState(false);
 
-  const configVehiculos = {
+  const [configVehiculos, setConfigVehiculos] = useState({
     furgon: {
       nombre: 'Furgón',
       icono: '🚚',
@@ -29,17 +33,62 @@ const Gestras = () => {
       maxDistancia: 0,
       descripcion: 'Perfecto para grandes volúmenes y productos a granel'
     }
-  };
+  });
 
-  const vehiculosData = [];
-  const cotizacionesData = [];
-
+  // Cargar datos desde el backend
   useEffect(() => {
-    setTimeout(() => {
-      setVehiculos(vehiculosData);
-      setCotizaciones(cotizacionesData);
-      setLoading(false);
-    }, 1000);
+    const cargarDatos = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+
+        // Cargar configuración de fletes
+        const config = await obtenerConfigFletes();
+        if (config && config.vehiculos) {
+          setConfigVehiculos({
+            furgon: {
+              nombre: 'Furgón',
+              icono: '🚚',
+              capacidadKg: config.vehiculos.FURGON?.capacidadKg || 1500,
+              tarifaBase: config.vehiculos.FURGON?.tarifaBase || 0,
+              costoKm: config.vehiculos.FURGON?.costoPorKm || 0,
+              maxDistancia: config.vehiculos.FURGON?.maxDistancia || 0,
+              descripcion: config.vehiculos.FURGON?.descripcion || 'Ideal para cargas medianas'
+            },
+            van: {
+              nombre: 'Van de Carga',
+              icono: '🚐',
+              capacidadKg: config.vehiculos.VAN?.capacidadKg || 3000,
+              tarifaBase: config.vehiculos.VAN?.tarifaBase || 0,
+              costoKm: config.vehiculos.VAN?.costoPorKm || 0,
+              maxDistancia: config.vehiculos.VAN?.maxDistancia || 0,
+              descripcion: config.vehiculos.VAN?.descripcion || 'Perfecto para grandes volúmenes'
+            }
+          });
+        }
+
+        // Cargar vehículos
+        const vehiculosData = await obtenerVehiculos();
+        setVehiculos(vehiculosData || []);
+
+        // Cargar cotizaciones
+        const cotizacionesData = await obtenerCotizaciones();
+        setCotizaciones(cotizacionesData || []);
+
+      } catch (err) {
+        console.error('Error al cargar datos:', err);
+        setError(err.message);
+        
+        // Si es error de autenticación, mostrar modal
+        if (err.message.includes('No autorizado') || err.message.includes('autorización')) {
+          setMostrarModalError(true);
+        }
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    cargarDatos();
   }, []);
 
   const formatCurrency = (amount) => {
@@ -48,6 +97,34 @@ const Gestras = () => {
       currency: 'COP',
       minimumFractionDigits: 0
     }).format(amount);
+  };
+
+  // Mapear tipos de vehículo del backend (mayúsculas) a configuración local (minúsculas)
+  const mapearTipoVehiculo = (tipo) => {
+    if (!tipo) return 'furgon';
+    return tipo.toLowerCase();
+  };
+
+  // Mapear estados del backend (mayúsculas) a formato UI (minúsculas con guión bajo)
+  const mapearEstadoVehiculo = (estado) => {
+    if (!estado) return 'disponible';
+    const mapping = {
+      'DISPONIBLE': 'disponible',
+      'EN_RUTA': 'en_ruta',
+      'MANTENIMIENTO': 'mantenimiento'
+    };
+    return mapping[estado] || estado.toLowerCase();
+  };
+
+  const mapearEstadoCotizacion = (estado) => {
+    if (!estado) return 'pendiente';
+    const mapping = {
+      'PENDIENTE': 'pendiente',
+      'EN_PROCESO': 'en_proceso',
+      'COMPLETADO': 'completado',
+      'RECHAZADO': 'rechazado'
+    };
+    return mapping[estado] || estado.toLowerCase();
   };
 
   const getEstadoColor = (estado) => {
@@ -126,21 +203,21 @@ const Gestras = () => {
         <div className="stat-card">
           <div className="stat-icon">🚚</div>
           <div className="stat-info">
-            <h3>{vehiculos.filter(v => v.tipo === 'furgon').length}</h3>
+            <h3>{vehiculos.filter(v => mapearTipoVehiculo(v.tipo) === 'furgon').length}</h3>
             <p>Furgones</p>
           </div>
         </div>
         <div className="stat-card">
           <div className="stat-icon">🚐</div>
           <div className="stat-info">
-            <h3>{vehiculos.filter(v => v.tipo === 'van').length}</h3>
+            <h3>{vehiculos.filter(v => mapearTipoVehiculo(v.tipo) === 'van').length}</h3>
             <p>Vans</p>
           </div>
         </div>
         <div className="stat-card">
           <div className="stat-icon">💰</div>
           <div className="stat-info">
-            <h3>{formatCurrency(vehiculos.reduce((sum, v) => sum + v.ingresosMes, 0))}</h3>
+            <h3>{formatCurrency(vehiculos.reduce((sum, v) => sum + (v.ingresosMes || 0), 0))}</h3>
             <p>Ingresos Mensuales</p>
           </div>
         </div>
@@ -161,10 +238,10 @@ const Gestras = () => {
               <div className="header-stats">
                 <span className="stat-badge total">{vehiculos.length} total</span>
                 <span className="stat-badge disponible">
-                  {vehiculos.filter(v => v.estado === 'disponible').length} disponibles
+                  {vehiculos.filter(v => mapearEstadoVehiculo(v.estado) === 'disponible').length} disponibles
                 </span>
                 <span className="stat-badge ruta">
-                  {vehiculos.filter(v => v.estado === 'en_ruta').length} en ruta
+                  {vehiculos.filter(v => mapearEstadoVehiculo(v.estado) === 'en_ruta').length} en ruta
                 </span>
               </div>
             </div>
@@ -175,59 +252,64 @@ const Gestras = () => {
                   <p>No hay vehículos registrados</p>
                 </div>
               ) : (
-                vehiculos.map(vehiculo => (
-                  <div key={vehiculo.id} className={`vehiculo-card ${vehiculo.estado}`}>
-                    <div className="vehiculo-header">
-                      <div className="vehiculo-icono-tipo">
-                        <div className="vehiculo-icono">
-                          {configVehiculos[vehiculo.tipo].icono}
+                vehiculos.map(vehiculo => {
+                  const tipoVehiculo = mapearTipoVehiculo(vehiculo.tipo);
+                  const estadoVehiculo = mapearEstadoVehiculo(vehiculo.estado);
+                  
+                  return (
+                    <div key={vehiculo.id} className={`vehiculo-card ${estadoVehiculo}`}>
+                      <div className="vehiculo-header">
+                        <div className="vehiculo-icono-tipo">
+                          <div className="vehiculo-icono">
+                            {configVehiculos[tipoVehiculo].icono}
+                          </div>
+                          <div className="vehiculo-tipo">
+                            {configVehiculos[tipoVehiculo].nombre}
+                          </div>
                         </div>
-                        <div className="vehiculo-tipo">
-                          {configVehiculos[vehiculo.tipo].nombre}
+                        <div className={`estado-badge ${getEstadoColor(estadoVehiculo)}`}>
+                          {getEstadoTexto(estadoVehiculo)}
                         </div>
                       </div>
-                      <div className={`estado-badge ${getEstadoColor(vehiculo.estado)}`}>
-                        {getEstadoTexto(vehiculo.estado)}
-                      </div>
-                    </div>
                     
-                    <div className="vehiculo-info">
-                      <h4>{vehiculo.nombre}</h4>
-                      <p className="vehiculo-placa">{vehiculo.placa}</p>
-                    </div>
+                      <div className="vehiculo-info">
+                        <h4>{vehiculo.nombre}</h4>
+                        <p className="vehiculo-placa">{vehiculo.placa}</p>
+                      </div>
 
-                    <div className="vehiculo-detalles">
-                      <div className="detalle-fila">
-                        <span className="detalle-label">Conductor:</span>
-                        <span className="detalle-value">{vehiculo.conductor}</span>
+                      <div className="vehiculo-detalles">
+                        <div className="detalle-fila">
+                          <span className="detalle-label">Conductor:</span>
+                          <span className="detalle-value">{vehiculo.conductor}</span>
+                        </div>
+                        <div className="detalle-fila">
+                          <span className="detalle-label">Capacidad:</span>
+                          <span className="detalle-value">{vehiculo.capacidadKg} kg</span>
+                        </div>
+                        <div className="detalle-fila">
+                          <span className="detalle-label">Viajes/Mes:</span>
+                          <span className="detalle-value">{vehiculo.viajesMes || 0}</span>
+                        </div>
+                        <div className="detalle-fila">
+                          <span className="detalle-label">Ingresos:</span>
+                          <span className="detalle-value">{formatCurrency(vehiculo.ingresosMes || 0)}</span>
+                        </div>
+                        <div className="detalle-fila">
+                          <span className="detalle-label">Ubicación:</span>
+                          <span className="detalle-value ubicacion">{vehiculo.ubicacion || 'N/A'}</span>
+                        </div>
                       </div>
-                      <div className="detalle-fila">
-                        <span className="detalle-label">Capacidad:</span>
-                        <span className="detalle-value">{vehiculo.capacidad}</span>
-                      </div>
-                      <div className="detalle-fila">
-                        <span className="detalle-label">Viajes/Mes:</span>
-                        <span className="detalle-value">{vehiculo.viajesMes}</span>
-                      </div>
-                      <div className="detalle-fila">
-                        <span className="detalle-label">Ingresos:</span>
-                        <span className="detalle-value">{formatCurrency(vehiculo.ingresosMes)}</span>
-                      </div>
-                      <div className="detalle-fila">
-                        <span className="detalle-label">Ubicación:</span>
-                        <span className="detalle-value ubicacion">{vehiculo.ubicacion}</span>
+                      
+                      <div className="vehiculo-acciones">
+                        {vehiculo.mantenimiento && (
+                          <button className="btn btn-sm btn-warning">
+                            🔧 En Mantenimiento
+                          </button>
+                        )}
                       </div>
                     </div>
-                    
-                    <div className="vehiculo-acciones">
-                      {vehiculo.mantenimiento && (
-                        <button className="btn btn-sm btn-warning">
-                          🔧 En Mantenimiento
-                        </button>
-                      )}
-                    </div>
-                  </div>
-                ))
+                  );
+                })
               )}
             </div>
           </div>
@@ -239,10 +321,10 @@ const Gestras = () => {
               <div className="header-stats">
                 <span className="stat-badge total">{cotizaciones.length} total</span>
                 <span className="stat-badge completado">
-                  {cotizaciones.filter(c => c.estado === 'completado').length} completados
+                  {cotizaciones.filter(c => mapearEstadoCotizacion(c.estado) === 'completado').length} completados
                 </span>
                 <span className="stat-badge proceso">
-                  {cotizaciones.filter(c => c.estado === 'en_proceso').length} en proceso
+                  {cotizaciones.filter(c => mapearEstadoCotizacion(c.estado) === 'en_proceso').length} en proceso
                 </span>
               </div>
             </div>
@@ -270,43 +352,49 @@ const Gestras = () => {
                         </td>
                       </tr>
                     ) : (
-                      cotizaciones.map(cotizacion => (
-                        <tr key={cotizacion.id}>
-                          <td>{cotizacion.fecha}</td>
-                          <td>
-                            <strong>{cotizacion.producto}</strong>
-                            <br />
-                            <small>{cotizacion.peso} kg</small>
-                          </td>
-                          <td>
-                            <span className="badge vehiculo-badge">
-                              {configVehiculos[cotizacion.vehiculo]?.icono} {configVehiculos[cotizacion.vehiculo]?.nombre}
-                            </span>
-                          </td>
-                          <td>
-                            {cotizacion.origen} → {cotizacion.destino}
-                          </td>
-                          <td>{cotizacion.distancia} km</td>
-                          <td className="fw-bold text-success">
-                            {cotizacion.total > 0 ? formatCurrency(cotizacion.total) : 'N/A'}
-                          </td>
-                          <td>
-                            <span className={`badge badge-estado estado-${getEstadoCotizacionColor(cotizacion.estado)}`}>
-                              {cotizacion.estado}
-                            </span>
-                          </td>
-                          <td>
-                            <div className="acciones-cotizacion">
-                              <button 
-                                className="btn btn-sm btn-info"
-                                onClick={() => leerCotizacion(cotizacion)}
-                              >
-                                👁️ Leer
-                              </button>
-                            </div>
-                          </td>
-                        </tr>
-                      ))
+                      cotizaciones.map(cotizacion => {
+                        const tipoVehiculo = mapearTipoVehiculo(cotizacion.tipoVehiculo);
+                        const estadoCotizacion = mapearEstadoCotizacion(cotizacion.estado);
+                        const fechaFormateada = cotizacion.fecha ? new Date(cotizacion.fecha).toLocaleDateString('es-CO') : 'N/A';
+                        
+                        return (
+                          <tr key={cotizacion.id}>
+                            <td>{fechaFormateada}</td>
+                            <td>
+                              <strong>{cotizacion.producto}</strong>
+                              <br />
+                              <small>{cotizacion.pesoKg} kg</small>
+                            </td>
+                            <td>
+                              <span className="badge vehiculo-badge">
+                                {configVehiculos[tipoVehiculo]?.icono} {configVehiculos[tipoVehiculo]?.nombre}
+                              </span>
+                            </td>
+                            <td>
+                              {cotizacion.origen} → {cotizacion.destino}
+                            </td>
+                            <td>{cotizacion.distanciaKm} km</td>
+                            <td className="fw-bold text-success">
+                              {cotizacion.total > 0 ? formatCurrency(cotizacion.total) : 'N/A'}
+                            </td>
+                            <td>
+                              <span className={`badge badge-estado estado-${getEstadoCotizacionColor(estadoCotizacion)}`}>
+                                {estadoCotizacion.replace('_', ' ')}
+                              </span>
+                            </td>
+                            <td>
+                              <div className="acciones-cotizacion">
+                                <button 
+                                  className="btn btn-sm btn-info"
+                                  onClick={() => leerCotizacion(cotizacion)}
+                                >
+                                  👁️ Leer
+                                </button>
+                              </div>
+                            </td>
+                          </tr>
+                        );
+                      })
                     )}
                   </tbody>
                 </table>
@@ -315,119 +403,138 @@ const Gestras = () => {
           </div>
         )}
       </div>
-      {mostrarDetalleCotizacion && cotizacionSeleccionada && (
-        <div className="modal-overlay" onClick={cerrarDetalleCotizacion}>
-          <div className="modal-content cotizacion-modal" onClick={(e) => e.stopPropagation()}>
-            <div className="modal-header">
-              <h3>📋 Detalle de Cotización #{cotizacionSeleccionada.id}</h3>
-              <button className="btn-close" onClick={cerrarDetalleCotizacion}>×</button>
-            </div>
-            <div className="modal-body">
-              <div className="cotizacion-detalle">
-                <div className="detalle-seccion">
-                  <h4>Información General</h4>
-                  <div className="detalle-grid">
-                    <div className="detalle-item">
-                      <span className="detalle-label">Fecha:</span>
-                      <span className="detalle-value">{cotizacionSeleccionada.fecha}</span>
-                    </div>
-                    <div className="detalle-item">
-                      <span className="detalle-label">Producto:</span>
-                      <span className="detalle-value">{cotizacionSeleccionada.producto}</span>
-                    </div>
-                    <div className="detalle-item">
-                      <span className="detalle-label">Peso:</span>
-                      <span className="detalle-value">{cotizacionSeleccionada.peso} kg</span>
-                    </div>
-                    <div className="detalle-item">
-                      <span className="detalle-label">Vehículo:</span>
-                      <span className="detalle-value">
-                        {configVehiculos[cotizacionSeleccionada.vehiculo]?.icono} 
-                        {configVehiculos[cotizacionSeleccionada.vehiculo]?.nombre}
-                      </span>
-                    </div>
-                    <div className="detalle-item">
-                      <span className="detalle-label">Ruta:</span>
-                      <span className="detalle-value">
-                        {cotizacionSeleccionada.origen} → {cotizacionSeleccionada.destino}
-                      </span>
-                    </div>
-                    <div className="detalle-item">
-                      <span className="detalle-label">Distancia:</span>
-                      <span className="detalle-value">{cotizacionSeleccionada.distancia} km</span>
-                    </div>
-                    <div className="detalle-item">
-                      <span className="detalle-label">Estado:</span>
-                      <span className={`badge badge-estado estado-${getEstadoCotizacionColor(cotizacionSeleccionada.estado)}`}>
-                        {cotizacionSeleccionada.estado}
-                      </span>
-                    </div>
-                  </div>
-                </div>
+      {mostrarDetalleCotizacion && cotizacionSeleccionada && (() => {
+        const tipoVehiculo = mapearTipoVehiculo(cotizacionSeleccionada.tipoVehiculo);
+        const estadoCotizacion = mapearEstadoCotizacion(cotizacionSeleccionada.estado);
+        const fechaFormateada = cotizacionSeleccionada.fecha ? 
+          new Date(cotizacionSeleccionada.fecha).toLocaleDateString('es-CO', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+          }) : 'N/A';
 
-                {cotizacionSeleccionada.estado !== 'rechazado' ? (
+        return (
+          <div className="modal-overlay" onClick={cerrarDetalleCotizacion}>
+            <div className="modal-content cotizacion-modal" onClick={(e) => e.stopPropagation()}>
+              <div className="modal-header">
+                <h3>📋 Detalle de Cotización #{cotizacionSeleccionada.id}</h3>
+                <button className="btn-close" onClick={cerrarDetalleCotizacion}>×</button>
+              </div>
+              <div className="modal-body">
+                <div className="cotizacion-detalle">
                   <div className="detalle-seccion">
-                    <h4>💰 Desglose de Costos</h4>
-                    <div className="costos-lista">
-                      <div className="costo-item">
-                        <span>Tarifa Base:</span>
-                        <span>{formatCurrency(cotizacionSeleccionada.detalles.base)}</span>
+                    <h4>Información General</h4>
+                    <div className="detalle-grid">
+                      <div className="detalle-item">
+                        <span className="detalle-label">Fecha:</span>
+                        <span className="detalle-value">{fechaFormateada}</span>
                       </div>
-                      <div className="costo-item">
-                        <span>Por Distancia:</span>
-                        <span>{formatCurrency(cotizacionSeleccionada.detalles.distancia)}</span>
+                      <div className="detalle-item">
+                        <span className="detalle-label">Producto:</span>
+                        <span className="detalle-value">{cotizacionSeleccionada.producto}</span>
                       </div>
-                      <div className="costo-item">
-                        <span>Seguro (2%):</span>
-                        <span>{formatCurrency(cotizacionSeleccionada.detalles.seguro)}</span>
+                      <div className="detalle-item">
+                        <span className="detalle-label">Peso:</span>
+                        <span className="detalle-value">{cotizacionSeleccionada.pesoKg} kg</span>
                       </div>
-                      <div className="costo-item">
-                        <span>Peajes Estimados:</span>
-                        <span>{formatCurrency(cotizacionSeleccionada.detalles.peajes)}</span>
+                      <div className="detalle-item">
+                        <span className="detalle-label">Vehículo:</span>
+                        <span className="detalle-value">
+                          {configVehiculos[tipoVehiculo]?.icono} 
+                          {configVehiculos[tipoVehiculo]?.nombre}
+                        </span>
                       </div>
-                      {cotizacionSeleccionada.detalles.urgencia > 0 && (
-                        <div className="costo-item">
-                          <span>Servicio Urgente:</span>
-                          <span>{formatCurrency(cotizacionSeleccionada.detalles.urgencia)}</span>
-                        </div>
-                      )}
-                      {cotizacionSeleccionada.detalles.factorCarga > 1 && (
-                        <div className="costo-item">
-                          <span>Recargo carga pesada:</span>
-                          <span>+20%</span>
-                        </div>
-                      )}
-                      <div className="costo-item subtotal">
-                        <span>Subtotal:</span>
-                        <span>{formatCurrency(cotizacionSeleccionada.detalles.subtotal)}</span>
+                      <div className="detalle-item">
+                        <span className="detalle-label">Ruta:</span>
+                        <span className="detalle-value">
+                          {cotizacionSeleccionada.origen} → {cotizacionSeleccionada.destino}
+                        </span>
                       </div>
-                      <div className="costo-item">
-                        <span>IVA (19%):</span>
-                        <span>{formatCurrency(cotizacionSeleccionada.detalles.iva)}</span>
+                      <div className="detalle-item">
+                        <span className="detalle-label">Distancia:</span>
+                        <span className="detalle-value">{cotizacionSeleccionada.distanciaKm} km</span>
                       </div>
-                      <div className="costo-item total">
-                        <span>TOTAL:</span>
-                        <span className="texto-total">{formatCurrency(cotizacionSeleccionada.total)}</span>
+                      <div className="detalle-item">
+                        <span className="detalle-label">Estado:</span>
+                        <span className={`badge badge-estado estado-${getEstadoCotizacionColor(estadoCotizacion)}`}>
+                          {estadoCotizacion.replace('_', ' ')}
+                        </span>
                       </div>
                     </div>
                   </div>
-                ) : (
-                  <div className="detalle-seccion">
-                    <h4>❌ Motivo de Rechazo</h4>
-                    <div className="motivo-rechazo">
-                      <p>{cotizacionSeleccionada.detalles.motivo}</p>
+
+                  {estadoCotizacion !== 'rechazado' && cotizacionSeleccionada.detalles ? (
+                    <div className="detalle-seccion">
+                      <h4>💰 Desglose de Costos</h4>
+                      <div className="costos-lista">
+                        <div className="costo-item">
+                          <span>Tarifa Base:</span>
+                          <span>{formatCurrency(cotizacionSeleccionada.detalles.base || 0)}</span>
+                        </div>
+                        <div className="costo-item">
+                          <span>Por Distancia:</span>
+                          <span>{formatCurrency(cotizacionSeleccionada.detalles.distancia || 0)}</span>
+                        </div>
+                        <div className="costo-item">
+                          <span>Seguro (2%):</span>
+                          <span>{formatCurrency(cotizacionSeleccionada.detalles.seguro || 0)}</span>
+                        </div>
+                        <div className="costo-item">
+                          <span>Peajes Estimados:</span>
+                          <span>{formatCurrency(cotizacionSeleccionada.detalles.peajes || 0)}</span>
+                        </div>
+                        {cotizacionSeleccionada.detalles.urgencia > 0 && (
+                          <div className="costo-item">
+                            <span>Servicio Urgente:</span>
+                            <span>{formatCurrency(cotizacionSeleccionada.detalles.urgencia)}</span>
+                          </div>
+                        )}
+                        {cotizacionSeleccionada.detalles.factorCarga > 1 && (
+                          <div className="costo-item">
+                            <span>Recargo carga pesada:</span>
+                            <span>+{((cotizacionSeleccionada.detalles.factorCarga - 1) * 100).toFixed(0)}%</span>
+                          </div>
+                        )}
+                        <div className="costo-item subtotal">
+                          <span>Subtotal:</span>
+                          <span>{formatCurrency(cotizacionSeleccionada.detalles.subtotal || 0)}</span>
+                        </div>
+                        <div className="costo-item">
+                          <span>IVA (19%):</span>
+                          <span>{formatCurrency(cotizacionSeleccionada.detalles.iva || 0)}</span>
+                        </div>
+                        <div className="costo-item total">
+                          <span>TOTAL:</span>
+                          <span className="texto-total">{formatCurrency(cotizacionSeleccionada.total || 0)}</span>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                )}
+                  ) : (
+                    <div className="detalle-seccion">
+                      <h4>❌ Motivo de Rechazo</h4>
+                      <div className="motivo-rechazo">
+                        <p>{cotizacionSeleccionada.motivoRechazo || 'No especificado'}</p>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+              <div className="modal-footer">
+                <button className="btn btn-secondary" onClick={cerrarDetalleCotizacion}>
+                  Cerrar
+                </button>
               </div>
             </div>
-            <div className="modal-footer">
-              <button className="btn btn-secondary" onClick={cerrarDetalleCotizacion}>
-                Cerrar
-              </button>
-            </div>
           </div>
-        </div>
+        );
+      })()}
+
+      {mostrarModalError && (
+        <ModalConexionFallida 
+          onClose={() => setMostrarModalError(false)}
+        />
       )}
     </div>
   );
