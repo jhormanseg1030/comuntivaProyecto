@@ -1,6 +1,9 @@
-// Obtener lista de compras
+// Obtener lista de compras (requiere token)
 export const obtenerCompras = async () => {
-  const res = await fetch('http://localhost:8080/api/compras');
+  const token = localStorage.getItem('token');
+  const res = await fetch('http://localhost:8080/api/compras', {
+    headers: token ? { 'Authorization': `Bearer ${token}` } : {},
+  });
   if (!res.ok) {
     throw new Error('Error al obtener compras');
   }
@@ -9,8 +12,10 @@ export const obtenerCompras = async () => {
 
 // Obtener compra por ID
 export const obtenerCompraPorId = async (id) => {
+  const token = localStorage.getItem('token');
   const res = await fetch(`http://localhost:8080/api/compras/${id}`, {
     method: 'GET',
+    headers: token ? { 'Authorization': `Bearer ${token}` } : {},
   });
   if (!res.ok) throw new Error('Compra no encontrada');
   return res.json();

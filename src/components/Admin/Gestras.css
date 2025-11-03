@@ -738,3 +738,16 @@
     font-size: 0.7rem;
   }
 }
+
+.no-data-message {
+  text-align: center;
+  padding: 40px;
+  color: #6c757d;
+  font-style: italic;
+  grid-column: 1 / -1;
+}
+
+.no-data-message p {
+  margin: 0;
+  font-size: 1.1rem;
+}

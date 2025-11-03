@@ -1,56 +1,38 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import './Hist_Pag.css';
+import { obtenerCompras } from '../../api/compraApi';
+import { obtenerTiposPago } from '../../api/tipoPagoApi';
 
 const Hist_Pag = () => {
-  const [currentMonth, setCurrentMonth] = useState('2024-01');
+  const [currentMonth, setCurrentMonth] = useState('');
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
+  const [compras, setCompras] = useState([]);
+  const [tiposPago, setTiposPago] = useState([]);
 
-  const monthlyData = [
-    {
-      month: '2024-01',
-      label: 'Enero 2024',
-      methods: {
-        'Nequi': { percentage: 45, transactions: 560, amount: 2061000 },
-        'Daviplata': { percentage: 25, transactions: 311, amount: 1145000 },
-        'Tarjeta': { percentage: 20, transactions: 249, amount: 916000 },
-        'Efecty': { percentage: 10, transactions: 125, amount: 460000 }
-      },
-      total: { transactions: 1245, amount: 4582000 }
-    },
-    {
-      month: '2023-12',
-      label: 'Diciembre 2023',
-      methods: {
-        'Nequi': { percentage: 40, transactions: 480, amount: 1640000 },
-        'Daviplata': { percentage: 25, transactions: 300, amount: 1025000 },
-        'Tarjeta': { percentage: 23, transactions: 276, amount: 943000 },
-        'Efecty': { percentage: 12, transactions: 144, amount: 492000 }
-      },
-      total: { transactions: 1200, amount: 4100000 }
-    },
-    {
-      month: '2023-11',
-      label: 'Noviembre 2023',
-      methods: {
-        'Nequi': { percentage: 38, transactions: 456, amount: 1456000 },
-        'Daviplata': { percentage: 27, transactions: 324, amount: 1036800 },
-        'Tarjeta': { percentage: 22, transactions: 264, amount: 844800 },
-        'Efecty': { percentage: 13, transactions: 156, amount: 499200 }
-      },
-      total: { transactions: 1200, amount: 3836800 }
-    },
-    {
-      month: '2023-10',
-      label: 'Octubre 2023',
-      methods: {
-        'Nequi': { percentage: 35, transactions: 420, amount: 1260000 },
-        'Daviplata': { percentage: 28, transactions: 336, amount: 1008000 },
-        'Tarjeta': { percentage: 24, transactions: 288, amount: 864000 },
-        'Efecty': { percentage: 13, transactions: 156, amount: 468000 }
-      },
-      total: { transactions: 1200, amount: 3600000 }
+  // Helper: normalizar nombre de método a las 4 llaves esperadas
+  const normalizeMethodName = (raw) => {
+    if (!raw) return null;
+    const name = String(raw).toLowerCase();
+    if (name.includes('nequi')) return 'Nequi';
+    if (name.includes('davi')) return 'Daviplata';
+    if (name.includes('tarj') || name.includes('credito') || name.includes('crédito') || name.includes('debito') || name.includes('débito') || name.includes('card')) return 'Tarjeta';
+    if (name.includes('efecty') || name.includes('efectivo')) return 'Efecty';
+    return null; // ignorar desconocidos
+  };
+
+  // Últimos 3 meses relativos a hoy
+  const lastThreeMonths = useMemo(() => {
+    const now = new Date();
+    const months = [];
+    for (let i = 3; i >= 1; i--) {
+      const d = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth() - i, 1));
+      const ym = `${d.getUTCFullYear()}-${String(d.getUTCMonth() + 1).padStart(2, '0')}`;
+      const label = d.toLocaleString('es-ES', { month: 'long', year: 'numeric', timeZone: 'UTC' });
+      months.push({ key: ym, label: capitalize(label) });
     }
-  ];
+    return months;
+  }, []);
 
   const paymentMethods = {
     'Nequi': { color: '#9128ac', icon: '📱', name: 'Nequi' },
@@ -59,41 +41,129 @@ const Hist_Pag = () => {
     'Efecty': { color: '#28a745', icon: '💰', name: 'Efecty' }
   };
 
+  // Inicializar selección al mes más reciente
   useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 1000);
+    if (lastThreeMonths.length && !currentMonth) {
+      setCurrentMonth(lastThreeMonths[lastThreeMonths.length - 1].key);
+    }
+  }, [lastThreeMonths, currentMonth]);
+
+  // Cargar datos desde backend
+  useEffect(() => {
+    let mounted = true;
+    const load = async () => {
+      try {
+        setLoading(true);
+        setError('');
+        const [tpagos, comps] = await Promise.all([
+          obtenerTiposPago().catch(async () => []),
+          obtenerCompras(),
+        ]);
+        if (!mounted) return;
+        setTiposPago(tpagos || []);
+        setCompras(comps || []);
+      } catch (e) {
+        if (!mounted) return;
+        setError(e?.message || 'Error al cargar datos');
+      } finally {
+        if (mounted) setLoading(false);
+      }
+    };
+    load();
+    return () => { mounted = false; };
   }, []);
 
-  const currentData = monthlyData.find(data => data.month === currentMonth) || monthlyData[0];
-  const previousData = monthlyData.find(data => data.month === getPreviousMonth(currentMonth));
+  // Mapa id_tipago -> nombre normalizado
+  const metodoPorId = useMemo(() => {
+    const map = new Map();
+    tiposPago.forEach(tp => {
+      const key = tp?.id_tpag ?? tp?.id_tipago;
+      const val = normalizeMethodName(tp?.tip ?? tp?.tipos);
+      if (key != null && val) map.set(key, val);
+    });
+    return map;
+  }, [tiposPago]);
 
-  function getPreviousMonth(currentMonth) {
-    const [year, month] = currentMonth.split('-').map(Number);
-    let prevMonth = month - 1;
-    let prevYear = year;
-    
-    if (prevMonth === 0) {
-      prevMonth = 12;
-      prevYear = year - 1;
-    }
-    
-    return `${prevYear}-${prevMonth.toString().padStart(2, '0')}`;
+  // Construcción de monthlyData a partir de compras
+  const monthlyData = useMemo(() => {
+    const baseByMonth = new Map();
+    lastThreeMonths.forEach(m => {
+      baseByMonth.set(m.key, {
+        month: m.key,
+        label: m.label,
+        methods: {
+          Nequi: { percentage: 0, transactions: 0, amount: 0 },
+          Daviplata: { percentage: 0, transactions: 0, amount: 0 },
+          Tarjeta: { percentage: 0, transactions: 0, amount: 0 },
+          Efecty: { percentage: 0, transactions: 0, amount: 0 }
+        },
+        total: { transactions: 0, amount: 0 }
+      });
+    });
+
+    const getMonthKey = (fec_comp) => {
+      if (!fec_comp) return null;
+      if (typeof fec_comp === 'string' && fec_comp.length >= 7) return fec_comp.substring(0,7);
+      const d = new Date(fec_comp);
+      if (isNaN(d.getTime())) return null;
+      return `${d.getUTCFullYear()}-${String(d.getUTCMonth()+1).padStart(2,'0')}`;
+    };
+
+    compras.forEach(c => {
+      const mk = getMonthKey(c?.fec_comp);
+      if (!baseByMonth.has(mk)) return;
+      const metodo = metodoPorId.get(c?.id_tipago) ?? null;
+      const norm = metodo ? normalizeMethodName(metodo) : null;
+      if (!norm || !baseByMonth.get(mk).methods[norm]) return;
+      const m = baseByMonth.get(mk);
+      m.total.transactions += 1;
+      m.total.amount += Number(c?.tot ?? 0);
+      m.methods[norm].transactions += 1;
+      m.methods[norm].amount += Number(c?.tot ?? 0);
+    });
+
+    baseByMonth.forEach(m => {
+      const totalTx = m.total.transactions || 0;
+      if (totalTx > 0) {
+        Object.values(m.methods).forEach(v => {
+          v.percentage = Math.round((v.transactions / totalTx) * 100);
+        });
+      }
+    });
+
+    return Array.from(baseByMonth.values());
+  }, [compras, metodoPorId, lastThreeMonths]);
+
+  const currentData = monthlyData.find(data => data.month === currentMonth) || monthlyData[monthlyData.length - 1] || {
+    month: '', label: 'Seleccionar mes', methods: { Nequi: {}, Daviplata: {}, Tarjeta: {}, Efecty: {} }, total: { transactions: 0, amount: 0 }
+  };
+  const previousData = useMemo(() => {
+    const prevKey = getPreviousMonth(currentMonth, lastThreeMonths.map(m => m.key));
+    return monthlyData.find(m => m.month === prevKey) || null;
+  }, [currentMonth, lastThreeMonths, monthlyData]);
+
+  function getPreviousMonth(currentMonth, allowedKeys = []) {
+    if (!currentMonth) return '';
+    const idx = allowedKeys.indexOf(currentMonth);
+    if (idx > 0) return allowedKeys[idx - 1];
+    const [y, m] = currentMonth.split('-').map(Number);
+    const d = new Date(Date.UTC(y, (m - 1) - 1, 1));
+    return `${d.getUTCFullYear()}-${String(d.getUTCMonth() + 1).padStart(2, '0')}`;
   }
 
   const calculateTrends = () => {
     const trends = {};
     
     Object.keys(paymentMethods).forEach(method => {
-      const current = currentData.methods[method]?.percentage || 0;
-      const previous = previousData?.methods[method]?.percentage || 0;
-      const change = current - previous;
-      
+      const currPct = currentData?.methods?.[method]?.percentage || 0;
+      const prevPct = previousData?.methods?.[method]?.percentage || 0;
+      const change = Math.round((currPct - prevPct) * 10) / 10;
+      const trend = change > 0 ? 'up' : change < 0 ? 'down' : 'stable';
       trends[method] = {
         change,
-        trend: change > 0 ? 'up' : change < 0 ? 'down' : 'stable',
-        current,
-        previous
+        trend,
+        current: currPct,
+        previous: prevPct
       };
     });
     
@@ -126,11 +196,24 @@ const Hist_Pag = () => {
     }
   };
 
+  function capitalize(str) {
+    if (!str) return str;
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  }
+
   if (loading) {
     return (
       <div className="payment-history-loading">
         <div className="loading-spinner"></div>
         <p>Cargando historial de pagos...</p>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="payment-history-loading">
+        <p style={{color: '#dc3545'}}>Error: {error}</p>
       </div>
     );
   }
@@ -148,10 +231,8 @@ const Hist_Pag = () => {
                 onChange={(e) => setCurrentMonth(e.target.value)}
                 className="form-select month-select"
               >
-                {monthlyData.map(month => (
-                  <option key={month.month} value={month.month}>
-                    {month.label}
-                  </option>
+                {lastThreeMonths.map(m => (
+                  <option key={m.key} value={m.key}>{m.label}</option>
                 ))}
               </select>
             </div>
@@ -168,7 +249,7 @@ const Hist_Pag = () => {
                 <h3>💰 Volumen Total</h3>
                 <div className="total-amount">{formatCurrency(currentData.total.amount)}</div>
                 <div className="summary-details">
-                  {currentData.total.transactions} transacciones en {currentData.label}
+                  {currentData.total.transactions} transacciones
                 </div>
               </div>
               
@@ -176,11 +257,16 @@ const Hist_Pag = () => {
                 <h3>📊 Métricas Clave</h3>
                 <div className="metrics-grid">
                   <div className="metric">
-                    <span className="metric-value">{Math.round(currentData.total.amount / currentData.total.transactions).toLocaleString()}</span>
+                    <span className="metric-value">{formatCurrency((currentData.total.transactions > 0 ? Math.round(currentData.total.amount / currentData.total.transactions) : 0))}</span>
                     <span className="metric-label">Ticket Promedio</span>
                   </div>
                   <div className="metric">
-                    <span className="metric-value">+12%</span>
+                    <span className="metric-value">{(() => {
+                      const prev = (monthlyData.find(m => m.month === getPreviousMonth(currentMonth, lastThreeMonths.map(x=>x.key)))?.total?.amount) || 0;
+                      const curr = currentData.total.amount || 0;
+                      const growth = prev > 0 ? Math.round(((curr - prev) / prev) * 100) : 0;
+                      return `${growth}%`;
+                    })()}</span>
                     <span className="metric-label">Crecimiento Mensual</span>
                   </div>
                 </div>
@@ -267,13 +353,20 @@ const Hist_Pag = () => {
                       <td className="fw-bold text-success">{formatCurrency(monthData.total.amount)}</td>
                     </tr>
                   ))}
+                  {monthlyData.every(m => m.total.transactions === 0) && (
+                    <tr>
+                      <td colSpan="6" style={{textAlign: 'center', padding: '20px', color: '#6c757d'}}>
+                        No hay datos disponibles
+                      </td>
+                    </tr>
+                  )}
                 </tbody>
               </table>
             </div>
           </div>
 
           <div className="ranking-section">
-            <h3>🏆 Ranking de Métodos de Pago - {currentData.label}</h3>
+            <h3>🏆 Ranking de Métodos de Pago</h3>
             <div className="ranking-cards">
               {Object.entries(currentData.methods)
                 .sort(([,a], [,b]) => b.percentage - a.percentage)

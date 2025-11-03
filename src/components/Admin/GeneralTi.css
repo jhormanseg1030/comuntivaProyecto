@@ -13,7 +13,7 @@
     font-size: 2.2rem;
 }
 
-.comunicaciones-grid {
+.general-ti-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: 25px;
@@ -21,7 +21,7 @@
     margin: 0 auto;
 }
 
-.carta-comunicacion {
+.general-ti-card {
     background: white;
     border-radius: 15px;
     box-shadow: 0 5px 20px rgba(0,0,0,0.1);
@@ -31,42 +31,42 @@
     overflow: hidden;
 }
 
-.carta-principal:hover {
+.general-ti-main-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 25px rgba(0,0,0,0.15);
 }
 
-.carta-header {
+.general-ti-card-header {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
     padding: 25px;
     border-radius: 15px 15px 0 0;
 }
 
-.carta-header h3 {
+.general-ti-card-header h3 {
     margin: 0;
     font-size: 1.4rem;
     font-weight: 700;
     text-align: center;
 }
 
-.carta-contenido {
+.general-ti-card-content {
     padding: 30px;
 }
 
-.info-preview p {
+.general-ti-info-preview p {
     margin: 15px 0;
     font-size: 1.1rem;
     color: #495057;
     line-height: 1.6;
 }
 
-.info-preview strong {
+.general-ti-info-preview strong {
     color: #2c3e50;
     font-weight: 600;
 }
 
-.sin-informacion {
+.general-ti-no-info {
     text-align: center;
     color: #6c757d !important;
     font-style: italic;
@@ -78,7 +78,7 @@
     font-size: 1.1rem;
 }
 
-.click-instruction {
+.general-ti-click-instruction {
     margin-top: 25px !important;
     font-style: italic;
     color: #6c757d !important;
@@ -90,17 +90,17 @@
     font-weight: 500;
 }
 
-.carta-botones {
+.general-ti-buttons-card {
     margin-top: 30px;
 }
 
-.carta-botones .carta-contenido {
+.general-ti-buttons-card .general-ti-card-content {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
-.btn-recuperar, .btn-eliminar {
+.general-ti-btn {
     padding: 18px 25px;
     border: none;
     border-radius: 10px;
@@ -110,31 +110,32 @@
     transition: all 0.3s ease;
     text-align: center;
     width: 100%;
+    font-family: inherit;
 }
 
-.btn-recuperar {
+.general-ti-btn-recover {
     background: linear-gradient(135deg, #17a2b8 0%, #20c997 100%);
     color: white;
 }
 
-.btn-recuperar:hover {
+.general-ti-btn-recover:hover {
     background: linear-gradient(135deg, #138496 0%, #1e7e34 100%);
     transform: translateY(-3px);
     box-shadow: 0 6px 20px rgba(23, 162, 184, 0.4);
 }
 
-.btn-eliminar {
+.general-ti-btn-delete {
     background: linear-gradient(135deg, #dc3545 0%, #fd7e14 100%);
     color: white;
 }
 
-.btn-eliminar:hover {
+.general-ti-btn-delete:hover {
     background: linear-gradient(135deg, #c82333 0%, #e8590c 100%);
     transform: translateY(-3px);
     box-shadow: 0 6px 20px rgba(220, 53, 69, 0.4);
 }
 
-.modal-overlay {
+.general-ti-modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -148,7 +149,7 @@
     padding: 20px;
 }
 
-.cuenta-modal {
+.general-ti-modal-content {
     background: white;
     border-radius: 20px;
     max-width: 600px;
@@ -156,11 +157,11 @@
     max-height: 85vh;
     overflow-y: auto;
     box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-    animation: modalAppear 0.3s ease-out;
+    animation: general-ti-modal-appear 0.3s ease-out;
     margin: 20px;
 }
 
-@keyframes modalAppear {
+@keyframes general-ti-modal-appear {
     from {
         opacity: 0;
         transform: scale(0.9) translateY(-20px);
@@ -171,7 +172,7 @@
     }
 }
 
-.modal-header {
+.general-ti-modal-header {
     padding: 30px 30px 20px 30px;
     border-bottom: 2px solid #f1f3f4;
     display: flex;
@@ -183,7 +184,7 @@
     z-index: 10;
 }
 
-.modal-header h3 {
+.general-ti-modal-header h3 {
     margin: 0;
     color: #2c3e50;
     font-weight: 700;
@@ -193,7 +194,7 @@
     padding-right: 40px;
 }
 
-.btn-close {
+.general-ti-btn-close {
     background: none;
     border: none;
     font-size: 2rem;
@@ -211,17 +212,17 @@
     flex-shrink: 0;
 }
 
-.btn-close:hover {
+.general-ti-btn-close:hover {
     background-color: #f8f9fa;
     color: #dc3545;
 }
 
-.modal-body {
+.general-ti-modal-body {
     padding: 30px;
     background: white;
 }
 
-.modal-footer {
+.general-ti-modal-footer {
     padding: 25px 30px;
     border-top: 2px solid #f1f3f4;
     display: flex;
@@ -232,19 +233,19 @@
     bottom: 0;
 }
 
-.formulario-cuenta {
+.general-ti-form {
     display: flex;
     flex-direction: column;
     gap: 30px;
 }
 
-.campo-formulario {
+.general-ti-form-field {
     display: flex;
     flex-direction: column;
     gap: 12px;
 }
 
-.campo-formulario label {
+.general-ti-form-field label {
     font-weight: 600;
     color: #2c3e50;
     font-size: 1.05rem;
@@ -252,18 +253,18 @@
     display: block;
 }
 
-.campo-formulario label::after {
+.general-ti-form-field label::after {
     content: '*';
     color: #dc3545;
     margin-left: 4px;
 }
 
-.campo-formulario:nth-child(3) label::after,
-.campo-formulario:nth-child(5) label::after {
+.general-ti-form-field:nth-child(3) label::after,
+.general-ti-form-field:nth-child(5) label::after {
     content: '';
 }
 
-.campo-formulario input {
+.general-ti-form-field input {
     padding: 16px 18px;
     border: 2px solid #e9ecef;
     border-radius: 10px;
@@ -274,26 +275,26 @@
     box-sizing: border-box;
 }
 
-.campo-formulario input::placeholder {
+.general-ti-form-field input::placeholder {
     color: #adb5bd;
     font-style: italic;
     font-size: 0.95rem;
 }
 
-.campo-deshabilitado {
+.general-ti-field-disabled {
     background-color: #f8f9fa;
     color: #6c757d;
     cursor: not-allowed;
     border-color: #dee2e6 !important;
 }
 
-.campo-habilitado {
+.general-ti-field-enabled {
     background-color: white;
     border-color: #007bff !important;
     color: #495057;
 }
 
-.campo-habilitado:focus {
+.general-ti-field-enabled:focus {
     outline: none;
     box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.15);
     border-color: #007bff;
@@ -301,7 +302,7 @@
     transform: translateY(-1px);
 }
 
-.mensaje-bloqueo {
+.general-ti-lock-message {
     color: #dc3545;
     font-size: 0.9rem;
     font-weight: 500;
@@ -314,7 +315,7 @@
     line-height: 1.4;
 }
 
-.campo-instrucciones {
+.general-ti-instructions {
     background: linear-gradient(135deg, #e7f3ff 0%, #f0f8ff 100%);
     padding: 25px;
     border-radius: 12px;
@@ -322,7 +323,7 @@
     margin-top: 20px;
 }
 
-.campo-instrucciones p {
+.general-ti-instructions p {
     margin: 10px 0;
     color: #0056b3;
     font-size: 1rem;
@@ -330,7 +331,7 @@
     line-height: 1.5;
 }
 
-.campo-instrucciones p:last-child {
+.general-ti-instructions p:last-child {
     color: #856404;
     background: #fff3cd;
     padding: 15px;
@@ -339,57 +340,41 @@
     margin-top: 15px;
 }
 
-.btn {
-    padding: 16px 28px;
-    border: none;
-    border-radius: 10px;
-    font-size: 1.05rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    font-family: inherit;
-    min-width: 140px;
-}
-
-.btn:disabled {
+.general-ti-btn:disabled {
     background-color: #6c757d !important;
     cursor: not-allowed;
     transform: none !important;
     opacity: 0.6;
 }
 
-.btn-primary {
+.general-ti-btn-primary {
     background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
     color: white;
 }
 
-.btn-primary:hover:not(:disabled) {
+.general-ti-btn-primary:hover:not(:disabled) {
     background: linear-gradient(135deg, #0056b3 0%, #004085 100%);
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(0, 123, 255, 0.3);
 }
 
-.btn-success {
+.general-ti-btn-success {
     background: linear-gradient(135deg, #28a745 0%, #1e7e34 100%);
     color: white;
 }
 
-.btn-success:hover:not(:disabled) {
+.general-ti-btn-success:hover:not(:disabled) {
     background: linear-gradient(135deg, #1e7e34 0%, #155724 100%);
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(40, 167, 69, 0.3);
 }
 
-.btn-secondary {
+.general-ti-btn-secondary {
     background: linear-gradient(135deg, #6c757d 0%, #545b62 100%);
     color: white;
 }
 
-.btn-secondary:hover {
+.general-ti-btn-secondary:hover {
     background: linear-gradient(135deg, #545b62 0%, #3d4246 100%);
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(108, 117, 125, 0.3);
@@ -405,56 +390,56 @@
         margin-bottom: 20px;
     }
     
-    .comunicaciones-grid {
+    .general-ti-grid {
         gap: 20px;
     }
     
-    .carta-contenido {
+    .general-ti-card-content {
         padding: 20px;
     }
     
-    .carta-header {
+    .general-ti-card-header {
         padding: 20px;
     }
     
-    .modal-body {
+    .general-ti-modal-body {
         padding: 25px;
     }
     
-    .modal-header {
+    .general-ti-modal-header {
         padding: 25px 25px 15px 25px;
     }
     
-    .modal-footer {
+    .general-ti-modal-footer {
         padding: 20px 25px;
         flex-direction: column;
     }
     
-    .modal-footer .btn {
+    .general-ti-modal-footer .general-ti-btn {
         width: 100%;
         margin-bottom: 10px;
     }
     
-    .btn-recuperar, 
-    .btn-eliminar {
+    .general-ti-btn-recover, 
+    .general-ti-btn-delete {
         padding: 15px 20px;
         font-size: 1rem;
     }
     
-    .cuenta-modal {
+    .general-ti-modal-content {
         margin: 15px;
         border-radius: 16px;
     }
     
-    .formulario-cuenta {
+    .general-ti-form {
         gap: 25px;
     }
     
-    .campo-formulario input {
+    .general-ti-form-field input {
         padding: 14px 16px;
     }
     
-    .btn {
+    .general-ti-btn {
         padding: 14px 20px;
         min-width: 120px;
     }
@@ -465,56 +450,56 @@
         padding: 10px;
     }
     
-    .carta-header {
+    .general-ti-card-header {
         padding: 18px;
     }
     
-    .carta-header h3 {
+    .general-ti-card-header h3 {
         font-size: 1.2rem;
     }
     
-    .carta-contenido {
+    .general-ti-card-content {
         padding: 18px;
     }
     
-    .info-preview p {
+    .general-ti-info-preview p {
         font-size: 1rem;
     }
     
-    .cuenta-modal {
+    .general-ti-modal-content {
         width: 95%;
         margin: 10px;
         border-radius: 14px;
     }
     
-    .modal-body {
+    .general-ti-modal-body {
         padding: 20px;
     }
     
-    .modal-header {
+    .general-ti-modal-header {
         padding: 20px 20px 15px 20px;
     }
     
-    .modal-footer {
+    .general-ti-modal-footer {
         padding: 18px 20px;
     }
     
-    .campo-formulario input {
+    .general-ti-form-field input {
         padding: 12px 14px;
         font-size: 1rem;
     }
     
-    .btn {
+    .general-ti-btn {
         padding: 12px 18px;
         font-size: 0.95rem;
         min-width: 110px;
     }
     
-    .formulario-cuenta {
+    .general-ti-form {
         gap: 20px;
     }
     
-    .campo-instrucciones {
+    .general-ti-instructions {
         padding: 20px;
     }
 }

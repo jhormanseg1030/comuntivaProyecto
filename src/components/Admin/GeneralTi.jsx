@@ -57,13 +57,13 @@ function GeneralTi() {
     return(
         <div className="general-ti-container">
             <h1>Información de la Cuenta</h1>
-            <div className='comunicaciones-grid'>
-                                <div className='carta-comunicacion carta-principal' onClick={() => setShowModal(true)}>
-                    <div className='carta-header'>
+            <div className='general-ti-grid'>
+                <div className='general-ti-card general-ti-main-card' onClick={() => setShowModal(true)}>
+                    <div className='general-ti-card-header'>
                         <h3>👤 Información Personal</h3>
                     </div>
-                    <div className='carta-contenido'>
-                        <div className='info-preview'>
+                    <div className='general-ti-card-content'>
+                        <div className='general-ti-info-preview'>
                             {userData.nombre || userData.apellidos ? (
                                 <>
                                     <p><strong>Nombre:</strong> {userData.nombre} {userData.apellidos}</p>
@@ -74,34 +74,33 @@ function GeneralTi() {
                                     )}
                                 </>
                             ) : (
-                                <p className='sin-informacion'>📝 No hay información guardada. Haz click para agregar tus datos.</p>
+                                <p className='general-ti-no-info'>📝 No hay información guardada. Haz click para agregar tus datos.</p>
                             )}
-                            <p className='click-instruction'>💡 Haz click para {userData.nombre ? 'ver y editar' : 'agregar'} tu información</p>
+                            <p className='general-ti-click-instruction'>💡 Haz click para {userData.nombre ? 'ver y editar' : 'agregar'} tu información</p>
                         </div>
                     </div>
                 </div>
-                <div className='carta-comunicacion carta-botones'>
-                    <div className='carta-contenido'>
-                        <button className='btn-recuperar' onClick={handleRecuperar}>
+                <div className='general-ti-card general-ti-buttons-card'>
+                    <div className='general-ti-card-content'>
+                        <button className='general-ti-btn general-ti-btn-recover' onClick={handleRecuperar}>
                             🔑 Recuperar Contraseña
                         </button>
-                        <button className='btn-eliminar' onClick={handleCerrarCuenta}>
+                        <button className='general-ti-btn general-ti-btn-delete' onClick={handleCerrarCuenta}>
                             🚫 Cerrar Cuenta
                         </button>
                     </div>
                 </div>
-
             </div>
             {showModal && (
-                <div className="modal-overlay" onClick={() => !editMode && setShowModal(false)}>
-                    <div className="modal-content cuenta-modal" onClick={(e) => e.stopPropagation()}>
-                        <div className="modal-header">
+                <div className="general-ti-modal-overlay" onClick={() => !editMode && setShowModal(false)}>
+                    <div className="general-ti-modal-content" onClick={(e) => e.stopPropagation()}>
+                        <div className="general-ti-modal-header">
                             <h3>👤 {editMode ? 'Editar Información' : 'Información de la Cuenta'}</h3>
-                            <button className="btn-close" onClick={() => setShowModal(false)}>×</button>
+                            <button className="general-ti-btn-close" onClick={() => setShowModal(false)}>×</button>
                         </div>
-                        <div className="modal-body">
-                            <div className="formulario-cuenta">
-                                <div className="campo-formulario">
+                        <div className="general-ti-modal-body">
+                            <div className="general-ti-form">
+                                <div className="general-ti-form-field">
                                     <label>Nombre *</label>
                                     <input 
                                         type="text" 
@@ -110,11 +109,11 @@ function GeneralTi() {
                                         onChange={handleInputChange}
                                         disabled={!editMode}
                                         placeholder="Ingresa tu nombre"
-                                        className={editMode ? "campo-habilitado" : "campo-deshabilitado"}
+                                        className={editMode ? "general-ti-field-enabled" : "general-ti-field-disabled"}
                                     />
                                 </div>
                                 
-                                <div className="campo-formulario">
+                                <div className="general-ti-form-field">
                                     <label>Apellidos *</label>
                                     <input 
                                         type="text" 
@@ -123,11 +122,11 @@ function GeneralTi() {
                                         onChange={handleInputChange}
                                         disabled={!editMode}
                                         placeholder="Ingresa tus apellidos"
-                                        className={editMode ? "campo-habilitado" : "campo-deshabilitado"}
+                                        className={editMode ? "general-ti-field-enabled" : "general-ti-field-disabled"}
                                     />
                                 </div>
                                 
-                                <div className="campo-formulario">
+                                <div className="general-ti-form-field">
                                     <label>Teléfono</label>
                                     <input 
                                         type="tel" 
@@ -136,11 +135,11 @@ function GeneralTi() {
                                         onChange={handleInputChange}
                                         disabled={!editMode}
                                         placeholder="Ingresa tu número de teléfono"
-                                        className={editMode ? "campo-habilitado" : "campo-deshabilitado"}
+                                        className={editMode ? "general-ti-field-enabled" : "general-ti-field-disabled"}
                                     />
                                 </div>
                                 
-                                <div className="campo-formulario">
+                                <div className="general-ti-form-field">
                                     <label>Correo Electrónico *</label>
                                     <input 
                                         type="email" 
@@ -149,11 +148,11 @@ function GeneralTi() {
                                         onChange={handleInputChange}
                                         disabled={!editMode}
                                         placeholder="Ingresa tu correo electrónico"
-                                        className={editMode ? "campo-habilitado" : "campo-deshabilitado"}
+                                        className={editMode ? "general-ti-field-enabled" : "general-ti-field-disabled"}
                                     />
                                 </div>
                                 
-                                <div className="campo-formulario">
+                                <div className="general-ti-form-field">
                                     <label>Fecha de Nacimiento</label>
                                     <input 
                                         type="date" 
@@ -162,17 +161,17 @@ function GeneralTi() {
                                         onChange={handleInputChange}
                                         disabled={!editMode || fechaBloqueada}
                                         placeholder="Selecciona tu fecha de nacimiento"
-                                        className={editMode && !fechaBloqueada ? "campo-habilitado" : "campo-deshabilitado"}
+                                        className={editMode && !fechaBloqueada ? "general-ti-field-enabled" : "general-ti-field-disabled"}
                                     />
                                     {fechaBloqueada && userData.fechaNacimiento && (
-                                        <small className="mensaje-bloqueo">
+                                        <small className="general-ti-lock-message">
                                             🔒 La fecha de nacimiento no se puede modificar después del primer guardado
                                         </small>
                                     )}
                                 </div>
 
                                 {editMode && (
-                                    <div className="campo-instrucciones">
+                                    <div className="general-ti-instructions">
                                         <p>📝 Campos marcados con * son obligatorios</p>
                                         {!fechaBloqueada && (
                                             <p>🎂 La fecha de nacimiento solo se puede establecer una vez</p>
@@ -181,14 +180,14 @@ function GeneralTi() {
                                 )}
                             </div>
                         </div>
-                        <div className="modal-footer">
+                        <div className="general-ti-modal-footer">
                             {!editMode ? (
                                 <>
-                                    <button className="btn btn-secondary" onClick={() => setShowModal(false)}>
+                                    <button className="general-ti-btn general-ti-btn-secondary" onClick={() => setShowModal(false)}>
                                         Cerrar
                                     </button>
                                     <button 
-                                        className="btn btn-primary" 
+                                        className="general-ti-btn general-ti-btn-primary" 
                                         onClick={handleEditarInformacion}
                                     >
                                         ✏️ {userData.nombre ? 'Editar' : 'Agregar'} Información
@@ -196,11 +195,11 @@ function GeneralTi() {
                                 </>
                             ) : (
                                 <>
-                                    <button className="btn btn-secondary" onClick={handleCancel}>
+                                    <button className="general-ti-btn general-ti-btn-secondary" onClick={handleCancel}>
                                         Cancelar
                                     </button>
                                     <button 
-                                        className="btn btn-success" 
+                                        className="general-ti-btn general-ti-btn-success" 
                                         onClick={handleSave}
                                         disabled={!userData.nombre || !userData.apellidos || !userData.correo}
                                     >

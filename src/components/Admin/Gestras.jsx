@@ -15,138 +15,24 @@ const Gestras = () => {
       nombre: 'Furgón',
       icono: '🚚',
       capacidadKg: 1500,
-      tarifaBase: 80000,
-      costoKm: 1200,
-      maxDistancia: 300,
+      tarifaBase: 0,
+      costoKm: 0,
+      maxDistancia: 0,
       descripcion: 'Ideal para cargas medianas y productos empaquetados'
     },
     van: {
       nombre: 'Van de Carga',
       icono: '🚐',
       capacidadKg: 3000,
-      tarifaBase: 120000,
-      costoKm: 1800,
-      maxDistancia: 500,
+      tarifaBase: 0,
+      costoKm: 0,
+      maxDistancia: 0,
       descripcion: 'Perfecto para grandes volúmenes y productos a granel'
     }
   };
 
-  const vehiculosData = [
-    {
-      id: 1,
-      tipo: 'furgon',
-      nombre: 'Furgón 001',
-      placa: 'ABC123',
-      conductor: 'Carlos Rodríguez',
-      estado: 'disponible',
-      capacidad: '1,500 kg',
-      ubicacion: 'En base',
-      viajesMes: 12,
-      ingresosMes: 3200000,
-      mantenimiento: false
-    },
-    {
-      id: 2,
-      tipo: 'furgon',
-      nombre: 'Furgón 002',
-      placa: 'DEF456',
-      conductor: 'Ana Gómez',
-      estado: 'en_ruta',
-      capacidad: '1,500 kg',
-      ubicacion: 'Ruta Bogotá-Medellín',
-      viajesMes: 8,
-      ingresosMes: 2100000,
-      mantenimiento: false
-    },
-    {
-      id: 3,
-      tipo: 'van',
-      nombre: 'Van 001',
-      placa: 'GHI789',
-      conductor: 'Miguel Torres',
-      estado: 'disponible',
-      capacidad: '3,000 kg',
-      ubicacion: 'En base',
-      viajesMes: 15,
-      ingresosMes: 4500000,
-      mantenimiento: false
-    },
-    {
-      id: 4,
-      tipo: 'van',
-      nombre: 'Van 002',
-      placa: 'JKL012',
-      conductor: 'Laura Martínez',
-      estado: 'mantenimiento',
-      capacidad: '3,000 kg',
-      ubicacion: 'Taller mecánico',
-      viajesMes: 10,
-      ingresosMes: 2800000,
-      mantenimiento: true
-    }
-  ];
-
-  const cotizacionesData = [
-    {
-      id: 1,
-      fecha: '2024-01-15',
-      producto: 'Tomates',
-      peso: 1200,
-      vehiculo: 'furgon',
-      origen: 'Bogotá',
-      destino: 'Medellín',
-      distancia: 250,
-      total: 514794,
-      estado: 'completado',
-      detalles: {
-        base: 80000,
-        distancia: 300000,
-        seguro: 7600,
-        peajes: 45000,
-        urgencia: 0,
-        factorCarga: 1,
-        subtotal: 432600,
-        iva: 82194
-      }
-    },
-    {
-      id: 2,
-      fecha: '2024-01-14',
-      producto: 'Zanahorias',
-      peso: 2800,
-      vehiculo: 'van',
-      origen: 'Bogotá',
-      destino: 'Cali',
-      distancia: 480,
-      total: 1785809,
-      estado: 'en_proceso',
-      detalles: {
-        base: 120000,
-        distancia: 864000,
-        seguro: 19680,
-        peajes: 86400,
-        urgencia: 0,
-        factorCarga: 1,
-        subtotal: 1090080,
-        iva: 207115
-      }
-    },
-    {
-      id: 3,
-      fecha: '2024-01-13',
-      producto: 'Lechugas',
-      peso: 800,
-      vehiculo: 'furgon',
-      origen: 'Bogotá',
-      destino: 'Cartagena',
-      distancia: 1100,
-      total: 0,
-      estado: 'rechazado',
-      detalles: {
-        motivo: 'Distancia excede el límite permitido para el vehículo'
-      }
-    }
-  ];
+  const vehiculosData = [];
+  const cotizacionesData = [];
 
   useEffect(() => {
     setTimeout(() => {
@@ -284,59 +170,65 @@ const Gestras = () => {
             </div>
 
             <div className="vehiculos-grid">
-              {vehiculos.map(vehiculo => (
-                <div key={vehiculo.id} className={`vehiculo-card ${vehiculo.estado}`}>
-                  <div className="vehiculo-header">
-                    <div className="vehiculo-icono-tipo">
-                      <div className="vehiculo-icono">
-                        {configVehiculos[vehiculo.tipo].icono}
-                      </div>
-                      <div className="vehiculo-tipo">
-                        {configVehiculos[vehiculo.tipo].nombre}
-                      </div>
-                    </div>
-                    <div className={`estado-badge ${getEstadoColor(vehiculo.estado)}`}>
-                      {getEstadoTexto(vehiculo.estado)}
-                    </div>
-                  </div>
-                  
-                  <div className="vehiculo-info">
-                    <h4>{vehiculo.nombre}</h4>
-                    <p className="vehiculo-placa">{vehiculo.placa}</p>
-                  </div>
-
-                  <div className="vehiculo-detalles">
-                    <div className="detalle-fila">
-                      <span className="detalle-label">Conductor:</span>
-                      <span className="detalle-value">{vehiculo.conductor}</span>
-                    </div>
-                    <div className="detalle-fila">
-                      <span className="detalle-label">Capacidad:</span>
-                      <span className="detalle-value">{vehiculo.capacidad}</span>
-                    </div>
-                    <div className="detalle-fila">
-                      <span className="detalle-label">Viajes/Mes:</span>
-                      <span className="detalle-value">{vehiculo.viajesMes}</span>
-                    </div>
-                    <div className="detalle-fila">
-                      <span className="detalle-label">Ingresos:</span>
-                      <span className="detalle-value">{formatCurrency(vehiculo.ingresosMes)}</span>
-                    </div>
-                    <div className="detalle-fila">
-                      <span className="detalle-label">Ubicación:</span>
-                      <span className="detalle-value ubicacion">{vehiculo.ubicacion}</span>
-                    </div>
-                  </div>
-                  
-                  <div className="vehiculo-acciones">
-                    {vehiculo.mantenimiento && (
-                      <button className="btn btn-sm btn-warning">
-                        🔧 En Mantenimiento
-                      </button>
-                    )}
-                  </div>
+              {vehiculos.length === 0 ? (
+                <div className="no-data-message">
+                  <p>No hay vehículos registrados</p>
                 </div>
-              ))}
+              ) : (
+                vehiculos.map(vehiculo => (
+                  <div key={vehiculo.id} className={`vehiculo-card ${vehiculo.estado}`}>
+                    <div className="vehiculo-header">
+                      <div className="vehiculo-icono-tipo">
+                        <div className="vehiculo-icono">
+                          {configVehiculos[vehiculo.tipo].icono}
+                        </div>
+                        <div className="vehiculo-tipo">
+                          {configVehiculos[vehiculo.tipo].nombre}
+                        </div>
+                      </div>
+                      <div className={`estado-badge ${getEstadoColor(vehiculo.estado)}`}>
+                        {getEstadoTexto(vehiculo.estado)}
+                      </div>
+                    </div>
+                    
+                    <div className="vehiculo-info">
+                      <h4>{vehiculo.nombre}</h4>
+                      <p className="vehiculo-placa">{vehiculo.placa}</p>
+                    </div>
+
+                    <div className="vehiculo-detalles">
+                      <div className="detalle-fila">
+                        <span className="detalle-label">Conductor:</span>
+                        <span className="detalle-value">{vehiculo.conductor}</span>
+                      </div>
+                      <div className="detalle-fila">
+                        <span className="detalle-label">Capacidad:</span>
+                        <span className="detalle-value">{vehiculo.capacidad}</span>
+                      </div>
+                      <div className="detalle-fila">
+                        <span className="detalle-label">Viajes/Mes:</span>
+                        <span className="detalle-value">{vehiculo.viajesMes}</span>
+                      </div>
+                      <div className="detalle-fila">
+                        <span className="detalle-label">Ingresos:</span>
+                        <span className="detalle-value">{formatCurrency(vehiculo.ingresosMes)}</span>
+                      </div>
+                      <div className="detalle-fila">
+                        <span className="detalle-label">Ubicación:</span>
+                        <span className="detalle-value ubicacion">{vehiculo.ubicacion}</span>
+                      </div>
+                    </div>
+                    
+                    <div className="vehiculo-acciones">
+                      {vehiculo.mantenimiento && (
+                        <button className="btn btn-sm btn-warning">
+                          🔧 En Mantenimiento
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                ))
+              )}
             </div>
           </div>
         )}
@@ -371,43 +263,51 @@ const Gestras = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {cotizaciones.map(cotizacion => (
-                      <tr key={cotizacion.id}>
-                        <td>{cotizacion.fecha}</td>
-                        <td>
-                          <strong>{cotizacion.producto}</strong>
-                          <br />
-                          <small>{cotizacion.peso} kg</small>
-                        </td>
-                        <td>
-                          <span className="badge vehiculo-badge">
-                            {configVehiculos[cotizacion.vehiculo]?.icono} {configVehiculos[cotizacion.vehiculo]?.nombre}
-                          </span>
-                        </td>
-                        <td>
-                          {cotizacion.origen} → {cotizacion.destino}
-                        </td>
-                        <td>{cotizacion.distancia} km</td>
-                        <td className="fw-bold text-success">
-                          {cotizacion.total > 0 ? formatCurrency(cotizacion.total) : 'N/A'}
-                        </td>
-                        <td>
-                          <span className={`badge badge-estado estado-${getEstadoCotizacionColor(cotizacion.estado)}`}>
-                            {cotizacion.estado}
-                          </span>
-                        </td>
-                        <td>
-                          <div className="acciones-cotizacion">
-                            <button 
-                              className="btn btn-sm btn-info"
-                              onClick={() => leerCotizacion(cotizacion)}
-                            >
-                              👁️ Leer
-                            </button>
-                          </div>
+                    {cotizaciones.length === 0 ? (
+                      <tr>
+                        <td colSpan="8" style={{textAlign: 'center', padding: '20px', color: '#6c757d'}}>
+                          No hay cotizaciones registradas
                         </td>
                       </tr>
-                    ))}
+                    ) : (
+                      cotizaciones.map(cotizacion => (
+                        <tr key={cotizacion.id}>
+                          <td>{cotizacion.fecha}</td>
+                          <td>
+                            <strong>{cotizacion.producto}</strong>
+                            <br />
+                            <small>{cotizacion.peso} kg</small>
+                          </td>
+                          <td>
+                            <span className="badge vehiculo-badge">
+                              {configVehiculos[cotizacion.vehiculo]?.icono} {configVehiculos[cotizacion.vehiculo]?.nombre}
+                            </span>
+                          </td>
+                          <td>
+                            {cotizacion.origen} → {cotizacion.destino}
+                          </td>
+                          <td>{cotizacion.distancia} km</td>
+                          <td className="fw-bold text-success">
+                            {cotizacion.total > 0 ? formatCurrency(cotizacion.total) : 'N/A'}
+                          </td>
+                          <td>
+                            <span className={`badge badge-estado estado-${getEstadoCotizacionColor(cotizacion.estado)}`}>
+                              {cotizacion.estado}
+                            </span>
+                          </td>
+                          <td>
+                            <div className="acciones-cotizacion">
+                              <button 
+                                className="btn btn-sm btn-info"
+                                onClick={() => leerCotizacion(cotizacion)}
+                              >
+                                👁️ Leer
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                      ))
+                    )}
                   </tbody>
                 </table>
               </div>
