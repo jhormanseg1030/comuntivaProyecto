@@ -5,7 +5,6 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
 import { obtenerUnidad } from '../../api/unidad_medidaApi';
-import { crearProductoConImagen } from '../../api/productoApi';
 import { obtenerProductos, crearProducto, actualizarProducto, eliminarProducto } from '../../api/productoApi';
 import Alert from 'react-bootstrap/Alert';
 
@@ -92,21 +91,26 @@ function ProductosVendedor() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     setIsSubmitting(true);
-    setError(null); // Limpiar errores anteriores
+    setError(null);
     
     try {
-      const formData = new FormData();
-      formData.append('nombre_Producto', nombreProducto);
-      formData.append('valor', valor);
-      formData.append('cantidad', cantidad);
-      formData.append('descripcion', descripcion);
-      formData.append('id_medida', unidadId);
-      formData.append('categoria', categoriaNueva);
-      if (productImage) formData.append('imagen', productImage);
+      // ✅ Crear objeto JSON en vez de FormData
+      const productoData = {
+        nombre_Producto: nombreProducto,
+        valor: parseFloat(valor),
+        cantidad: parseInt(cantidad),
+        descripcion: descripcion,
+        id_medida: parseInt(unidadId),
+        categoria: categoriaNueva,
+        imagen: productImage ? productImage.name : null // Solo guardar el nombre del archivo
+      };
       
-      const resp = await crearProductoConImagen(formData);
+      console.log("📤 Enviando producto:", productoData);
       
-      // Recargar productos desde backend para asegurar persistencia
+      // ✅ Usar crearProducto (JSON) en vez de crearProductoConImagen (FormData)
+      const resp = await crearProducto(productoData);
+      
+      // Recargar productos desde backend
       const nuevos = await obtenerProductos();
       setProductos(nuevos);
       setSuccess('Producto creado correctamente');
@@ -125,19 +129,7 @@ function ProductosVendedor() {
       fileInputRef.current.value = '';
     } catch (error) {
       console.error('Error completo:', error);
-      
-      // Mostrar mensaje de error más específico
-      if (error.message.includes('401')) {
-        setError('Tu sesión ha expirado. Por favor, inicia sesión nuevamente.');
-      } else if (error.message.includes('403')) {
-        setError('No tienes permisos para crear productos.');
-      } else if (error.message.includes('400')) {
-        setError('Los datos del producto son incorrectos. Verifica todos los campos.');
-      } else if (error.message.includes('500')) {
-        setError('Error del servidor. Por favor, intenta más tarde.');
-      } else {
-        setError('Error al crear producto: ' + error.message + '. Verifica tu sesión o conexión.');
-      }
+      setError('Error al crear producto: ' + error.message);
     } finally {
       setIsSubmitting(false);
     }

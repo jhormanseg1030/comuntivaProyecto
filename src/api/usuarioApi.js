@@ -19,7 +19,7 @@ export const loginUsuario = async (tipDocId, numDoc, password) => {
 
     const data = await res.json();
     
-    // Guardar token y datos del usuario en localStorage
+    // ✅ Guardar token en localStorage
     if (data.token) {
       localStorage.setItem('token', data.token);
       localStorage.setItem('usuario', JSON.stringify(data));
