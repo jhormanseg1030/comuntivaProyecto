@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { obtenerProductos } from '../../api/productoApi';
 import { obtenerPedidos } from '../../api/pedidosApi';
-import { obtenerCompras } from '../../api/compraApi';
+import { obtenerMisVentas } from '../../api/ventasApi';
 import { generarHTMLPDF } from './reportesPdfTemplate';
 import { generarHTMLExcel } from './reportesExcelTemplate';
 import logoComuctiva from '../imagenes/Conmutiva.jpeg';
@@ -28,7 +28,7 @@ function ReportesVendedor() {
       const [prodData, pedData, ventasData] = await Promise.all([
         obtenerProductos().catch(() => []),
         obtenerPedidos().catch(() => []),
-        obtenerCompras().catch(() => [])
+        obtenerMisVentas().catch(() => [])
       ]);
       setProductos(prodData);
       setPedidos(pedData);

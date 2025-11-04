@@ -1,11 +1,9 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState } from 'react';
 import logo from '../imagenes/logo.jpg';
-import { obtenerCompras } from '../../api/compraApi';
-import { UserContext } from '../../context/UserContext';
+import { obtenerMisVentas } from '../../api/ventasApi';
 import './ReportesVendedor.css';
 
 const VentasReport = () => {
-  const { user } = useContext(UserContext);
   const [ventas, setVentas] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -18,11 +16,10 @@ const VentasReport = () => {
   const cargarVentas = async () => {
     setLoading(true);
     try {
-      // Filtrar compras por vendedor autenticado
-      const compras = await obtenerCompras();
-      const ventasFiltradas = compras.filter(c => c.id_vendedor === user.id);
-      setVentas(ventasFiltradas);
+      const data = await obtenerMisVentas();
+      setVentas(data);
     } catch (error) {
+      console.error('Error al cargar ventas:', error);
       setVentas([]);
     }
     setLoading(false);
@@ -51,14 +48,16 @@ const VentasReport = () => {
               </tr>
             </thead>
             <tbody>
-              {ventas.map(v => (
-                <tr key={v.id}>
-                  <td>{v.id}</td>
-                  <td>{v.producto_nombre || v.producto || '-'}</td>
-                  <td>{v.cliente_nombre || v.cliente || '-'}</td>
-                  <td>{v.fecha || '-'}</td>
-                  <td>{v.cantidad || '-'}</td>
-                  <td style={{ color: '#28a745', fontWeight: 'bold' }}>${v.valor ? v.valor.toLocaleString() : '-'}</td>
+              {ventas.map((v, index) => (
+                <tr key={v.id_compra + '-' + v.id_producto + '-' + index}>
+                  <td>{v.id_compra}</td>
+                  <td>{v.producto_nombre}</td>
+                  <td>{v.cliente_nombre}</td>
+                  <td>{v.fecha ? new Date(v.fecha).toLocaleString() : '-'}</td>
+                  <td>{v.cantidad}</td>
+                  <td style={{ color: '#28a745', fontWeight: 'bold' }}>
+                    ${v.total ? v.total.toLocaleString('es-CO', { minimumFractionDigits: 0, maximumFractionDigits: 0 }) : '0'}
+                  </td>
                 </tr>
               ))}
             </tbody>
