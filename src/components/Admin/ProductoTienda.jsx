@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import './Producto.css';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
@@ -10,6 +11,7 @@ import Badge from 'react-bootstrap/Badge';
 import Table from 'react-bootstrap/Table';
 import { obtenerUnidad } from '../../api/unidad_medidaApi';
 
+
 function ProductoTienda() {
   const [showSuccess, setShowSuccess] = useState(false);
   const [showRejected, setShowRejected] = useState(false);
@@ -20,44 +22,7 @@ function ProductoTienda() {
   const [unidadId, setUnidadId] = useState('');
   const [tiendaId, setTiendaId] = useState('');
 
-  const [productosPendientes, setProductosPendientes] = useState([
-    {
-      id: 1,
-      nombre_Producto: "Tomates Orgánicos",
-      descripcion: "Tomates frescos cultivados orgánicamente sin pesticidas",
-      valor: 2.50,
-      cantidad: 100,
-      imagen: "https://images.unsplash.com/photo-1574856344991-aaa31b6f4ce3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-      vendedor: { nombre: "Juan Pérez" },
-      fecha_creacion: "2023-11-15",
-      estado: "pendiente",
-      unidad_medida: "kg"
-    },
-    {
-      id: 2,
-      nombre_Producto: "Zanahorias Frescas",
-      descripcion: "Zanahorias recién cosechadas del campo",
-      valor: 1.80,
-      cantidad: 150,
-      imagen: "https://images.unsplash.com/photo-1526318472351-c75fcf070305?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-      vendedor: { nombre: "María García" },
-      fecha_creacion: "2023-11-14",
-      estado: "pendiente",
-      unidad_medida: "kg"
-    },
-    {
-      id: 3,
-      nombre_Producto: "Lechuga Hidropónica",
-      descripcion: "Lechuga cultivada con sistema hidropónico",
-      valor: 3.20,
-      cantidad: 80,
-      imagen: "https://images.unsplash.com/photo-1571772996211-2f02c9727629?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-      vendedor: { nombre: "Carlos López" },
-      fecha_creacion: "2023-11-13",
-      estado: "pendiente",
-      unidad_medida: "unidad"
-    }
-  ]);
+  const [productosPendientes, setProductosPendientes] = useState([]);
   const [productoSeleccionado, setProductoSeleccionado] = useState(null);
   const [showDetalleModal, setShowDetalleModal] = useState(false);
 
@@ -74,7 +39,26 @@ function ProductoTienda() {
       }
     };
 
+    const fetchProductosPendientes = async () => {
+      try {
+        const token = localStorage.getItem('token');
+        const response = await fetch('http://localhost:8080/api/producto/pendientes', {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
+        if (!response.ok) throw new Error('Error al cargar productos pendientes');
+        const data = await response.json();
+        // Filtrar solo los productos con estado 'pendiente'
+        const soloPendientes = Array.isArray(data) ? data.filter(p => p.estado === 'pendiente') : [];
+        setProductosPendientes(soloPendientes);
+      } catch (err) {
+        console.error("Error al cargar productos pendientes", err);
+      }
+    };
+
     fetchUnidades();
+    fetchProductosPendientes();
   }, []);
 
   const abrirDetalleProducto = (producto) => {
@@ -88,29 +72,49 @@ function ProductoTienda() {
   };
 
   const handleAprobarProducto = async (productoId) => {
-    console.log('Aprobando producto:', productoId);
-    
-    const productosActualizados = productosPendientes.filter(p => p.id !== productoId);
-    setProductosPendientes(productosActualizados);
-    cerrarDetalleModal();
-    
-    setShowSuccess(true);
-    setTimeout(() => setShowSuccess(false), 3000);
-    
-    console.log('✅ Producto aprobado correctamente');
+    try {
+      setIsSubmitting(true);
+      const token = localStorage.getItem('token');
+      const response = await fetch(`http://localhost:8080/api/producto/aprobar/${productoId}`, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+      if (!response.ok) throw new Error('Error al aprobar el producto');
+  setProductosPendientes(prev => prev.filter(p => p.id_pro !== productoId && p.estado === 'pendiente'));
+      cerrarDetalleModal();
+      setShowSuccess(true);
+      setTimeout(() => setShowSuccess(false), 3000);
+    } catch (err) {
+      alert('Error al aprobar el producto');
+      console.error(err);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleRechazarProducto = async (productoId) => {
-    console.log('Rechazando producto:', productoId);
-    
-    const productosActualizados = productosPendientes.filter(p => p.id !== productoId);
-    setProductosPendientes(productosActualizados);
-    cerrarDetalleModal();
-    
-    setShowRejected(true);
-    setTimeout(() => setShowRejected(false), 3000);
-    
-    console.log('❌ Producto rechazado correctamente');
+    try {
+      setIsSubmitting(true);
+      const token = localStorage.getItem('token');
+      const response = await fetch(`http://localhost:8080/api/producto/rechazar/${productoId}`, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+      if (!response.ok) throw new Error('Error al rechazar el producto');
+  setProductosPendientes(prev => prev.filter(p => p.id_pro !== productoId && p.estado === 'pendiente'));
+      cerrarDetalleModal();
+      setShowRejected(true);
+      setTimeout(() => setShowRejected(false), 3000);
+    } catch (err) {
+      alert('Error al rechazar el producto');
+      console.error(err);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -133,7 +137,7 @@ function ProductoTienda() {
           <Card className="productos-container">
             <Card.Header className="bg-light">
               <h5 className="mb-0">📦 Productos Pendientes de Revisión</h5>
-              <small className="text-muted">Estos son datos de ejemplo para probar la funcionalidad</small>
+              <small className="text-muted">Solo se muestran productos pendientes de aprobación</small>
             </Card.Header>
             <Card.Body>
               {productosPendientes.length === 0 ? (
@@ -152,25 +156,25 @@ function ProductoTienda() {
                   </thead>
                   <tbody>
                     {productosPendientes.map((producto) => (
-                      <tr key={producto.id}>
+                      <tr key={producto.id_pro}>
                         <td>
                           <div className="d-flex align-items-center">
                             <img 
                               src={producto.imagen} 
-                              alt={producto.nombre_Producto}
+                              alt={producto.nombre_Producto || producto.nomprod || 'Producto'}
                               className="producto-thumb me-3"
                             />
                             <div>
-                              <div className="fw-bold">{producto.nombre_Producto}</div>
+                              <div className="producto-nombre">{producto.nombre_Producto && producto.nombre_Producto.trim() !== '' ? producto.nombre_Producto : (producto.nomprod && producto.nomprod.trim() !== '' ? producto.nomprod : 'Sin nombre')}</div>
                               <small className="text-muted">
-                                {producto.descripcion?.substring(0, 50)}...
+                                {(producto.descripcion || producto.descrip)?.substring(0, 50)}...
                               </small>
                             </div>
                           </div>
                         </td>
-                        <td>{producto.vendedor?.nombre || 'N/A'}</td>
+                        <td>{producto.nombreVendedor || 'N/A'}</td>
                         <td>${producto.valor}</td>
-                        <td>{producto.fecha_creacion}</td>
+                        <td>{producto.fecha_creacion || '-'}</td>
                         <td>
                           <Badge bg="warning">⏳ Pendiente</Badge>
                         </td>
@@ -187,7 +191,7 @@ function ProductoTienda() {
                             <Button 
                               variant="outline-success" 
                               size="sm"
-                              onClick={() => handleAprobarProducto(producto.id)}
+                              onClick={() => handleAprobarProducto(producto.id_pro)}
                               className="me-2"
                             >
                               ✅ Aprobar
@@ -195,7 +199,7 @@ function ProductoTienda() {
                             <Button 
                               variant="outline-danger" 
                               size="sm"
-                              onClick={() => handleRechazarProducto(producto.id)}
+                              onClick={() => handleRechazarProducto(producto.id_pro)}
                             >
                               ❌ Rechazar
                             </Button>
@@ -213,7 +217,7 @@ function ProductoTienda() {
             <div className="modal-overlay" onClick={cerrarDetalleModal}>
               <div className="modal-content" onClick={(e) => e.stopPropagation()}>
                 <div className="modal-header">
-                  <h5>🔍 Revisión de Producto: {productoSeleccionado.nombre_Producto}</h5>
+                  <h5>🔍 Revisión de Producto: {productoSeleccionado.nomprod}</h5>
                   <button type="button" className="btn-close" onClick={cerrarDetalleModal}></button>
                 </div>
                 <div className="modal-body">
@@ -222,7 +226,7 @@ function ProductoTienda() {
                       <div className="product-image-large mb-3">
                         <img 
                           src={productoSeleccionado.imagen} 
-                          alt={productoSeleccionado.nombre_Producto}
+                          alt={productoSeleccionado.nomprod}
                           className="img-fluid rounded"
                         />
                       </div>
@@ -230,15 +234,15 @@ function ProductoTienda() {
                     <Col md={6}>
                       <div className="product-info-section">
                         <h6>📋 Información del Producto</h6>
-                        <p><strong>Descripción:</strong> {productoSeleccionado.descripcion}</p>
-                        <p><strong>Precio:</strong> ${productoSeleccionado.valor} por {productoSeleccionado.unidad_medida}</p>
-                        <p><strong>Cantidad disponible:</strong> {productoSeleccionado.cantidad} {productoSeleccionado.unidad_medida}</p>
-                        <p><strong>Vendedor:</strong> {productoSeleccionado.vendedor?.nombre || 'N/A'}</p>
-                        <p><strong>Fecha de publicación:</strong> {productoSeleccionado.fecha_creacion}</p>
+                        <p><strong>Nombre:</strong> {productoSeleccionado.nombre_Producto || productoSeleccionado.nomprod}</p>
+                        <p><strong>Descripción:</strong> {productoSeleccionado.descripcion || productoSeleccionado.descrip}</p>
+                        <p><strong>Precio:</strong> ${productoSeleccionado.valor}</p>
+                        <p><strong>Cantidad disponible:</strong> {productoSeleccionado.cantidad || productoSeleccionado.cant}</p>
+                        <p><strong>Categoría:</strong> {productoSeleccionado.categoria}</p>
+                        <p><strong>Unidad de medida:</strong> {unidades.find(u => u.id_medida === productoSeleccionado.id_medida)?.nombre || productoSeleccionado.id_medida || '-'}</p>
+                        <p><strong>Estado:</strong> {productoSeleccionado.estado}</p>
                       </div>
-                      
                       <hr />
-                      
                       <h6>✅ Verificación de Imágenes</h6>
                       <Form>
                         <Form.Check 
@@ -271,13 +275,13 @@ function ProductoTienda() {
                   </Button>
                   <Button 
                     variant="danger"
-                    onClick={() => handleRechazarProducto(productoSeleccionado.id)}
+                    onClick={() => handleRechazarProducto(productoSeleccionado.id_pro)}
                   >
                     ❌ Rechazar
                   </Button>
                   <Button 
                     variant="success"
-                    onClick={() => handleAprobarProducto(productoSeleccionado.id)}
+                    onClick={() => handleAprobarProducto(productoSeleccionado.id_pro)}
                   >
                     ✅ Aprobar Producto
                   </Button>

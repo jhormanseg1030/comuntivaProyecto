@@ -1,3 +1,9 @@
+.producto-nombre {
+  color: #464646;
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.5px;
+}
 .contenido-dinamico {
   padding: 20px;
 }
