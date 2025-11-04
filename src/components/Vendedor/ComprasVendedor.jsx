@@ -1,66 +1,68 @@
 import { useEffect, useState } from 'react';
-import { obtenerCompras, crearCompra } from '../../api/compraApi';
+import { obtenerMisCompras } from '../../api/ventasApi';
 
 function ComprasVendedor() {
   const [compras, setCompras] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const load = async () => {
-      try {
-        const data = await obtenerCompras();
-        setCompras(data);
-      } catch (err) {
-        console.error('Error al cargar compras', err);
-      } finally {
-        setLoading(false);
-      }
-    };
-    load();
+    cargarCompras();
+    const interval = setInterval(cargarCompras, 30000);
+    return () => clearInterval(interval);
   }, []);
 
-  const handleCrearCompra = async () => {
+  const cargarCompras = async () => {
+    setLoading(true);
     try {
-      const nuevo = { proveedor: 'Proveedor A', total: 10000 };
-      const resp = await crearCompra(nuevo);
-      setCompras((s) => [resp, ...s]);
+      const data = await obtenerMisCompras();
+      setCompras(data);
     } catch (err) {
-      console.error('Error creando compra', err);
-      alert('No se pudo crear la compra');
+      console.error('Error al cargar compras', err);
+      setCompras([]);
     }
+    setLoading(false);
   };
 
   return (
-    <>
-      <h1>Compras</h1>
-      <button className="buttonPedi" onClick={handleCrearCompra}>Nueva Compra</button>
-      {loading ? (
-        <p>Cargando...</p>
-      ) : (
-        <table className="table table-hover">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Proveedor</th>
-              <th>Total</th>
-            </tr>
-          </thead>
-          <tbody>
-            {compras && compras.length ? (
-              compras.map((c) => (
-                <tr key={c.id || c.id_compra}>
-                  <td>{c.id || c.id_compra}</td>
-                  <td>{c.proveedor || c.nom_proveedor || '-'}</td>
-                  <td>{c.total || c.valor || 0}</td>
+    <div className="reportes-container">
+      <div className="report-header">
+        <h1 className="report-title" style={{ color: '#28a745' }}>Mis Compras</h1>
+      </div>
+      <div className="report-table-wrapper">
+        {loading ? (
+          <p>Cargando compras...</p>
+        ) : compras.length === 0 ? (
+          <p>No hay compras registradas.</p>
+        ) : (
+          <table className="report-table">
+            <thead>
+              <tr style={{ background: '#28a745', color: 'white' }}>
+                <th>ID</th>
+                <th>Producto</th>
+                <th>Vendedor</th>
+                <th>Fecha</th>
+                <th>Cantidad</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              {compras.map((c, index) => (
+                <tr key={c.id_compra + '-' + c.id_producto + '-' + index}>
+                  <td>{c.id_compra}</td>
+                  <td>{c.producto_nombre}</td>
+                  <td>{c.vendedor_nombre}</td>
+                  <td>{c.fecha ? new Date(c.fecha).toLocaleString() : '-'}</td>
+                  <td>{c.cantidad}</td>
+                  <td style={{ color: '#28a745', fontWeight: 'bold' }}>
+                    ${c.total ? c.total.toLocaleString('es-CO', { minimumFractionDigits: 0, maximumFractionDigits: 0 }) : '0'}
+                  </td>
                 </tr>
-              ))
-            ) : (
-              <tr><td colSpan={3}>No hay compras</td></tr>
-            )}
-          </tbody>
-        </table>
-      )}
-    </>
+              ))}
+            </tbody>
+          </table>
+        )}
+      </div>
+    </div>
   );
 }
 
