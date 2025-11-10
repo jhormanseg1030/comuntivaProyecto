@@ -88,52 +88,47 @@ function ProductosVendedor() {
     }
   };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    setIsSubmitting(true);
-    setError(null);
-    
-    try {
-      // ✅ Crear objeto JSON en vez de FormData
-      const productoData = {
-        nombre_Producto: nombreProducto,
-        valor: parseFloat(valor),
-        cantidad: parseInt(cantidad),
-        descripcion: descripcion,
-        id_medida: parseInt(unidadId),
-        categoria: categoriaNueva,
-        imagen: productImage ? productImage.name : null // Solo guardar el nombre del archivo
-      };
-      
-      console.log("📤 Enviando producto:", productoData);
-      
-      // ✅ Usar crearProducto (JSON) en vez de crearProductoConImagen (FormData)
-      const resp = await crearProducto(productoData);
-      
-      // Recargar productos desde backend
-      const nuevos = await obtenerProductos();
-      setProductos(nuevos);
-      setSuccess('Producto creado correctamente');
-      setTimeout(() => setSuccess(null), 3000);
-      setShowForm(false);
-      
-      // Limpiar formulario
-      setNombreProducto('');
-      setValor('');
-      setCantidad('');
-      setDescripcion('');
-      setUnidadId('');
-      setCategoriaNueva('');
-      setProductImage(null);
-      setImagePreview(null);
-      fileInputRef.current.value = '';
-    } catch (error) {
-      console.error('Error completo:', error);
-      setError('Error al crear producto: ' + error.message);
-    } finally {
-      setIsSubmitting(false);
+const handleSubmit = async (event) => {
+  event.preventDefault();
+  setIsSubmitting(true);
+  setError(null);
+
+  try {
+    const formData = new FormData();
+    formData.append("nombre_Producto", nombreProducto);
+    formData.append("valor", parseFloat(valor));
+    formData.append("cantidad", parseInt(cantidad));
+    formData.append("descripcion", descripcion);
+    formData.append("id_medida", parseInt(unidadId));
+    formData.append("categoria", categoriaNueva);
+    if (productImage) {
+      formData.append("imagen", productImage);
     }
-  };
+
+    const resp = await crearProducto(formData); // Asegúrate de que `crearProducto` acepte FormData
+    const nuevos = await obtenerProductos();
+    setProductos(nuevos);
+    setSuccess("Producto creado correctamente");
+    setTimeout(() => setSuccess(null), 3000);
+    setShowForm(false);
+
+    // Resetear campos
+    setNombreProducto("");
+    setValor("");
+    setCantidad("");
+    setDescripcion("");
+    setUnidadId("");
+    setCategoriaNueva("");
+    setProductImage(null);
+    setImagePreview(null);
+    fileInputRef.current.value = "";
+  } catch (error) {
+    console.error("Error completo:", error);
+    setError("Error al crear producto: " + error.message);
+  } finally {
+    setIsSubmitting(false);
+  }
+};
 
   const handleDelete = async (id) => {
     if (!confirm('¿Eliminar este producto?')) return;
@@ -144,23 +139,6 @@ function ProductosVendedor() {
       setTimeout(() => setSuccess(null), 3000);
     } catch (err) {
       setError('Error al eliminar producto. Verifica tu sesión.');
-    }
-  };
-
-  const handleCreate = async () => {
-    const token = localStorage.getItem('token');
-    if (!token) {
-      setError('Debes iniciar sesión para crear productos.');
-      return;
-    }
-    try {
-      const nuevo = { nombre_Producto: 'Nuevo producto', valor: 0, cantidad: 0, descripcion: '', id_tienda: 1, id_medida: 1 };
-      const resp = await crearProducto(nuevo);
-      setProductos((p) => [resp, ...p]);
-      setSuccess('Producto creado');
-      setTimeout(() => setSuccess(null), 3000);
-    } catch (err) {
-      setError('Error al crear producto. Verifica tu sesión o conexión.');
     }
   };
 
@@ -177,7 +155,7 @@ function ProductosVendedor() {
     }
   };
 
-  return (
+return (
     <>
       <h1>Productos</h1>
       {error && <Alert variant="danger">{error}</Alert>}
@@ -256,43 +234,72 @@ function ProductosVendedor() {
       {loading ? (
         <p>Cargando productos...</p>
       ) : (
-        <table className="table table-hover">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Nombre</th>
-              <th>Valor</th>
-              <th>Cantidad</th>
-              <th>Categoría</th>
-              <th>Imagen</th>
-              <th>Acciones</th>
-            </tr>
-          </thead>
-          <tbody>
-            {productos
-              .filter(p => (query? (p.nombre_Producto || p.nom || '').toLowerCase().includes(query.toLowerCase()): true))
-              .filter(p => (categoria ? (p.categoria === categoria || p.categoriaNombre === categoria) : true))
-              .map((p) => (
-              <tr key={p.id || p.id_producto}>
-                <td>{p.id || p.id_producto}</td>
-                <td>{p.nombre_Producto || p.nom}</td>
-                <td>{p.valor}</td>
-                <td>{p.cantidad}</td>
-                <td>{p.categoria || p.categoriaNombre || '-'}</td>
-                <td>
-                  {p.imagen ? (
-                    <img src={typeof p.imagen === 'string' && p.imagen.startsWith('http') ? p.imagen : `/uploads/${p.imagen}`} alt="img" style={{maxWidth:60, borderRadius:6}} />
-                  ) : 'Sin imagen'}
-                </td>
-                <td>
-                  <button className="btn btn-sm btn-primary" onClick={() => handleUpdate(p.id || p.id_producto)}>Editar</button>
-                  {' '}
-                  <button className="btn btn-sm btn-danger" onClick={() => handleDelete(p.id || p.id_producto)}>Eliminar</button>
-                </td>
+        <div style={{ overflowX: 'auto' }}>
+          <table className="table table-hover" style={{ minWidth: '100%' }}>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Valor</th>
+                <th>Cantidad</th>
+                <th>Categoría</th>
+                <th>Imagen</th>
+                <th>Acciones</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {productos
+                .filter(p => (query? (p.nombre_Producto || p.nom || '').toLowerCase().includes(query.toLowerCase()): true))
+                .filter(p => (categoria ? (p.categoria === categoria || p.categoriaNombre === categoria) : true))
+                .map((p) => (
+                <tr key={p.id || p.id_producto}>
+                  <td>{p.id || p.id_producto}</td>
+                  <td>{p.nombre_Producto || p.nom}</td>
+                  <td>{p.valor}</td>
+                  <td>{p.cantidad}</td>
+                  <td>{p.categoria || p.categoriaNombre || '-'}</td>
+                  {/* ✅ CELDA DE IMAGEN CON ALTURA FIJA PARA EVITAR PARPADEOS */}
+                  <td>
+                    <div style={{ 
+                      width: 70, 
+                      height: 70, 
+                      display: 'flex', 
+                      alignItems: 'center', 
+                      justifyContent: 'center',
+                      backgroundColor: '#f5f5f5',
+                      borderRadius: 6,
+                      overflow: 'hidden'
+                    }}>
+                      {p.imagen ? (
+                        <img 
+                          src={`http://localhost:8080/api/producto/imagen/${p.imagen}`} 
+                          alt={p.nombre_Producto || p.nom}
+                          style={{ 
+                            width: '100%', 
+                            height: '100%', 
+                            objectFit: 'cover',
+                            objectPosition: 'center'
+                          }}
+                          onError={(e) => {
+                            console.log("Error cargando imagen:", e.target.src);
+                            e.target.style.display = 'none';
+                          }}
+                        />
+                      ) : (
+                        <span style={{ fontSize: 12, color: '#999' }}>Sin imagen</span>
+                      )}
+                    </div>
+                  </td>
+                  <td>
+                    <button className="btn btn-sm btn-primary" onClick={() => handleUpdate(p.id || p.id_producto)}>Editar</button>
+                    {' '}
+                    <button className="btn btn-sm btn-danger" onClick={() => handleDelete(p.id || p.id_producto)}>Eliminar</button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )}
     </>
   );
