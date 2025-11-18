@@ -15,6 +15,7 @@ import Inicio_Pag from './components/Inicio/Inicio_Pag';
 import InicioSe from './components/iniciosesion/InicioSe';
 import Perfil from './components/Perfil/Perfil';
 import ProductosTienda from './components/Productos/ProductosTi';
+import ProductoDetalle from './components/Productos/ProductoDetalle';
 import QuienesSomos from './components/Quienes somos/quienSom';
 import RegistrarUsu from './components/Registrar/RegistrarUsu';
 import SegPrinci from './components/SegPrincipal/SegPrinci';
@@ -44,6 +45,7 @@ function App() {
         <Route path='/ConfAdmin/*' element={<ConfAdmin></ConfAdmin>}></Route>
         <Route path='/Compra' element={<PagCompra></PagCompra>}></Route>
         <Route path='/Productos' element={<ProductosTienda></ProductosTienda>}></Route>
+        <Route path='/producto/:id' element={<ProductoDetalle></ProductoDetalle>}></Route>
         <Route path='/Pago' element={<Pago></Pago>}></Route>
         <Route path='/Perfil' element={<Perfil></Perfil>}></Route>
         <Route path='/Frutas' element={<Frutas></Frutas>}></Route>
@@ -63,7 +65,7 @@ function App() {
         <Route path='Unidad' element ={<Unidad_Medida></Unidad_Medida>}></Route>
         </Route>
         <Route path='/formulari' element={<FormularioUsuario></FormularioUsuario>}></Route>
-  <Route path='/ConfVendedor/*' element={<ConfVendedor />} />
+          <Route path='/ConfVendedor/*' element={<ConfVendedor />} />
         <Route></Route>
       </Routes>
     </UserProvider>
