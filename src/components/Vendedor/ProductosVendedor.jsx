@@ -6,7 +6,7 @@ import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
 import { obtenerUnidad } from '../../api/unidad_medidaApi';
 import { crearProductoConImagen } from '../../api/productoApi';
-import { obtenerProductos, crearProducto, actualizarProducto, eliminarProducto } from '../../api/productoApi';
+import { obtenerProductosVendedor, crearProducto, actualizarProducto, eliminarProducto } from '../../api/productoApi';
 import Alert from 'react-bootstrap/Alert';
 
 function ProductosVendedor() {
@@ -47,10 +47,12 @@ function ProductosVendedor() {
         return;
       }
       try {
-        const data = await obtenerProductos();
+        // Obtener solo los productos del vendedor autenticado
+        const data = await obtenerProductosVendedor();
         setProductos(data);
       } catch (err) {
-        setError('No se pudieron cargar los productos. Verifica tu conexión o sesión.');
+        setError('No se pudieron cargar tus productos. Verifica tu conexión o sesión.');
+        console.error('Error al cargar productos del vendedor:', err);
       } finally {
         setLoading(false);
       }
@@ -94,6 +96,9 @@ function ProductosVendedor() {
     setIsSubmitting(true);
     setError(null); // Limpiar errores anteriores
     
+    console.log('📝 Intentando crear producto...');
+    console.log('Token en localStorage:', localStorage.getItem('token') ? 'Sí existe' : 'No existe');
+    
     try {
       const formData = new FormData();
       formData.append('nombre_Producto', nombreProducto);
@@ -104,10 +109,20 @@ function ProductosVendedor() {
       formData.append('categoria', categoriaNueva);
       if (productImage) formData.append('imagen', productImage);
       
+      console.log('📦 FormData preparado:', {
+        nombre_Producto: nombreProducto,
+        valor: valor,
+        cantidad: cantidad,
+        id_medida: unidadId,
+        categoria: categoriaNueva,
+        tieneImagen: !!productImage
+      });
+      
       const resp = await crearProductoConImagen(formData);
       
+      console.log('✅ Producto creado, recargando lista...');
       // Recargar productos desde backend para asegurar persistencia
-      const nuevos = await obtenerProductos();
+      const nuevos = await obtenerProductosVendedor();
       setProductos(nuevos);
       setSuccess('Producto creado correctamente');
       setTimeout(() => setSuccess(null), 3000);
@@ -124,7 +139,7 @@ function ProductosVendedor() {
       setImagePreview(null);
       fileInputRef.current.value = '';
     } catch (error) {
-      console.error('Error completo:', error);
+      console.error('❌ Error completo:', error);
       
       // Mostrar mensaje de error más específico
       if (error.message.includes('401')) {
@@ -135,8 +150,10 @@ function ProductosVendedor() {
         setError('Los datos del producto son incorrectos. Verifica todos los campos.');
       } else if (error.message.includes('500')) {
         setError('Error del servidor. Por favor, intenta más tarde.');
+      } else if (error.message.includes('Failed to fetch') || error.message.includes('No se pudo conectar')) {
+        setError('No se pudo conectar con el servidor. Verifica que el backend esté corriendo en http://localhost:8080');
       } else {
-        setError('Error al crear producto: ' + error.message + '. Verifica tu sesión o conexión.');
+        setError('Error al crear producto: ' + error.message);
       }
     } finally {
       setIsSubmitting(false);
@@ -187,7 +204,7 @@ function ProductosVendedor() {
 
   return (
     <>
-      <h1>Productos</h1>
+      <h1>Mis Productos</h1>
       {error && <Alert variant="danger">{error}</Alert>}
       {success && <Alert variant="success">{success}</Alert>}
       <div style={{ marginBottom: 12, display: 'flex', gap: 8, alignItems: 'center' }}>
@@ -262,7 +279,9 @@ function ProductosVendedor() {
         </Container>
       )}
       {loading ? (
-        <p>Cargando productos...</p>
+        <p>Cargando tus productos...</p>
+      ) : productos.length === 0 ? (
+        <p>No tienes productos creados aún. Haz clic en "Crear producto" para agregar tu primer producto.</p>
       ) : (
         <table className="table table-hover">
           <thead>
