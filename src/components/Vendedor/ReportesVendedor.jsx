@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { obtenerProductos } from '../../api/productoApi';
+import { obtenerProductosVendedor } from '../../api/productoApi';
 import { obtenerPedidos } from '../../api/pedidosApi';
 import { obtenerMisVentas } from '../../api/ventasApi';
 import { generarHTMLPDF } from './reportesPdfTemplate';
@@ -26,7 +26,7 @@ function ReportesVendedor() {
     setLoading(true);
     try {
       const [prodData, pedData, ventasData] = await Promise.all([
-        obtenerProductos().catch(() => []),
+        obtenerProductosVendedor().catch(() => []),
         obtenerPedidos().catch(() => []),
         obtenerMisVentas().catch(() => [])
       ]);
