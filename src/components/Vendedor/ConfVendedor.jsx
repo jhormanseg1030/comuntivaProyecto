@@ -55,6 +55,9 @@ const ConfVendedor = () => {
             <li onClick={() => manejarSeleccion('Cuenta')} className={contenido === 'Cuenta' ? 'active' : ''}>
               <Link className='nav-link1' to={'/ConfVendedor/cuenta'}>👤 Cuenta</Link>
             </li>
+            <li>
+              <Link className='nav-link1' to={'/SegPrincipal'}>← Volver a Principal</Link>
+            </li>
           </ul>
         </nav>
 

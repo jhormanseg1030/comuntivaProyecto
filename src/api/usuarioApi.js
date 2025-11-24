@@ -19,10 +19,14 @@ export const loginUsuario = async (tipDocId, numDoc, password) => {
 
     const data = await res.json();
     
-    // ✅ Guardar token en localStorage
+    // ✅ Guardar token y datos del usuario en localStorage
     if (data.token) {
       localStorage.setItem('token', data.token);
       localStorage.setItem('usuario', JSON.stringify(data));
+      // Guardar el id del usuario para facilitar su acceso
+      if (data.id_Usuario) {
+        localStorage.setItem('userId', data.id_Usuario.toString());
+      }
     }
     
     return data;
@@ -38,6 +42,7 @@ export const loginUsuario = async (tipDocId, numDoc, password) => {
 export const cerrarSesion = () => {
   localStorage.removeItem('token');
   localStorage.removeItem('usuario');
+  localStorage.removeItem('userId');
 };
 
 // Función para obtener el token
